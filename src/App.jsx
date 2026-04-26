@@ -4,9 +4,9 @@ const App = () => {
   return (
     <div className="min-h-screen bg-surface font-ui-body">
       {/* Navigation */}
-      <nav className="sticky top-0 w-full z-50 bg-[#f2f1ed]/90 backdrop-blur-xl border-b border-black/5 shadow-[0_20px_50px_rgba(38,37,30,0.05)]">
+      <nav className="sticky top-0 w-full z-50 bg-cursor-cream/90 backdrop-blur-xl border-b border-black/5 shadow-[0_20px_50px_rgba(38,37,30,0.05)]">
         {/* Desktop Navbar */}
-        <div className="hidden md:flex justify-between items-center w-full px-8 h-16 max-w-[1200px] mx-auto">
+        <div className="hidden md:flex justify-between items-center w-full px-8 h-16 max-w-container-max mx-auto">
           <div className="text-xl font-bold tracking-tighter text-primary font-['Space_Grotesk']">
             ComponentLab
           </div>
@@ -37,7 +37,7 @@ const App = () => {
             <span className="material-symbols-outlined text-primary/60 cursor-pointer hover:text-error-warm">
               search
             </span>
-            <button className="bg-primary text-[#f2f1ed] px-5 py-2 rounded-lg text-sm font-medium hover:bg-error-warm transition-all active:scale-[0.98]">
+            <button className="bg-primary text-cursor-cream px-5 py-2 rounded-lg text-sm font-medium hover:bg-error-warm transition-all active:scale-[0.98]">
               Start Building
             </button>
           </div>
@@ -61,7 +61,7 @@ const App = () => {
         </div>
       </nav>
 
-      <main className="max-w-[1200px] mx-auto sm:px-8">
+      <main className="max-w-container-max mx-auto sm:px-8">
         {/* Hero Section */}
         <section className="pt-24 pb-16 md:pt-32 md:pb-24 text-center px-4 md:px-0">
           <span className="md:hidden font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-6 block">
@@ -100,7 +100,7 @@ const App = () => {
           <div className="grid grid-cols-12 gap-6">
             {/* Large Featured Card */}
             <div className="col-span-8 group">
-              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-[480px] flex flex-col transition-all duration-500 overflow-hidden relative">
+              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-120 flex flex-col transition-all duration-500 overflow-hidden relative">
                 <div className="flex justify-between items-start mb-12">
                   <div>
                     <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
@@ -114,14 +114,14 @@ const App = () => {
                     auto_awesome
                   </span>
                 </div>
-                <div className="flex-grow flex items-center justify-center">
+                <div className="grow flex items-center justify-center">
                   <div className="w-full h-full rounded-lg bg-cursor-cream/50 overflow-hidden oklab-border flex items-center justify-center relative">
                     <img
                       className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                       alt="Fluid Motion"
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-LzM25aubZ1ZyhBhZXD-K0IQAc-21jXFO-hDoLE-O7TYnmOBqwX7047OgxgkdSkpOuOfkiVpkYh4gBSpbmQAlxTJgPfGv_pQTJQ0WMSFfJRr12uHbkGJaaMTI_INgVnTNOolsyGU0RFWdzYeAFhLv7lK0bPGS25RrN3vfdSJ3q0hecHoZhShnjAEf2E4s7SLdDG6aMTNWTry2pedMDh2Zd1KVadNznAQLoXKwfQ5kELbn_bKCr8W8M73I4ZBjA6lF7RT4d4Js9T7_"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-cursor-light/40 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-cursor-light/40 to-transparent"></div>
                   </div>
                 </div>
                 <div className="mt-6 flex justify-between items-center z-10 relative">
@@ -137,7 +137,7 @@ const App = () => {
 
             {/* Small Card 1 */}
             <div className="col-span-4 group">
-              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-[480px] flex flex-col transition-all duration-500">
+              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-120 flex flex-col transition-all duration-500">
                 <div className="mb-8">
                   <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
                     Navigation
@@ -146,7 +146,7 @@ const App = () => {
                     Adaptive Sidebar
                   </h3>
                 </div>
-                <div className="flex-grow bg-cursor-cream/30 rounded-lg oklab-border p-4 flex flex-col gap-3">
+                <div className="grow bg-cursor-cream/30 rounded-lg oklab-border p-4 flex flex-col gap-3">
                   <div className="h-8 w-full bg-surface-500/30 rounded"></div>
                   <div className="h-8 w-2/3 bg-surface-500/30 rounded"></div>
                   <div className="h-8 w-3/4 bg-surface-500/30 rounded"></div>
@@ -165,7 +165,7 @@ const App = () => {
 
             {/* Row 2: Symmetric Layout Small Card 2 */}
             <div className="col-span-4 group">
-              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-[400px] flex flex-col transition-all duration-500">
+              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-100 flex flex-col transition-all duration-500">
                 <div className="mb-8">
                   <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
                     Inputs
@@ -174,7 +174,7 @@ const App = () => {
                     Ghost Forms
                   </h3>
                 </div>
-                <div className="flex-grow flex flex-col justify-center gap-4">
+                <div className="grow flex flex-col justify-center gap-4">
                   <div className="h-12 w-full oklab-border rounded-md bg-cursor-cream/20 px-4 flex items-center">
                     <div className="w-1/3 h-1 bg-on-surface-variant/20 rounded"></div>
                   </div>
@@ -190,7 +190,7 @@ const App = () => {
 
             {/* Row 2: Wide Card */}
             <div className="col-span-8 group">
-              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-[400px] flex transition-all duration-500 overflow-hidden">
+              <div className="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-100 flex transition-all duration-500 overflow-hidden">
                 <div className="w-1/2 flex flex-col justify-between pr-8">
                   <div>
                     <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
@@ -231,7 +231,7 @@ const App = () => {
                     </div>
                   </div>
                   {/* Connector Line */}
-                  <div className="absolute left-[27px] top-9 bottom-9 w-[1px] bg-border-oklab-10 z-0"></div>
+                  <div className="absolute left-6.75 top-9 bottom-9 w-px bg-border-oklab-10 z-0"></div>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ const App = () => {
         <section className="md:hidden px-4 space-y-6 pb-24">
           {/* Fluid Motion Core Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-[4/3] rounded-md overflow-hidden mb-3 relative">
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative">
               <img
                 alt="Fluid motion"
                 className="w-full h-full object-cover opacity-90"
@@ -275,7 +275,7 @@ const App = () => {
 
           {/* Adaptive Sidebar Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-[4/3] rounded-md overflow-hidden mb-3 relative bg-[#1c1b1b] flex items-center justify-center">
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#1c1b1b] flex items-center justify-center">
               <div className="w-1/2 h-4/5 border border-white/10 rounded-lg flex flex-col bg-black/50 p-3 pt-6 gap-2">
                 <div className="w-1/3 h-1 bg-white/20 rounded"></div>
                 <div className="w-1/2 h-1 bg-white/20 rounded"></div>
@@ -308,7 +308,7 @@ const App = () => {
 
           {/* Ghost Forms Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-[4/3] rounded-md overflow-hidden mb-3 relative bg-[#141414] flex flex-col items-center justify-center p-8 text-center text-white">
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#141414] flex flex-col items-center justify-center p-8 text-center text-white">
               <h3 className="font-display-hero text-4xl mb-4 opacity-40">
                 GHOST
               </h3>
@@ -345,9 +345,9 @@ const App = () => {
 
           {/* Neural Trace Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-[4/3] rounded-md overflow-hidden mb-3 relative bg-black flex items-center justify-center">
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-black flex items-center justify-center">
               {/* Decorative background or image could go here, using a gradient for abstract placeholder */}
-              <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900 via-black to-black opacity-80"></div>
+              <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900 via-black to-black opacity-80"></div>
             </div>
             <div className="px-2">
               <div className="flex items-center justify-between mb-2">
@@ -416,7 +416,7 @@ const App = () => {
       </div>
 
       {/* Mobile Bottom Navigation Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#f2f1ed]/95 backdrop-blur-xl border-t border-oklab-10 h-16 flex items-center justify-around px-2 z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-cursor-cream/95 backdrop-blur-xl border-t border-oklab-10 h-16 flex items-center justify-around px-2 z-50">
         <button className="flex flex-col items-center gap-1 text-error-warm">
           <span className="material-symbols-outlined text-[20px]">explore</span>
           <span className="font-system-micro text-[8px] uppercase tracking-widest">
@@ -448,8 +448,8 @@ const App = () => {
       </div>
 
       {/* Desktop Footer */}
-      <footer className="hidden md:flex w-full border-t border-black/10 bg-[#f2f1ed]">
-        <div className="max-w-[1200px] w-full mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <footer className="hidden md:flex w-full border-t border-black/10 bg-cursor-cream">
+        <div className="max-w-container-max w-full mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-lg font-black text-primary font-['Space_Grotesk']">
             ComponentLab
           </div>
