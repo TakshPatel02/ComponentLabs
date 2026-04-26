@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "timeline-grep": "#9fc9a2",
+                    "on-tertiary-fixed-variant": "#49454a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e6e2e0",
+                    "inverse-on-surface": "#f4f0ee",
+                    "tertiary-fixed-dim": "#cbc5ca",
+                    "primary-fixed-dim": "#cac6bc",
+                    "on-tertiary-container": "#908a8f",
+                    "surface-variant": "#e6e2e0",
+                    "surface-100": "#f7f7f4",
+                    "on-background": "#1c1b1b",
+                    "primary": "#11100a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#e8e0e6",
+                    "on-surface": "#1c1b1b",
+                    "timeline-thinking": "#dfa88f",
+                    "on-primary-fixed-variant": "#48473f",
+                    "surface-dim": "#ddd9d7",
+                    "timeline-edit": "#c0a8dd",
+                    "accent-gold": "#c08532",
+                    "surface-tint": "#605e56",
+                    "outline-variant": "#cac6bc",
+                    "surface-300": "#ebeae5",
+                    "border-oklab-10": "oklab(0.263084 -0.00230259 0.0124794 / 0.1)",
+                    "secondary": "#a83300",
+                    "tertiary": "#120f13",
+                    "cursor-cream": "#f2f1ed",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#ebe7e5",
+                    "secondary-container": "#d24200",
+                    "outline": "#79776f",
+                    "border-fallback-10": "rgba(38, 37, 30, 0.1)",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#1d1b1e",
+                    "error-warm": "#cf2d56",
+                    "timeline-read": "#9fbbe0",
+                    "primary-container": "#26251e",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#390b00",
+                    "surface": "#fdf8f7",
+                    "on-primary": "#ffffff",
+                    "success-muted": "#1f8a65",
+                    "on-surface-variant": "#48473f",
+                    "surface-container-low": "#f7f3f1",
+                    "background": "#fdf8f7",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary-fixed-variant": "#832600",
+                    "tertiary-container": "#272428",
+                    "surface-bright": "#fdf8f7",
+                    "inverse-primary": "#cac6bc",
+                    "on-primary-container": "#8f8c82",
+                    "inverse-surface": "#31302f",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb59d",
+                    "surface-500": "#e1e0db",
+                    "cursor-light": "#e6e5e0",
+                    "border-strong": "rgba(38, 37, 30, 0.55)",
+                    "on-primary-fixed": "#1d1c15",
+                    "primary-fixed": "#e6e2d7",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container": "#f1edeb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "base": "8px",
+                    "xl": "96px",
+                    "sm": "12px",
+                    "micro-1": "1.5px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "micro-2": "3px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "button-label": ["Space Grotesk"],
+                    "display-hero": ["Space Grotesk"],
+                    "ui-body": ["Space Grotesk"],
+                    "mono-code": ["ui-monospace"],
+                    "editorial-body": ["Newsreader"],
+                    "section-heading": ["Space Grotesk"],
+                    "system-micro": ["Inter"],
+                    "editorial-standard": ["Newsreader"]
+            },
+            "fontSize": {
+                    "button-label": ["14px", {"lineHeight": "1.00", "fontWeight": "400"}],
+                    "display-hero": ["72px", {"lineHeight": "1.10", "letterSpacing": "-2.16px", "fontWeight": "400"}],
+                    "ui-body": ["16px", {"lineHeight": "1.50", "letterSpacing": "0.08px", "fontWeight": "400"}],
+                    "mono-code": ["12px", {"lineHeight": "1.67", "fontWeight": "400"}],
+                    "editorial-body": ["19.2px", {"lineHeight": "1.50", "fontWeight": "500"}],
+                    "section-heading": ["36px", {"lineHeight": "1.20", "letterSpacing": "-0.72px", "fontWeight": "400"}],
+                    "system-micro": ["11px", {"lineHeight": "1.27", "letterSpacing": "0.048px", "fontWeight": "500"}],
+                    "editorial-standard": ["17.28px", {"lineHeight": "1.35", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f2f1ed;
+            color: #1c1b1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: oklab(0.263084 -0.00230259 0.0124794 / 0.1);
+            border-radius: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-ui-body text-ui-body antialiased custom-scrollbar">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-stone-50/95 dark:bg-stone-950/95 backdrop-blur-md border-b border-stone-200/60 dark:border-stone-800/60 shadow-sm flex items-center justify-between px-5 h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 text-stone-900 dark:text-stone-100">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-xl font-black tracking-widest text-stone-900 dark:text-stone-50 font-['Space_Grotesk'] uppercase">GALLERY</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="active:scale-95 duration-200 text-stone-900 dark:text-stone-100">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="pt-xl pb-lg px-gutter text-center">
+<span class="font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-base block">Portfolio Volume 01</span>
+<h1 class="font-display-hero text-display-hero text-primary leading-[0.95] mb-md max-w-sm mx-auto">
+                Crafted by Intelligence
+            </h1>
+<p class="font-editorial-body text-editorial-body text-on-surface-variant max-w-xs mx-auto italic">
+                A definitive collection of engineered interface components for the modern web architect.
+            </p>
+</section>
+<!-- Component Grid -->
+<section class="px-gutter space-y-md">
+<!-- Fluid Motion Core -->
+<div class="bg-surface-300 rounded-lg p-sm border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-sm relative">
+<img alt="Fluid motion" class="w-full h-full object-cover" data-alt="Abstract fluid flowing geometric shapes with soft shadows in a monochromatic cream and stone color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhxnFs6svQYaQrC9WuLA0rWNM00Gy2qUgG3esswa7j_ITe5CtTMZ9GIAMlL2Bu0JShQzXcKSAIhRexYPG1iiSDYFJUA6FH_mbX8qp1-m9CKXQ294KJLYFOTCqaYD1sAkGReSH0YescG_p1faLEk2EL2fAVTFSsHTEPBuMeLPSxWbQrWT9OAOa-S43L8tah4ItXfioPCJMkUD-D7LzkEjr_QkYNHE4UxgyR8NwyctxebaSTITZTc_vgLGzQZQPUAEtzdHOeIfc5mlZw"/>
+<div class="absolute inset-0 bg-primary/5"></div>
+</div>
+<div class="px-2">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-section-heading text-[24px] text-primary tracking-tighter">Fluid Motion Core</h3>
+<span class="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">v2.4</span>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant mb-md leading-relaxed">
+                        Precision-engineered animation systems built on physics-based transition matrices.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Animation</span>
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Physics</span>
+</div>
+</div>
+</div>
+<!-- Adaptive Sidebar -->
+<div class="bg-surface-300 rounded-lg p-sm border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-sm relative">
+<img alt="Adaptive UI" class="w-full h-full object-cover" data-alt="Minimalist architectural layout with clean vertical lines and sophisticated spatial organization in warm neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz4eo3nyTPwfPOMpTyQ9FVIjo4ZlaXuWNM4k2_FKp2U3d5Jp60BmJNAQRb7r33AGk8xOX_mI523YtbW126LpsyVaLzCn3och5d_QlSc8ApHOWX0gApiiK9pjsAmtXgdsHnwWoU31NbYEVf66SED6l-CcOU7noLQw1rBLeO3co_hxnfKjfag0RXV9KxjgFCpzZ5P78vPScPIrnF7l1fWRdixSMtOL0zrUe_CjPdcYjpZ0_4d1EHf05mhGUg5-y0SlB5B36MKEbS_QgR"/>
+<div class="absolute inset-0 bg-primary/5"></div>
+</div>
+<div class="px-2">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-section-heading text-[24px] text-primary tracking-tighter">Adaptive Sidebar</h3>
+<span class="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">NEW</span>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant mb-md leading-relaxed">
+                        A context-aware navigation shell that recalibrates based on user intent and workflow.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Navigation</span>
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Layout</span>
+</div>
+</div>
+</div>
+<!-- Ghost Forms -->
+<div class="bg-surface-300 rounded-lg p-sm border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-sm relative">
+<img alt="Ghost UI" class="w-full h-full object-cover" data-alt="Ethereal landscape with soft mist and layers of depth reflecting a subtle and translucent visual language" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUfJlupJamCKtDt6LIipcbwqRxRYSJOj7wPx7qjl378DwFHF2uSLe-a7H3IGuWdZjxMLEnFkED9kZSc-a1HnYjwH6V6B33423v2GSMPh5tnwF2XLRvVUznl2zi61k4OjzpScEA9JE6MKi4BIA5yDMJouy-bkMWkpDaMTzCwHepcttH5CCzbuEcijMQL9ODXSbjdESWteWjDxNdqcEkhjubn5TNBtK-3sNZrMMcyXLsPN0kxOz6uzmQ27-402WUCabJKjcthXQfM3z-"/>
+<div class="absolute inset-0 bg-primary/5"></div>
+</div>
+<div class="px-2">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-section-heading text-[24px] text-primary tracking-tighter">Ghost Forms</h3>
+<span class="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">BETA</span>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant mb-md leading-relaxed">
+                        Low-friction input systems utilizing atmospheric depth and tonal shift focus states.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Inputs</span>
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Glass</span>
+</div>
+</div>
+</div>
+<!-- Neural Trace -->
+<div class="bg-surface-300 rounded-lg p-sm border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-sm relative">
+<img alt="Neural trace" class="w-full h-full object-cover" data-alt="Close-up of a digital mesh network with glowing nodes and intricate connections on a dark warm background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkQxVgPQ2XGrB_MaoMq4RUt6R8WuC5urUvVtGbNssfZlPZNg8Ac1saNuUrS__UQRe7IUTYU9G5n3W7Ks3kcMqFSzp8uyV2uHLGyiP4Islps5kLTEz-DESmgyJZGkYHkLXPBtLrG0VzJhDEKlDK9m2pHgkJDScUR-0FMoVsfguoIGiv8Og1cEiZb0HrnlaY3CmW3bz1g_2QmgGxIDxfRLzgR0sB-RT0d2IECQtdga0PsHwslcphYkgp3VDY8JVK2ldz-MS3YmGEMsIu"/>
+<div class="absolute inset-0 bg-primary/5"></div>
+</div>
+<div class="px-2">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-section-heading text-[24px] text-primary tracking-tighter">Neural Trace</h3>
+<span class="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">EXP</span>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant mb-md leading-relaxed">
+                        Signature timeline components for visualizing AI reasoning and process history.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">AI Timeline</span>
+<span class="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-system-micro text-on-surface-variant uppercase tracking-wider group-hover:text-error-warm transition-colors cursor-pointer">Trace</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full rounded-t-lg border-t border-stone-200 dark:border-stone-800 bg-stone-100 dark:bg-stone-900 flex flex-col items-center gap-6 py-12 px-6 mb-20">
+<span class="text-stone-900 dark:text-stone-100 font-bold font-['Space_Grotesk'] text-[10px] tracking-widest uppercase">PRECISION CRAFT</span>
+<div class="flex gap-4">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-stone-500 hover:text-rose-600 dark:hover:text-rose-400 transition-colors opacity-80 hover:opacity-100" href="#">Components</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-stone-500 hover:text-rose-600 dark:hover:text-rose-400 transition-colors opacity-80 hover:opacity-100" href="#">Guidelines</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-stone-500 hover:text-rose-600 dark:hover:text-rose-400 transition-colors opacity-80 hover:opacity-100" href="#">Archive</a>
+</div>
+<p class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-stone-600 dark:text-stone-400">© 2024 PRECISION CRAFT</p>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 h-20 pb-safe bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur-lg border-t border-stone-200/50 dark:border-stone-800/50 shadow-[0_-4px_24px_rgba(0,0,0,0.04)] flex justify-around items-center px-4 w-full">
+<!-- Grid View (Active) -->
+<a class="text-rose-600 dark:text-rose-400 flex flex-col items-center justify-center p-2 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1) hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase mt-1">Explore</span>
+</a>
+<!-- Auto Awesome -->
+<a class="text-stone-400 dark:text-stone-600 flex flex-col items-center justify-center p-2 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1) hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase mt-1">Magic</span>
+</a>
+<!-- Inventory 2 -->
+<a class="text-stone-400 dark:text-stone-600 flex flex-col items-center justify-center p-2 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1) hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase mt-1">Assets</span>
+</a>
+<!-- Person -->
+<a class="text-stone-400 dark:text-stone-600 flex flex-col items-center justify-center p-2 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1) hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Space_Grotesk'] font-medium text-[10px] uppercase mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

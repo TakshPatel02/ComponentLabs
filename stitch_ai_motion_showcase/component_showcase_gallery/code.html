@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComponentLab | AI-Native UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "success-muted": "#1f8a65",
+                    "tertiary-fixed": "#e8e0e6",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#49454a",
+                    "on-secondary-container": "#fffbff",
+                    "cursor-light": "#e6e5e0",
+                    "on-surface": "#1c1b1b",
+                    "on-surface-variant": "#48473f",
+                    "on-primary-fixed-variant": "#48473f",
+                    "on-error-container": "#93000a",
+                    "secondary": "#a83300",
+                    "tertiary-fixed-dim": "#cbc5ca",
+                    "timeline-grep": "#9fc9a2",
+                    "inverse-on-surface": "#f4f0ee",
+                    "primary-fixed": "#e6e2d7",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e6e2e0",
+                    "surface-container": "#f1edeb",
+                    "cursor-cream": "#f2f1ed",
+                    "surface-100": "#f7f7f4",
+                    "secondary-fixed": "#ffdbd0",
+                    "border-fallback-10": "rgba(38, 37, 30, 0.1)",
+                    "background": "#fdf8f7",
+                    "surface-500": "#e1e0db",
+                    "surface": "#fdf8f7",
+                    "surface-container-low": "#f7f3f1",
+                    "surface-bright": "#fdf8f7",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#cac6bc",
+                    "primary-fixed-dim": "#cac6bc",
+                    "error-warm": "#cf2d56",
+                    "on-primary-fixed": "#1d1c15",
+                    "surface-300": "#ebeae5",
+                    "primary": "#11100a",
+                    "on-secondary-fixed-variant": "#832600",
+                    "border-oklab-10": "oklab(0.263084 -0.00230259 0.0124794 / 0.1)",
+                    "on-primary": "#ffffff",
+                    "border-strong": "rgba(38, 37, 30, 0.55)",
+                    "surface-variant": "#e6e2e0",
+                    "secondary-fixed-dim": "#ffb59d",
+                    "inverse-primary": "#cac6bc",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#26251e",
+                    "surface-container-high": "#ebe7e5",
+                    "tertiary-container": "#272428",
+                    "error": "#ba1a1a",
+                    "tertiary": "#120f13",
+                    "accent-gold": "#c08532",
+                    "timeline-edit": "#c0a8dd",
+                    "timeline-thinking": "#dfa88f",
+                    "secondary-container": "#d24200",
+                    "on-background": "#1c1b1b",
+                    "on-primary-container": "#8f8c82",
+                    "on-tertiary-fixed": "#1d1b1e",
+                    "surface-dim": "#ddd9d7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#605e56",
+                    "on-tertiary-container": "#908a8f",
+                    "timeline-read": "#9fbbe0",
+                    "on-secondary-fixed": "#390b00",
+                    "inverse-surface": "#31302f",
+                    "outline": "#79776f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "sm": "12px",
+                    "micro-2": "3px",
+                    "container-max": "1200px",
+                    "xl": "96px",
+                    "lg": "48px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "micro-1": "1.5px"
+            },
+            "fontFamily": {
+                    "section-heading": ["Space Grotesk"],
+                    "system-micro": ["Inter"],
+                    "editorial-standard": ["Newsreader"],
+                    "editorial-body": ["Newsreader"],
+                    "mono-code": ["ui-monospace"],
+                    "button-label": ["Space Grotesk"],
+                    "display-hero": ["Space Grotesk"],
+                    "ui-body": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "section-heading": ["36px", {"lineHeight": "1.20", "letterSpacing": "-0.72px", "fontWeight": "400"}],
+                    "system-micro": ["11px", {"lineHeight": "1.27", "letterSpacing": "0.048px", "fontWeight": "500"}],
+                    "editorial-standard": ["17.28px", {"lineHeight": "1.35", "fontWeight": "400"}],
+                    "editorial-body": ["19.2px", {"lineHeight": "1.50", "fontWeight": "500"}],
+                    "mono-code": ["12px", {"lineHeight": "1.67", "fontWeight": "400"}],
+                    "button-label": ["14px", {"lineHeight": "1.00", "fontWeight": "400"}],
+                    "display-hero": ["72px", {"lineHeight": "1.10", "letterSpacing": "-2.16px", "fontWeight": "400"}],
+                    "ui-body": ["16px", {"lineHeight": "1.50", "letterSpacing": "0.08px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f2f1ed;
+            color: #1c1b1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .oklab-border {
+            border: 1px solid oklab(0.263084 -0.00230259 0.0124794 / 0.1);
+        }
+        .atmospheric-shadow {
+            box-shadow: 0 20px 70px -10px rgba(38, 37, 30, 0.08), 
+                        0 10px 28px -5px rgba(38, 37, 30, 0.04);
+        }
+        .hover-card:hover {
+            box-shadow: 0 30px 80px -12px rgba(207, 45, 86, 0.08), 
+                        0 15px 35px -8px rgba(38, 37, 30, 0.06);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-ui-body">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-[#f2f1ed]/90 backdrop-blur-xl dark:bg-[#26251e]/90 border-b border-[#26251e]/5 shadow-[0_20px_50px_rgba(38,37,30,0.05)]">
+<div class="flex justify-between items-center w-full px-8 h-16 max-w-[1200px] mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#26251e] dark:text-[#f2f1ed] font-['Space_Grotesk']">
+                ComponentLab
+            </div>
+<div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight font-medium">
+<a class="text-[#26251e] dark:text-[#f2f1ed] border-b border-[#26251e] dark:border-[#f2f1ed] pb-1" href="#">Showcase</a>
+<a class="text-[#26251e]/50 dark:text-[#f2f1ed]/50 transition-colors duration-200 hover:text-[#cf2d56]" href="#">Components</a>
+<a class="text-[#26251e]/50 dark:text-[#f2f1ed]/50 transition-colors duration-200 hover:text-[#cf2d56]" href="#">Docs</a>
+<a class="text-[#26251e]/50 dark:text-[#f2f1ed]/50 transition-colors duration-200 hover:text-[#cf2d56]" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#26251e]/60 cursor-pointer hover:text-[#cf2d56]">search</span>
+<button class="bg-[#26251e] text-[#f2f1ed] px-5 py-2 rounded-lg text-sm font-medium hover:bg-[#cf2d56] transition-all active:scale-[0.98]">
+                    Start Building
+                </button>
+</div>
+</div>
+</nav>
+<main class="max-w-[1200px] mx-auto px-8">
+<!-- Hero Section -->
+<section class="pt-32 pb-24 text-center">
+<h1 class="font-display-hero text-display-hero text-primary tracking-tighter mb-6">
+                Crafted by <span class="italic text-error-warm">Intelligence</span>
+</h1>
+<p class="font-editorial-body text-editorial-body text-on-surface-variant max-w-2xl mx-auto italic">
+                A premium collection of high-density UI primitives, engineered with the precision of a code editor and the soul of a classic publication.
+            </p>
+<div class="mt-12 flex justify-center gap-4">
+<div class="w-1 h-12 bg-border-oklab-10"></div>
+</div>
+</section>
+<!-- Main Gallery (Bento Grid) -->
+<section class="pb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 group">
+<div class="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-[480px] flex flex-col transition-all duration-500 overflow-hidden relative">
+<div class="flex justify-between items-start mb-12">
+<div>
+<span class="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">Premium Interaction</span>
+<h3 class="font-section-heading text-section-heading text-primary group-hover:text-error-warm transition-colors">Fluid Motion Core</h3>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:text-error-warm transition-colors">auto_awesome</span>
+</div>
+<div class="flex-grow flex items-center justify-center">
+<div class="w-full h-full rounded-lg bg-cursor-cream/50 overflow-hidden oklab-border flex items-center justify-center relative">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract 3D glass shapes floating in a warm cream space with soft atmospheric lighting and blurred edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-LzM25aubZ1ZyhBhZXD-K0IQAc-21jXFO-hDoLE-O7TYnmOBqwX7047OgxgkdSkpOuOfkiVpkYh4gBSpbmQAlxTJgPfGv_pQTJQ0WMSFfJRr12uHbkGJaaMTI_INgVnTNOolsyGU0RFWdzYeAFhLv7lK0bPGS25RrN3vfdSJ3q0hecHoZhShnjAEf2E4s7SLdDG6aMTNWTry2pedMDh2Zd1KVadNznAQLoXKwfQ5kELbn_bKCr8W8M73I4ZBjA6lF7RT4d4Js9T7_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cursor-light/40 to-transparent"></div>
+</div>
+</div>
+<div class="mt-6 flex justify-between items-center">
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant italic">Refined physics for the modern web.</p>
+<span class="font-system-micro text-system-micro bg-surface-300 px-3 py-1 rounded-full">v2.4.0</span>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 group">
+<div class="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-[480px] flex flex-col transition-all duration-500">
+<div class="mb-8">
+<span class="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">Navigation</span>
+<h3 class="font-section-heading text-[28px] leading-tight text-primary group-hover:text-error-warm transition-colors">Adaptive Sidebar</h3>
+</div>
+<div class="flex-grow bg-cursor-cream/30 rounded-lg oklab-border p-4 flex flex-col gap-3">
+<div class="h-8 w-full bg-surface-500/30 rounded"></div>
+<div class="h-8 w-2/3 bg-surface-500/30 rounded"></div>
+<div class="h-8 w-3/4 bg-surface-500/30 rounded"></div>
+<div class="h-8 w-1/2 bg-surface-500/30 rounded"></div>
+<div class="mt-auto h-24 w-full rounded-lg bg-error-warm/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-error-warm/40" style="font-size: 32px">view_sidebar</span>
+</div>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-6">Intuitive layouts that breathe.</p>
+</div>
+</div>
+<!-- Row 2: Symmetric Layout -->
+<div class="md:col-span-4 group">
+<div class="hover-card oklab-border rounded-xl bg-cursor-light p-6 h-[400px] flex flex-col transition-all duration-500">
+<div class="mb-8">
+<span class="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">Inputs</span>
+<h3 class="font-section-heading text-[28px] leading-tight text-primary group-hover:text-error-warm transition-colors">Ghost Forms</h3>
+</div>
+<div class="flex-grow flex flex-col justify-center gap-4">
+<div class="h-12 w-full oklab-border rounded-md bg-cursor-cream/20 px-4 flex items-center">
+<div class="w-1/3 h-1 bg-on-surface-variant/20 rounded"></div>
+</div>
+<div class="h-12 w-full bg-primary rounded-md flex items-center justify-center">
+<div class="w-1/4 h-1 bg-cursor-cream/40 rounded"></div>
+</div>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-6">Minimalist input architecture.</p>
+</div>
+</div>
+<div class="md:col-span-8 group">
+<div class="hover-card oklab-border rounded-xl bg-cursor-light p-8 h-[400px] flex transition-all duration-500 overflow-hidden">
+<div class="w-1/2 flex flex-col justify-between pr-8">
+<div>
+<span class="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">AI Timeline</span>
+<h3 class="font-section-heading text-section-heading text-primary group-hover:text-error-warm transition-colors">Neural Trace</h3>
+</div>
+<p class="font-editorial-standard text-editorial-standard text-on-surface-variant italic">Visualize the thinking process of LLMs through elegant, time-coded steps.</p>
+</div>
+<div class="w-1/2 bg-cursor-cream/40 oklab-border rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-timeline-thinking"></div>
+<div class="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">Thinking</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-timeline-grep"></div>
+<div class="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">Grep Search</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-timeline-read"></div>
+<div class="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">Reading context</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-timeline-edit"></div>
+<div class="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">Applying Edits</div>
+</div>
+<!-- Connector Line -->
+<div class="absolute left-[27px] top-9 bottom-9 w-[1px] bg-border-oklab-10"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Text CTA Section -->
+<section class="py-24 border-t oklab-border flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="md:w-1/2">
+<h2 class="font-section-heading text-section-heading text-primary mb-6">Built for the era of AI.</h2>
+<p class="font-editorial-body text-editorial-body text-on-surface-variant">
+                    Components shouldn't just be pretty. They should be aware. Our library is built with semantic structures that AI agents can navigate, understand, and manipulate with ease.
+                </p>
+</div>
+<div class="md:w-1/3 flex flex-col gap-4">
+<button class="w-full bg-surface-300 text-primary py-5 rounded-lg font-button-label text-button-label uppercase tracking-widest hover:text-error-warm transition-all flex items-center justify-center gap-2">
+                    Browse Library <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-center font-system-micro text-[10px] text-on-surface-variant uppercase opacity-60">Over 240+ primitives available</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#26251e]/10 dark:border-[#f2f1ed]/10 bg-[#f2f1ed] dark:bg-[#1a1915]">
+<div class="max-w-[1200px] mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-black text-[#26251e] dark:text-[#f2f1ed] font-['Space_Grotesk']">
+                ComponentLab
+            </div>
+<div class="flex gap-8 font-['Space_Grotesk'] text-[13px] uppercase tracking-widest">
+<a class="text-[#26251e]/40 dark:text-[#f2f1ed]/40 hover:text-[#cf2d56] transition-colors" href="#">GitHub</a>
+<a class="text-[#26251e]/40 dark:text-[#f2f1ed]/40 hover:text-[#cf2d56] transition-colors" href="#">Twitter</a>
+<a class="text-[#26251e]/40 dark:text-[#f2f1ed]/40 hover:text-[#cf2d56] transition-colors" href="#">Discord</a>
+<a class="text-[#26251e]/40 dark:text-[#f2f1ed]/40 hover:text-[#cf2d56] transition-colors" href="#">Terms</a>
+</div>
+<div class="font-['Space_Grotesk'] text-[13px] uppercase tracking-widest text-[#26251e]/40 dark:text-[#f2f1ed]/40">
+                © 2024 ComponentLab. Built for the era of AI.
+            </div>
+</div>
+</footer>
+</body></html>
