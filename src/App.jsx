@@ -1,5 +1,6 @@
 import GhostForm from "./components/GhostForm";
 import NeuralTrace from "./components/NeuralTrace";
+import LinkNavigation from "./components/LinkNavigation";
 
 const App = () => {
   return (
@@ -144,22 +145,18 @@ const App = () => {
                     Navigation
                   </span>
                   <h3 className="font-section-heading text-[28px] leading-tight text-primary group-hover:text-error-warm transition-colors">
-                    Adaptive Sidebar
+                    Flip Links
                   </h3>
                 </div>
-                <div className="grow bg-cursor-cream/30 rounded-lg oklab-border p-4 flex flex-col gap-3">
-                  <div className="h-8 w-full bg-surface-500/30 rounded"></div>
-                  <div className="h-8 w-2/3 bg-surface-500/30 rounded"></div>
-                  <div className="h-8 w-3/4 bg-surface-500/30 rounded"></div>
-                  <div className="h-8 w-1/2 bg-surface-500/30 rounded"></div>
-                  <div className="mt-auto h-24 w-full rounded-lg bg-error-warm/5 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-error-warm/40 text-[32px]">
-                      view_sidebar
-                    </span>
+                <div className="grow bg-cursor-cream/30 rounded-lg oklab-border p-4 flex flex-col items-center justify-center relative overflow-hidden group-hover:bg-cursor-cream/60 transition-colors duration-500">
+                  <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2"></div>
+                  <div className="relative z-10 w-full h-full pb-4">
+                    <LinkNavigation />
                   </div>
                 </div>
                 <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-6">
-                  Intuitive layouts that breathe.
+                  Kinetic typography navigation that adds tactile feedback to
+                  standard links.
                 </p>
               </div>
             </div>
@@ -247,34 +244,34 @@ const App = () => {
             </div>
           </div>
 
-          {/* Adaptive Sidebar Card */}
+          {/* Flip Links Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#1c1b1b] flex items-center justify-center">
-              <div className="w-1/2 h-4/5 border border-white/10 rounded-lg flex flex-col bg-black/50 p-3 pt-6 gap-2">
-                <div className="w-1/3 h-1 bg-white/20 rounded"></div>
-                <div className="w-1/2 h-1 bg-white/20 rounded"></div>
-                <div className="w-3/4 h-1 bg-white/20 rounded"></div>
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-cursor-cream/50 flex items-center justify-center p-4">
+              <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
+              <div className="relative z-10 w-full h-full pt-8">
+                <LinkNavigation />
               </div>
             </div>
             <div className="px-2">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-section-heading text-[24px] text-primary tracking-tighter">
-                  Adaptive Sidebar
+                  Flip Links
                 </h3>
                 <span className="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">
                   NEW
                 </span>
               </div>
               <p className="font-editorial-standard text-editorial-standard text-on-surface-variant mb-6 leading-relaxed">
-                A context-aware navigation shell that recalibrates based on user
-                intent and workflow.
+                Staggered kinetic typography that reacts with a smooth rolling
+                motion on hover, perfect for primary navigations or assertive
+                footers.
               </p>
               <div className="flex flex-wrap gap-2 mb-2">
                 <span className="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-[10px] text-on-surface-variant uppercase tracking-wider">
-                  Navigation
+                  Typography
                 </span>
                 <span className="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-[10px] text-on-surface-variant uppercase tracking-wider">
-                  Layout
+                  Motion
                 </span>
               </div>
             </div>
