@@ -1,4 +1,4 @@
-import React from "react";
+import GhostForm from "./components/GhostForm";
 
 const App = () => {
   return (
@@ -174,13 +174,8 @@ const App = () => {
                     Ghost Forms
                   </h3>
                 </div>
-                <div className="grow flex flex-col justify-center gap-4">
-                  <div className="h-12 w-full oklab-border rounded-md bg-cursor-cream/20 px-4 flex items-center">
-                    <div className="w-1/3 h-1 bg-on-surface-variant/20 rounded"></div>
-                  </div>
-                  <div className="h-12 w-full bg-primary rounded-md flex items-center justify-center">
-                    <div className="w-1/4 h-1 bg-cursor-cream/40 rounded"></div>
-                  </div>
+                <div className="grow flex flex-col justify-center w-full">
+                  <GhostForm />
                 </div>
                 <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-6">
                   Minimalist input architecture.
@@ -308,16 +303,8 @@ const App = () => {
 
           {/* Ghost Forms Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#141414] flex flex-col items-center justify-center p-8 text-center text-white">
-              <h3 className="font-display-hero text-4xl mb-4 opacity-40">
-                GHOST
-              </h3>
-              <div className="w-3/4 h-10 border border-white/20 bg-white/5 rounded-md flex items-center justify-between px-4">
-                <span className="text-[10px] opacity-40">Start typing...</span>
-                <span className="material-symbols-outlined text-[14px] opacity-40">
-                  keyboard_return
-                </span>
-              </div>
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative flex flex-col justify-center px-4 md:px-8">
+              <GhostForm />
             </div>
             <div className="px-2">
               <div className="flex items-center justify-between mb-2">
