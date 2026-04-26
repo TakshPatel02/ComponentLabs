@@ -1,4 +1,5 @@
 import GhostForm from "./components/GhostForm";
+import NeuralTrace from "./components/NeuralTrace";
 
 const App = () => {
   return (
@@ -200,33 +201,11 @@ const App = () => {
                     time-coded steps.
                   </p>
                 </div>
-                <div className="w-1/2 bg-cursor-cream/40 oklab-border rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
-                  <div className="flex items-center gap-4">
-                    <div className="w-2 h-2 rounded-full bg-timeline-thinking"></div>
-                    <div className="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">
-                      Thinking
-                    </div>
+                <div className="w-1/2 bg-cursor-cream/40 oklab-border rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden group-hover:bg-cursor-cream/60 transition-colors duration-500">
+                  <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2"></div>
+                  <div className="relative z-10 w-full h-full pb-4">
+                    <NeuralTrace />
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-2 h-2 rounded-full bg-timeline-grep"></div>
-                    <div className="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">
-                      Grep Search
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-2 h-2 rounded-full bg-timeline-read"></div>
-                    <div className="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">
-                      Reading context
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 z-10 relative">
-                    <div className="w-2 h-2 rounded-full bg-timeline-edit"></div>
-                    <div className="font-system-micro text-[10px] text-on-surface-variant uppercase tracking-widest">
-                      Applying Edits
-                    </div>
-                  </div>
-                  {/* Connector Line */}
-                  <div className="absolute left-6.75 top-9 bottom-9 w-px bg-border-oklab-10 z-0"></div>
                 </div>
               </div>
             </div>
@@ -332,9 +311,11 @@ const App = () => {
 
           {/* Neural Trace Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-black flex items-center justify-center">
-              {/* Decorative background or image could go here, using a gradient for abstract placeholder */}
-              <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-cyan-900 via-black to-black opacity-80"></div>
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#121212] flex items-center justify-center">
+              <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.05),transparent_70%)] absolute inset-0 pointer-events-none"></div>
+              <div className="relative z-10 w-full h-full p-6 pb-2">
+                <NeuralTrace isDark={true} />
+              </div>
             </div>
             <div className="px-2">
               <div className="flex items-center justify-between mb-2">
