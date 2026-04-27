@@ -1,9 +1,10 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import DocsPage from "./Pages/DocsPage";
 import NavBar from "./components/NavBar";
 import ComponentsPage from "./Pages/ComponentsPage";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/docs" element={<DocsPage />} />
         <Route path="/components" element={<ComponentsPage />} />
       </Routes>
+      <Footer />
     </>
   );
 };

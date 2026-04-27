@@ -3,18 +3,15 @@ import GhostForm from "../components/GhostForm";
 import LinkNavigation from "../components/LinkNavigation";
 import NeuralTrace from "../components/NeuralTrace";
 import TiltHoverCard from "../components/TiltHoverCard";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-surface font-ui-body">
-      {/* Navigation */}
-      
-
       <main className="max-w-container-max mx-auto sm:px-8">
         {/* Hero Section */}
         <section className="pt-24 pb-16 md:pt-32 md:pb-24 text-center px-4 md:px-0">
-          <span className="md:hidden font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-6 block">
+          <span className="md:hidden font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-6 block mt-4">
             Portfolio Volume 01
           </span>
 
@@ -24,8 +21,10 @@ const HomePage = () => {
             <span className="italic text-error-warm">Intelligence</span>
           </h1>
           {/* Mobile Hero Heading */}
-          <h1 className="md:hidden font-display-hero text-[56px] leading-[0.95] text-primary mb-6 max-w-sm mx-auto">
-            Crafted by Intelligence
+          <h1 className="md:hidden font-display-hero text-5xl leading-tight text-primary mb-6 mx-auto text-center px-4 flex flex-col items-center">
+            <span>Crafted</span>
+            <span>by</span>
+            <span className="italic text-error-warm mt-1">Intelligence</span>
           </h1>
 
           {/* Desktop Hero Text */}
@@ -154,29 +153,25 @@ const HomePage = () => {
         <section className="md:hidden px-4 space-y-6 pb-24">
           {/* Fluid Motion Core Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative">
-              <img
-                alt="Fluid motion"
-                className="w-full h-full object-cover opacity-90"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhxnFs6svQYaQrC9WuLA0rWNM00Gy2qUgG3esswa7j_ITe5CtTMZ9GIAMlL2Bu0JShQzXcKSAIhRexYPG1iiSDYFJUA6FH_mbX8qp1-m9CKXQ294KJLYFOTCqaYD1sAkGReSH0YescG_p1faLEk2EL2fAVTFSsHTEPBuMeLPSxWbQrWT9OAOa-S43L8tah4ItXfioPCJMkUD-D7LzkEjr_QkYNHE4UxgyR8NwyctxebaSTITZTc_vgLGzQZQPUAEtzdHOeIfc5mlZw"
-              />
+            <div className="aspect-square rounded-md overflow-hidden mb-3 relative flex items-center justify-center -mx-3 -mt-3 bg-cursor-light group-hover:bg-cursor-cream/40 transition-colors duration-500">
+              <TiltHoverCard />
             </div>
-            <div className="px-2">
+            <div className="px-2 pt-2">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-section-heading text-[24px] text-primary tracking-tighter">
-                  Fluid Motion Core
+                <h3 className="font-section-heading text-[24px] text-primary tracking-tighter hover:text-error-warm transition-colors">
+                  Kinetic 3D Card
                 </h3>
                 <span className="font-system-micro text-system-micro bg-surface-500 px-2 py-0.5 rounded-full text-on-surface-variant">
                   v2.4
                 </span>
               </div>
               <p className="font-editorial-standard text-editorial-standard text-on-surface-variant mb-6 leading-relaxed">
-                Precision-engineered animation systems built on physics-based
-                transition matrices.
+                Interactive tilting surface with dynamic ambient lighting.
+                Interactive properties enabled on mobile touch devices.
               </p>
               <div className="flex flex-wrap gap-2 mb-2">
                 <span className="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-[10px] text-on-surface-variant uppercase tracking-wider">
-                  Animation
+                  Spatial Depth
                 </span>
                 <span className="px-3 py-1 rounded-full bg-surface-500 font-system-micro text-[10px] text-on-surface-variant uppercase tracking-wider">
                   Physics
@@ -280,116 +275,33 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Text CTA Section (Desktop) */}
-        <section className="hidden md:flex py-24 border-t oklab-border flex-col md:flex-row items-center justify-between gap-12">
-          <div className="md:w-1/2">
-            <h2 className="font-section-heading text-section-heading text-primary mb-6">
+        {/* Text CTA Section (Desktop & Mobile) */}
+        <section className="py-16 md:py-24 px-4 md:px-0 border-t border-black/5 border-x  flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
+          <div className="w-full md:w-1/2 px-2">
+            <h2 className="font-section-heading text-[32px] md:text-section-heading text-primary mb-4 md:mb-6 leading-tight">
               Built for the era of AI.
             </h2>
-            <p className="font-editorial-body text-editorial-body text-on-surface-variant">
+            <p className="font-editorial-body text-lg md:text-editorial-body text-on-surface-variant leading-relaxed">
               Components shouldn't just be pretty. They should be aware. Our
               library is built with semantic structures that AI agents can
               navigate, understand, and manipulate with ease.
             </p>
           </div>
-          <div className="md:w-1/3 flex flex-col gap-4">
-            <button className="w-full bg-surface-300 text-primary py-5 rounded-lg font-button-label text-button-label uppercase tracking-widest hover:text-error-warm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95">
-              <Link to='/components'>Browse Library{" "}</Link>
-              <span className="material-symbols-outlined text-[18px]">
-                arrow_forward
-              </span>
+          <div className="w-full md:w-1/3 px-2 flex flex-col gap-4">
+            <button className="w-full bg-surface-300 text-primary py-4 md:py-5 rounded-lg font-button-label text-sm md:text-button-label uppercase tracking-widest hover:text-error-warm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 border border-oklab-10 shadow-sm hover:shadow-md">
+              <Link to="/components" className="flex items-center gap-2">
+                Browse Library{" "}
+                <span className="material-symbols-outlined text-[18px]">
+                  arrow_forward
+                </span>
+              </Link>
             </button>
             <p className="text-center font-system-micro text-[10px] text-on-surface-variant uppercase opacity-60">
-              Over 240+ primitives available
+              Over 24+ primitives available
             </p>
           </div>
         </section>
       </main>
-
-      {/* Mobile Footer Area (from stacked design end) */}
-      <div className="md:hidden py-12 flex flex-col items-center justify-center text-center px-4">
-        <h4 className="font-system-micro text-system-micro tracking-widest uppercase text-primary mb-6">
-          Precision Craft
-        </h4>
-        <div className="flex gap-4 font-system-micro text-[10px] uppercase text-on-surface-variant mb-8 tracking-wider">
-          <span>Components</span>
-          <span>Guidelines</span>
-          <span>Archive</span>
-        </div>
-        <p className="font-system-micro text-[10px] text-on-surface-variant uppercase opacity-60">
-          © 2024 Precision Craft
-        </p>
-      </div>
-
-      {/* Mobile Bottom Navigation Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-cursor-cream/95 backdrop-blur-xl border-t border-oklab-10 h-16 flex items-center justify-around px-2 z-50">
-        <button className="flex flex-col items-center gap-1 text-error-warm">
-          <span className="material-symbols-outlined text-[20px]">explore</span>
-          <span className="font-system-micro text-[8px] uppercase tracking-widest">
-            Explore
-          </span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:opacity-100 transition-opacity">
-          <span className="material-symbols-outlined text-[20px]">
-            auto_awesome
-          </span>
-          <span className="font-system-micro text-[8px] uppercase tracking-widest">
-            Magic
-          </span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:opacity-100 transition-opacity">
-          <span className="material-symbols-outlined text-[20px]">
-            inventory_2
-          </span>
-          <span className="font-system-micro text-[8px] uppercase tracking-widest">
-            Assets
-          </span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:opacity-100 transition-opacity">
-          <span className="material-symbols-outlined text-[20px]">person</span>
-          <span className="font-system-micro text-[8px] uppercase tracking-widest">
-            Profile
-          </span>
-        </button>
-      </div>
-
-      {/* Desktop Footer */}
-      <footer className="hidden md:flex w-full border-t border-black/10 bg-cursor-cream">
-        <div className="max-w-container-max w-full mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-lg font-black text-primary font-['Space_Grotesk']">
-            ComponentLab
-          </div>
-          <div className="flex gap-8 font-['Space_Grotesk'] text-[13px] uppercase tracking-widest">
-            <a
-              className="text-primary/40 hover:text-error-warm transition-colors"
-              href="#"
-            >
-              GitHub
-            </a>
-            <a
-              className="text-primary/40 hover:text-error-warm transition-colors"
-              href="#"
-            >
-              Twitter
-            </a>
-            <a
-              className="text-primary/40 hover:text-error-warm transition-colors"
-              href="#"
-            >
-              Discord
-            </a>
-            <a
-              className="text-primary/40 hover:text-error-warm transition-colors"
-              href="#"
-            >
-              Terms
-            </a>
-          </div>
-          <div className="font-['Space_Grotesk'] text-[13px] uppercase tracking-widest text-primary/40">
-            © 2026 ComponentLab. Built for the era of AI.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
