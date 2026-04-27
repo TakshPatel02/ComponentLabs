@@ -6,28 +6,28 @@ const defaultSteps = [
     id: 1,
     label: "THINKING",
     color: "#fbbf24",
-    duration: 2000,
+    duration: 1500,
     description: "Analyzing the request...",
   }, // amber-400
   {
     id: 2,
     label: "GREP SEARCH",
     color: "#22c55e",
-    duration: 1500,
+    duration: 1000,
     description: "Scanning relevant files...",
   }, // green-500
   {
     id: 3,
     label: "READING CONTEXT",
     color: "#3b82f6",
-    duration: 2000,
+    duration: 1500,
     description: "Parsing context window...",
   }, // blue-500
   {
     id: 4,
     label: "APPLYING EDITS",
     color: "#a855f7",
-    duration: 3000,
+    duration: 2000,
     description: "Writing changes...",
   }, // purple-500
 ];
