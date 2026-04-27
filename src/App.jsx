@@ -1,6 +1,7 @@
 import GhostForm from "./components/GhostForm";
 import NeuralTrace from "./components/NeuralTrace";
 import LinkNavigation from "./components/LinkNavigation";
+import TiltHoverCard from "./components/TiltHoverCard";
 
 const App = () => {
   return (
@@ -28,17 +29,8 @@ const App = () => {
             >
               Docs
             </a>
-            <a
-              className="text-primary/50 transition-colors duration-200 hover:text-error-warm"
-              href="#"
-            >
-              Pricing
-            </a>
           </div>
           <div className="flex items-center gap-6">
-            <span className="material-symbols-outlined text-primary/60 cursor-pointer hover:text-error-warm">
-              search
-            </span>
             <button className="bg-primary text-cursor-cream px-5 py-2 rounded-lg text-sm font-medium hover:bg-error-warm transition-all active:scale-[0.98]">
               Start Building
             </button>
@@ -54,11 +46,6 @@ const App = () => {
             <span className="text-xl font-black tracking-widest text-primary font-['Space_Grotesk'] uppercase">
               GALLERY
             </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <button className="active:scale-95 duration-200 text-primary">
-              <span className="material-symbols-outlined">search</span>
-            </button>
           </div>
         </div>
       </nav>
@@ -106,29 +93,22 @@ const App = () => {
                 <div className="flex justify-between items-start mb-12">
                   <div>
                     <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
-                      Premium Interaction
+                      Spatial Depth
                     </span>
                     <h3 className="font-section-heading text-section-heading text-primary group-hover:text-error-warm transition-colors">
-                      Fluid Motion Core
+                      Kinetic 3D Card
                     </h3>
                   </div>
                   <span className="material-symbols-outlined text-primary group-hover:text-error-warm transition-colors">
-                    auto_awesome
+                    3d_rotation
                   </span>
                 </div>
-                <div className="grow flex items-center justify-center">
-                  <div className="w-full h-full rounded-lg bg-cursor-cream/50 overflow-hidden oklab-border flex items-center justify-center relative">
-                    <img
-                      className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-                      alt="Fluid Motion"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-LzM25aubZ1ZyhBhZXD-K0IQAc-21jXFO-hDoLE-O7TYnmOBqwX7047OgxgkdSkpOuOfkiVpkYh4gBSpbmQAlxTJgPfGv_pQTJQ0WMSFfJRr12uHbkGJaaMTI_INgVnTNOolsyGU0RFWdzYeAFhLv7lK0bPGS25RrN3vfdSJ3q0hecHoZhShnjAEf2E4s7SLdDG6aMTNWTry2pedMDh2Zd1KVadNznAQLoXKwfQ5kELbn_bKCr8W8M73I4ZBjA6lF7RT4d4Js9T7_"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-cursor-light/40 to-transparent"></div>
-                  </div>
+                <div className="grow flex items-center justify-center -mx-4 group-hover:bg-cursor-cream/40 transition-colors duration-500 rounded-lg">
+                  <TiltHoverCard />
                 </div>
-                <div className="mt-6 flex justify-between items-center z-10 relative">
+                <div className="mt-8 flex justify-between items-center z-10 relative">
                   <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic">
-                    Refined physics for the modern web.
+                    Interactive tilting surface with dynamic ambient lighting.
                   </p>
                   <span className="font-system-micro text-system-micro bg-surface-300 px-3 py-1 rounded-full">
                     v2.4.0
