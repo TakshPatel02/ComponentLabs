@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EncryptedText from "../components/EncryptedText";
+import VelocityText from "../components/VelocityText";
 
 const ComponentsPage = () => {
   const [replayKey, setReplayKey] = useState(0);
@@ -67,7 +68,42 @@ const ComponentsPage = () => {
               </div>
             </div>
           </div>
-          
+
+          {/* Velocity Text Component Section */}
+          <div className="w-full flex flex-col group mt-6">
+            {/* Component Header and Controls */}
+            <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="flex-1">
+                <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+                  Interaction
+                </span>
+                <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+                  Velocity Text
+                </h3>
+                <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+                  Scroll-linked kinetic typography that transforms scroll
+                  velocity into dynamic skew and translation.
+                </p>
+              </div>
+
+              <div className="shrink-0 flex items-center">
+                <span className="font-system-micro text-system-micro bg-surface-300 border border-oklab-10 px-3 py-1.5 rounded-full text-on-surface-variant flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[14px]">
+                    mouse
+                  </span>
+                  Scroll inside container
+                </span>
+              </div>
+            </div>
+
+            {/* Component Display Area (Scrollable Showcase) */}
+            <div className="w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+              <VelocityText
+                heightClass="h-96"
+                text="Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent. The slogan 'Press On!' has solved and always will solve the problems of the human race."
+              />
+            </div>
+          </div>
         </div>
       </main>
     </div>
