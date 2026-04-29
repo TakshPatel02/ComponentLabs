@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import EncryptedText from "../components/EncryptedText";
-import VelocityText from "../components/VelocityText";
-import { CreativeHighlightText } from "../components/CreativeHighlightText";
-import FillButton from "../components/FillButton";
-import UploadButton from "../components/UploadButton";
-import MagnetButton from "../components/MagnetButton";
-import EncryptButton from "../components/EncryptButton";
-import GithubStarsButton from "../components/GithubStarsButton";
-import NeumorphismButton from "../components/NeumorphismButton";
+import EncryptedText from "../components/TextComponents/EncryptedText";
+import VelocityText from "../components/TextComponents/VelocityText";
+import { CreativeHighlightText } from "../components/TextComponents/CreativeHighlightText";
+import FillButton from "../components/ButtonComponents/FillButton";
+import UploadButton from "../components/ButtonComponents/UploadButton";
+import MagnetButton from "../components/ButtonComponents/MagnetButton";
+import EncryptButton from "../components/ButtonComponents/EncryptButton";
+import GithubStarsButton from "../components/ButtonComponents/GithubStarsButton";
+import NeumorphismButton from "../components/ButtonComponents/NeumorphismButton";
 
 const ComponentsPage = () => {
   const [replayKey, setReplayKey] = useState(0);

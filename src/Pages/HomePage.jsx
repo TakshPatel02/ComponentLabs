@@ -1,8 +1,8 @@
 import React from "react";
-import GhostForm from "../components/GhostForm";
-import LinkNavigation from "../components/LinkNavigation";
-import NeuralTrace from "../components/NeuralTrace";
-import TiltHoverCard from "../components/TiltHoverCard";
+import GhostForm from "../components/HomePageComponents/GhostForm";
+import LinkNavigation from "../components/HomePageComponents/LinkNavigation";
+import NeuralTrace from "../components/HomePageComponents/NeuralTrace";
+import TiltHoverCard from "../components/HomePageComponents/TiltHoverCard";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
