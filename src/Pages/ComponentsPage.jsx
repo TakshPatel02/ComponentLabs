@@ -5,6 +5,7 @@ import { CreativeHighlightText } from "../components/CreativeHighlightText";
 import FillButton from "../components/FillButton";
 import UploadButton from "../components/UploadButton";
 import MagnetButton from "../components/MagnetButton";
+import EncryptButton from "../components/EncryptButton";
 
 const ComponentsPage = () => {
   const [replayKey, setReplayKey] = useState(0);
@@ -218,6 +219,30 @@ const ComponentsPage = () => {
             <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
               <div className="flex items-center gap-6 flex-wrap justify-center">
                 <MagnetButton text="Hover Me" />
+              </div>
+            </div>
+          </div>
+
+          {/* Encrypt Button Component Section */}
+          <div className="w-full flex flex-col group mt-6">
+            <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="flex-1">
+                <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+                  Interaction
+                </span>
+                <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+                  Encrypt Action Button
+                </h3>
+                <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+                  An encrypted text-scramble hover effect with an ascending
+                  neon-accent scanning laser line and lock toggle animation.
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+              <div className="flex items-center gap-6 flex-wrap justify-center">
+                <EncryptButton targetText="Decrypt Sequence" />
               </div>
             </div>
           </div>
