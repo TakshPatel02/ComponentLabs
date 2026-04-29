@@ -4,6 +4,7 @@ import HomePage from "./Pages/HomePage";
 import DocsPage from "./Pages/DocsPage";
 import NavBar from "./components/NavBar";
 import ComponentsPage from "./Pages/ComponentsPage";
+import TermsPage from "./Pages/TermsPage";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/docs" element={<DocsPage />} />
         <Route path="/components" element={<ComponentsPage />} />
+        <Route path="/terms" element={<TermsPage />} />
       </Routes>
       <Footer />
     </>

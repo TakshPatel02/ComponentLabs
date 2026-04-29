@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,6 +9,12 @@ const Footer = () => {
           ComponentLab
         </div>
         <div className="flex gap-8 font-['Space_Grotesk'] text-[13px] uppercase tracking-widest">
+          <Link
+            className="text-primary/40 hover:text-error-warm transition-colors"
+            to="/terms"
+          >
+            Terms
+          </Link>
           <a
             className="text-primary/40 hover:text-error-warm transition-colors"
             href="#"
@@ -25,12 +32,6 @@ const Footer = () => {
             href="#"
           >
             Discord
-          </a>
-          <a
-            className="text-primary/40 hover:text-error-warm transition-colors"
-            href="#"
-          >
-            Terms
           </a>
         </div>
         <div className="font-['Space_Grotesk'] text-[13px] uppercase tracking-widest text-primary/40">
