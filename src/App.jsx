@@ -6,10 +6,12 @@ import NavBar from "./components/NavBar";
 import ComponentsPage from "./Pages/ComponentsPage";
 import TermsPage from "./Pages/TermsPage";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
