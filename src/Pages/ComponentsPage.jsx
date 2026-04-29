@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EncryptedText from "../components/EncryptedText";
 import VelocityText from "../components/VelocityText";
 import { CreativeHighlightText } from "../components/CreativeHighlightText";
+import FillButton from "../components/FillButton";
 
 const ComponentsPage = () => {
   const [replayKey, setReplayKey] = useState(0);
@@ -138,6 +139,36 @@ const ComponentsPage = () => {
 
             <div className="w-full bg-cursor-cream/50 min-h-75 md:h-96 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
               <CreativeHighlightText key={highlightReplayKey} />
+            </div>
+          </div>
+
+          {/* Fill Button Component Section */}
+          <div className="w-full flex flex-col group mt-6">
+            <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="flex-1">
+                <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+                  Interaction
+                </span>
+                <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+                  Fill Button
+                </h3>
+                <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+                  A sequenced fill animation starting with a horizontal border
+                  expansion, followed by an elegant vertical fill.
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+              <div className="flex items-center gap-6 flex-wrap justify-center">
+                <FillButton>Hover Me</FillButton>
+                <FillButton
+                  className="border-error-warm text-error-warm group-hover/btn:text-surface"
+                  fillColorClass="bg-error-warm"
+                >
+                  Destructive Action
+                </FillButton>
+              </div>
             </div>
           </div>
         </div>
