@@ -1,7 +1,7 @@
 import React from 'react'
-import ClipPathLinks from '../../components/Linkcomponent/ClipPathLinks';
-import TakeoverLinks from '../../components/Linkcomponent/TakeoverLinks';
-import NeuralHoverLinks from '../../components/Linkcomponent/NeuralHoverLinks';
+import ClipPathLinks from '../../components/linkcomponent/ClipPathLinks';
+import TakeoverLinks from '../../components/linkcomponent/TakeoverLinks';
+import { NeuralHoverLinks } from '../../components/linkcomponent/NeuralHoverLinks';
 
 const LinkComponentPage = () => {
   return (
