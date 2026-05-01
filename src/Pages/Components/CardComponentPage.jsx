@@ -1,20 +1,92 @@
 import React from 'react';
 import StateSynthesisCard from '../../components/CardComponents/StateSynthesisCard';
+import AgenticFlowCard from '../../components/CardComponents/AgenticFlowCard';
+import DepthPerceptionCard from '../../components/CardComponents/DepthPerceptionCard';
 
 const CardComponentPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center pt-12 pb-24 px-8 bg-[#EBEBE8]/50">
-      <div className="mb-16 text-center max-w-2xl mt-12">
-        <h1 className="font-display-hero text-5xl md:text-display-hero text-stone-800 tracking-tighter mb-6">
-          Interactive <span className="italic text-stone-500">States</span>
-        </h1>
-        <p className="font-editorial-body text-editorial-body text-stone-600 italic">
-          Click on the card below to see the interactive morphing animations powered by Framer Motion.
-        </p>
+    <>
+      {/* State Synthesis Card Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Cards
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              State Synthesis
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              Click on the card to cycle through interactive morphing states powered by Framer Motion's AnimatePresence.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center">
+            <span className="font-system-micro text-system-micro bg-surface-300 border border-oklab-10 px-3 py-1.5 rounded-full text-on-surface-variant flex items-center gap-2">
+              <span className="material-symbols-outlined text-[14px]">
+                touch_app
+              </span>
+              Click to cycle states
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <StateSynthesisCard />
+        </div>
       </div>
 
-      <StateSynthesisCard />
-    </div>
+      {/* Agentic Flow Card Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Cards
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Agentic Flow
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A step-by-step animated pipeline with staggered reveals and an interactive accept/reject review phase.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <AgenticFlowCard />
+        </div>
+      </div>
+
+      {/* Depth Perception Card Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Cards
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Depth Perception
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              Layered elements using atmospheric shadows and Z-index offsets with spring-physics fan-out animations.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center">
+            <span className="font-system-micro text-system-micro bg-surface-300 border border-oklab-10 px-3 py-1.5 rounded-full text-on-surface-variant flex items-center gap-2">
+              <span className="material-symbols-outlined text-[14px]">
+                touch_app
+              </span>
+              Click Execute or +
+            </span>
+          </div>
+        </div>
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <DepthPerceptionCard />
+        </div>
+      </div>
+    </>
   );
 };
 

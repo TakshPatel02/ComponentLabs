@@ -4,37 +4,67 @@ import TypewriterKeyboard from '../../components/KeyBoardComponents/TypewriterKe
 
 const KeyBoardComponentPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center pt-12 pb-24 px-8 gap-24">
-      <div className="w-full flex flex-col items-center">
-        <div className="mb-16 text-center max-w-2xl">
-          <span className="font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-6 block">
-            Mechanical Keyboard
-          </span>
-          <h1 className="font-display-hero text-5xl md:text-display-hero text-primary tracking-tighter mb-6">
-            Mac-Style <span className="italic text-secondary">Layout</span>
-          </h1>
-          <p className="font-editorial-body text-editorial-body text-on-surface-variant italic">
-            A fully responsive, interactive mechanical keyboard component inspired by Mac aesthetics. Engineered with Tailwind CSS and Framer Motion. Try typing on your physical keyboard to test the interactive states!
-          </p>
+    <>
+      {/* Mac Keyboard Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Keyboard
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Mac-Style Layout
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A fully responsive, interactive mechanical keyboard component inspired by Mac aesthetics. Engineered with Tailwind CSS and Framer Motion. Try typing on your physical keyboard to test the interactive states!
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center">
+            <span className="font-system-micro text-system-micro bg-surface-300 border border-oklab-10 px-3 py-1.5 rounded-full text-on-surface-variant flex items-center gap-2">
+              <span className="material-symbols-outlined text-[14px]">
+                keyboard
+              </span>
+              Type on your keyboard
+            </span>
+          </div>
         </div>
-        <MacKeyboard />
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <MacKeyboard />
+        </div>
       </div>
 
-      <div className="w-full flex flex-col items-center bg-[#F4F3EE] py-24 -mx-8 px-8" style={{ width: 'calc(100% + 4rem)' }}>
-        <div className="mb-16 text-center max-w-2xl">
-          <span className="font-system-micro text-[10px] tracking-[0.2em] uppercase text-[#888] mb-6 block">
-            Limited Edition Release
-          </span>
-          <h1 className="font-serif text-5xl md:text-[64px] text-[#111] tracking-tight mb-6">
-            The Typewriter Edition
-          </h1>
-          <p className="font-serif text-lg md:text-[20px] text-[#444] leading-relaxed">
-            A masterclass in tactile nostalgia. Precision-engineered mechanical switches housed within a heavy-gauge metallic chassis, finished with genuine chrome-rimmed ivory keycaps.
-          </p>
+      {/* Typewriter Keyboard Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Keyboard
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              The Typewriter Edition
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A masterclass in tactile nostalgia. Precision-engineered mechanical switches housed within a heavy-gauge metallic chassis, finished with genuine chrome-rimmed ivory keycaps.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center">
+            <span className="font-system-micro text-system-micro bg-surface-300 border border-oklab-10 px-3 py-1.5 rounded-full text-on-surface-variant flex items-center gap-2">
+              <span className="material-symbols-outlined text-[14px]">
+                keyboard
+              </span>
+              Type on your keyboard
+            </span>
+          </div>
         </div>
-        <TypewriterKeyboard />
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <TypewriterKeyboard />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
