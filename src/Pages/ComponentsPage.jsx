@@ -7,6 +7,7 @@ const CATEGORIES = [
   { id: "forms", label: "Forms & Identity", path: "/components/forms" },
   { id: "links", label: "Links & Navigation", path: "/components/links" },
   { id: "cards", label: "Cards & Layouts", path: "/components/cards" },
+  { id: "keyboard", label: "Keyboards", path: "/components/keyboard" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 
