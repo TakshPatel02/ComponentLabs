@@ -155,7 +155,7 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
          height: height,
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent rounded-[6px] pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-white/60 to-transparent rounded-[6px] pointer-events-none" />
       
       {/* 1. Dual character keys (!/1) */}
       {(keyData.top || keyData.bottom) && !keyData.symbol && (
@@ -208,6 +208,24 @@ const MacKeyboard = () => {
   const [audioBuffer, setAudioBuffer] = useState(null);
   const audioContextRef = useRef(null);
 
+  const containerRef = useRef(null);
+  const isInViewRef = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.5 }
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     // Initialize AudioContext
     const initAudio = async () => {
@@ -258,6 +276,8 @@ const MacKeyboard = () => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (!isInViewRef.current) return;
+
       // Prevent default browser actions for some keys to avoid scrolling/exiting
       if (['Space', 'Tab', 'Escape'].includes(e.code) || e.code.startsWith('F') || e.code.startsWith('Arrow')) {
         e.preventDefault();
@@ -271,6 +291,7 @@ const MacKeyboard = () => {
     };
 
     const handleKeyUp = (e) => {
+      if (!isInViewRef.current) return;
       setPressedKeys(prev => ({ ...prev, [e.code]: false }));
     };
 
@@ -293,12 +314,12 @@ const MacKeyboard = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center py-12 overflow-x-auto">
+    <div ref={containerRef} className="w-full flex justify-center items-center py-12 overflow-x-auto">
       <div className="min-w-[750px] flex justify-center">
         {/* Keyboard Chassis */}
         <div className="p-3 md:p-4 rounded-[20px] bg-surface-container-high border border-oklab-10 atmospheric-shadow relative overflow-hidden">
           {/* Subtle gloss sheen overlay on chassis */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none rounded-[20px]" />
+          <div className="absolute inset-0 bg-linear-to-b from-white/40 to-transparent pointer-events-none rounded-[20px]" />
           
           {/* Inner inset shadow for depth */}
           <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(38,37,30,0.05)] pointer-events-none rounded-[20px]" />
