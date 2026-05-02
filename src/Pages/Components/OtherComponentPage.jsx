@@ -1,12 +1,56 @@
 import React, { useState } from 'react';
 import { AnimatedFAQ } from "../../components/OtherComponents/AnimatedFAQ";
 import { TerminalTypingCard } from "../../components/OtherComponents/TerminalTypingCard";
+import KanbanBoard from "../../components/OtherComponents/KanbanBoard";
+import { VintageFader } from "../../components/OtherComponents/EditorialSlider";
 
 const OtherComponentPage = () => {
   const [terminalReplayKey, setTerminalReplayKey] = useState(0);
 
   return (
     <>
+      {/* Kanban Board Component Section */}
+      <div className="w-full flex flex-col group mt-6 mb-20">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Other
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Engineered Kanban Board
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A high-performance drag-and-drop workflow board using native HTML5 drag APIs and physics-based layout animations for seamless column transitions.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <KanbanBoard />
+        </div>
+      </div>
+
+      {/* Editorial Slider Component Section */}
+      <div className="w-full flex flex-col group mt-6 mb-20">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Other
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Vintage Master Fader
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A meticulously crafted analog mixing console fader. Features a deep recessed track, realistic knurled shadows, and an LED-style digital readout.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full bg-surface-container min-h-[300px] rounded-xl oklab-border flex flex-col items-center justify-center px-6 md:px-16 overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <VintageFader />
+        </div>
+      </div>
+
       {/* Animated FAQ Component Section */}
       <div className="w-full flex flex-col group mt-6">
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">

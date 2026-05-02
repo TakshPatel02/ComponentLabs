@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const CATEGORIES = [
   { id: "buttons", label: "Buttons", path: "/components/buttons" },
@@ -31,21 +32,37 @@ const ComponentsPage = () => {
         </div>
 
         {/* Unique Sub-Navigation Menu */}
-        <div className="sticky top-20 z-40 bg-surface/80 backdrop-blur-md py-4 mb-12 border-y border-oklab-10 px-4 md:px-0">
-          <nav className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+        <div className="relative mb-12">
+          <nav className="flex flex-wrap items-center gap-2 px-4 md:px-0 relative z-0">
             {CATEGORIES.map((cat) => (
               <NavLink
                 key={cat.id}
                 to={cat.path}
                 className={({ isActive }) =>
-                  `shrink-0 px-5 py-2.5 rounded-full font-system-micro text-[11px] tracking-widest uppercase transition-all duration-300 ${
-                    isActive
-                      ? "bg-primary text-cursor-cream shadow-sm"
-                      : "bg-transparent border border-oklab-10 text-on-surface-variant hover:bg-oklab-10 hover:text-primary"
+                  `relative shrink-0 flex items-center justify-center px-5 py-2 rounded-full transition-colors duration-300 z-10 ${isActive
+                    ? "text-white"
+                    : "text-[#888] hover:bg-black/5 hover:text-[#222]"
                   }`
                 }
               >
-                {cat.label}
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTabIndicator"
+                        className="absolute inset-0 bg-[#222] rounded-full -z-10 shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                    <span className="font-system-micro text-[10px] tracking-wider uppercase relative z-10 font-medium whitespace-nowrap">
+                      {cat.label}
+                    </span>
+                  </>
+                )}
               </NavLink>
             ))}
           </nav>
