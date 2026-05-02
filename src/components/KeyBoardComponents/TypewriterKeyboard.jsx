@@ -44,37 +44,47 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
       onMouseLeave={() => onMouseUp(keyData.code)}
       className={`
         relative flex justify-center items-center font-serif transition-all duration-75 select-none
-        ${isSpace ? 'w-[280px] h-lg rounded-[24px]' : 'w-[64px] h-[64px] rounded-full'}
+        ${isSpace ? 'w-[280px] h-[64px] rounded-[32px]' : 'w-[64px] h-[64px] rounded-full'}
         ${isPressed 
-          ? 'translate-y-[4px] shadow-[0_1px_1px_rgba(0,0,0,0.8)]' 
-          : 'shadow-[0_6px_12px_rgba(0,0,0,0.7),0_2px_4px_rgba(0,0,0,0.4)]'
+          ? 'translate-y-[4px] shadow-[0_1px_2px_rgba(0,0,0,0.8)]' 
+          : 'shadow-[0_8px_16px_rgba(0,0,0,0.8),0_4px_6px_rgba(0,0,0,0.6)]'
         }
       `}
       style={{
           // The chrome base rim
-          background: 'linear-gradient(180deg, #e4e4e4 0%, #888888 100%)',
-          padding: '4px', // Rim thickness
-          borderBottom: isPressed ? 'none' : '1px solid #555',
+          background: 'linear-gradient(145deg, #e6e6e6 0%, #7a7a7a 50%, #222222 100%)',
+          padding: '5px', // Rim thickness
+          border: '1px solid #111',
+          borderBottom: isPressed ? '1px solid #111' : '4px solid #111',
       }}
     >
       {/* The inner ivory keycap */}
       <div 
         className={`
           w-full h-full flex items-center justify-center relative overflow-hidden
-          ${isSpace ? 'rounded-[20px]' : 'rounded-full'}
-          bg-[#F8F6F0]
+          ${isSpace ? 'rounded-[28px]' : 'rounded-full'}
         `}
         style={{
+          background: 'radial-gradient(circle at 30% 30%, #fffff8 0%, #e8e3d5 60%, #c4bca3 100%)',
           boxShadow: isPressed 
-            ? 'inset 0 3px 6px rgba(0,0,0,0.15)' 
-            : 'inset 0 -3px 5px rgba(0,0,0,0.05), inset 0 2px 4px rgba(255,255,255,0.9)',
+            ? 'inset 0 4px 8px rgba(0,0,0,0.5), inset 0 1px 3px rgba(0,0,0,0.7)' 
+            : 'inset 0 -2px 6px rgba(0,0,0,0.4), inset 0 3px 5px rgba(255,255,255,1), inset 0 0 12px rgba(0,0,0,0.15)',
         }}
       >
+        {/* Glass Dome Effect */}
+        <div className={`absolute inset-0 pointer-events-none ${isSpace ? 'rounded-[28px]' : 'rounded-full'}`} style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.2) 100%)',
+        }} />
+        
         {/* Subtle top glare for 3D effect */}
         {!isPressed && (
-           <div className={`absolute top-0 left-0 right-0 h-1/2 bg-linear-to-b from-white/70 to-transparent pointer-events-none ${isSpace ? 'rounded-t-[20px]' : 'rounded-t-full'}`} />
+           <div className={`absolute top-[2px] left-[10%] right-[10%] h-[35%] bg-linear-to-b from-white/90 to-white/0 pointer-events-none ${isSpace ? 'rounded-[20px]' : 'rounded-[50%]'} opacity-80`} />
         )}
-        <span className={`z-10 text-[#333] ${isSpace ? 'text-[11px] tracking-[0.3em] font-medium opacity-50 uppercase mt-1' : 'text-2xl font-serif mt-1'}`}>
+
+        <span 
+          className={`z-10 text-[#1a1a1a] ${isSpace ? 'text-[12px] tracking-[0.3em] font-bold opacity-70 uppercase mt-1' : 'text-[28px] font-serif font-semibold mt-1'}`}
+          style={{ textShadow: '0 1px 0 rgba(255,255,255,0.8)' }}
+        >
           {keyData.label}
         </span>
       </div>

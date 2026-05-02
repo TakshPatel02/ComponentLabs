@@ -8,6 +8,7 @@ const CATEGORIES = [
   { id: "links", label: "Links & Navigation", path: "/components/links" },
   { id: "cards", label: "Cards & Layouts", path: "/components/cards" },
   { id: "keyboard", label: "Keyboards", path: "/components/keyboard" },
+  { id: "grids", label: "Grids", path: "/components/grids" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 

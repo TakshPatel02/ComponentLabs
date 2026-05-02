@@ -15,6 +15,7 @@ import LinkComponentPage from "./Pages/Components/LinkComponentPage";
 import FormComponentPage from "./Pages/Components/FormComponentPage";
 import CardComponentPage from "./Pages/Components/CardComponentPage";
 import KeyBoardComponentPage from "./Pages/Components/KeyBoardComponentPage";
+import GridComponentPage from "./Pages/Components/GridComponentPage";
 import OtherComponentPage from "./Pages/Components/OtherComponentPage";
 
 const App = () => {
@@ -25,8 +26,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/docs" element={<DocsPage />} />
-        
-        {/* Nested Components Routes */}
         <Route path="/components" element={<ComponentsPage />}>
           <Route index element={<Navigate to="text" replace />} />
           <Route path="buttons" element={<ButtonComponentPage />} />
@@ -35,9 +34,9 @@ const App = () => {
           <Route path="forms" element={<FormComponentPage />} />
           <Route path="cards" element={<CardComponentPage />} />
           <Route path="keyboard" element={<KeyBoardComponentPage />} />
+          <Route path="grids" element={<GridComponentPage />} />
           <Route path="other" element={<OtherComponentPage />} />
         </Route>
-        
         <Route path="/terms" element={<TermsPage />} />
       </Routes>
       <Footer />
