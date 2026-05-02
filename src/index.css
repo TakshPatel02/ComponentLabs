@@ -121,6 +121,7 @@
         background-color: #f2f1ed;
         color: #1c1b1b;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
     }
 
     /* Custom Scrollbar - Editorial Aesthetic */
@@ -164,5 +165,14 @@
         box-shadow: 0 30px 80px -12px rgba(207, 45, 86, 0.08),
             0 15px 35px -8px rgba(38, 37, 30, 0.06);
         transform: translateY(-2px);
+    }
+
+    .full-width-breakout {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
     }
 }

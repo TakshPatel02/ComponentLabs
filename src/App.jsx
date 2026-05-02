@@ -17,6 +17,7 @@ import CardComponentPage from "./Pages/Components/CardComponentPage";
 import KeyBoardComponentPage from "./Pages/Components/KeyBoardComponentPage";
 import GridComponentPage from "./Pages/Components/GridComponentPage";
 import OtherComponentPage from "./Pages/Components/OtherComponentPage";
+import HeroPageComponentPage from "./Pages/Components/HeroPageComponentPage";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="keyboard" element={<KeyBoardComponentPage />} />
           <Route path="grids" element={<GridComponentPage />} />
           <Route path="other" element={<OtherComponentPage />} />
+          <Route path="hero" element={<HeroPageComponentPage />} />
         </Route>
         <Route path="/terms" element={<TermsPage />} />
       </Routes>

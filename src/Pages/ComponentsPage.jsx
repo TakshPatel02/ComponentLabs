@@ -10,6 +10,7 @@ const CATEGORIES = [
   { id: "cards", label: "Cards & Layouts", path: "/components/cards" },
   { id: "keyboard", label: "Keyboards", path: "/components/keyboard" },
   { id: "grids", label: "Grids", path: "/components/grids" },
+  { id: "hero", label: "Hero Sections", path: "/components/hero" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 
