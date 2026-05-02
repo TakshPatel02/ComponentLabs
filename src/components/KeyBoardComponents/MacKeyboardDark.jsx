@@ -35,7 +35,7 @@ const SOUND_MAP = {
   ControlLeft: "29", KeyA: "30", KeyS: "31", KeyD: "32", KeyF: "33", KeyG: "34", KeyH: "35", KeyJ: "36", KeyK: "37", KeyL: "38", Semicolon: "39", Quote: "40", Backquote: "41", ShiftLeft: "42", Backslash: "43",
   KeyZ: "44", KeyX: "45", KeyC: "46", KeyV: "47", KeyB: "48", KeyN: "49", KeyM: "50", Comma: "51", Period: "52", Slash: "53", ShiftRight: "54",
   AltLeft: "56", Space: "57", CapsLock: "58",
-  F1: "59", F2: "60", F3: "61", F4: "62", F5: "63", F6: "64", F7: "65", F8: "66", F9: "67", F10: "68", F11: "87", F12: "88",
+  F1: "59", F2: "60", F3: "61", F4: "62", F5: "63", F6: "64", F7: "65", F8: "66", F9: "67", F10: "68", F11: "87", F12: "88", Power: "14",
   ArrowUp: "57416", ArrowLeft: "57419", ArrowRight: "57421", ArrowDown: "57424",
   MetaLeft: "3675", MetaRight: "3676", AltRight: "3640", Fn: "29" 
 };
@@ -55,6 +55,7 @@ const ROWS = [
     { code: 'F10', label: 'F10', width: '40px' },
     { code: 'F11', label: 'F11', width: '40px' },
     { code: 'F12', label: 'F12', width: '40px' },
+    { code: 'Power', symbol: '⏻', width: '60px' },
   ],
   [
     { code: 'Backquote', top: '~', bottom: '`', width: '40px' },
@@ -363,7 +364,7 @@ const MacKeyboardDark = () => {
 
             <div className="flex flex-col gap-2 relative z-10 bg-[#0A0A0A] p-2 rounded-[12px] border border-[#222] shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
               {ROWS.map((row, i) => (
-                <div key={i} className={`flex gap-2 ${i === 0 ? 'justify-between' : ''}`}>
+                <div key={i} className="flex gap-2 w-full justify-center">
                   {row.map((keyData, idx) => {
                     if (keyData.type === 'stacked') {
                       return (
