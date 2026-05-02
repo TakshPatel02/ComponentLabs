@@ -34,7 +34,7 @@ const MorphingAction = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">Primary CTA with integrated progress state.</p>
       </div>
 
-      <div className="bg-white/40 border border-oklab-10 rounded-xl p-10 flex items-center justify-center min-h-[200px] h-full shadow-sm relative overflow-hidden">
+      <div className="bg-white/40 border border-oklab-10 rounded-xl p-6 md:p-10 flex items-center justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative overflow-hidden">
         <AnimatePresence mode="wait">
           {status === 'idle' || status === 'complete' ? (
             <motion.button
@@ -90,7 +90,7 @@ const ParameterDial = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">High-fidelity value adjustment slider.</p>
       </div>
 
-      <div className="bg-white/40 border border-oklab-10 rounded-xl p-10 flex flex-col justify-center min-h-[200px] h-full shadow-sm relative">
+      <div className="bg-white/40 border border-oklab-10 rounded-xl p-6 md:p-10 flex flex-col justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative">
         <div className="flex justify-between items-end mb-6">
           <span className="font-system-micro text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40">Border Radius</span>
           <div className="bg-white border border-oklab-10 px-3 py-1 rounded shadow-sm">
@@ -201,8 +201,8 @@ const DataStreamer = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">Technical metrics feed with structural rigidity.</p>
       </div>
 
-      <div className="w-full bg-white/40 border border-oklab-10 rounded-xl overflow-hidden shadow-sm">
-        <table className="w-full text-left border-collapse">
+      <div className="w-full bg-white/40 border border-oklab-10 rounded-xl overflow-x-auto shadow-sm no-scrollbar">
+        <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr className="bg-black/2 border-b border-oklab-10">
               <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-primary/40 font-bold">Timestamp</th>

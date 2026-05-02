@@ -94,7 +94,7 @@ const BentoStatsGrid = () => {
         
         {/* Large Card 1 */}
         <StatCard 
-          className="md:col-span-2 md:row-span-2 h-[340px]" 
+          className="md:col-span-2 md:row-span-2 h-[280px] md:h-[340px]" 
           tag="COMPONENTS" 
           title="Total UI Elements" 
           value={142} 
@@ -105,7 +105,7 @@ const BentoStatsGrid = () => {
         
         {/* Small Card 1 */}
         <StatCard 
-          className="md:col-span-1 md:row-span-1 h-[160px]" 
+          className="md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]" 
           tag="NPM INSTALLS" 
           title="Weekly DLs" 
           value={8540} 
@@ -116,7 +116,7 @@ const BentoStatsGrid = () => {
 
         {/* Small Card 2 */}
         <StatCard 
-          className="md:col-span-1 md:row-span-1 h-[160px]" 
+          className="md:col-span-1 md:row-span-1 h-[140px] md:h-[160px]" 
           tag="STARS" 
           title="Github Repo" 
           value={329} 
@@ -126,7 +126,7 @@ const BentoStatsGrid = () => {
 
         {/* Small Card 3 (Bottom Left) */}
         <StatCard 
-          className="md:col-span-1 md:row-span-1 md:col-start-1 md:row-start-3 h-[160px]" 
+          className="md:col-span-1 md:row-span-1 md:col-start-1 md:row-start-3 h-[140px] md:h-[160px]" 
           tag="LATENCY" 
           title="Avg Render" 
           value={12} 
@@ -137,7 +137,7 @@ const BentoStatsGrid = () => {
 
         {/* Small Card 4 (Bottom Left) */}
         <StatCard 
-          className="md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-3 h-[160px]" 
+          className="md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-3 h-[140px] md:h-[160px]" 
           tag="COVERAGE" 
           title="Test Suite" 
           value={98} 
@@ -148,7 +148,7 @@ const BentoStatsGrid = () => {
 
         {/* Large Card 2 */}
         <StatCard 
-          className="md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 h-[340px]" 
+          className="md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 h-[280px] md:h-[340px]" 
           tag="RETENTION" 
           title="Active Monthly Users" 
           value={12050} 

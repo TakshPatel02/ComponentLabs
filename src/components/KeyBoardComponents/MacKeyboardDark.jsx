@@ -209,7 +209,27 @@ const MacKeyboardDark = () => {
   const audioContextRef = useRef(null);
 
   const containerRef = useRef(null);
+  const innerRef = useRef(null);
+  const [scale, setScale] = useState(1);
   const isInViewRef = useRef(false);
+
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const keyboardWidth = 780; // Approximate width of the keyboard chassis + padding
+        if (containerWidth < keyboardWidth) {
+          setScale(containerWidth / keyboardWidth);
+        } else {
+          setScale(1);
+        }
+      }
+    };
+
+    window.addEventListener('resize', updateScale);
+    updateScale();
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -314,51 +334,69 @@ const MacKeyboardDark = () => {
   };
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center items-center py-12 overflow-x-auto">
-      <div className="min-w-[750px] flex justify-center">
-        {/* Keyboard Chassis */}
-        <div className="p-3 md:p-4 rounded-[20px] bg-[#1a1a1a] border border-[#333] shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] relative overflow-hidden">
-          {/* Subtle gloss sheen overlay on chassis */}
-          <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent pointer-events-none rounded-[20px]" />
-          
-          {/* Inner inset shadow for depth */}
-          <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(0,0,0,0.6)] pointer-events-none rounded-[20px]" />
+    <div ref={containerRef} className="w-full flex justify-center items-center py-8 md:py-12 overflow-hidden">
+      <div 
+        style={{ 
+          width: `${780 * scale}px`, 
+          height: `${340 * scale}px`,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'start'
+        }}
+      >
+        <div 
+          ref={innerRef}
+          style={{ 
+            transform: `scale(${scale})`, 
+            transformOrigin: 'top center',
+            transition: 'transform 0.1s ease-out'
+          }}
+          className="flex justify-center"
+        >
+          {/* Keyboard Chassis */}
+          <div className="p-3 md:p-4 rounded-[20px] bg-[#1a1a1a] border border-[#333] shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] relative overflow-hidden w-[750px]">
+            {/* Subtle gloss sheen overlay on chassis */}
+            <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent pointer-events-none rounded-[20px]" />
+            
+            {/* Inner inset shadow for depth */}
+            <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(0,0,0,0.6)] pointer-events-none rounded-[20px]" />
 
-          <div className="flex flex-col gap-2 relative z-10 bg-[#0A0A0A] p-2 rounded-[12px] border border-[#222] shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
-            {ROWS.map((row, i) => (
-              <div key={i} className={`flex gap-2 ${i === 0 ? 'justify-between' : ''}`}>
-                {row.map((keyData, idx) => {
-                  if (keyData.type === 'stacked') {
+            <div className="flex flex-col gap-2 relative z-10 bg-[#0A0A0A] p-2 rounded-[12px] border border-[#222] shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
+              {ROWS.map((row, i) => (
+                <div key={i} className={`flex gap-2 ${i === 0 ? 'justify-between' : ''}`}>
+                  {row.map((keyData, idx) => {
+                    if (keyData.type === 'stacked') {
+                      return (
+                        <div key={`stacked-${idx}`} className="flex flex-col justify-between h-[40px]">
+                          <KeyComponent 
+                            keyData={{ code: keyData.topCode, symbol: keyData.topSymbol, width: keyData.width, height: '19px' }} 
+                            isPressed={pressedKeys[keyData.topCode]} 
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp}
+                          />
+                          <KeyComponent 
+                            keyData={{ code: keyData.bottomCode, symbol: keyData.bottomSymbol, width: keyData.width, height: '19px' }} 
+                            isPressed={pressedKeys[keyData.bottomCode]} 
+                            onMouseDown={handleMouseDown}
+                            onMouseUp={handleMouseUp}
+                          />
+                        </div>
+                      );
+                    }
+                    
                     return (
-                      <div key={`stacked-${idx}`} className="flex flex-col justify-between h-[40px]">
-                        <KeyComponent 
-                          keyData={{ code: keyData.topCode, symbol: keyData.topSymbol, width: keyData.width, height: '19px' }} 
-                          isPressed={pressedKeys[keyData.topCode]} 
-                          onMouseDown={handleMouseDown}
-                          onMouseUp={handleMouseUp}
-                        />
-                        <KeyComponent 
-                          keyData={{ code: keyData.bottomCode, symbol: keyData.bottomSymbol, width: keyData.width, height: '19px' }} 
-                          isPressed={pressedKeys[keyData.bottomCode]} 
-                          onMouseDown={handleMouseDown}
-                          onMouseUp={handleMouseUp}
-                        />
-                      </div>
+                      <KeyComponent 
+                        key={keyData.code} 
+                        keyData={keyData} 
+                        isPressed={pressedKeys[keyData.code]} 
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
+                      />
                     );
-                  }
-                  
-                  return (
-                    <KeyComponent 
-                      key={keyData.code} 
-                      keyData={keyData} 
-                      isPressed={pressedKeys[keyData.code]} 
-                      onMouseDown={handleMouseDown}
-                      onMouseUp={handleMouseUp}
-                    />
-                  );
-                })}
-              </div>
-            ))}
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

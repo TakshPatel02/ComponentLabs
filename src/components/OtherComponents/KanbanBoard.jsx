@@ -86,14 +86,14 @@ const KanbanBoard = () => {
   };
 
   return (
-    <div className="w-full bg-[#F2F0E9] min-h-[700px] p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body">
+    <div className="w-full bg-[#F2F0E9] min-h-[600px] p-4 sm:p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body">
       
       {/* Kanban Header */}
-      <div className="flex justify-between items-center mb-10 pb-6 border-b border-[#E2DFD6]">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-6 border-b border-[#E2DFD6] gap-4">
         <h2 className="font-section-heading text-xl md:text-2xl tracking-tight text-[#222]">
           ENGINEERED<span className="font-normal opacity-60">KANBAN</span>
         </h2>
-        <div className="flex items-center gap-6 text-[11px] font-system-micro tracking-widest uppercase text-[#888]">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-system-micro tracking-widest uppercase text-[#888]">
           <span className="text-[#222] border-b border-[#222] pb-1">Board</span>
           <span className="hover:text-[#222] cursor-pointer pb-1 transition-colors">Team</span>
           <span className="hover:text-[#222] cursor-pointer pb-1 transition-colors">Analytics</span>

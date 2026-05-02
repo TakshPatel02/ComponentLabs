@@ -98,7 +98,27 @@ const TypewriterKeyboard = () => {
   const audioContextRef = useRef(null);
 
   const containerRef = useRef(null);
+  const innerRef = useRef(null);
+  const [scale, setScale] = useState(1);
   const isInViewRef = useRef(false);
+
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const keyboardWidth = 840; // Approximate width of the keyboard chassis + padding
+        if (containerWidth < keyboardWidth) {
+          setScale(containerWidth / keyboardWidth);
+        } else {
+          setScale(1);
+        }
+      }
+    };
+
+    window.addEventListener('resize', updateScale);
+    updateScale();
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -206,48 +226,66 @@ const TypewriterKeyboard = () => {
   };
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center items-center py-12 overflow-x-auto">
-      <div className="min-w-[800px] flex justify-center">
-        {/* Keyboard Chassis */}
+    <div ref={containerRef} className="w-full flex justify-center items-center py-8 md:py-12 overflow-hidden">
+      <div 
+        style={{ 
+          width: `${840 * scale}px`, 
+          height: `${360 * scale}px`,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'start'
+        }}
+      >
         <div 
-          className="px-16 py-12 rounded-[16px] relative overflow-hidden flex flex-col items-center gap-6"
-          style={{
-            background: 'radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 100%)',
-            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 20px 40px rgba(0,0,0,0.4)',
+          ref={innerRef}
+          style={{ 
+            transform: `scale(${scale})`, 
+            transformOrigin: 'top center',
+            transition: 'transform 0.1s ease-out'
           }}
+          className="flex justify-center"
         >
-          {/* Noise Texture */}
+          {/* Keyboard Chassis */}
           <div 
-            className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" 
-            style={{ 
-              backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' 
-            }} 
-          />
-          
-          {/* Inner inset shadow for depth */}
-          <div className="absolute inset-0 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] pointer-events-none rounded-[16px]" />
+            className="px-16 py-12 rounded-[16px] relative overflow-hidden flex flex-col items-center gap-6 w-[800px]"
+            style={{
+              background: 'radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 100%)',
+              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 20px 40px rgba(0,0,0,0.4)',
+            }}
+          >
+            {/* Noise Texture */}
+            <div 
+              className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" 
+              style={{ 
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' 
+              }} 
+            />
+            
+            {/* Inner inset shadow for depth */}
+            <div className="absolute inset-0 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] pointer-events-none rounded-[16px]" />
 
-          <div className="flex flex-col gap-6 relative z-10 items-center">
-            {ROWS.map((row, i) => (
-              <div 
-                key={i} 
-                className="flex gap-4"
-                style={{
-                  // Offset the middle row slightly to match typewriter layout
-                  transform: i === 1 ? 'translateX(-12px)' : 'none'
-                }}
-              >
-                {row.map((keyData) => (
-                  <KeyComponent 
-                    key={keyData.code} 
-                    keyData={keyData} 
-                    isPressed={pressedKeys[keyData.code]} 
-                    onMouseDown={handleMouseDown}
-                    onMouseUp={handleMouseUp}
-                  />
-                ))}
-              </div>
-            ))}
+            <div className="flex flex-col gap-6 relative z-10 items-center">
+              {ROWS.map((row, i) => (
+                <div 
+                  key={i} 
+                  className="flex gap-4"
+                  style={{
+                    // Offset the middle row slightly to match typewriter layout
+                    transform: i === 1 ? 'translateX(-12px)' : 'none'
+                  }}
+                >
+                  {row.map((keyData) => (
+                    <KeyComponent 
+                      key={keyData.code} 
+                      keyData={keyData} 
+                      isPressed={pressedKeys[keyData.code]} 
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

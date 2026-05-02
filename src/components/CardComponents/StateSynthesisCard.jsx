@@ -17,11 +17,11 @@ const CIRC = 2 * Math.PI * 22; // ~138.2
 
 const STATES = [
   { key: "idle", title: "SYSTEM IDLE", sub: "Awaiting user interaction",
-    icon: <div className="w-[52px] h-[52px] rounded-full bg-stone-200/60 group-hover:bg-stone-200 transition-colors flex items-center justify-center mr-6"><Play size={20} className="text-stone-500 ml-1" /></div>,
+    icon: <div className="w-[52px] h-[52px] rounded-full bg-stone-200/60 group-hover:bg-stone-200 transition-colors flex items-center justify-center"><Play size={20} className="text-stone-500 ml-1" /></div>,
     titleColor: "text-stone-800", subColor: "text-stone-400" },
   { key: "processing", title: "PROCESSING REQUEST", sub: "TID: 0x442-99B",
     icon: (
-      <div className="relative w-[52px] h-[52px] flex items-center justify-center mr-6">
+      <div className="relative w-[52px] h-[52px] flex items-center justify-center">
         <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-sm">
           <circle cx="26" cy="26" r="22" stroke="#EFEFEF" strokeWidth="2.5" fill="none" />
           <motion.circle cx="26" cy="26" r="22" stroke="#C13B4E" strokeWidth="2.5" fill="none" strokeDasharray={CIRC} initial={{ strokeDashoffset: CIRC }} animate={{ strokeDashoffset: CIRC * 0.32 }} transition={{ duration: 1.5, ease: "easeOut" }} strokeLinecap="round" />
@@ -33,7 +33,7 @@ const STATES = [
     counter: { value: 68, color: "text-[#C13B4E]" } },
   { key: "success", title: "SYNTHESIS COMPLETE", sub: "Data stream verified",
     icon: (
-      <div className="w-[52px] h-[52px] rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center mr-6">
+      <div className="w-[52px] h-[52px] rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}><Check size={24} className="text-emerald-600" /></motion.div>
       </div>
     ),
@@ -56,16 +56,22 @@ const StateSynthesisCard = () => {
           <div className="bg-[#EBEBE8] text-stone-600 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mt-2">Interactive Morph</div>
         </div>
 
-        <div className="bg-[#FAF9F6] rounded-xl border border-stone-200/80 shadow-[inset_0_2px_10px_rgba(0,0,0,0.01),0_1px_1px_rgba(255,255,255,1)] p-2 min-h-xl flex items-center relative overflow-hidden mt-2">
+        <div className="bg-[#FAF9F6] rounded-xl border border-stone-200/80 shadow-[inset_0_2px_10px_rgba(0,0,0,0.01),0_1px_1px_rgba(255,255,255,1)] p-2 min-h-[140px] flex items-center relative overflow-hidden mt-2">
           <AnimatePresence mode="wait">
             {STATES.map((s, i) => step === i && (
-              <motion.div key={s.key} className="flex items-center w-full px-6 py-3" {...slide}>
-                {s.icon}
-                <div className="flex flex-col grow">
+              <motion.div key={s.key} className="flex flex-col sm:flex-row items-center sm:items-center w-full px-4 sm:px-6 py-4 sm:py-3 gap-4 sm:gap-0" {...slide}>
+                <div className="flex items-center shrink-0 sm:mr-6">
+                  {s.icon}
+                </div>
+                <div className="flex flex-col grow text-center sm:text-left">
                   <span className={`text-[15px] font-bold tracking-tight mb-0.5 ${s.titleColor}`}>{s.title}</span>
                   <span className={`text-[13px] font-serif ${s.subColor}`}>{s.sub}</span>
                 </div>
-                {s.counter && <div className={`font-bold text-base tracking-wide mr-2 ${s.counter.color}`}><Counter value={s.counter.value} duration={s.counter.duration} /></div>}
+                {s.counter && (
+                  <div className={`font-bold text-base tracking-wide mt-2 sm:mt-0 sm:mr-2 ${s.counter.color}`}>
+                    <Counter value={s.counter.value} duration={s.counter.duration} />
+                  </div>
+                )}
               </motion.div>
             ))}
           </AnimatePresence>

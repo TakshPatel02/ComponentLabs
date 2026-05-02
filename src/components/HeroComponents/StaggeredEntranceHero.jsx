@@ -48,7 +48,7 @@ export const StaggeredEntranceHero = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="w-full max-w-container-max bg-cursor-cream/50 rounded-[20px] oklab-border p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-700 hover:shadow-[0_40px_100px_-20px_rgba(38,37,30,0.08)]"
+        className="w-full max-w-container-max bg-cursor-cream/50 rounded-[20px] oklab-border p-8 sm:p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-700 hover:shadow-[0_40px_100px_-20px_rgba(38,37,30,0.08)]"
       >
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
@@ -59,7 +59,7 @@ export const StaggeredEntranceHero = () => {
           {/* Main Headline */}
           <motion.h1 
             variants={itemVariants}
-            className="font-display-hero text-5xl md:text-[84px] leading-[1.1] text-primary tracking-tighter mb-8 max-w-4xl"
+            className="font-display-hero text-4xl sm:text-5xl md:text-[84px] leading-[1.1] text-primary tracking-tighter mb-8 max-w-4xl"
           >
             Design systems with{" "}
             <motion.span 

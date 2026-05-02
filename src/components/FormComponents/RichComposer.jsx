@@ -120,8 +120,8 @@ const RichComposer = () => {
         </div>
 
         {/* Footer status */}
-        <div className="flex items-center justify-between mt-5 gap-4">
-          <div className="flex items-center gap-3 min-w-0 overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-6 gap-6 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 min-w-0 overflow-hidden">
             <AnimatePresence mode="wait">
               {thinking && hasContent ? (
                 <motion.div key="thinking" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2.5 min-w-0">

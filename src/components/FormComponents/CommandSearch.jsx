@@ -49,7 +49,7 @@ export default function CommandSearch() {
 
   return (
     <div className="flex w-full items-center justify-center p-4">
-      <div className="relative w-full max-w-2xl bg-[#f7f7f7] border border-gray-200 shadow-sm p-10 md:p-14 transition-all duration-300">
+      <div className="relative w-full max-w-2xl bg-[#f7f7f7] border border-gray-200 shadow-sm p-6 sm:p-10 md:p-14 transition-all duration-300">
         
         {/* Label */}
         <div className="mb-4">
