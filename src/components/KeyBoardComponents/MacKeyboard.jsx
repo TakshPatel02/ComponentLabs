@@ -144,12 +144,12 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
       className={`
         relative flex flex-col justify-center items-center rounded-[6px] 
         font-system-micro transition-all duration-75 select-none
-        border border-oklab-10
+        border border-black/10
         ${isPressed 
-          ? 'bg-surface-300 shadow-[inset_0_1px_3px_rgba(38,37,30,0.15),0_0px_0_rgba(38,37,30,0.2)] translate-y-[2px]' 
+          ? 'bg-[#ebeae5] shadow-[inset_0_1px_3px_rgba(38,37,30,0.15),0_0px_0_rgba(38,37,30,0.2)] translate-y-[2px]' 
           : 'bg-white shadow-[0_1px_1px_rgba(38,37,30,0.1),0_2px_0_rgba(38,37,30,0.15)]'
         }
-        hover:bg-surface-100 text-on-surface-variant hover:text-on-surface
+        hover:bg-[#f5f4f0] text-[#48473f] hover:text-[#1c1b1b]
       `}
       style={{
          width: keyData.width,
@@ -162,12 +162,12 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
       {(keyData.top || keyData.bottom) && !keyData.symbol && (
         <div className="flex flex-col items-center justify-center relative z-10">
           {keyData.top && (
-            <span className="text-[11px] leading-none mb-[2px] text-on-surface">
+            <span className="text-[11px] leading-none mb-[2px] text-[#1c1b1b]">
               {keyData.top}
             </span>
           )}
           {keyData.bottom && (
-            <span className="text-[10px] leading-none text-on-surface-variant/80">
+            <span className="text-[10px] leading-none text-[#48473f]/80">
               {keyData.bottom}
             </span>
           )}
@@ -181,11 +181,11 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
           keyData.align === 'right' ? 'absolute bottom-1.5 right-2 items-end' : 
           'items-center justify-center'
         }`}>
-          <span className={`${isHalfHeight ? 'text-[9px]' : 'text-[12px]'} leading-none text-on-surface ${keyData.label ? 'mb-[2px]' : ''}`}>
+          <span className={`${isHalfHeight ? 'text-[9px]' : 'text-[12px]'} leading-none text-[#1c1b1b] ${keyData.label ? 'mb-[2px]' : ''}`}>
             {keyData.symbol}
           </span>
           {keyData.label && (
-            <span className="text-[9px] leading-none text-on-surface-variant/80">{keyData.label}</span>
+            <span className="text-[9px] leading-none text-[#48473f]/80">{keyData.label}</span>
           )}
         </div>
       )}
@@ -355,14 +355,14 @@ const MacKeyboard = () => {
           className="flex justify-center"
         >
           {/* Keyboard Chassis */}
-          <div className="p-3 md:p-4 rounded-[20px] bg-surface-container-high border border-oklab-10 atmospheric-shadow relative overflow-hidden w-[750px]">
+          <div className="p-3 md:p-4 rounded-[20px] bg-[#e6e2e0] border border-black/10 atmospheric-shadow relative overflow-hidden w-[750px]">
             {/* Subtle gloss sheen overlay on chassis */}
             <div className="absolute inset-0 bg-linear-to-b from-white/40 to-transparent pointer-events-none rounded-[20px]" />
             
             {/* Inner inset shadow for depth */}
             <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(38,37,30,0.05)] pointer-events-none rounded-[20px]" />
 
-            <div className="flex flex-col gap-2 relative z-10 bg-surface-dim p-2 rounded-[12px] border border-oklab-10 shadow-inner">
+            <div className="flex flex-col gap-2 relative z-10 bg-[#f1edeb] p-2 rounded-[12px] border border-black/10 shadow-inner">
               {ROWS.map((row, i) => (
                 <div key={i} className="flex gap-2 w-full justify-center">
                   {row.map((keyData, idx) => {

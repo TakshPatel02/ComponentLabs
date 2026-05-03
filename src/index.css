@@ -1,68 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-    --color-success-muted: #1f8a65;
-    --color-tertiary-fixed: #e8e0e6;
-    --color-on-error: #ffffff;
-    --color-on-tertiary-fixed-variant: #49454a;
-    --color-on-secondary-container: #fffbff;
-    --color-cursor-light: #e6e5e0;
-    --color-on-surface: #1c1b1b;
-    --color-on-surface-variant: #48473f;
-    --color-on-primary-fixed-variant: #48473f;
-    --color-on-error-container: #93000a;
-    --color-secondary: #a83300;
-    --color-tertiary-fixed-dim: #cbc5ca;
-    --color-timeline-grep: #9fc9a2;
-    --color-inverse-on-surface: #f4f0ee;
-    --color-primary-fixed: #e6e2d7;
-    --color-error-container: #ffdad6;
-    --color-surface-container-highest: #e6e2e0;
-    --color-surface-container: #f1edeb;
-    --color-cursor-cream: #f2f1ed;
-    --color-surface-100: #f7f7f4;
-    --color-secondary-fixed: #ffdbd0;
-    --color-border-fallback-10: rgba(38, 37, 30, 0.1);
-    --color-background: #fdf8f7;
-    --color-surface-500: #e1e0db;
-    --color-surface: #fdf8f7;
-    --color-surface-container-low: #f7f3f1;
-    --color-surface-bright: #fdf8f7;
-    --color-on-tertiary: #ffffff;
-    --color-outline-variant: #cac6bc;
-    --color-primary-fixed-dim: #cac6bc;
-    --color-error-warm: #cf2d56;
-    --color-on-primary-fixed: #1d1c15;
-    --color-surface-300: #ebeae5;
-    --color-primary: #11100a;
-    --color-on-secondary-fixed-variant: #832600;
-    --color-border-oklab-10: oklab(0.263084 -0.00230259 0.0124794 / 0.1);
-    --color-on-primary: #ffffff;
-    --color-border-strong: rgba(38, 37, 30, 0.55);
-    --color-surface-variant: #e6e2e0;
-    --color-secondary-fixed-dim: #ffb59d;
-    --color-inverse-primary: #cac6bc;
-    --color-on-secondary: #ffffff;
-    --color-primary-container: #26251e;
-    --color-surface-container-high: #ebe7e5;
-    --color-tertiary-container: #272428;
-    --color-error: #ba1a1a;
-    --color-tertiary: #120f13;
-    --color-accent-gold: #c08532;
-    --color-timeline-edit: #c0a8dd;
-    --color-timeline-thinking: #dfa88f;
-    --color-secondary-container: #d24200;
-    --color-on-background: #1c1b1b;
-    --color-on-primary-container: #8f8c82;
-    --color-on-tertiary-fixed: #1d1b1e;
-    --color-surface-dim: #ddd9d7;
-    --color-surface-container-lowest: #ffffff;
-    --color-surface-tint: #605e56;
-    --color-on-tertiary-container: #908a8f;
-    --color-timeline-read: #9fbbe0;
-    --color-on-secondary-fixed: #390b00;
-    --color-inverse-surface: #31302f;
-    --color-outline: #79776f;
+    --color-on-surface: var(--on-surface);
+    --color-on-surface-variant: var(--on-surface-variant);
+    --color-primary: var(--primary);
+    --color-on-primary: var(--on-primary);
+    --color-background: var(--background);
+    --color-surface: var(--surface);
+    --color-cursor-cream: var(--cursor-cream);
+    --color-cursor-light: var(--cursor-light);
+    --color-surface-container: var(--surface-container);
+    --color-surface-container-highest: var(--surface-container-highest);
+    --color-surface-300: var(--surface-300);
+    --color-surface-500: var(--surface-500);
+    --color-border-fallback-10: var(--border-fallback-10);
+    --color-scrollbar-thumb: var(--scrollbar-thumb);
+    --color-error-warm: #cf2d56; /* Accent color dusty pink */
 
     --spacing-md: 24px;
     --spacing-sm: 12px;
@@ -116,12 +69,53 @@
     --text-ui-body--font-weight: 400;
 }
 
+:root {
+    --background: #fdf8f7;
+    --surface: #fdf8f7;
+    --on-surface: #1c1b1b;
+    --on-surface-variant: #48473f;
+    --primary: #11100a;
+    --on-primary: #ffffff;
+    --cursor-cream: #f2f1ed;
+    --cursor-light: #e6e5e0;
+    --surface-container: #f1edeb;
+    --surface-container-highest: #e6e2e0;
+    --surface-300: #ebeae5;
+    --surface-500: #e1e0db;
+    --border-fallback-10: rgba(38, 37, 30, 0.1);
+    --scrollbar-thumb: #C0BCB5;
+    
+    /* Toggle colors */
+    --toggle-bg: #F5F3EE;
+}
+
+.dark {
+    --background: #111111;
+    --surface: #111111;
+    --on-surface: #e6e2e0;
+    --on-surface-variant: #cac6bc;
+    --primary: #f2f1ed;
+    --on-primary: #11100a;
+    --cursor-cream: #1a1a1a;
+    --cursor-light: #1e1e1e;
+    --surface-container: #1a1a1a;
+    --surface-container-highest: #2a2a2a;
+    --surface-300: #1e1e1e;
+    --surface-500: #2a2a2a;
+    --border-fallback-10: rgba(255, 255, 255, 0.1);
+    --scrollbar-thumb: #48473f;
+    
+    /* Toggle colors */
+    --toggle-bg: #1a1a1a;
+}
+
 @layer base {
     body {
-        background-color: #f2f1ed;
-        color: #1c1b1b;
+        background-color: var(--background);
+        color: var(--on-surface);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Custom Scrollbar - Editorial Aesthetic */
@@ -133,9 +127,9 @@
         background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-        background-color: #C0BCB5;
+        background-color: var(--scrollbar-thumb);
         border-radius: 9999px;
-        border: 4px solid #f2f1ed; /* Matches background to create floating effect */
+        border: 4px solid var(--background);
         background-clip: content-box;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -147,23 +141,28 @@
 
     * {
         scrollbar-width: thin;
-        scrollbar-color: #C0BCB5 transparent;
+        scrollbar-color: var(--scrollbar-thumb) transparent;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 }
 
 @layer utilities {
     .oklab-border {
-        border: 1px solid oklab(0.263084 -0.00230259 0.0124794 / 0.1);
+        border: 1px solid var(--border-fallback-10);
+    }
+
+    .oklab-border-b {
+        border-bottom: 1px solid var(--border-fallback-10);
     }
 
     .atmospheric-shadow {
-        box-shadow: 0 20px 70px -10px rgba(38, 37, 30, 0.08),
-            0 10px 28px -5px rgba(38, 37, 30, 0.04);
+        box-shadow: 0 20px 70px -10px rgba(0, 0, 0, 0.3),
+            0 10px 28px -5px rgba(0, 0, 0, 0.1);
     }
 
     .hover-card:hover {
-        box-shadow: 0 30px 80px -12px rgba(207, 45, 86, 0.08),
-            0 15px 35px -8px rgba(38, 37, 30, 0.06);
+        box-shadow: 0 30px 80px -12px rgba(207, 45, 86, 0.15),
+            0 15px 35px -8px rgba(0, 0, 0, 0.2);
         transform: translateY(-2px);
     }
 

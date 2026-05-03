@@ -86,21 +86,21 @@ const KanbanBoard = () => {
   };
 
   return (
-    <div className="w-full bg-[#F2F0E9] min-h-[600px] p-4 sm:p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body">
+    <div className="w-full bg-surface-container/60 min-h-[600px] p-4 sm:p-6 md:p-10 rounded-xl oklab-border flex flex-col font-ui-body transition-colors">
       
       {/* Kanban Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-6 border-b border-[#E2DFD6] gap-4">
-        <h2 className="font-section-heading text-xl md:text-2xl tracking-tight text-[#222]">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-6 oklab-border border-b gap-4">
+        <h2 className="font-section-heading text-xl md:text-2xl tracking-tight text-primary">
           ENGINEERED<span className="font-normal opacity-60">KANBAN</span>
         </h2>
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-system-micro tracking-widest uppercase text-[#888]">
-          <span className="text-[#222] border-b border-[#222] pb-1">Board</span>
-          <span className="hover:text-[#222] cursor-pointer pb-1 transition-colors">Team</span>
-          <span className="hover:text-[#222] cursor-pointer pb-1 transition-colors">Analytics</span>
-          <span className="hover:text-[#222] cursor-pointer pb-1 transition-colors">Archive</span>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-system-micro tracking-widest uppercase text-on-surface-variant/60">
+          <span className="text-primary border-b border-primary pb-1">Board</span>
+          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">Team</span>
+          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">Analytics</span>
+          <span className="hover:text-primary cursor-pointer pb-1 transition-colors">Archive</span>
         </div>
         <div className="hidden md:flex items-center gap-4">
-          <div className="w-8 h-8 rounded-full bg-[#222] flex items-center justify-center text-white">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
             <span className="material-symbols-outlined text-[16px]">notifications</span>
           </div>
         </div>
@@ -124,11 +124,11 @@ const KanbanBoard = () => {
             >
               <div className="flex justify-between items-center px-2 mb-4">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-system-micro text-[12px] tracking-widest font-bold text-[#222]">
+                  <h3 className="font-system-micro text-[12px] tracking-widest font-bold text-primary">
                     {col.title}
                   </h3>
                   {!isTrash && (
-                    <span className="bg-[#E6E4DD] text-[#666] font-mono text-[10px] px-2 py-0.5 rounded-full">
+                    <span className="bg-on-surface/10 text-on-surface-variant font-mono text-[10px] px-2 py-0.5 rounded-full">
                       {String(colTasks.length).padStart(2, '0')}
                     </span>
                   )}
@@ -136,7 +136,7 @@ const KanbanBoard = () => {
                 {col.canAdd && (
                   <button 
                     onClick={() => setIsAdding(true)}
-                    className="text-[#888] hover:text-[#222] transition-colors"
+                    className="text-on-surface-variant/40 hover:text-primary transition-colors"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                   </button>
@@ -160,7 +160,7 @@ const KanbanBoard = () => {
                         if(!newTaskText.trim()) setIsAdding(false);
                       }}
                       placeholder="Enter task description..."
-                      className="w-full bg-white border border-[#E2DFD6] rounded-lg p-4 font-editorial-standard text-[15px] outline-none focus:border-[#A09D98] shadow-sm"
+                      className="w-full bg-surface oklab-border rounded-lg p-4 font-editorial-standard text-[15px] outline-none focus:border-on-surface-variant/40 shadow-sm text-primary"
                     />
                   </form>
                 )}
@@ -179,26 +179,26 @@ const KanbanBoard = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                        className={`bg-white rounded-[10px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-[#EAE8E2] cursor-grab active:cursor-grabbing hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-shadow ${
+                        className={`bg-surface rounded-[10px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] oklab-border cursor-grab active:cursor-grabbing hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all ${
                           draggedTaskId === task.id ? 'opacity-50' : ''
                         }`}
                       >
                         <div className="flex justify-between items-center mb-3">
                           <span className={`font-system-micro text-[10px] tracking-widest uppercase ${
-                            task.column === 'complete' ? 'text-[#8AA188]' : 'text-[#888]'
+                            task.column === 'complete' ? 'text-emerald-500/70' : 'text-on-surface-variant/50'
                           }`}>
                             {task.tag}
                           </span>
                           {task.column === 'complete' ? (
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8AA188" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-emerald-500/70" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                           ) : (
-                            <span className="text-[#C0BCB5]">
+                            <span className="text-on-surface-variant/30">
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                             </span>
                           )}
                         </div>
                         <p className={`font-editorial-standard text-[15px] leading-relaxed ${
-                          task.column === 'complete' ? 'text-[#888] line-through decoration-[#D0CACA]' : 'text-[#333]'
+                          task.column === 'complete' ? 'text-on-surface-variant/40 line-through decoration-on-surface-variant/20' : 'text-primary/90'
                         }`}>
                           {task.title}
                         </p>
@@ -207,10 +207,10 @@ const KanbanBoard = () => {
                   </AnimatePresence>
                 ) : (
                   <div className={`h-[300px] rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-4 transition-colors ${
-                    activeColumnId === col.id ? 'border-[#A09D98] bg-[#EAE8E2]' : 'border-[#D4D0C5]'
+                    activeColumnId === col.id ? 'border-on-surface-variant/40 bg-on-surface/5' : 'border-on-surface-variant/20'
                   }`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={activeColumnId === col.id ? '#666' : '#A09D98'} strokeWidth="1.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                    <span className="font-system-micro text-[10px] tracking-widest uppercase text-[#A09D98]">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={activeColumnId === col.id ? 'text-primary/60' : 'text-on-surface-variant/30'} strokeWidth="1.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    <span className="font-system-micro text-[10px] tracking-widest uppercase text-on-surface-variant/40">
                       Trash Drop Zone
                     </span>
                   </div>

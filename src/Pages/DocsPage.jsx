@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DocsPage = () => {
   return (
-    <div className="min-h-screen bg-cursor-cream text-primary font-['Space_Grotesk'] pb-24">
+    <div className="min-h-screen bg-surface text-primary font-['Space_Grotesk'] pb-24">
       {/* Container */}
       <div className="max-w-3xl mx-auto px-6 md:px-8 pt-12 md:pt-20 space-y-16">
         {/* Header */}
@@ -15,7 +15,7 @@ const DocsPage = () => {
 
         {/* Section: Introduction */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             Introduction
           </h2>
           <p className="leading-relaxed text-primary/80">
@@ -34,7 +34,7 @@ const DocsPage = () => {
 
         {/* Section: Stack */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             Stack
           </h2>
 
@@ -86,7 +86,7 @@ const DocsPage = () => {
 
         {/* Section: Philosophy */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             Philosophy
           </h2>
           <div className="space-y-6">
@@ -134,7 +134,7 @@ const DocsPage = () => {
 
         {/* Section: How I Build a Component */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             How I Build a Component
           </h2>
           <div className="space-y-6 text-primary/80">
@@ -204,7 +204,7 @@ const DocsPage = () => {
 
         {/* Section: AI Prompting Approach */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             AI Prompting Approach
           </h2>
           <p className="leading-relaxed text-primary/80">
@@ -213,7 +213,7 @@ const DocsPage = () => {
           </p>
 
           <div className="space-y-4">
-            <div className="bg-white/50 border border-black/5 rounded-xl p-6 shadow-sm">
+            <div className="bg-surface-container/50 oklab-border rounded-xl p-6 shadow-sm">
               <span className="text-xs font-bold text-primary/50 uppercase tracking-widest mb-3 block">
                 Weak prompt
               </span>
@@ -222,7 +222,7 @@ const DocsPage = () => {
               </p>
             </div>
 
-            <div className="bg-white border border-error-warm/20 rounded-xl p-6 shadow-sm relative overflow-hidden">
+            <div className="bg-surface oklab-border border-error-warm/20 rounded-xl p-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-error-warm" />
               <span className="text-xs font-bold text-error-warm uppercase tracking-widest mb-3 block">
                 What I actually write
@@ -250,7 +250,7 @@ const DocsPage = () => {
 
         {/* Section: AI Tool Breakdown */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             AI Tool Breakdown
           </h2>
           <div className="space-y-6 text-primary/80">
@@ -300,7 +300,7 @@ const DocsPage = () => {
 
         {/* Section: Component Anatomy */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             Component Anatomy
           </h2>
           <p className="text-primary/80">
@@ -310,16 +310,16 @@ const DocsPage = () => {
           </p>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse bg-white border border-black/5 rounded-xl block sm:table shadow-sm text-sm overflow-hidden">
-              <thead className="bg-black/5">
-                <tr className="text-primary/70 font-bold border-b border-black/5">
+            <table className="w-full text-left border-collapse bg-surface oklab-border rounded-xl block sm:table shadow-sm text-sm overflow-hidden">
+              <thead className="bg-on-surface/5">
+                <tr className="text-primary/70 font-bold border-b oklab-border">
                   <th className="py-3 px-4">Prop</th>
                   <th className="py-3 px-4">Type</th>
                   <th className="py-3 px-4">Default</th>
                   <th className="py-3 px-4">Description</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-black/5 text-primary/80">
+              <tbody className="divide-y oklab-border text-primary/80">
                 <tr>
                   <td className="py-3 px-4 font-mono text-xs bg-black/3">
                     label
@@ -329,7 +329,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Floating label text</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     type
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">string</td>
@@ -337,7 +337,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Input type</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     placeholder
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">string</td>
@@ -345,7 +345,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Shown only on focus</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     value
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">string</td>
@@ -353,7 +353,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Controlled value</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     onChange
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">function</td>
@@ -361,7 +361,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Change handler</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     error
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">string</td>
@@ -369,7 +369,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Error message</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     required
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">boolean</td>
@@ -377,7 +377,7 @@ const DocsPage = () => {
                   <td className="py-3 px-4">Marks field required</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
+                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
                     isTextarea
                   </td>
                   <td className="py-3 px-4 font-mono text-xs">boolean</td>
@@ -459,10 +459,10 @@ const DocsPage = () => {
 
         {/* Section: Roadmap */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight border-b border-black/5 pb-2">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
             Roadmap
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white/50 border border-black/5 p-6 rounded-xl shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-surface-container/50 oklab-border p-6 rounded-xl shadow-sm">
             <div className="space-y-3">
               <h3 className="text-lg font-bold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-success-muted animate-pulse border border-black/10"></span>
@@ -524,7 +524,7 @@ const DocsPage = () => {
         </section>
 
         {/* Closing Note */}
-        <section className="pt-8 border-t border-black/5">
+        <section className="pt-8 border-t oklab-border">
           <p className="leading-relaxed text-primary/80 italic text-lg">
             That's everything. Clean, honest, and actually interesting to read —
             which is rare for a docs page.

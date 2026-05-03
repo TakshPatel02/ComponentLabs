@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTheme } from "../../context/ThemeContext";
 
 const defaultSteps = [
   {
@@ -35,8 +36,11 @@ const defaultSteps = [
 export default function NeuralTrace({
   steps = defaultSteps,
   stepDelay = 400,
-  isDark = false,
+  isDark: isDarkProp,
 }) {
+  const { theme } = useTheme();
+  const isDark = isDarkProp !== undefined ? isDarkProp : theme === "dark";
+  
   const [started, setStarted] = useState(false);
   const [currentStep, setCurrentStep] = useState(-1);
 
@@ -67,7 +71,7 @@ export default function NeuralTrace({
   };
 
   const textColor = isDark ? "text-white" : "text-primary";
-  const descColor = isDark ? "text-gray-400" : "text-gray-500";
+  const descColor = isDark ? "text-gray-400" : "text-on-surface-variant";
   const lineColorBase = isDark ? "bg-white/10" : "bg-black/10";
 
   return (

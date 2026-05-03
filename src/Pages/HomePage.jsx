@@ -244,10 +244,10 @@ const HomePage = () => {
 
           {/* Neural Trace Card */}
           <div className="bg-surface-300 rounded-lg p-3 border border-oklab-10 shadow-sm transition-all duration-300 hover:shadow-lg group">
-            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-[#121212] flex items-center justify-center">
+            <div className="aspect-4/3 rounded-md overflow-hidden mb-3 relative bg-surface-container-highest flex items-center justify-center">
               <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.05),transparent_70%)] absolute inset-0 pointer-events-none"></div>
               <div className="relative z-10 w-full h-full p-6 pb-2">
-                <NeuralTrace isDark={true} />
+                <NeuralTrace />
               </div>
             </div>
             <div className="px-2">
@@ -276,7 +276,7 @@ const HomePage = () => {
         </section>
 
         {/* Text CTA Section (Desktop & Mobile) */}
-        <section className="py-16 md:py-24 px-4 md:px-0 border-t border-black/5 border-x  flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
+        <section className="py-16 md:py-24 px-4 md:px-0 border-t oklab-border border-x  flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
           <div className="w-full md:w-1/2 px-2">
             <h2 className="font-section-heading text-[32px] md:text-section-heading text-primary mb-4 md:mb-6 leading-tight">
               Built for the era of AI.

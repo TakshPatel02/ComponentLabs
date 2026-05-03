@@ -62,18 +62,18 @@ const StatCard = ({ title, value, tag, className, delay, accentColor = "#B09E99"
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className={`relative bg-[#222120] rounded-[16px] border border-[#3A3836] p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)] ${className}`}
+      className={`relative bg-surface-container/60 rounded-[16px] oklab-border p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)] transition-all duration-300 ${className}`}
     >
       <div className="relative z-10 flex justify-between items-start mb-6">
-        <span className="font-system-micro text-[10px] tracking-[0.2em] text-[#A09D98] uppercase">
+        <span className="font-system-micro text-[10px] tracking-[0.2em] text-on-surface-variant/40 uppercase">
           {tag}
         </span>
         <div className="w-2 h-2 rounded-full" style={{ backgroundColor: accentColor }} />
       </div>
       
       <div className="mt-auto relative z-10">
-        <h3 className="font-editorial-standard text-[#E8E6E1] text-lg mb-1">{title}</h3>
-        <div className="font-section-heading text-[#F5F3EE] text-4xl md:text-5xl mb-2">
+        <h3 className="font-editorial-standard text-primary/80 text-lg mb-1">{title}</h3>
+        <div className="font-section-heading text-primary text-4xl md:text-5xl mb-2">
           <AnimatedCounter from={0} to={value} suffix={suffix} />
         </div>
       </div>

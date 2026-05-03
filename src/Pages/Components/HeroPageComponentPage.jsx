@@ -28,7 +28,7 @@ const HeroPageComponentPage = () => {
         </p>
       </div>
 
-      <div className="w-full full-width-breakout overflow-hidden pb-32 border-b border-oklab-10">
+      <div className="w-full full-width-breakout overflow-hidden pb-32 border-b oklab-border">
         <StaggeredEntranceHero />
       </div>
       
@@ -50,7 +50,7 @@ const HeroPageComponentPage = () => {
       </div>
 
       {/* Placeholder for future archetypes */}
-      <div className="w-full py-32 flex flex-col items-center justify-center border-t border-oklab-10 border-dashed mt-24">
+      <div className="w-full py-32 flex flex-col items-center justify-center border-t oklab-border border-dashed mt-24">
         <span className="font-system-micro text-[10px] tracking-widest uppercase text-on-surface-variant/40">
           More Archetypes coming soon
         </span>

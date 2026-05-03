@@ -6,8 +6,8 @@ const Crosshair = ({ top, left, bottom, right }) => (
     className="absolute w-4 h-4 flex items-center justify-center z-10 pointer-events-none"
     style={{ top, left, bottom, right, transform: 'translate(-50%, -50%)' }}
   >
-    <div className="absolute w-px h-full bg-[#888] opacity-40"></div>
-    <div className="absolute h-px w-full bg-[#888] opacity-40"></div>
+    <div className="absolute w-px h-full bg-on-surface opacity-20"></div>
+    <div className="absolute h-px w-full bg-on-surface opacity-20"></div>
   </div>
 );
 
@@ -19,13 +19,13 @@ const FeatureCell = ({ title, description, icon, delay, borderRight = false, bor
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
       className={`
-        group relative flex flex-col p-8 md:p-10 cursor-default bg-[#FDFCFB] text-[#222] 
-        hover:bg-[#1A1A1A] hover:text-[#FCFBFA] transition-colors duration-500
-        ${borderRight ? 'border-r border-[#EAE8E2]' : ''}
-        ${borderBottom ? 'border-b border-[#EAE8E2]' : ''}
+        group/cell relative flex flex-col p-8 md:p-10 cursor-default bg-surface text-primary 
+        hover:bg-on-surface hover:text-surface transition-colors duration-500
+        ${borderRight ? 'oklab-border border-r' : ''}
+        ${borderBottom ? 'oklab-border border-b' : ''}
       `}
     >
-      <div className="mb-6 text-[#222] group-hover:text-white transition-colors duration-500">
+      <div className="mb-6 text-primary group-hover/cell:text-surface transition-colors duration-500">
         {icon}
       </div>
       <h3 className="font-section-heading text-xl md:text-2xl mb-2 font-bold">{title}</h3>
@@ -40,7 +40,7 @@ const CrosshairFeatureGrid = () => {
   return (
     <div className="w-full flex justify-center items-center">
       
-      <div className="relative grid grid-cols-1 md:grid-cols-3 w-full border border-[#EAE8E2] rounded-sm overflow-hidden shadow-sm bg-[#FDFCFB]">
+      <div className="relative grid grid-cols-1 md:grid-cols-3 w-full oklab-border rounded-sm overflow-hidden shadow-sm bg-surface">
         
         {/* Row 1 */}
         <FeatureCell 

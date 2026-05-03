@@ -65,7 +65,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
     <motion.div
       initial={false}
       className={`border oklab-border rounded-xl overflow-hidden transition-colors duration-300 ${
-        isOpen ? "bg-surface-200" : "bg-cursor-cream/50 hover:bg-surface-300"
+        isOpen ? "bg-surface-300" : "bg-surface hover:bg-surface-container"
       }`}
     >
       <button

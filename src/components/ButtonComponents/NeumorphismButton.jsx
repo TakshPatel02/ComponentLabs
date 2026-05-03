@@ -14,11 +14,13 @@ const NeumorphismButton = ({ text = "Initialize AI" }) => {
       className={`
         relative px-8 py-4 rounded-full 
         flex items-center justify-center gap-3 
-        text-primary bg-[#EBE8E0]
+        text-primary bg-surface-300
         font-medium uppercase tracking-widest text-sm font-['Space_Grotesk']
         shadow-[-6px_-6px_14px_rgba(255,255,255,0.9),6px_6px_14px_rgba(0,0,0,0.1)]
+        dark:shadow-[-6px_-6px_14px_rgba(255,255,255,0.05),6px_6px_14px_rgba(0,0,0,0.4)]
         transition-all duration-300
         hover:shadow-[inset_-3px_-3px_7px_rgba(255,255,255,0.9),inset_3px_3px_7px_rgba(0,0,0,0.15),-2px_-2px_4px_rgba(255,255,255,0.5),2px_2px_4px_rgba(0,0,0,0.05)]
+        dark:hover:shadow-[inset_-3px_-3px_7px_rgba(255,255,255,0.03),inset_3px_3px_7px_rgba(0,0,0,0.5),-2px_-2px_4px_rgba(255,255,255,0.05),2px_2px_4px_rgba(0,0,0,0.2)]
         hover:text-error-warm overflow-hidden group
       `}
     >

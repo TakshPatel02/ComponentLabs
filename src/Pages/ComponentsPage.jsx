@@ -41,8 +41,8 @@ const ComponentsPage = () => {
                 to={cat.path}
                 className={({ isActive }) =>
                   `relative shrink-0 flex items-center justify-center px-5 py-2 rounded-full transition-colors duration-300 z-10 ${isActive
-                    ? "text-white"
-                    : "text-[#888] hover:bg-black/5 hover:text-[#222]"
+                    ? "text-on-primary"
+                    : "text-on-surface-variant hover:bg-black/5 hover:text-primary"
                   }`
                 }
               >
@@ -51,7 +51,7 @@ const ComponentsPage = () => {
                     {isActive && (
                       <motion.div
                         layoutId="activeTabIndicator"
-                        className="absolute inset-0 bg-[#222] rounded-full -z-10 shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
+                        className="absolute inset-0 bg-primary rounded-full -z-10 shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
                         transition={{
                           type: "spring",
                           stiffness: 400,

@@ -59,12 +59,12 @@ export const VintageFader = ({
   return (
     <div className="w-full flex flex-col gap-8 select-none touch-none font-ui-body py-4 px-2">
       {/* Vintage Labeling */}
-      <div className="flex justify-between items-end border-b border-[#C0BCB5] pb-2 shadow-[0_1px_0_rgba(255,255,255,0.7)]">
+      <div className="flex justify-between items-end border-b oklab-border pb-2 transition-colors">
         <div className="flex flex-col">
-          <span className="font-mono text-[10px] tracking-widest text-[#666] font-bold uppercase">
+          <span className="font-mono text-[10px] tracking-widest text-on-surface-variant/60 font-bold uppercase">
             CH 1. Master
           </span>
-          <span className="font-editorial-standard text-[18px] italic text-[#222]">
+          <span className="font-editorial-standard text-[18px] italic text-primary">
             Gain Fader
           </span>
         </div>
@@ -85,9 +85,9 @@ export const VintageFader = ({
         <div className="absolute left-0 right-0 -top-gutter flex justify-between px-2 pointer-events-none">
           {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((tick) => (
             <div key={tick} className="flex flex-col items-center">
-              <div className={`w-[2px] bg-[#888] shadow-[1px_1px_0_rgba(255,255,255,0.8)] ${tick % 50 === 0 ? 'h-3' : 'h-1.5'}`} />
+              <div className={`w-[2px] bg-on-surface/20 transition-colors ${tick % 50 === 0 ? 'h-3' : 'h-1.5'}`} />
               {tick % 50 === 0 && (
-                <span className="font-mono text-[8px] text-[#666] mt-1 font-bold">{tick}</span>
+                <span className="font-mono text-[8px] text-on-surface-variant/40 mt-1 font-bold">{tick}</span>
               )}
             </div>
           ))}
@@ -96,7 +96,7 @@ export const VintageFader = ({
         {/* Deep Recessed Track */}
         <div 
           ref={trackRef}
-          className="absolute left-0 right-0 h-4 bg-[#111] rounded-sm overflow-hidden shadow-[inset_0_3px_6px_rgba(0,0,0,0.9)] border-b border-[#ffffff]/30"
+          className="absolute left-0 right-0 h-4 bg-on-surface/90 dark:bg-black rounded-sm overflow-hidden shadow-[inset_0_3px_6px_rgba(0,0,0,0.9)] border-b oklab-border transition-colors"
         >
           {/* Subtle Track Fill (Optional, vintage faders usually don't have fill, but a dim glow looks cool) */}
           <motion.div 
@@ -108,7 +108,7 @@ export const VintageFader = ({
 
         {/* Chunky Vintage Fader Knob */}
         <motion.div 
-          className="absolute top-1/2 -mt-md w-12 h-lg rounded-[4px] bg-linear-to-b from-[#F2F0E9] via-[#E2DFD6] to-[#A09D98] border border-[#888] flex items-center justify-center z-10 cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 -mt-md w-12 h-lg rounded-[4px] bg-linear-to-b from-surface to-surface-container oklab-border flex items-center justify-center z-10 cursor-grab active:cursor-grabbing transition-colors"
           style={{ 
             left: `calc(${percentage}% - 24px)`,
             boxShadow: '0 8px 12px rgba(0,0,0,0.4), inset 0 2px 2px rgba(255,255,255,1), inset 0 -2px 4px rgba(0,0,0,0.2)'
@@ -123,7 +123,7 @@ export const VintageFader = ({
           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         >
           {/* Inner Index Line (The classic white/black stripe) */}
-          <div className="w-[85%] h-[4px] bg-[#1A1A1A] rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.9)]" />
+          <div className="w-[85%] h-[4px] bg-on-surface/80 rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]" />
         </motion.div>
       </div>
     </div>

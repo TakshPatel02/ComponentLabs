@@ -51,8 +51,8 @@ export const StaggeredEntranceHero = () => {
         className="w-full max-w-container-max bg-cursor-cream/50 rounded-[20px] oklab-border p-8 sm:p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-700 hover:shadow-[0_40px_100px_-20px_rgba(38,37,30,0.08)]"
       >
         {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none overflow-hidden">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         </div>
 
         <div className="relative z-10 flex flex-col items-center">
@@ -64,7 +64,7 @@ export const StaggeredEntranceHero = () => {
             Design systems with{" "}
             <motion.span 
               variants={highlightVariants}
-              className="italic text-accent-gold"
+              className="italic text-error-warm"
             >
               literary
             </motion.span>{" "}
@@ -84,10 +84,10 @@ export const StaggeredEntranceHero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <button className="bg-primary text-white font-button-label text-button-label px-10 py-5 rounded-lg shadow-lg hover:shadow-xl hover:bg-black transition-all active:scale-[0.98]">
+            <button className="bg-primary text-on-primary font-button-label text-button-label px-10 py-5 rounded-lg shadow-lg hover:shadow-xl hover:opacity-90 transition-all active:scale-[0.98]">
               Explore Typography
             </button>
-            <button className="bg-transparent border border-oklab-10 text-primary font-button-label text-button-label px-10 py-5 rounded-lg hover:bg-black/5 transition-all active:scale-[0.98]">
+            <button className="bg-transparent oklab-border text-primary font-button-label text-button-label px-10 py-5 rounded-lg hover:bg-on-surface/5 transition-all active:scale-[0.98]">
               View Guidelines
             </button>
           </motion.div>

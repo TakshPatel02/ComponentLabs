@@ -34,7 +34,7 @@ const MorphingAction = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">Primary CTA with integrated progress state.</p>
       </div>
 
-      <div className="bg-white/40 border border-oklab-10 rounded-xl p-6 md:p-10 flex items-center justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative overflow-hidden">
+      <div className="bg-surface-container/20 oklab-border rounded-xl p-6 md:p-10 flex items-center justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative overflow-hidden">
         <AnimatePresence mode="wait">
           {status === 'idle' || status === 'complete' ? (
             <motion.button
@@ -43,7 +43,7 @@ const MorphingAction = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               onClick={startSequence}
-              className="bg-white border border-oklab-10 px-8 py-3 rounded-lg shadow-sm font-system-micro text-[12px] font-bold uppercase tracking-widest text-primary hover:bg-black hover:text-white transition-all flex items-center gap-3 active:scale-95"
+              className="bg-surface oklab-border px-8 py-3 rounded-lg shadow-sm font-system-micro text-[12px] font-bold uppercase tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all flex items-center gap-3 active:scale-95"
             >
               {status === 'complete' ? 'Reset Sequence' : 'Initialize Sequence'}
               <span className="material-symbols-outlined text-[14px]">bolt</span>
@@ -54,10 +54,10 @@ const MorphingAction = () => {
               initial={{ opacity: 0, width: '0%' }}
               animate={{ opacity: 1, width: '100%' }}
               exit={{ opacity: 0 }}
-              className="w-full max-w-[280px] h-10 bg-white/60 rounded-lg border border-oklab-10 relative overflow-hidden flex items-center px-4"
+              className="w-full max-w-[280px] h-10 bg-surface-container/60 rounded-lg oklab-border relative overflow-hidden flex items-center px-4"
             >
               <motion.div 
-                className="absolute left-0 top-0 bottom-0 bg-green-200/50"
+                className="absolute left-0 top-0 bottom-0 bg-error-warm/10"
                 initial={{ width: '0%' }}
                 animate={{ width: `${progress}%` }}
               />
@@ -90,10 +90,10 @@ const ParameterDial = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">High-fidelity value adjustment slider.</p>
       </div>
 
-      <div className="bg-white/40 border border-oklab-10 rounded-xl p-6 md:p-10 flex flex-col justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative">
+      <div className="bg-surface-container/20 oklab-border rounded-xl p-6 md:p-10 flex flex-col justify-center min-h-[180px] md:min-h-[200px] h-full shadow-sm relative">
         <div className="flex justify-between items-end mb-6">
-          <span className="font-system-micro text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40">Border Radius</span>
-          <div className="bg-white border border-oklab-10 px-3 py-1 rounded shadow-sm">
+          <span className="font-system-micro text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Border Radius</span>
+          <div className="bg-surface oklab-border px-3 py-1 rounded shadow-sm">
             <span className="font-system-micro text-[12px] font-bold text-primary">{value.toFixed(1)}px</span>
           </div>
         </div>
@@ -113,7 +113,7 @@ const ParameterDial = () => {
             step="0.5"
             value={value}
             onChange={(e) => setValue(parseFloat(e.target.value))}
-            className="w-full appearance-none bg-transparent cursor-pointer relative z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-oklab-10 [&::-webkit-slider-thumb]:shadow-md"
+            className="w-full appearance-none bg-transparent cursor-pointer relative z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-surface [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-border-fallback-10 [&::-webkit-slider-thumb]:shadow-md"
           />
         </div>
       </div>
@@ -144,10 +144,10 @@ const AtmosphericAccordion = () => {
 
       <div className="flex flex-col gap-2">
         {items.map((item, i) => (
-          <div key={i} className={`rounded-xl border border-oklab-10 overflow-hidden transition-all duration-500 ${openIndex === i ? 'bg-white shadow-[0_20px_40px_rgba(0,0,0,0.04)] scale-[1.01] z-10' : 'bg-white/40 opacity-70'}`}>
+          <div key={i} className={`rounded-xl oklab-border overflow-hidden transition-all duration-500 ${openIndex === i ? 'bg-surface shadow-[0_20px_40px_rgba(0,0,0,0.1)] scale-[1.01] z-10' : 'bg-surface-container/40 opacity-70'}`}>
             <button 
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-              className="w-full px-6 py-5 flex justify-between items-center hover:bg-black/2 transition-colors"
+              className="w-full px-6 py-5 flex justify-between items-center hover:bg-on-surface/5 transition-colors"
             >
               <span className="font-editorial-standard text-md font-medium text-primary">{item.title}</span>
               <motion.span 
@@ -171,7 +171,7 @@ const AtmosphericAccordion = () => {
                   {item.tags && (
                     <div className="flex gap-2 mt-4">
                       {item.tags.map(tag => (
-                        <span key={tag} className="font-system-micro text-[9px] uppercase tracking-wider px-2 py-1 bg-black/5 rounded-md text-primary/60 border border-oklab-10">{tag}</span>
+                        <span key={tag} className="font-system-micro text-[9px] uppercase tracking-wider px-2 py-1 bg-on-surface/5 rounded-md text-primary/60 oklab-border">{tag}</span>
                       ))}
                     </div>
                   )}
@@ -201,23 +201,23 @@ const DataStreamer = () => {
         <p className="font-system-micro text-[11px] text-on-surface-variant/60 uppercase tracking-wider">Technical metrics feed with structural rigidity.</p>
       </div>
 
-      <div className="w-full bg-white/40 border border-oklab-10 rounded-xl overflow-x-auto shadow-sm no-scrollbar">
+      <div className="w-full bg-surface-container/20 oklab-border rounded-xl overflow-x-auto shadow-sm no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
-            <tr className="bg-black/2 border-b border-oklab-10">
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-primary/40 font-bold">Timestamp</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-primary/40 font-bold">Event ID</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-primary/40 font-bold">Payload</th>
-              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-primary/40 font-bold text-right">Latency</th>
+            <tr className="bg-on-surface/5 border-b oklab-border">
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/40 font-bold">Timestamp</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/40 font-bold">Event ID</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/40 font-bold">Payload</th>
+              <th className="px-6 py-3 font-system-micro text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/40 font-bold text-right">Latency</th>
             </tr>
           </thead>
           <tbody>
             {data.map((row, i) => (
-              <tr key={i} className="border-b border-oklab-10/50 hover:bg-white transition-colors">
+              <tr key={i} className="border-b border-border-fallback-10/50 hover:bg-surface transition-colors">
                 <td className="px-6 py-4 font-mono text-[11px] text-primary/60">{row.timestamp}</td>
                 <td className="px-6 py-4 font-system-micro text-[11px] font-bold text-primary/80">{row.id}</td>
                 <td className="px-6 py-4 font-mono text-[11px] text-primary/50 truncate max-w-[400px]">{row.payload}</td>
-                <td className={`px-6 py-4 font-system-micro text-[11px] font-bold text-right ${row.status === 'error' ? 'text-red-500' : 'text-green-600'}`}>{row.latency}</td>
+                <td className={`px-6 py-4 font-system-micro text-[11px] font-bold text-right ${row.status === 'error' ? 'text-error-warm' : 'text-emerald-500'}`}>{row.latency}</td>
               </tr>
             ))}
           </tbody>
