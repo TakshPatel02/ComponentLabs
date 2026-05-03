@@ -64,8 +64,8 @@ const StateSynthesisCard = () => {
                   {s.icon}
                 </div>
                 <div className="flex flex-col grow text-center sm:text-left">
-                  <span className={`text-[15px] font-bold tracking-tight mb-0.5 ${s.titleColor}`}>{s.title}</span>
-                  <span className={`text-[13px] font-serif ${s.subColor}`}>{s.sub}</span>
+                  <span className={`text-[16px] font-bold tracking-tight mb-0.5 ${s.titleColor}`}>{s.title}</span>
+                  <span className={`text-[14px] font-serif ${s.subColor}`}>{s.sub}</span>
                 </div>
                 {s.counter && (
                   <div className={`font-bold text-base tracking-wide mt-2 sm:mt-0 sm:mr-2 ${s.counter.color}`}>

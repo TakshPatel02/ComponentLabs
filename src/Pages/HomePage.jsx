@@ -296,8 +296,8 @@ const HomePage = () => {
                 </span>
               </Link>
             </button>
-            <p className="text-center font-system-micro text-[10px] text-on-surface-variant uppercase opacity-60">
-              Over 24+ primitives available
+            <p className="text-center font-system-micro text-[12px] text-on-surface-variant uppercase opacity-60">
+              Growing Library
             </p>
           </div>
         </section>

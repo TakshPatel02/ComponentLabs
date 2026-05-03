@@ -92,7 +92,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-on-surface-variant leading-relaxed border-t oklab-border pt-4 mt-2 font-editorial-standard">
+            <div className="px-6 pb-6 text-on-surface-variant text-[16px] leading-relaxed border-t oklab-border pt-4 mt-2 font-editorial-standard">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

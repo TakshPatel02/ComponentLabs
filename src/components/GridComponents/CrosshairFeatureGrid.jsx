@@ -29,7 +29,7 @@ const FeatureCell = ({ title, description, icon, delay, borderRight = false, bor
         {icon}
       </div>
       <h3 className="font-section-heading text-xl md:text-2xl mb-2 font-bold">{title}</h3>
-      <p className="font-editorial-standard text-sm md:text-[15px] opacity-70 leading-relaxed max-w-[280px]">
+      <p className="font-editorial-standard text-[16px] opacity-80 leading-relaxed max-w-[280px]">
         {description}
       </p>
     </motion.div>

@@ -160,7 +160,7 @@ const KanbanBoard = () => {
                         if(!newTaskText.trim()) setIsAdding(false);
                       }}
                       placeholder="Enter task description..."
-                      className="w-full bg-surface oklab-border rounded-lg p-4 font-editorial-standard text-[15px] outline-none focus:border-on-surface-variant/40 shadow-sm text-primary"
+                      className="w-full bg-surface oklab-border rounded-lg p-4 font-editorial-standard text-[16px] outline-none focus:border-on-surface-variant/40 shadow-sm text-primary"
                     />
                   </form>
                 )}
@@ -197,7 +197,7 @@ const KanbanBoard = () => {
                             </span>
                           )}
                         </div>
-                        <p className={`font-editorial-standard text-[15px] leading-relaxed ${
+                        <p className={`font-editorial-standard text-[16px] leading-relaxed ${
                           task.column === 'complete' ? 'text-on-surface-variant/40 line-through decoration-on-surface-variant/20' : 'text-primary/90'
                         }`}>
                           {task.title}

@@ -34,7 +34,7 @@ const PricingCard = () => (
     <h2 className="text-[40px] md:text-[52px] text-primary font-medium tracking-tight text-center mb-4 transition-colors">
       Engineered for <span className="italic font-serif text-error-warm">Craft.</span>
     </h2>
-    <p className="text-on-surface-variant/60 text-center text-[15px] md:text-[17px] leading-relaxed max-w-2xl mb-12 transition-colors">
+    <p className="text-on-surface-variant/60 text-center text-[16px] md:text-[18px] leading-relaxed max-w-2xl mb-12 transition-colors">
       Transparent pricing for developers who prioritize <span className="underline underline-offset-2">micro-alignment, warm aesthetics,</span>
       {" "}and rigorous architectural integrity.
     </p>
@@ -66,13 +66,13 @@ const PricingCard = () => (
             <h3 className="text-[18px] font-medium text-primary/80 mb-3">{plan.name}</h3>
             <div className="flex items-baseline gap-1 mb-6">
               <span className="text-[42px] font-medium text-primary tracking-tight leading-none">{plan.price}</span>
-              {plan.period && <span className="text-[15px] text-on-surface-variant/40">{plan.period}</span>}
+              {plan.period && <span className="text-[16px] text-on-surface-variant/40">{plan.period}</span>}
             </div>
 
             {/* Features */}
             <div className="flex flex-col gap-3 mb-8">
               {plan.features.map((f, j) => (
-                <div key={j} className={`flex items-center gap-2.5 text-[14px] ${f.active ? 'text-primary/70' : 'text-on-surface-variant/40'}`}>
+                <div key={j} className={`flex items-center gap-2.5 text-[15px] ${f.active ? 'text-primary/70' : 'text-on-surface-variant/40'}`}>
                   {f.active 
                     ? <CircleCheck size={16} className="text-error-warm/70 shrink-0" /> 
                     : <Lock size={14} className="text-on-surface-variant/20 shrink-0" />}
@@ -86,7 +86,7 @@ const PricingCard = () => (
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className={`w-full py-3 rounded-lg text-[14px] font-medium transition-colors cursor-pointer ${
+            className={`w-full py-3 rounded-lg text-[15px] font-medium transition-colors cursor-pointer ${
               plan.popular
                 ? 'bg-primary text-on-primary hover:bg-error-warm'
                 : 'bg-transparent oklab-border text-primary/60 hover:bg-on-surface/5'

@@ -36,13 +36,13 @@ export default function MinimalAuth() {
               <CheckCircle className="h-10 w-10" strokeWidth={2} />
             </div>
             <h3 className="mb-2 text-2xl font-medium text-primary">Access Granted</h3>
-            <p className="text-sm text-on-surface-variant/60">Secure session established for {email}</p>
+            <p className="text-[15px] text-on-surface-variant/60">Secure session established for {email}</p>
           </div>
         ) : (
           /* Form State */
           <div className={`transition-all duration-500 ${status === 'loading' ? 'opacity-50 blur-[2px]' : 'opacity-100'}`}>
             <div className="mb-8">
-              <span className="mb-4 block text-[11px] font-bold tracking-[0.15em] text-on-surface-variant/40 uppercase">
+              <span className="mb-4 block text-[13px] font-bold tracking-[0.15em] text-on-surface-variant/40 uppercase">
                 Entry Point
               </span>
               <h2 className="text-[28px] font-normal tracking-tight text-primary">
@@ -53,7 +53,7 @@ export default function MinimalAuth() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               {/* Email Field */}
               <div>
-                <label className="mb-2 block text-[11px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
+                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
                   Email Address
                 </label>
                 <div className="relative">
@@ -71,7 +71,7 @@ export default function MinimalAuth() {
 
               {/* Password Field */}
               <div>
-                <label className="mb-2 block text-[11px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
+                <label className="mb-2 block text-[13px] font-semibold tracking-wider text-on-surface-variant/60 uppercase">
                   Password
                 </label>
                 <div className="relative">
@@ -91,7 +91,7 @@ export default function MinimalAuth() {
               <button
                 type="submit"
                 disabled={status === 'loading' || !email || !password}
-                className="mt-2 flex w-full items-center justify-center bg-primary text-on-primary py-4 text-[15px] font-semibold transition-all hover:bg-error-warm active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-2 flex w-full items-center justify-center bg-primary text-on-primary py-4 text-[16px] font-semibold transition-all hover:bg-error-warm active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === 'loading' ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
