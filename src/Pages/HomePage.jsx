@@ -28,7 +28,7 @@ const HomePage = () => {
           </h1>
 
           {/* Desktop Hero Text */}
-          <p className="hidden md:block font-editorial-body text-editorial-body text-on-surface-variant max-w-2xl mx-auto italic">
+          <p className="hidden md:block font-editorial-body text-xl text-on-surface-variant max-w-4xl mx-auto italic">
             A premium collection of high-density UI primitives, engineered with
             the precision of a code editor and the soul of a classic
             publication.
