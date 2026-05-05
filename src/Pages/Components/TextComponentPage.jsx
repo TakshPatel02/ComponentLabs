@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import EncryptedText from "../../components/TextComponents/EncryptedText";
 import VelocityText from "../../components/TextComponents/VelocityText";
 import { CreativeHighlightText } from "../../components/TextComponents/CreativeHighlightText";
+import StripeWriter from "../../components/TextComponents/StripeWriter";
 
 const TextComponentPage = () => {
   const [replayKey, setReplayKey] = useState(0);
   const [highlightReplayKey, setHighlightReplayKey] = useState(0);
+  const [stripeReplayKey, setStripeReplayKey] = useState(0);
   return (
     <>
       {/* Encrypted Text Component Section */}
@@ -48,6 +50,49 @@ const TextComponentPage = () => {
               className="text-2xl md:text-5xl font-mono-code font-bold text-primary tracking-tighter"
               interval={40}
               duration={2000}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Stripe Text Writer Component Section */}
+      <div className="w-full flex flex-col group mt-6">
+        {/* Component Header and Controls */}
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
+              Editorial
+            </span>
+            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
+              Stripe Text Writer
+            </h3>
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+              A premium typewriter effect with smooth character-level entrances and a dynamic cursor.
+            </p>
+          </div>
+
+          <div className="shrink-0 flex items-center">
+            <button
+              onClick={() => setStripeReplayKey((v) => v + 1)}
+              className="flex items-center justify-center gap-2 bg-primary text-cursor-cream hover:bg-error-warm px-5 py-2.5 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98] shadow-sm hover:shadow-md"
+            >
+              <span className="material-symbols-outlined text-[18px]">
+                replay
+              </span>
+              Rewatch Animation
+            </button>
+          </div>
+        </div>
+
+        <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
+
+          <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
+            <StripeWriter
+              key={stripeReplayKey}
+              text="Building the internet's infrastructure."
+              className="text-2xl md:text-5xl font-section-heading font-bold text-primary tracking-tight text-center px-4"
+              speed={0.04}
             />
           </div>
         </div>
