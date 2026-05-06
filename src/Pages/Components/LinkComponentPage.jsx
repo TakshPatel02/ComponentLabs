@@ -24,11 +24,49 @@ const LinkComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
-          <div className="w-full max-w-5xl">
-            <ClipPathLinks />
-          </div>
-        </div>
+        <DocumentationPanel
+          componentName="ClipPathLinks"
+          importPath="../src/components/Linkcomponent/ClipPathLinks"
+          defaultUsage="<ClipPathLinks />"
+          props={[
+            {
+              name: "groups",
+              type: "Array",
+              description:
+                "Array of rows where each row is an array of link items shaped like { Icon, href, label }.",
+              default: "built-in icon groups",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional classes appended to the outer wrapper.",
+              default: '""',
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom icon groups",
+              code: `import { Globe, Mail, Github } from "lucide-react";
+
+const groups = [
+  [
+    { Icon: Globe, href: "https://example.com", label: "Website" },
+    { Icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+  ],
+  [{ Icon: Github, href: "https://github.com/example", label: "GitHub" }],
+];
+
+<ClipPathLinks groups={groups} />;`,
+            },
+          ]}
+          notes={[
+            "The clip-path hover animation stays active for every tile.",
+            "Grid columns are derived from each row in groups.",
+            "Every item should include a stable label and a valid Icon component.",
+          ]}
+        >
+          <ClipPathLinks />
+        </DocumentationPanel>
       </div>
 
       {/* Takeover Links Component Section */}
@@ -48,11 +86,45 @@ const LinkComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
-          <div className="w-full max-w-5xl">
-            <TakeoverLinks />
-          </div>
-        </div>
+        <DocumentationPanel
+          componentName="TakeoverLinks"
+          importPath="../src/components/Linkcomponent/TakeoverLinks"
+          defaultUsage="<TakeoverLinks />"
+          props={[
+            {
+              name: "links",
+              type: "Array",
+              description:
+                "Array of link objects shaped like { label, href, color }.",
+              default: "built-in ART / DESIGN / PHOTOS / CONTACT set",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional classes appended to the outer section.",
+              default: '""',
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom takeover links",
+              code: `const links = [
+  { label: "WORK", href: "/work", color: "#2f4858" },
+  { label: "ABOUT", href: "/about", color: "#8f5e3b" },
+  { label: "CONTACT", href: "/contact", color: "#5f6f52" },
+];
+
+<TakeoverLinks links={links} />;`,
+            },
+          ]}
+          notes={[
+            "The first link color becomes the initial background color.",
+            "Hovering a row triggers the split-text and takeover animation.",
+            "Keep labels short and uppercase for the strongest effect.",
+          ]}
+        >
+          <TakeoverLinks />
+        </DocumentationPanel>
       </div>
 
       {/* Neural Hover Links Component Section */}
