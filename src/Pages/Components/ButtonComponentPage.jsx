@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import DocumentationPanel from "../../components/DocumentationPanel";
 import FillButton from "../../components/ButtonComponents/FillButton";
 import UploadButton from "../../components/ButtonComponents/UploadButton";
 import MagnetButton from "../../components/ButtonComponents/MagnetButton";
@@ -7,7 +8,6 @@ import GithubStarsButton from "../../components/ButtonComponents/GithubStarsButt
 import NeumorphismButton from "../../components/ButtonComponents/NeumorphismButton";
 
 const ButtonComponentPage = () => {
-
   const [githubReplayKey, setGithubReplayKey] = useState(0);
   return (
     <>
@@ -76,17 +76,49 @@ const ButtonComponentPage = () => {
               Magnet Button
             </h3>
             <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              A magnetic hover button with independent shadow distancing and
-              a sequential character flip transition.
+              A magnetic hover button with independent shadow distancing and a
+              sequential character flip transition.
             </p>
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="MagnetButton"
+          importPath="../src/components/ButtonComponents/MagnetButton"
+          defaultUsage="<MagnetButton />"
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Label shown inside the button.",
+              default: '"Hover Me"',
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "Optional click handler.",
+              default: "undefined",
+            },
+          ]}
+          examples={[
+            {
+              title: "With custom text and click handler",
+              code: `<MagnetButton 
+  text="Try this" 
+  onClick={() => alert("clicked")} 
+/>`,
+            },
+          ]}
+          notes={[
+            "Creates a magnetic cursor-follow effect by tracking mouse position inside a wrapper.",
+            "Keep the component inside a reasonably sized container for best effect.",
+            "Works best with hover interactions on desktop devices.",
+          ]}
+        >
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <MagnetButton text="Hover Me" />
           </div>
-        </div>
+        </DocumentationPanel>
       </div>
 
       {/* Encrypt Button Component Section */}
@@ -106,11 +138,42 @@ const ButtonComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="EncryptButton"
+          importPath="../src/components/ButtonComponents/EncryptButton"
+          defaultUsage="<EncryptButton />"
+          props={[
+            {
+              name: "targetText",
+              type: "string",
+              description:
+                "Text shown on the button and used for scramble animation.",
+              default: '"Encrypt data"',
+            },
+            {
+              name: "className",
+              type: "string",
+              description:
+                "Additional classes appended to the button's class list.",
+              default: '""',
+            },
+          ]}
+          examples={[
+            {
+              title: "With custom text",
+              code: `<EncryptButton targetText="Secure Now" className="my-4" />`,
+            },
+          ]}
+          notes={[
+            "Hovering the button triggers a scramble/decrypt animation.",
+            "Uses useRef and setInterval - does not instantly stop scrambling on mouse leave for natural reveal effect.",
+            "Best viewed on desktop where hover interactions are primary.",
+          ]}
+        >
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <EncryptButton targetText="Decrypt Sequence" />
           </div>
-        </div>
+        </DocumentationPanel>
       </div>
 
       {/* GitHub Stars Button Component Section */}
@@ -161,22 +224,44 @@ const ButtonComponentPage = () => {
               Neumorphic AI Button
             </h3>
             <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              A soft-UI depth illusion that indents strictly on hover,
-              enhanced with an internal AI particle-sweep and repeating
-              sonar pulse effect.
+              A soft-UI depth illusion that indents strictly on hover, enhanced
+              with an internal AI particle-sweep and repeating sonar pulse
+              effect.
             </p>
           </div>
         </div>
 
-        {/* Note: Standard neumorphism requires the background to strictly match the button base color */}
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="NeumorphismButton"
+          importPath="../src/components/ButtonComponents/NeumorphismButton"
+          defaultUsage="<NeumorphismButton />"
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Label shown inside the button.",
+              default: '"Initialize AI"',
+            },
+          ]}
+          examples={[
+            {
+              title: "With custom text",
+              code: `<NeumorphismButton text="Start" />`,
+            },
+          ]}
+          notes={[
+            "Designed to rely on a light surface background for neumorphic look.",
+            "If placing on a different background, adjust the bg- Tailwind classes inside the component.",
+            "Best results when wrapped in a container with matching background color.",
+          ]}
+        >
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <NeumorphismButton />
           </div>
-        </div>
+        </DocumentationPanel>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ButtonComponentPage
+export default ButtonComponentPage;

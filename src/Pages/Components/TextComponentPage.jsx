@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import DocumentationPanel from "../../components/DocumentationPanel";
 import EncryptedText from "../../components/TextComponents/EncryptedText";
 import VelocityText from "../../components/TextComponents/VelocityText";
 import { CreativeHighlightText } from "../../components/TextComponents/CreativeHighlightText";
@@ -67,7 +68,8 @@ const TextComponentPage = () => {
               Stripe Text Writer
             </h3>
             <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              A premium typewriter effect with smooth character-level entrances and a dynamic cursor.
+              A premium typewriter effect with smooth character-level entrances
+              and a dynamic cursor.
             </p>
           </div>
 
@@ -84,18 +86,72 @@ const TextComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
-          <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
-
-          <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
-            <StripeWriter
-              key={stripeReplayKey}
-              text="Building the internet's infrastructure."
-              className="text-2xl md:text-5xl font-section-heading font-bold text-primary tracking-tight text-center px-4"
-              speed={0.04}
-            />
-          </div>
-        </div>
+        <DocumentationPanel
+          componentName="StripeWriter"
+          importPath="../src/components/TextComponents/StripeWriter"
+          defaultUsage="<StripeWriter />"
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Text to be animated with typewriter effect.",
+              default: "a sample sentence",
+            },
+            {
+              name: "delay",
+              type: "number",
+              description: "Initial delay before animation starts in seconds.",
+              default: "0",
+            },
+            {
+              name: "speed",
+              type: "number",
+              description:
+                "Stagger speed between characters (smaller = faster).",
+              default: "0.03",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Tailwind classes for the wrapper element.",
+              default: '""',
+            },
+            {
+              name: "cursorClassName",
+              type: "string",
+              description: "Tailwind classes for the animated cursor block.",
+              default: '""',
+            },
+            {
+              name: "triggerOnce",
+              type: "boolean",
+              description: "Whether to animate only once when in view.",
+              default: "true",
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom text with speed control",
+              code: `<StripeWriter 
+  text="Hello world" 
+  speed={0.02} 
+  delay={0.2} 
+/>`,
+            },
+          ]}
+          notes={[
+            "Animates characters individually with Motion variants.",
+            "Uses framer-motion for smooth 60fps animations.",
+            "Works with scroll-triggered animations via triggerOnce prop.",
+          ]}
+        >
+          <StripeWriter
+            key={stripeReplayKey}
+            text="Building the internet's infrastructure."
+            className="text-2xl md:text-5xl font-section-heading font-bold text-primary tracking-tight text-center px-4"
+            speed={0.04}
+          />
+        </DocumentationPanel>
       </div>
 
       {/* Velocity Text Component Section */}
@@ -110,8 +166,8 @@ const TextComponentPage = () => {
               Velocity Text
             </h3>
             <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              Scroll-linked kinetic typography that transforms scroll
-              velocity into dynamic skew and translation.
+              Scroll-linked kinetic typography that transforms scroll velocity
+              into dynamic skew and translation.
             </p>
           </div>
 
@@ -145,8 +201,8 @@ const TextComponentPage = () => {
               Creative Highlight Text
             </h3>
             <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              A neon-esque AI-inspired text highlight with floating
-              particles and path drawing animation.
+              A neon-esque AI-inspired text highlight with floating particles
+              and path drawing animation.
             </p>
           </div>
 
@@ -163,12 +219,56 @@ const TextComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-75 md:h-96 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="CreativeHighlightText"
+          importPath="../src/components/TextComponents/CreativeHighlightText"
+          defaultUsage={`<CreativeHighlightText
+  text="Main heading"
+  decorText="accent"
+  para="Supporting paragraph here."
+/>`}
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Main headline text.",
+              default: "undefined",
+            },
+            {
+              name: "decorText",
+              type: "string",
+              description: "Highlighted/decoration word for emphasis.",
+              default: "undefined",
+            },
+            {
+              name: "para",
+              type: "string",
+              description: "Supporting paragraph text.",
+              default: "undefined",
+            },
+          ]}
+          examples={[
+            {
+              title: "Basic usage",
+              code: `<CreativeHighlightText
+  text="Welcome to our platform"
+  decorText="innovate"
+  para="Experience next-generation web components."
+/>`,
+            },
+          ]}
+          notes={[
+            "Includes inline SVG accents and animated sparkles.",
+            "You can safely change text and decorText strings.",
+            "Styles follow Tailwind classes defined in the component.",
+            "Perfect for hero sections and marketing pages.",
+          ]}
+        >
           <CreativeHighlightText key={highlightReplayKey} />
-        </div>
+        </DocumentationPanel>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TextComponentPage
+export default TextComponentPage;
