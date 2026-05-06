@@ -39,8 +39,21 @@ const HomePage = () => {
             modern web architect.
           </p>
 
+          <Link
+            to="/components"
+            className="md:hidden inline-block mt-8 px-6 py-3 bg-primary text-surface-300 rounded-lg font-button-label text-xs uppercase tracking-widest hover:bg-error-warm transition-colors active:scale-95"
+          >
+            Browse Components
+          </Link>
+
           <div className="hidden md:flex mt-12 justify-center gap-4">
             <div className="w-1 h-12 bg-border-oklab-10"></div>
+            <Link
+              to="/components"
+              className="px-8 py-3 bg-primary text-surface-300 rounded-lg font-button-label text-sm uppercase tracking-widest hover:bg-error-warm transition-colors active:scale-95"
+            >
+              Browse Components
+            </Link>
           </div>
         </section>
 
@@ -288,14 +301,14 @@ const HomePage = () => {
             </p>
           </div>
           <div className="w-full md:w-1/3 px-2 flex flex-col gap-4">
-            <button className="w-full bg-surface-300 text-primary py-4 md:py-5 rounded-lg font-button-label text-sm md:text-button-label uppercase tracking-widest hover:text-error-warm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 border border-oklab-10 shadow-sm hover:shadow-md">
-              <Link to="/components" className="flex items-center gap-2">
+            <Link to="/components" className="flex items-center gap-2">
+              <button className="w-full bg-surface-300 text-primary py-4 md:py-5 rounded-lg font-button-label text-sm md:text-button-label uppercase tracking-widest hover:text-error-warm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 border border-oklab-10 shadow-sm hover:shadow-md">
                 Browse Library{" "}
                 <span className="material-symbols-outlined text-[18px]">
                   arrow_forward
                 </span>
-              </Link>
-            </button>
+              </button>
+            </Link>
             <p className="text-center font-system-micro text-[12px] text-on-surface-variant uppercase opacity-60">
               Growing Library
             </p>

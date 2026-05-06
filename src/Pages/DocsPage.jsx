@@ -1,5 +1,62 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Check, Copy } from "lucide-react";
+import { Highlight, themes } from "prism-react-renderer";
+import { useTheme } from "../context/ThemeContext";
+
+const CodeBlock = ({ code, language = "bash" }) => {
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef(null);
+  const { theme } = useTheme();
+  const isDarkTheme = theme === "dark";
+  const codeTheme = isDarkTheme ? themes.vsDark : themes.vsLight;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="relative group">
+      <Highlight theme={codeTheme} code={code} language={language}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre
+            className={`${className} rounded-xl border oklab-border overflow-x-auto bg-surface-container-highest px-4 py-4 text-sm md:text-base font-mono shadow-[0_10px_40px_-24px_rgba(17,16,10,0.35)]`}
+            style={{
+              ...style,
+              backgroundColor: "var(--surface-container-highest)",
+              color: "var(--on-surface)",
+              fontFamily:
+                "var(--font-mono-code), ui-monospace, SFMono-Regular, Menlo, monospace",
+            }}
+          >
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+
+      <button
+        onClick={handleCopy}
+        className="absolute top-4 right-4 p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors opacity-0 group-hover:opacity-100"
+        title="Copy to clipboard"
+      >
+        {copied ? (
+          <Check size={16} className="text-success-muted" />
+        ) : (
+          <Copy size={16} className="text-primary/60" />
+        )}
+      </button>
+    </div>
+  );
+};
 
 const DocsPage = () => {
   return (
@@ -19,17 +76,93 @@ const DocsPage = () => {
             Introduction
           </h2>
           <p className="leading-relaxed text-primary/80">
-            ComponentLab is a personal showcase of high-density UI primitives
-            built at the intersection of design intuition and AI-assisted
-            development. This isn't a component library you install — it's a
-            living proof of work.
+            ComponentLab is a curated collection of production-ready React UI
+            primitives built with Motion, Tailwind CSS, and AI-assisted
+            development. Every component is interactive, accessible, and ready
+            to drop into your project.
           </p>
           <p className="leading-relaxed text-primary/80">
-            Every component here started as an idea, was shaped through
-            structured AI collaboration, and was refined until the motion felt
-            inevitable and the code felt clean. The goal isn't quantity. It's
-            craft.
+            ComponentLab is available both as a live showcase and as an npm
+            package — install it directly into your React project or browse the
+            components page to copy code inline.
           </p>
+        </section>
+
+        {/* Section: Installation */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
+            Installation
+          </h2>
+          <div className="space-y-4">
+            <CodeBlock code="npm install component-labs" language="bash" />
+
+            <div className="space-y-3">
+              <h3 className="text-lg font-bold">
+                Then add to your Tailwind config:
+              </h3>
+
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-primary/70">
+                  tailwind.config.js (v3)
+                </p>
+                <CodeBlock
+                  code={`content: [
+  "./src/**/*.{js,jsx,ts,tsx}",
+  "./node_modules/component-labs/dist/**/*.{js,mjs}"
+]`}
+                  language="javascript"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-primary/70">
+                  tailwind.config.css (v4)
+                </p>
+                <CodeBlock
+                  code={`@import "tailwindcss";
+@source "../node_modules/component-labs/dist";`}
+                  language="css"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Peer Dependencies */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
+            Peer Dependencies
+          </h2>
+          <p className="leading-relaxed text-primary/80">
+            Make sure these are installed in your project:
+          </p>
+          <ul className="list-disc leading-relaxed pl-5 space-y-1 text-primary/80">
+            <li>
+              <code className="bg-black/5 px-1.5 py-0.5 rounded text-md font-mono">
+                react &gt;= 18
+              </code>
+            </li>
+            <li>
+              <code className="bg-black/5 px-1.5 py-0.5 rounded text-md font-mono">
+                react-dom &gt;= 18
+              </code>
+            </li>
+            <li>
+              <code className="bg-black/5 px-1.5 py-0.5 rounded text-md font-mono">
+                motion &gt;= 12
+              </code>
+            </li>
+            <li>
+              <code className="bg-black/5 px-1.5 py-0.5 rounded text-md font-mono">
+                tailwindcss &gt;= 3
+              </code>
+            </li>
+            <li>
+              <code className="bg-black/5 px-1.5 py-0.5 rounded text-md font-mono">
+                lucide-react &gt;= 0.300.0
+              </code>
+            </li>
+          </ul>
         </section>
 
         {/* Section: Stack */}
@@ -42,45 +175,20 @@ const DocsPage = () => {
             <div className="space-y-3">
               <h3 className="text-lg font-bold">Core</h3>
               <ul className="list-disc leading-relaxed pl-5 space-y-1 text-primary/80">
-                <li>React 19</li>
-                <li>Framer Motion (Motion for React)</li>
+                <li>React 18</li>
+                <li>Framer Motion / Motion for React</li>
                 <li>Tailwind CSS v4</li>
                 <li>Vite</li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-lg font-bold">Design</h3>
-              <p className="text-primary/80">
-                No Figma. Components are designed in the browser, in motion.
-              </p>
+              <h3 className="text-lg font-bold">Available as</h3>
+              <ul className="list-disc leading-relaxed pl-5 space-y-1 text-primary/80">
+                <li>Live showcase — component-labs.vercel.app</li>
+                <li>npm package — npmjs.com/package/component-labs</li>
+              </ul>
             </div>
-          </div>
-
-          <div className="space-y-3 mt-6">
-            <h3 className="text-lg font-bold">AI Tools</h3>
-            <ul className="space-y-2 text-primary/80">
-              <li>
-                <strong className="text-primary font-bold">Claude</strong> —
-                architecture, code review, production cleanup, logic flow
-              </li>
-              <li>
-                <strong className="text-primary font-bold">
-                  Gemini 3.1 Pro
-                </strong>{" "}
-                — creative ideation, design direction, alternative approaches
-              </li>
-              <li>
-                <strong className="text-primary font-bold">
-                  Stitch by Google
-                </strong>{" "}
-                — UI mockup generation, visual starting points
-              </li>
-              <li>
-                <strong className="text-primary font-bold">v0 by Vercel</strong>{" "}
-                — rapid prototyping, layout scaffolding{" "}
-              </li>
-            </ul>
           </div>
         </section>
 
@@ -132,331 +240,6 @@ const DocsPage = () => {
           </div>
         </section>
 
-        {/* Section: How I Build a Component */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
-            How I Build a Component
-          </h2>
-          <div className="space-y-6 text-primary/80">
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 1 — Find the idea
-              </strong>
-              <p className="leading-relaxed">
-                It usually starts with something I see that feels boring. A form
-                that could ghost. A link that could flip. A timeline that could
-                think out loud. The question is always:{" "}
-                <em>what would make this unforgettable?</em>
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 2 — Define the interaction in plain English
-              </strong>
-              <p className="leading-relaxed">
-                Before touching AI, I write exactly what should happen. What
-                triggers the animation. What the states are. What the edge cases
-                are. This becomes the prompt.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 3 — Scaffold with AI
-              </strong>
-              <p className="leading-relaxed">
-                I use Claude or Gemini to generate the initial component. I'm
-                specific about the stack, the motion library, the props
-                interface, and the variants I need. Vague prompts produce vague
-                components.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 4 — Break it intentionally
-              </strong>
-              <p className="leading-relaxed">
-                I test the error state. The empty state. Fast interactions. Slow
-                networks. Mobile. Whatever the AI didn't think about — I find it
-                here.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 5 — Clean up
-              </strong>
-              <p className="leading-relaxed">
-                This is where AI helps again. Code review, accessibility audit,
-                removing dead code, tightening the animation curves. The diff
-                between "it works" and "it's production-ready" lives in this
-                step.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Step 6 — Ship it
-              </strong>
-              <p className="leading-relaxed">
-                If I'm not slightly proud of it, it doesn't go on the site.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section: AI Prompting Approach */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
-            AI Prompting Approach
-          </h2>
-          <p className="leading-relaxed text-primary/80">
-            The difference between a generic output and a good component is
-            almost entirely in the prompt.
-          </p>
-
-          <div className="space-y-4">
-            <div className="bg-surface-container/50 oklab-border rounded-xl p-6 shadow-sm">
-              <span className="text-xs font-bold text-primary/50 uppercase tracking-widest mb-3 block">
-                Weak prompt
-              </span>
-              <p className="italic text-primary/70">
-                "Make a form component with animation"
-              </p>
-            </div>
-
-            <div className="bg-surface oklab-border border-error-warm/20 rounded-xl p-6 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-error-warm" />
-              <span className="text-xs font-bold text-error-warm uppercase tracking-widest mb-3 block">
-                What I actually write
-              </span>
-              <p className="text-primary/90 leading-relaxed font-medium">
-                "Build a GhostForm component in React + Framer Motion.
-                Ghost-style inputs — no visible border, only a 1px bottom line
-                that animates scaleX from 0 to 1 on focus using origin-left.
-                Floating label that transitions up and scales to 0.78 on focus
-                or when the field has value. Placeholder only visible on focus.
-                Validation on submit — email format check, message minimum 10
-                chars. Errors appear with AnimatePresence slide-in. Button has
-                three states: idle, submitting (spinner + 'Sending…'), success
-                (checkmark + 'Sent!'). Auto-reset after 3 seconds. No form tag
-                submission — handle with onSubmit and e.preventDefault."
-              </p>
-            </div>
-          </div>
-
-          <p className="leading-relaxed mt-4 text-primary/80">
-            The specificity is the skill. AI can write any component. Knowing
-            exactly what to ask for is what makes the output worth keeping.
-          </p>
-        </section>
-
-        {/* Section: AI Tool Breakdown */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
-            AI Tool Breakdown
-          </h2>
-          <div className="space-y-6 text-primary/80">
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Claude
-              </strong>
-              <p className="leading-relaxed">
-                Best for production cleanup, catching bugs, accessibility, and
-                when you need the code to actually be correct. Great at
-                understanding full context across a long conversation. This is
-                where components go to become solid.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Gemini 3.1 Pro
-              </strong>
-              <p className="leading-relaxed">
-                Strong at creative direction and exploring multiple approaches
-                fast. Good when you're not sure what you want yet and need
-                options to react to. Better for ideation than precision.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                Stitch by Google
-              </strong>
-              <p className="leading-relaxed">
-                Visual UI mockup generation. Useful for getting a rough visual
-                direction before writing a single line of code. Think of it as
-                AI Figma for starting points.
-              </p>
-            </div>
-            <div>
-              <strong className="block text-primary font-bold mb-1">
-                v0 by Vercel
-              </strong>
-              <p className="leading-relaxed">
-                Rapid layout scaffolding with a Tailwind + shadcn bias. Fast for
-                getting a working skeleton. Needs cleanup but saves time on
-                boilerplate. <em>(Being explored)</em>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section: Component Anatomy */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
-            Component Anatomy
-          </h2>
-          <p className="text-primary/80">
-            Using{" "}
-            <strong className="text-primary font-bold">Ghost Forms</strong> as
-            the reference.
-          </p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse bg-surface oklab-border rounded-xl block sm:table shadow-sm text-sm overflow-hidden">
-              <thead className="bg-on-surface/5">
-                <tr className="text-primary/70 font-bold border-b oklab-border">
-                  <th className="py-3 px-4">Prop</th>
-                  <th className="py-3 px-4">Type</th>
-                  <th className="py-3 px-4">Default</th>
-                  <th className="py-3 px-4">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y oklab-border text-primary/80">
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-black/3">
-                    label
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">string</td>
-                  <td className="py-3 px-4 font-mono text-xs opacity-50">—</td>
-                  <td className="py-3 px-4">Floating label text</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    type
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">string</td>
-                  <td className="py-3 px-4 font-mono text-xs">"text"</td>
-                  <td className="py-3 px-4">Input type</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    placeholder
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">string</td>
-                  <td className="py-3 px-4 font-mono text-xs opacity-50">—</td>
-                  <td className="py-3 px-4">Shown only on focus</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    value
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">string</td>
-                  <td className="py-3 px-4 font-mono text-xs opacity-50">—</td>
-                  <td className="py-3 px-4">Controlled value</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    onChange
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">function</td>
-                  <td className="py-3 px-4 font-mono text-xs opacity-50">—</td>
-                  <td className="py-3 px-4">Change handler</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    error
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">string</td>
-                  <td className="py-3 px-4 font-mono text-xs">undefined</td>
-                  <td className="py-3 px-4">Error message</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    required
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">boolean</td>
-                  <td className="py-3 px-4 font-mono text-xs">false</td>
-                  <td className="py-3 px-4">Marks field required</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-mono text-xs bg-on-surface/5">
-                    isTextarea
-                  </td>
-                  <td className="py-3 px-4 font-mono text-xs">boolean</td>
-                  <td className="py-3 px-4 font-mono text-xs">false</td>
-                  <td className="py-3 px-4">Renders textarea variant</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="space-y-3">
-              <h3 className="text-lg font-bold">States</h3>
-              <ul className="list-disc leading-relaxed pl-5 space-y-1 text-primary/80">
-                <li>
-                  <strong className="text-primary font-bold">Default</strong> —
-                  label sits in field position, no underline emphasis
-                </li>
-                <li>
-                  <strong className="text-primary font-bold">Focused</strong> —
-                  label floats up, underline animates in from left
-                </li>
-                <li>
-                  <strong className="text-primary font-bold">Filled</strong> —
-                  label stays floated even without focus
-                </li>
-                <li>
-                  <strong className="text-primary font-bold">Error</strong> —
-                  underline and label turn red, error message slides in
-                </li>
-                <li>
-                  <strong className="text-primary font-bold">Submitting</strong>{" "}
-                  — button slides to spinner state, inputs locked
-                </li>
-                <li>
-                  <strong className="text-primary font-bold">Success</strong> —
-                  button shows checkmark, resets after 3s
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="text-lg font-bold">Accessibility</h3>
-              <ul className="list-disc leading-relaxed pl-5 space-y-1 text-primary/80">
-                <li>
-                  <code className="bg-black/5 px-1.5 py-0.5 rounded text-xs font-mono">
-                    useId()
-                  </code>{" "}
-                  for unique label-input association
-                </li>
-                <li>
-                  <code className="bg-black/5 px-1.5 py-0.5 rounded text-xs font-mono">
-                    aria-invalid
-                  </code>{" "}
-                  on error state
-                </li>
-                <li>
-                  <code className="bg-black/5 px-1.5 py-0.5 rounded text-xs font-mono">
-                    aria-describedby
-                  </code>{" "}
-                  linking input to error msg
-                </li>
-                <li>
-                  <code className="bg-black/5 px-1.5 py-0.5 rounded text-xs font-mono">
-                    role="alert"
-                  </code>{" "}
-                  on error paragraphs
-                </li>
-                <li>
-                  <code className="bg-black/5 px-1.5 py-0.5 rounded text-xs font-mono">
-                    noValidate
-                  </code>{" "}
-                  prevents browser native popups
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
         {/* Section: Roadmap */}
         <section className="space-y-6">
           <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2">
@@ -496,52 +279,30 @@ const DocsPage = () => {
               <ul className="space-y-2 text-primary/80 text-sm">
                 <li>
                   <strong className="text-primary font-bold">
-                    Command Palette
-                  </strong>{" "}
-                  — keyboard-first search interface
+                    Code preview beside every component
+                  </strong>
                 </li>
                 <li>
                   <strong className="text-primary font-bold">
-                    Skeleton Loader
-                  </strong>{" "}
-                  — content-aware loading states
+                    npm package CSS variables fix
+                  </strong>
                 </li>
                 <li>
                   <strong className="text-primary font-bold">
-                    Drag Surface
-                  </strong>{" "}
-                  — reorderable card grid
+                    TypeScript support
+                  </strong>
                 </li>
                 <li>
                   <strong className="text-primary font-bold">
-                    Toast System
-                  </strong>{" "}
-                  — notification stack with physics
+                    Component search
+                  </strong>
+                </li>
+                <li>
+                  <strong className="text-primary font-bold">Figma file</strong>
                 </li>
               </ul>
             </div>
           </div>
-        </section>
-
-        {/* Closing Note */}
-        <section className="pt-8 border-t oklab-border">
-          <p className="leading-relaxed text-primary/80 italic text-lg">
-            That's everything. Clean, honest, and actually interesting to read —
-            which is rare for a docs page.
-          </p>
-          <p className="leading-relaxed text-primary/80 italic text-lg mt-4">
-            The{" "}
-            <strong className="text-primary font-bold not-italic">
-              Prompting Approach
-            </strong>{" "}
-            and{" "}
-            <strong className="text-primary font-bold not-italic">
-              AI Tool Breakdown
-            </strong>{" "}
-            sections are your differentiators. Nobody else is documenting their
-            AI workflow this transparently. That's what makes this a portfolio,
-            not just a demo site.
-          </p>
         </section>
       </div>
     </div>

@@ -23,10 +23,14 @@ const TermsPage = () => {
             What This Site Is
           </h2>
           <p className="leading-relaxed text-primary/80">
-            ComponentLab is a portfolio of UI components built by Taksh Patel to
-            demonstrate skills in React, Framer Motion, and AI-assisted
-            development. It is not a published npm package, a SaaS product, or a
-            commercial component library.
+            ComponentLab is a UI component library and showcase built by Taksh
+            Patel. It demonstrates skills in React, Motion, and AI-assisted
+            development.
+          </p>
+          <p className="leading-relaxed text-primary/80">
+            ComponentLab is available as a live showcase at
+            component-labs.vercel.app and as a published npm package at
+            npmjs.com/package/component-labs.
           </p>
         </section>
 
@@ -36,15 +40,14 @@ const TermsPage = () => {
             Using the Components
           </h2>
           <p className="leading-relaxed text-primary/80">
-            The components showcased here are for demonstration purposes. If you
-            want to use something you see here as inspiration or reference for
-            your own work, go ahead — that's the point. Direct copy-paste into
-            commercial products without understanding what the code does is on
-            you.
+            Components are available to use in personal and commercial projects.
+            The npm package is published under the MIT license — you're free to
+            use, modify, and distribute the components with attribution.
           </p>
           <p className="leading-relaxed text-primary/80">
-            No official license is attached to this project at this time. If
-            that changes, this page will be updated.
+            The live showcase code can be copied inline from the components
+            page. Direct copy-paste without understanding what the code does is
+            on you.
           </p>
         </section>
 
@@ -108,8 +111,8 @@ const TermsPage = () => {
         </section>
 
         {/* Footer / Last Updated */}
-        <footer className="pt-8 border-t oklab-border">
-          <strong className="text-primary font-bold">Last updated: 2026</strong>
+        <footer className="pt-8 text-center text-md text-primary/80">
+          <strong className="text-primary font-bold">Last updated: May 2026</strong>
         </footer>
       </div>
     </div>
