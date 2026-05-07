@@ -41,19 +41,68 @@ const TextComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
-          <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
+        <DocumentationPanel
+          componentName="EncryptedText"
+          importPath="../src/components/TextComponents/EncryptedText"
+          componentViewClassName="w-full"
+          defaultUsage={`<EncryptedText text="Access granted" />`}
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Text to scramble and reveal.",
+              default: "Required",
+            },
+            {
+              name: "interval",
+              type: "number",
+              description: "Update interval in ms for each scramble tick.",
+              default: "50",
+            },
+            {
+              name: "duration",
+              type: "number",
+              description: "Total reveal duration in ms.",
+              default: "3000",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional classes appended to the text wrapper.",
+              default: '""',
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom encrypted reveal",
+              code: `<EncryptedText
+  text="Initializing secure channel..."
+  interval={35}
+  duration={2000}
+  className="text-sm md:text-base text-emerald-400"
+/>`,
+            },
+          ]}
+          notes={[
+            "Uses randomized glyphs from an internal character set and progressively reveals the original text.",
+            "Spaces in the source text are preserved during animation.",
+            "Very long strings with very small interval values may increase render updates.",
+          ]}
+        >
+          <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+            <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
 
-          <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
-            <EncryptedText
-              key={replayKey}
-              text="Welcome to ComponentLab"
-              className="text-2xl md:text-5xl font-mono-code font-bold text-primary tracking-tighter"
-              interval={40}
-              duration={2000}
-            />
+            <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
+              <EncryptedText
+                key={replayKey}
+                text="Welcome to ComponentLab"
+                className="text-2xl md:text-5xl font-mono-code font-bold text-primary tracking-tighter"
+                interval={40}
+                duration={2000}
+              />
+            </div>
           </div>
-        </div>
+        </DocumentationPanel>
       </div>
 
       {/* Stripe Text Writer Component Section */}
@@ -181,13 +230,54 @@ const TextComponentPage = () => {
           </div>
         </div>
 
-        {/* Component Display Area (Scrollable Showcase) */}
-        <div className="w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] overflow-hidden">
-          <VelocityText
-            heightClass="h-96"
-            text="Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent. The slogan 'Press On!' has solved and always will solve the problems of the human race."
-          />
-        </div>
+        <DocumentationPanel
+          componentName="VelocityText"
+          importPath="../src/components/TextComponents/VelocityText"
+          componentViewClassName="w-full"
+          defaultUsage={`<VelocityText text="Scroll to distort and slide this message" />`}
+          props={[
+            {
+              name: "text",
+              type: "string",
+              description: "Content rendered in the horizontal animated line.",
+              default: "built-in persistence quote",
+            },
+            {
+              name: "heightClass",
+              type: "string",
+              description:
+                "Tailwind height utility applied to viewport and sticky area.",
+              default: '"h-[400px]"',
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom text with compact height",
+              code: `<VelocityText
+  text="Design systems become unforgettable when motion has intent."
+  heightClass="h-[320px]"
+/>`,
+            },
+            {
+              title: "Clipped full-width wrapper",
+              code: `<div className="max-w-screen overflow-hidden">
+  <VelocityText heightClass="h-[500px]" />
+</div>`,
+            },
+          ]}
+          notes={[
+            "Scroll progress drives horizontal translation while scroll velocity drives skew, creating a kinetic marquee effect.",
+            "The component uses an internal scroll container (overflow-y-auto) with a large virtual height (h-[800vh]) to produce enough scroll distance.",
+            "Best used in full-width sections with clipped overflow so long text stays visually clean.",
+          ]}
+        >
+          <div className="w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] overflow-hidden">
+            <VelocityText
+              heightClass="h-96"
+              text="Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent. The slogan 'Press On!' has solved and always will solve the problems of the human race."
+            />
+          </div>
+        </DocumentationPanel>
       </div>
 
       {/* Creative Highlight Text Component Section */}

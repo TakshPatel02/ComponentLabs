@@ -21,6 +21,7 @@ export const DocumentationPanel = ({
   props,
   examples,
   notes,
+  componentViewClassName = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-8 transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]",
   children, // component view
 }) => {
   const [activeTab, setActiveTab] = useState("component");
@@ -171,7 +172,7 @@ ${defaultUsage}`;
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-8 transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+            className={componentViewClassName}
           >
             {children}
           </motion.div>
