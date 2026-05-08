@@ -22,12 +22,12 @@ export const CenteredLogoCloud = ({
     >
       <div className="text-center max-w-2xl mb-12">
         {headline && (
-          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-4 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-section-heading text-primary mb-4">
             {headline}
           </h2>
         )}
         {description && (
-          <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
+          <p className="font-editorial-standard text-on-surface-variant text-sm md:text-base leading-relaxed italic">
             {description}
           </p>
         )}

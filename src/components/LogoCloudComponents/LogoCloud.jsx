@@ -37,7 +37,7 @@ export const LogoCloud = ({
       className={`w-full bg-surface-container py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center font-sans overflow-hidden rounded-xl border oklab-border ${className}`}
     >
       {headline && (
-        <h2 className="text-center text-on-surface-variant text-lg sm:text-xl font-medium mb-12">
+        <h2 className="text-center text-primary font-section-heading text-xl sm:text-2xl mb-12">
           {headline}
         </h2>
       )}
