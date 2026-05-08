@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import DocsPage from "./Pages/DocsPage";
 import NavBar from "./components/NavBar";
@@ -18,12 +18,17 @@ import KeyBoardComponentPage from "./Pages/Components/KeyBoardComponentPage";
 import GridComponentPage from "./Pages/Components/GridComponentPage";
 import OtherComponentPage from "./Pages/Components/OtherComponentPage";
 import HeroPageComponentPage from "./Pages/Components/HeroPageComponentPage";
+import LandingPageComponentPage from "./Pages/Components/LandingPageComponentPage";
+import SaaSLandingPage from "./components/LandingPageComponents/SaaSLandingPage";
 
 const App = () => {
+  const location = useLocation();
+  const isPreview = location.pathname.startsWith("/preview");
+
   return (
     <>
       <ScrollToTop />
-      <NavBar />
+      {!isPreview && <NavBar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/docs" element={<DocsPage />} />
@@ -38,10 +43,13 @@ const App = () => {
           <Route path="grids" element={<GridComponentPage />} />
           <Route path="other" element={<OtherComponentPage />} />
           <Route path="hero" element={<HeroPageComponentPage />} />
+          <Route path="landing" element={<LandingPageComponentPage />} />
         </Route>
         <Route path="/terms" element={<TermsPage />} />
+        {/* Preview routes — no NavBar / Footer */}
+        <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
       </Routes>
-      <Footer />
+      {!isPreview && <Footer />}
     </>
   );
 };

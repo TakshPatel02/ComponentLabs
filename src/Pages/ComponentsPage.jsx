@@ -11,6 +11,7 @@ const CATEGORIES = [
   { id: "keyboard", label: "Keyboards", path: "/components/keyboard" },
   { id: "grids", label: "Grids", path: "/components/grids" },
   { id: "hero", label: "Hero Sections", path: "/components/hero" },
+  { id: "landing", label: "Landing Pages", path: "/components/landing" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 
