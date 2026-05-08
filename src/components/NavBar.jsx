@@ -26,7 +26,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b oklab-border shadow-[0_20px_50px_rgba(38,37,30,0.05)] transition-colors duration-300">
+    <nav className="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-xl oklab-border-b transition-colors duration-300">
       {/* Desktop Navbar */}
       <div className="hidden md:flex justify-between items-center w-full px-8 h-16 max-w-container-max mx-auto">
         <div className="text-xl font-bold tracking-tighter text-primary font-['Space_Grotesk']">
