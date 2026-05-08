@@ -12,6 +12,7 @@ const CATEGORIES = [
   { id: "grids", label: "Grids", path: "/components/grids" },
   { id: "hero", label: "Hero Sections", path: "/components/hero" },
   { id: "landing", label: "Landing Pages", path: "/components/landing" },
+  { id: "logocloud", label: "Logo Clouds", path: "/components/logocloud" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 
@@ -41,9 +42,10 @@ const ComponentsPage = () => {
                 key={cat.id}
                 to={cat.path}
                 className={({ isActive }) =>
-                  `relative shrink-0 flex items-center justify-center px-5 py-2 rounded-full transition-colors duration-300 z-10 ${isActive
-                    ? "text-on-primary"
-                    : "text-on-surface-variant hover:bg-black/5 hover:text-primary"
+                  `relative shrink-0 flex items-center justify-center px-5 py-2 rounded-full transition-colors duration-300 z-10 ${
+                    isActive
+                      ? "text-on-primary"
+                      : "text-on-surface-variant hover:bg-black/5 hover:text-primary"
                   }`
                 }
               >
@@ -56,7 +58,7 @@ const ComponentsPage = () => {
                         transition={{
                           type: "spring",
                           stiffness: 400,
-                          damping: 30
+                          damping: 30,
                         }}
                       />
                     )}

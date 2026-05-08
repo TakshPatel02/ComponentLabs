@@ -19,6 +19,7 @@ import GridComponentPage from "./Pages/Components/GridComponentPage";
 import OtherComponentPage from "./Pages/Components/OtherComponentPage";
 import HeroPageComponentPage from "./Pages/Components/HeroPageComponentPage";
 import LandingPageComponentPage from "./Pages/Components/LandingPageComponentPage";
+import LogoCloudComponentPage from "./Pages/Components/LogoCloudComponentPage";
 import SaaSLandingPage from "./components/LandingPageComponents/SaaSLandingPage";
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="cards" element={<CardComponentPage />} />
           <Route path="keyboard" element={<KeyBoardComponentPage />} />
           <Route path="grids" element={<GridComponentPage />} />
+          <Route path="logocloud" element={<LogoCloudComponentPage />} />
           <Route path="other" element={<OtherComponentPage />} />
           <Route path="hero" element={<HeroPageComponentPage />} />
           <Route path="landing" element={<LandingPageComponentPage />} />
