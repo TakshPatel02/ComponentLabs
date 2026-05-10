@@ -20,6 +20,7 @@ import OtherComponentPage from "./Pages/Components/OtherComponentPage";
 import HeroPageComponentPage from "./Pages/Components/HeroPageComponentPage";
 import LandingPageComponentPage from "./Pages/Components/LandingPageComponentPage";
 import LogoCloudComponentPage from "./Pages/Components/LogoCloudComponentPage";
+import FooterComponentPage from "./Pages/Components/FooterComponentPage";
 import SaaSLandingPage from "./components/LandingPageComponents/SaaSLandingPage";
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="other" element={<OtherComponentPage />} />
           <Route path="hero" element={<HeroPageComponentPage />} />
           <Route path="landing" element={<LandingPageComponentPage />} />
+          <Route path="footers" element={<FooterComponentPage />} />
         </Route>
         <Route path="/terms" element={<TermsPage />} />
         {/* Preview routes — no NavBar / Footer */}

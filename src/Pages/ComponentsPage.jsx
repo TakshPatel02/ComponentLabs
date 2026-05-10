@@ -13,6 +13,7 @@ const CATEGORIES = [
   { id: "hero", label: "Hero Sections", path: "/components/hero" },
   { id: "landing", label: "Landing Pages", path: "/components/landing" },
   { id: "logocloud", label: "Logo Clouds", path: "/components/logocloud" },
+  { id: "footers", label: "Footers", path: "/components/footers" },
   { id: "other", label: "Other Primitives", path: "/components/other" },
 ];
 
