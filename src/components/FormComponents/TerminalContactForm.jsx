@@ -72,7 +72,7 @@ export default function TerminalContactForm() {
             <div className="w-3 h-3 rounded-full bg-green-500/90 shadow-[0_0_5px_rgba(34,197,94,0.5)]"></div>
           </div>
           <div className="ml-4 flex-1 text-center font-sans text-xs text-neutral-500 font-medium select-none tracking-wide">
-            contact@hover.dev
+            contact@componentlabs.in
           </div>
           <div className="w-12"></div>
         </div>

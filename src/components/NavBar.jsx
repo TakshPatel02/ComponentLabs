@@ -55,7 +55,7 @@ const NavBar = () => {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <button className="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] hover:bg-error-warm transition-all active:scale-[0.98] flex items-center gap-2">
-            GitHub
+            <a href="https://github.com/TakshPatel02/ComponentLabs" target="_blank" rel="noopener noreferrer">Star on Github</a>
           </button>
         </div>
       </div>
