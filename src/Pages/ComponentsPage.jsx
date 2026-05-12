@@ -12,6 +12,7 @@ const CATEGORIES = [
   { id: "grids", label: "Grids", path: "/components/grids" },
   { id: "hero", label: "Hero Sections", path: "/components/hero" },
   { id: "landing", label: "Landing Pages", path: "/components/landing" },
+  { id: "faq", label: "FAQs", path: "/components/faq" },
   { id: "logocloud", label: "Logo Clouds", path: "/components/logocloud" },
   { id: "footers", label: "Footers", path: "/components/footers" },
   { id: "other", label: "Other Primitives", path: "/components/other" },

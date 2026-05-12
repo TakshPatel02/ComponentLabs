@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import DocumentationPanel from "../../components/DocumentationPanel";
-import { AnimatedFAQ } from "../../components/OtherComponents/AnimatedFAQ";
 import { TerminalTypingCard } from "../../components/OtherComponents/TerminalTypingCard";
 import KanbanBoard from "../../components/OtherComponents/KanbanBoard";
 import { VintageFader } from "../../components/OtherComponents/EditorialSlider";
@@ -54,77 +53,6 @@ const OtherComponentPage = () => {
         <div className="w-full bg-surface-container min-h-75 rounded-xl oklab-border flex flex-col items-center justify-center px-6 md:px-16 overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
           <VintageFader />
         </div>
-      </div>
-
-      {/* Animated FAQ Component Section */}
-      <div className="w-full flex flex-col group mt-6">
-        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="flex-1">
-            <span className="font-system-micro text-system-micro text-secondary tracking-widest uppercase mb-2 block">
-              Other
-            </span>
-            <h3 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary transition-colors">
-              Animated Accordion FAQ
-            </h3>
-            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
-              A smooth accordion-style FAQ component with physics-based layout
-              transitions. Uses an exclusive-open state.
-            </p>
-          </div>
-        </div>
-
-        <DocumentationPanel
-          componentName="AnimatedFAQ"
-          importPath="../src/components/OtherComponents/AnimatedFAQ"
-          defaultUsage="<AnimatedFAQ />"
-          props={[
-            {
-              name: "faqs",
-              type: "Array",
-              description:
-                "List of FAQ objects with { question, answer }. Uses built-in DEFAULT_FAQS if not provided.",
-              default: "DEFAULT_FAQS",
-            },
-            {
-              name: "question",
-              type: "string",
-              description:
-                "If provided with answer, renders a single FAQ item.",
-              default: "undefined",
-            },
-            {
-              name: "answer",
-              type: "string",
-              description: "Answer text paired with question prop.",
-              default: "undefined",
-            },
-          ]}
-          examples={[
-            {
-              title: "Single custom FAQ",
-              code: `<AnimatedFAQ
-  question="How to use this?"
-  answer="Just import and pass faqs or a single question/answer."
-/>`,
-            },
-            {
-              title: "Custom list of FAQs",
-              code: `const myFaqs = [
-  { question: "Q1", answer: "A1" },
-  { question: "Q2", answer: "A2" }
-];
-<AnimatedFAQ faqs={myFaqs} />`,
-            },
-          ]}
-          notes={[
-            "Uses motion and AnimatePresence from framer-motion.",
-            "Only one FAQ can be open at a time (exclusive-open state).",
-            "Keep faqs small for better UX clarity.",
-            "Smooth height and opacity transitions on expand/collapse.",
-          ]}
-        >
-          <AnimatedFAQ />
-        </DocumentationPanel>
       </div>
 
       {/* Terminal Typing Card Component Section */}
