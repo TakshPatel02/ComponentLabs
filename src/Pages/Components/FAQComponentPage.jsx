@@ -6,15 +6,6 @@ import CategorizedFAQ from "../../components/OtherComponents/CategorizedFAQ";
 const FAQComponentPage = () => {
   return (
     <div className="w-full flex flex-col pt-12">
-      {/* Page Header Section */}
-      <div className="w-full flex flex-col items-center justify-center text-center px-4 mb-16">
-        <h1 className="font-display-hero text-5xl md:text-[100px] leading-[0.9] text-primary tracking-tighter mb-8">
-          Interactive <span className="italic">FAQs</span>
-        </h1>
-        <p className="font-editorial-body text-xl text-on-surface-variant max-w-2xl italic leading-relaxed">
-          A collection of highly polished, animated FAQ sections designed for clarity and aesthetic appeal.
-        </p>
-      </div>
 
       {/* 1. Categorized FAQ */}
       <div className="w-full flex flex-col mb-24 group mt-6">

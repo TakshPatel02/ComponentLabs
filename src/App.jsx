@@ -22,6 +22,7 @@ import LandingPageComponentPage from "./Pages/Components/LandingPageComponentPag
 import LogoCloudComponentPage from "./Pages/Components/LogoCloudComponentPage";
 import FooterComponentPage from "./Pages/Components/FooterComponentPage";
 import FAQComponentPage from "./Pages/Components/FAQComponentPage";
+import FeatureComponentPage from "./Pages/Components/FeatureComponentPage";
 import SaaSLandingPage from "./components/LandingPageComponents/SaaSLandingPage";
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="other" element={<OtherComponentPage />} />
           <Route path="hero" element={<HeroPageComponentPage />} />
           <Route path="landing" element={<LandingPageComponentPage />} />
+          <Route path="features" element={<FeatureComponentPage />} />
           <Route path="faq" element={<FAQComponentPage />} />
           <Route path="footers" element={<FooterComponentPage />} />
         </Route>
