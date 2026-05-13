@@ -27,9 +27,94 @@ const OtherComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="KanbanBoard"
+          importPath="../src/components/OtherComponents/KanbanBoard"
+          defaultUsage="<KanbanBoard />"
+          componentViewClassName="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+          props={[
+            {
+              name: "initialTasks",
+              type: "Array",
+              description: "starting task list: [{ id, column, tag, title }]",
+              default: "Default tasks array",
+            },
+            {
+              name: "columns",
+              type: "Array",
+              description: "board columns: [{ id, title, canAdd, isTrash }]",
+              default: "Default columns array",
+            },
+            {
+              name: "onTasksChange",
+              type: "function",
+              description: "called whenever the task list changes.",
+              default: "undefined",
+            },
+            {
+              name: "onTaskMove",
+              type: "function",
+              description: "called when a task is moved.",
+              default: "undefined",
+            },
+            {
+              name: "onTaskAdd",
+              type: "function",
+              description: "called when a new task is created.",
+              default: "undefined",
+            },
+            {
+              name: "onTaskDelete",
+              type: "function",
+              description: "called when a task is dropped into the trash.",
+              default: "undefined",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "additional classes for the board container.",
+              default: '""',
+            },
+            {
+              name: "style",
+              type: "object",
+              description: "inline styles for the outer container.",
+              default: "{}",
+            },
+          ]}
+          examples={[
+            {
+              title: "Custom columns and tasks",
+              code: `import { KanbanBoard } from "component-labs";
+
+const columns = [
+  { id: "todo", title: "TODO", canAdd: true },
+  { id: "doing", title: "DOING" },
+  { id: "done", title: "DONE" },
+  { id: "trash", title: "TRASH", isTrash: true },
+];
+
+const tasks = [
+  { id: "1", column: "todo", tag: "API", title: "Review PR" },
+  { id: "2", column: "doing", tag: "UI", title: "Design Button" },
+];
+
+export default function App() {
+  return (
+    <div className="w-full h-screen p-10 bg-neutral-900">
+      <KanbanBoard columns={columns} initialTasks={tasks} />
+    </div>
+  );
+}`,
+            },
+          ]}
+          notes={[
+            "Manages drag-and-drop internally, so you can use it immediately without extra state wiring.",
+            "Use callback props to sync board state to a backend or parent store."
+          ]}
+        >
           <KanbanBoard />
-        </div>
+        </DocumentationPanel>
       </div>
 
       {/* Editorial Slider Component Section */}

@@ -58,11 +58,103 @@ const ButtonComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-75 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <DocumentationPanel
+          componentName="UploadButton"
+          importPath="../src/components/ButtonComponents/UploadButton"
+          defaultUsage={`<UploadButton
+  onUpload={async (files) => {
+    console.log(files);
+  }}
+/>`}
+          props={[
+            {
+              name: "onUpload",
+              type: "function",
+              description: "async upload handler that receives FileList and returns a promise.",
+              default: "Required",
+            },
+            {
+              name: "accept",
+              type: "string",
+              description: "accepted file types, e.g., 'image/*' or '.pdf'.",
+              default: "undefined",
+            },
+            {
+              name: "multiple",
+              type: "boolean",
+              description: "allows selecting multiple files.",
+              default: "false",
+            },
+            {
+              name: "idleText",
+              type: "string",
+              description: "label shown before upload starts.",
+              default: '"Upload File"',
+            },
+            {
+              name: "uploadingText",
+              type: "string",
+              description: "label shown while upload promise is pending.",
+              default: '"Uploading..."',
+            },
+            {
+              name: "successText",
+              type: "string",
+              description: "label shown after upload resolves.",
+              default: '"Complete"',
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "additional classes for the button wrapper.",
+              default: '""',
+            },
+            {
+              name: "onSuccess",
+              type: "function",
+              description: "callback fired after successful upload.",
+              default: "undefined",
+            },
+            {
+              name: "onError",
+              type: "function",
+              description: "callback fired if upload promise rejects.",
+              default: "undefined",
+            },
+          ]}
+          examples={[
+            {
+              title: "Basic usage with mock upload",
+              code: `import { UploadButton } from "component-labs";
+
+export default function App() {
+  return (
+    <div className="p-10 flex justify-center">
+      <UploadButton
+        onUpload={async (files) => {
+          const formData = new FormData();
+          formData.append("file", files[0]);
+
+          await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+        }}
+      />
+    </div>
+  );
+}`,
+            },
+          ]}
+          notes={[
+            "This component only shows the success state after onUpload resolves.",
+            "The file input is hidden and triggered by the button automatically."
+          ]}
+        >
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <UploadButton />
           </div>
-        </div>
+        </DocumentationPanel>
       </div>
 
       {/* Magnet Button Component Section */}
