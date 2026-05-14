@@ -46,9 +46,6 @@ import { StaggeredEntranceHero } from "../components/HeroComponents/StaggeredEnt
 import DynamicHero from "../components/HeroComponents/DynamicHero";
 import AuroraHero from "../components/HeroComponents/AuroraHero";
 
-// Landing Pages
-import SaaSLandingPage from "../components/LandingPageComponents/SaaSLandingPage";
-
 // Features
 import CodeShowcaseFeature from "../components/FeatureComponents/CodeShowcaseFeature";
 
@@ -724,30 +721,6 @@ export const componentsData = {
       "Radial gradient with motion values",
       "Glowing CTA button with dynamic border",
       "Badge and headline entrance animations",
-    ],
-  },
-
-  // LANDING PAGES
-
-  "sassinvoicing": {
-    title: "SaaS Invoicing",
-    category: "LANDING PAGES",
-    description: "Complete SaaS invoicing landing page with hero, features, testimonials, and footer.",
-    component: SaaSLandingPage,
-    published: false,
-    usage: null,
-    props: [
-      { name: "content", type: "object", default: "Built-in page content", description: "All page content is hardcoded within the component." },
-    ],
-    features: [
-      "Full landing page with 10+ sections",
-      "Sticky navigation bar",
-      "Dashboard data table preview",
-      "AI autocomplete and contextual mentions features",
-      "Pipeline setup steps",
-      "Testimonial cards with company logos",
-      "Task management sticky note UI",
-      "CTA and footer sections",
     ],
   },
 

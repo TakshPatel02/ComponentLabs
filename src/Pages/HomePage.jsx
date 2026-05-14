@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-surface font-ui-body">
-      <main className="max-w-container-max mx-auto sm:px-8">
+      <main className="max-w-[1200px] mx-auto sm:px-8">
         {/* Hero Section */}
         <section className="pt-24 pb-16 md:pt-32 md:pb-24 text-center px-4 md:px-0">
           <span className="md:hidden font-system-micro text-system-micro uppercase tracking-widest text-on-surface-variant mb-6 block mt-4">

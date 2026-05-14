@@ -78,12 +78,6 @@ export const navConfig = [
     ]
   },
   {
-    section: "LANDING PAGES",
-    items: [
-      { label: "SaaS Invoicing", href: "/components/landingpage/sassinvoicing" },
-    ]
-  },
-  {
     section: "FEATURES",
     items: [
       { label: "Code Showcase Segment", href: "/components/features/codeshowcasesegment" },

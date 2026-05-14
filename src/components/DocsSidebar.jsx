@@ -23,16 +23,15 @@ const DocsSidebar = () => {
 
   return (
     <>
-      {/* ── Mobile hamburger toggle ── */}
+      {/* ── Mobile hamburger toggle (FAB on mobile) ── */}
       <button
         onClick={() => setMobileOpen((prev) => !prev)}
         aria-label="Toggle sidebar navigation"
         className={`
-          md:hidden fixed top-[18px] left-4 z-51 w-8 h-8
-          flex items-center justify-center rounded-md
-          border-none cursor-pointer text-primary
-          transition-colors duration-150
-          hover:bg-surface-container
+          md:hidden fixed bottom-6 right-6 z-51 w-14 h-14 shadow-lg
+          flex items-center justify-center rounded-full
+          border-none cursor-pointer bg-primary text-on-primary
+          transition-transform duration-200 hover:scale-105 active:scale-95
         `}
       >
         {mobileOpen ? (
@@ -112,13 +111,12 @@ const DocsSidebar = () => {
                         to={item.href}
                         className={`
                           block py-[5px] pl-7 pr-5
-                          font-['Inter'] text-[13.5px] leading-normal
+                          font-['Inter'] text-[15px] leading-normal
                           no-underline cursor-pointer
                           transition-colors duration-150
-                          ${
-                            isActive
-                              ? "text-[#E8567A] font-medium"
-                              : isDark
+                          ${isActive
+                            ? "text-[#E8567A] font-medium"
+                            : isDark
                               ? "text-[#a8a49c] hover:text-[#e6e2e0]"
                               : "text-on-surface-variant hover:text-on-surface"
                           }

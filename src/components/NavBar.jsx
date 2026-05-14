@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -24,6 +24,7 @@ const GithubIcon = ({ size = 20 }) => (
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-xl oklab-border-b transition-colors duration-300">
