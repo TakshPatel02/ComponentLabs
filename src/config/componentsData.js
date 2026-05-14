@@ -3,7 +3,7 @@
 import EncryptedText from "../components/TextComponents/EncryptedText";
 import StripeWriter from "../components/TextComponents/StripeWriter";
 import VelocityText from "../components/TextComponents/VelocityText";
-import CreativeHighlightText from "../components/TextComponents/CreativeHighlightText";
+import { CreativeHighlightText } from "../components/TextComponents/CreativeHighlightText";
 
 // Buttons
 import FillButton from "../components/ButtonComponents/FillButton";
@@ -23,7 +23,7 @@ import RichComposer from "../components/FormComponents/RichComposer";
 // Links & Navigation
 import ClipPathLinks from "../components/Linkcomponent/ClipPathLinks";
 import TakeoverLinks from "../components/Linkcomponent/TakeoverLinks";
-import NeuralHoverLinks from "../components/Linkcomponent/NeuralHoverLinks";
+import { NeuralHoverLinks } from "../components/Linkcomponent/NeuralHoverLinks";
 
 // Cards & Layouts
 import StateSynthesisCard from "../components/CardComponents/StateSynthesisCard";
@@ -57,10 +57,10 @@ import CategorizedFAQ from "../components/OtherComponents/CategorizedFAQ";
 import { AnimatedFAQ } from "../components/OtherComponents/AnimatedFAQ";
 
 // Logo Clouds
-import LogoCloud from "../components/LogoCloudComponents/LogoCloud";
-import CenteredLogoCloud from "../components/LogoCloudComponents/CenteredLogoCloud";
-import MarqueeLogoCloud from "../components/LogoCloudComponents/MarqueeLogoCloud";
-import CrosshairLogoCloud from "../components/LogoCloudComponents/CrosshairLogoCloud";
+import { LogoCloud } from "../components/LogoCloudComponents/LogoCloud";
+import { CenteredLogoCloud } from "../components/LogoCloudComponents/CenteredLogoCloud";
+import { MarqueeLogoCloud } from "../components/LogoCloudComponents/MarqueeLogoCloud";
+import { CrosshairLogoCloud } from "../components/LogoCloudComponents/CrosshairLogoCloud";
 
 // Footers
 import SaaSFooter from "../components/FooterComponents/SaaSFooter";
@@ -68,8 +68,8 @@ import MinimalFooter from "../components/FooterComponents/MinimalFooter";
 
 // Other Primitives
 import KanbanBoard from "../components/OtherComponents/KanbanBoard";
-import VintageFader from "../components/OtherComponents/EditorialSlider";
-import TerminalTypingCard from "../components/OtherComponents/TerminalTypingCard";
+import { VintageFader } from "../components/OtherComponents/EditorialSlider";
+import { TerminalTypingCard } from "../components/OtherComponents/TerminalTypingCard";
 
 
 // Components Data
