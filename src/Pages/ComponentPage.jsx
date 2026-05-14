@@ -171,7 +171,7 @@ const ComponentPage = () => {
 
   const {
     renderPreview,
-    previewContainerClass = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-6 md:p-8 mt-6 transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]",
+    previewContainerClass = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-6 md:p-8 mt-6 transition-all duration-500 ",
   } = previewData;
 
   const codeSnippet = usage || `// Usage code not yet available for ${title}`;
@@ -219,8 +219,8 @@ const ComponentPage = () => {
       <DocsSidebar />
 
       {/* Main content */}
-      <main className="ml-0 md:ml-[240px] xl:mr-[200px] flex-1 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16 md:py-24">
+      <main className="ml-0 md:ml-[240px] xl:mr-[200px] flex-1 min-w-0 min-h-screen">
+        <div className="max-w-7xl min-w-0 mx-auto px-4 sm:px-8 py-16 md:py-24">
 
           {/* ── Header ── */}
           <div className="mb-10" id="preview">
@@ -241,28 +241,26 @@ const ComponentPage = () => {
             <div className="flex gap-3 oklab-border-b pb-4">
               <button
                 onClick={() => setActiveTab("component")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${
-                  activeTab === "component"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "component"
                     ? "bg-primary text-surface"
                     : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                }`}
+                  }`}
               >
                 <Eye size={18} />
                 Component View
               </button>
               <button
                 onClick={() => setActiveTab("code")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${
-                  activeTab === "code"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "code"
                     ? "bg-primary text-surface"
                     : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                }`}
+                  }`}
               >
                 <Code size={18} />
                 Code
               </button>
-              
-              {activeTab === "component" && (
+
+              {activeTab === "component" && previewData.hasRewatch && (
                 <button
                   onClick={() => setReplayKey((v) => v + 1)}
                   className="ml-auto flex items-center justify-center gap-2 bg-primary text-cursor-cream hover:bg-error-warm px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98] shadow-sm hover:shadow-md"

@@ -89,7 +89,7 @@ const TextComponentPage = () => {
             "Very long strings with very small interval values may increase render updates.",
           ]}
         >
-          <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+          <div className="w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 group-">
             <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
 
             <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
@@ -271,7 +271,7 @@ const TextComponentPage = () => {
             "Best used in full-width sections with clipped overflow so long text stays visually clean.",
           ]}
         >
-          <div className="w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] overflow-hidden">
+          <div className="w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 group- overflow-hidden">
             <VelocityText
               heightClass="h-96"
               text="Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent. The slogan 'Press On!' has solved and always will solve the problems of the human race."

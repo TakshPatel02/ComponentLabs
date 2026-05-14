@@ -21,7 +21,7 @@ export const DocumentationPanel = ({
   props,
   examples,
   notes,
-  componentViewClassName = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-8 transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]",
+  componentViewClassName = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-stretch justify-center overflow-hidden p-8 transition-all duration-500 ",
   children, // component view
 }) => {
   const [activeTab, setActiveTab] = useState("component");
@@ -141,22 +141,20 @@ ${defaultUsage}`;
       <div className="flex gap-3 oklab-border-b pb-4">
         <button
           onClick={() => setActiveTab("component")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${
-            activeTab === "component"
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "component"
               ? "bg-primary text-surface"
               : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-          }`}
+            }`}
         >
           <Eye size={18} />
           Component View
         </button>
         <button
           onClick={() => setActiveTab("code")}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${
-            activeTab === "code"
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "code"
               ? "bg-primary text-surface"
               : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-          }`}
+            }`}
         >
           <Code size={18} />
           Code
@@ -214,11 +212,10 @@ ${defaultUsage}`;
       {/* How to Use Section */}
       <motion.div
         initial={false}
-        className={`border oklab-border rounded-xl overflow-hidden transition-colors duration-300 ${
-          isInstructionsOpen
+        className={`border oklab-border rounded-xl overflow-hidden transition-colors duration-300 ${isInstructionsOpen
             ? "bg-surface-300"
             : "bg-surface hover:bg-surface-container"
-        }`}
+          }`}
       >
         <button
           onClick={() => setIsInstructionsOpen(!isInstructionsOpen)}

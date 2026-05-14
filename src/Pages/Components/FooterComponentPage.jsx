@@ -21,7 +21,7 @@ const FooterComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] pt-12 pb-12">
+        <div className="w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group- pt-12 pb-12">
           <SaaSFooter />
         </div>
       </div>
@@ -42,7 +42,7 @@ const FooterComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] pt-12 pb-12">
+        <div className="w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group- pt-12 pb-12">
           <MinimalFooter />
         </div>
       </div>

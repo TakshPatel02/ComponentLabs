@@ -36,7 +36,7 @@ const ROWS = [
 
 const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
   const isSpace = keyData.isSpace;
-  
+
   return (
     <motion.button
       onMouseDown={() => onMouseDown(keyData.code)}
@@ -45,43 +45,43 @@ const KeyComponent = ({ keyData, isPressed, onMouseDown, onMouseUp }) => {
       className={`
         relative flex justify-center items-center font-serif transition-all duration-75 select-none
         ${isSpace ? 'w-[280px] h-[64px] rounded-[32px]' : 'w-[64px] h-[64px] rounded-full'}
-        ${isPressed 
-          ? 'translate-y-[4px] shadow-[0_1px_2px_rgba(0,0,0,0.8)]' 
+        ${isPressed
+          ? 'translate-y-[4px] shadow-[0_1px_2px_rgba(0,0,0,0.8)]'
           : 'shadow-[0_8px_16px_rgba(0,0,0,0.8),0_4px_6px_rgba(0,0,0,0.6)]'
         }
       `}
       style={{
-          // The chrome base rim
-          background: 'linear-gradient(145deg, #e6e6e6 0%, #7a7a7a 50%, #222222 100%)',
-          padding: '5px', // Rim thickness
-          border: '1px solid #111',
-          borderBottom: isPressed ? '1px solid #111' : '4px solid #111',
+        // The chrome base rim
+        background: 'linear-gradient(145deg, #e6e6e6 0%, #7a7a7a 50%, #222222 100%)',
+        padding: '5px', // Rim thickness
+        border: '1px solid #111',
+        borderBottom: isPressed ? '1px solid #111' : '4px solid #111',
       }}
     >
       {/* The inner ivory keycap */}
-      <div 
+      <div
         className={`
           w-full h-full flex items-center justify-center relative overflow-hidden
           ${isSpace ? 'rounded-[28px]' : 'rounded-full'}
         `}
         style={{
           background: 'radial-gradient(circle at 30% 30%, #fffff8 0%, #e8e3d5 60%, #c4bca3 100%)',
-          boxShadow: isPressed 
-            ? 'inset 0 4px 8px rgba(0,0,0,0.5), inset 0 1px 3px rgba(0,0,0,0.7)' 
+          boxShadow: isPressed
+            ? 'inset 0 4px 8px rgba(0,0,0,0.5), inset 0 1px 3px rgba(0,0,0,0.7)'
             : 'inset 0 -2px 6px rgba(0,0,0,0.4), inset 0 3px 5px rgba(255,255,255,1), inset 0 0 12px rgba(0,0,0,0.15)',
         }}
       >
         {/* Glass Dome Effect */}
         <div className={`absolute inset-0 pointer-events-none ${isSpace ? 'rounded-[28px]' : 'rounded-full'}`} style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.2) 100%)',
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.2) 100%)',
         }} />
-        
+
         {/* Subtle top glare for 3D effect */}
         {!isPressed && (
-           <div className={`absolute top-[2px] left-[10%] right-[10%] h-[35%] bg-linear-to-b from-white/90 to-white/0 pointer-events-none ${isSpace ? 'rounded-[20px]' : 'rounded-[50%]'} opacity-80`} />
+          <div className={`absolute top-[2px] left-[10%] right-[10%] h-[35%] bg-linear-to-b from-white/90 to-white/0 pointer-events-none ${isSpace ? 'rounded-[20px]' : 'rounded-[50%]'} opacity-80`} />
         )}
 
-        <span 
+        <span
           className={`z-10 text-[#1a1a1a] ${isSpace ? 'text-[12px] tracking-[0.3em] font-bold opacity-70 uppercase mt-1' : 'text-[28px] font-serif font-semibold mt-1'}`}
           style={{ textShadow: '0 1px 0 rgba(255,255,255,0.8)' }}
         >
@@ -127,11 +127,11 @@ const TypewriterKeyboard = () => {
       },
       { threshold: 0.5 }
     );
-    
+
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
-    
+
     return () => observer.disconnect();
   }, []);
 
@@ -150,7 +150,7 @@ const TypewriterKeyboard = () => {
       }
     };
     initAudio();
-    
+
     return () => {
       if (audioContextRef.current) {
         audioContextRef.current.close();
@@ -160,25 +160,25 @@ const TypewriterKeyboard = () => {
 
   const playSound = (code) => {
     if (!audioContextRef.current || !audioBuffer) return;
-    
+
     if (audioContextRef.current.state === 'suspended') {
-        audioContextRef.current.resume();
+      audioContextRef.current.resume();
     }
 
     const scancode = SOUND_MAP[code];
     if (!scancode) return; // Only play sounds for our specific mapped keys
 
     const define = KEY_DEFINES[scancode];
-    
+
     if (define) {
       const [startMs, durationMs] = define;
       const source = audioContextRef.current.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(audioContextRef.current.destination);
-      
+
       const startTime = startMs / 1000;
       const durationTime = durationMs / 1000;
-      
+
       source.start(0, startTime, durationTime);
     }
   };
@@ -190,14 +190,14 @@ const TypewriterKeyboard = () => {
       if (['Space'].includes(e.code)) {
         e.preventDefault();
       }
-      
+
       // Only process mapped keys
       if (!SOUND_MAP[e.code]) return;
 
       if (!e.repeat) {
-         playSound(e.code);
+        playSound(e.code);
       }
-      
+
       setPressedKeys(prev => ({ ...prev, [e.code]: true }));
     };
 
@@ -227,26 +227,26 @@ const TypewriterKeyboard = () => {
 
   return (
     <div ref={containerRef} className="w-full flex justify-center items-center py-8 md:py-12 overflow-hidden">
-      <div 
-        style={{ 
-          width: `${840 * scale}px`, 
+      <div
+        style={{
+          width: `${840 * scale}px`,
           height: `${360 * scale}px`,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'start'
         }}
       >
-        <div 
+        <div
           ref={innerRef}
-          style={{ 
-            transform: `scale(${scale})`, 
+          style={{
+            transform: `scale(${scale})`,
             transformOrigin: 'top center',
             transition: 'transform 0.1s ease-out'
           }}
           className="flex justify-center"
         >
           {/* Keyboard Chassis */}
-          <div 
+          <div
             className="px-16 py-12 rounded-[16px] relative overflow-hidden flex flex-col items-center gap-6 w-[800px]"
             style={{
               background: 'radial-gradient(circle at 50% 0%, #3a3a3a 0%, #1a1a1a 100%)',
@@ -254,20 +254,20 @@ const TypewriterKeyboard = () => {
             }}
           >
             {/* Noise Texture */}
-            <div 
-              className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" 
-              style={{ 
-                backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' 
-              }} 
+            <div
+              className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
+              }}
             />
-            
+
             {/* Inner inset shadow for depth */}
-            <div className="absolute inset-0 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] pointer-events-none rounded-[16px]" />
+            <div className="absolute inset-0  pointer-events-none rounded-[16px]" />
 
             <div className="flex flex-col gap-6 relative z-10 items-center">
               {ROWS.map((row, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="flex gap-4"
                   style={{
                     // Offset the middle row slightly to match typewriter layout
@@ -275,10 +275,10 @@ const TypewriterKeyboard = () => {
                   }}
                 >
                   {row.map((keyData) => (
-                    <KeyComponent 
-                      key={keyData.code} 
-                      keyData={keyData} 
-                      isPressed={pressedKeys[keyData.code]} 
+                    <KeyComponent
+                      key={keyData.code}
+                      keyData={keyData}
+                      isPressed={pressedKeys[keyData.code]}
                       onMouseDown={handleMouseDown}
                       onMouseUp={handleMouseUp}
                     />

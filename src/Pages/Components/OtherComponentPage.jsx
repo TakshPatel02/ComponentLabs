@@ -31,7 +31,7 @@ const OtherComponentPage = () => {
           componentName="KanbanBoard"
           importPath="../src/components/OtherComponents/KanbanBoard"
           defaultUsage="<KanbanBoard />"
-          componentViewClassName="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+          componentViewClassName="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 "
           props={[
             {
               name: "initialTasks",
@@ -135,7 +135,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="w-full bg-surface-container min-h-75 rounded-xl oklab-border flex flex-col items-center justify-center px-6 md:px-16 overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <div className="w-full bg-surface-container min-h-75 rounded-xl oklab-border flex flex-col items-center justify-center px-6 md:px-16 overflow-hidden relative transition-all duration-500 group-">
           <VintageFader />
         </div>
       </div>

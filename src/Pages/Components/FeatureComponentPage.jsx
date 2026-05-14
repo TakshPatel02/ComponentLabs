@@ -5,7 +5,7 @@ import CodeShowcaseFeature from "../../components/FeatureComponents/CodeShowcase
 const FeatureComponentPage = () => {
   return (
     <div className="w-full flex flex-col pt-12">
-      
+
       {/* 1. Code Showcase Feature */}
       <div className="w-full flex flex-col mb-24 group mt-6">
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -22,7 +22,7 @@ const FeatureComponentPage = () => {
           </div>
         </div>
 
-        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]">
+        <div className="w-full bg-cursor-cream/50 min-h-62.5 md:h-auto rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 group-">
           <div className="w-full">
             <CodeShowcaseFeature />
           </div>

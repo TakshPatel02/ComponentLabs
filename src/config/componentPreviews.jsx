@@ -17,6 +17,9 @@ import CommandSearch from '../components/FormComponents/CommandSearch';
 import MinimalAuth from '../components/FormComponents/MinimalAuth';
 import RichComposer from '../components/FormComponents/RichComposer';
 
+import ClipPathLinks from '../components/Linkcomponent/ClipPathLinks';
+import TakeoverLinks from '../components/Linkcomponent/TakeoverLinks';
+import { NeuralHoverLinks } from '../components/Linkcomponent/NeuralHoverLinks';
 
 import StateSynthesisCard from '../components/CardComponents/StateSynthesisCard';
 import AgenticFlowCard from '../components/CardComponents/AgenticFlowCard';
@@ -52,121 +55,170 @@ import CategorizedFAQ from '../components/OtherComponents/CategorizedFAQ';
 
 import CodeShowcaseFeature from '../components/FeatureComponents/CodeShowcaseFeature';
 
+// A completely transparent wrapper with NO background, NO border, and NO shadow.
+// This allows components that render their own boxes to be the only box visible.
+const noBoxClass = "w-full py-12 flex flex-col items-stretch justify-center overflow-hidden";
+
+// Specific for items that need to go edge-to-edge but have no box
+const fullWidthNoBoxClass = "w-full flex flex-col items-stretch justify-center overflow-hidden";
+
+// Standard preview box for components that do not have an internal box
+const standardBoxClass = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden p-6 md:p-8 transition-all duration-500 ";
+
 export const componentPreviews = {
-  // TEXT
+  // TEXT (Using standardBoxClass so they get exactly 1 box)
   encryptedtext: {
-    previewContainerClass: "w-full min-h-75 md:h-96 bg-cursor-light rounded-xl oklab-border p-4 md:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]",
+    hasRewatch: true,
+    previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
-      <>
-        <div className="absolute inset-0 z-0 bg-linear-to-b from-transparent to-black/2 pointer-events-none"></div>
-        <div className="relative z-10 w-full h-full flex items-center justify-center bg-cursor-cream/60 rounded-lg oklab-border shadow-sm">
-          <EncryptedText key={key} text="Welcome to ComponentLab" className="text-2xl md:text-5xl font-mono-code font-bold text-primary tracking-tighter" interval={40} duration={2000} />
-        </div>
-      </>
+      <div className="w-full h-full flex items-center justify-center">
+        <EncryptedText key={key} text="Welcome to ComponentLab" className="text-2xl md:text-5xl font-mono-code font-bold text-primary tracking-tighter" interval={40} duration={2000} />
+      </div>
     )
   },
   stripetextwriter: {
+    hasRewatch: true,
+    previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
       <StripeWriter key={key} text="Building the internet's infrastructure." className="text-2xl md:text-5xl font-section-heading font-bold text-primary tracking-tight text-center px-4" speed={0.04} />
     )
   },
   velocitytext: {
-    previewContainerClass: "w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] overflow-hidden",
+    previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
       <VelocityText key={key} heightClass="h-96" text="Nothing in this world can take the place of persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. Education will not; the world is full of educated derelicts. Persistence and determination alone are omnipotent. The slogan 'Press On!' has solved and always will solve the problems of the human race." />
     )
   },
   creativehighlight: {
+    hasRewatch: true,
+    previewContainerClass: standardBoxClass,
     renderPreview: (key) => <CreativeHighlightText key={key} />
   },
 
-  // BUTTONS
+  // BUTTONS (Using standardBoxClass so they get exactly 1 box)
   fillbutton: {
+    previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
-      <div className="flex flex-col gap-6 md:flex-row md:gap-8 items-center justify-center py-8">
+      <div className="flex flex-col gap-6 md:flex-row md:gap-8 items-center justify-center">
         <FillButton key={`${key}-1`}>Standard</FillButton>
         <FillButton key={`${key}-2`} className="rounded-full px-8 font-mono">Rounded Mono</FillButton>
         <FillButton key={`${key}-3`} fillColorClass="bg-error-warm" className="border-error-warm/20 text-on-surface">Warm Fill</FillButton>
       </div>
     )
   },
+  uploadbutton: { previewContainerClass: standardBoxClass },
+  magnetbutton: { previewContainerClass: standardBoxClass },
+  encryptbutton: { previewContainerClass: standardBoxClass },
+  animatedcounterbutton: { previewContainerClass: standardBoxClass },
+  neumorphicbutton: { previewContainerClass: standardBoxClass },
 
-  // FORMS
+  // FORMS (They have their own internal boxes, so use noBoxClass)
   terminalcontactform: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><TerminalContactForm key={key} /></div>
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><TerminalContactForm key={key} /></div>
   },
   promptbar: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><PromptBar key={key} /></div>
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><PromptBar key={key} /></div>
   },
   comandsearch: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><CommandSearch key={key} /></div>
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><CommandSearch key={key} /></div>
   },
   minimalauth: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><MinimalAuth key={key} /></div>
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><MinimalAuth key={key} /></div>
   },
   richcomposer: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><RichComposer key={key} /></div>
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><RichComposer key={key} /></div>
   },
 
-  // LINKS
+  // LINKS (TakeoverLinks has an internal box, others don't so they use default box or noBox)
   clippathiconlink: {
-    renderPreview: (key) => <ClipPathLinks key={key} />
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-3xl mx-auto"><ClipPathLinks key={key} /></div>
   },
   takeoverlink: {
-    previewContainerClass: "w-full bg-cursor-cream/50 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]",
+    previewContainerClass: noBoxClass, // TakeoverLinks has its own box
     renderPreview: (key) => <TakeoverLinks key={key} />
   },
   neuralhoverlink: {
-    renderPreview: (key) => <div className="w-full max-w-5xl"><NeuralHoverLinks key={key} /></div>
+    previewContainerClass: noBoxClass, // Neural hover doesn't need a box
+    renderPreview: (key) => <div className="w-full max-w-5xl mx-auto"><NeuralHoverLinks key={key} /></div>
   },
 
-  // KEYBOARDS
+  // KEYBOARDS (Explicit custom boxes)
   macstylelayout: {
-    previewContainerClass: "w-full bg-[#f2f1ed]/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+    previewContainerClass: "w-full bg-[#f2f1ed]/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 "
   },
-  macstylelayoutdark: {
-    previewContainerClass: "w-full bg-[#111] min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl border border-[#222] flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)]"
+  macstyledarklayout: {
+    previewContainerClass: "w-full bg-[#111] min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl border border-[#222] flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500"
   },
-  typewriterkeyboard: {
-    previewContainerClass: "w-full bg-[#f2f1ed]/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl border border-black/5 flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+  typewriteredition: {
+    previewContainerClass: "w-full bg-[#f2f1ed]/50 min-h-62.5 md:h-auto py-10 px-4 md:px-8 rounded-xl border border-black/5 flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 "
   },
 
-  // HERO
+  // HERO (They have internal boxes/full width, use fullWidthNoBoxClass)
   staggeredentrance: {
-    previewContainerClass: "w-full full-width-breakout overflow-hidden",
-    renderPreview: (key) => <StaggeredEntranceHero key={key} />
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <div className="w-full"><StaggeredEntranceHero key={key} /></div>
+  },
+  dynamicprimitives: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <div className="w-full"><DynamicHero key={key} /></div>
+  },
+  auroragradienthero: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <div className="w-full"><AuroraHero key={key} /></div>
   },
 
   // OTHER
-  editorialslider: {
-    previewContainerClass: "w-full bg-surface-container min-h-75 rounded-xl oklab-border flex flex-col items-center justify-center px-6 md:px-16 overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)]"
+  vintagemasterfader: {
+    previewContainerClass: noBoxClass // Assuming it has its own box
   },
-  terminaltypingcard: {
+  terminaltypingwindow: {
+    hasRewatch: true,
+    previewContainerClass: noBoxClass,
     renderPreview: (key) => <TerminalTypingCard key={key} />
   },
   kanbanboard: {
-    renderPreview: (key) => <KanbanBoard key={key} />
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <div className="w-full max-w-6xl mx-auto"><KanbanBoard key={key} /></div>
   },
 
   // LOGOS
-  logocloud: {
-    previewContainerClass: "w-full rounded-xl flex items-center justify-center p-2 relative overflow-hidden transition-all duration-500"
+  simplelogocloud: {
+    previewContainerClass: noBoxClass
   },
   centeredlogocloud: {
-    previewContainerClass: "w-full rounded-xl flex items-center justify-center p-2 relative overflow-hidden transition-all duration-500"
+    previewContainerClass: noBoxClass
   },
-  marqueelogocloud: {
-    previewContainerClass: "w-full rounded-xl flex items-center justify-center p-2 relative overflow-hidden transition-all duration-500"
+  animatedmarqueelogocloud: {
+    previewContainerClass: noBoxClass, // It has its own internal box
+    // Use w-full max-w-full to prevent overflow
+    renderPreview: (key) => <div className="w-full max-w-6xl mx-auto overflow-hidden px-1"><MarqueeLogoCloud key={key} /></div>
   },
-  crosshairlogocloud: {
-    previewContainerClass: "w-full rounded-xl flex items-center justify-center p-2 relative overflow-hidden transition-all duration-500"
+  crosshairgridlogocloud: {
+    previewContainerClass: noBoxClass
   },
 
   // FOOTERS
-  saasfooter: {
-    previewContainerClass: "w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] pt-12 pb-12"
+  sassfooter: {
+    previewContainerClass: fullWidthNoBoxClass
   },
   minimalfooter: {
-    previewContainerClass: "w-full bg-surface rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden relative transition-all duration-500 hover:shadow-[0_20px_70px_-10px_rgba(38,37,30,0.05)] pt-12 pb-12"
-  }
+    previewContainerClass: fullWidthNoBoxClass
+  },
+
+  // CARDS
+  statesynthesis: { previewContainerClass: noBoxClass },
+  agenticflow: { previewContainerClass: noBoxClass },
+  depthperception: { previewContainerClass: noBoxClass },
+  pricingtiers: { previewContainerClass: noBoxClass },
+
+  // GRIDS
+  bentostatsboard: { previewContainerClass: noBoxClass },
+  masonryshowcase: { previewContainerClass: noBoxClass },
+  technicalcrosshairs: { previewContainerClass: noBoxClass }
 };
