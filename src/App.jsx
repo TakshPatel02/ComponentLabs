@@ -1,11 +1,9 @@
 import React from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
-import DocsPage from "./Pages/DocsPage";
 import IntroductionPage from "./Pages/IntroductionPage";
 import InstallationPage from "./Pages/InstallationPage";
 import NavBar from "./components/NavBar";
-import ComponentsPage from "./Pages/ComponentsPage";
 import TermsPage from "./Pages/TermsPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";

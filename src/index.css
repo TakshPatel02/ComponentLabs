@@ -68,6 +68,8 @@
     --text-ui-body: 16px;
     --text-ui-body--line-height: 1.5;
     --text-ui-body--font-weight: 400;
+
+    --animate-marquee: marquee 30s linear infinite;
 }
 
 :root {
@@ -178,5 +180,14 @@
         right: 50%;
         margin-left: -50vw;
         margin-right: -50vw;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
     }
 }
