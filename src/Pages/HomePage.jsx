@@ -311,7 +311,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
                 
                 {/* Left (65%): Kinetic 3D Card */}
-                <div className="md:col-span-8 group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 min-h-[380px]">
+                <div className="md:col-span-8 group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[380px]">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Spatial Depth
@@ -332,7 +332,7 @@ const HomePage = () => {
                 <div className="md:col-span-4 flex flex-col gap-5 md:gap-6">
                   
                   {/* Top: Flip Links */}
-                  <div className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 min-h-[220px]">
+                  <div className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[220px]">
                     <div className="mb-6 relative z-10">
                       <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                         Navigation
@@ -351,7 +351,7 @@ const HomePage = () => {
 
                   {/* Bottom: Encrypted Text */}
                   <div 
-                    className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 min-h-[220px]"
+                    className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[220px]"
                     onMouseEnter={() => setHoveredCard('encrypted')}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
@@ -385,7 +385,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                 
                 {/* Neural Trace */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       AI Timeline
@@ -403,7 +403,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Mac Style Layout */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8 hover:border-black/20 dark:hover:border-white/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
                   <div className="mb-6 relative z-20">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Keyboards
@@ -423,7 +423,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Ghost Forms */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col border transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-[#e8e6e1] dark:bg-[#1a1a1a] border-black/8 dark:border-white/8   hover:border-black/20 dark:hover:border-white/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Forms &amp; Inputs
