@@ -9,17 +9,19 @@ export default function EncryptedText({
   interval = 50,
   duration = 3000,
   className = "",
+  animateOnHover = false,
+  isHovered = false,
 }) {
-  const [displayText, setDisplayText] = useState("");
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [displayText, setDisplayText] = useState(text);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    if (animateOnHover && !isHovered) {
+      setDisplayText(text);
+      return;
+    }
+
     let currentIteration = 0;
-    // Total steps needed to reveal the entire string
-    // Let's divide the duration by the interval to get total steps.
-    const maxIterations = text.length;
-    // But we want it to scramble for a bit before revealing each letter.
-    // So let's make it reveal one letter per `X` ticks.
     const stepsPerLetter = duration / interval / text.length;
 
     const scrambleInterval = setInterval(() => {
@@ -49,7 +51,7 @@ export default function EncryptedText({
     }, interval);
 
     return () => clearInterval(scrambleInterval);
-  }, [text, interval, duration]);
+  }, [text, interval, duration, animateOnHover, isHovered]);
 
   return (
     <motion.span

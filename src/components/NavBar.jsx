@@ -46,6 +46,12 @@ const NavBar = () => {
           >
             Components
           </Link>
+          <Link
+            className="text-primary/50 transition-colors duration-200 hover:text-error-warm"
+            to="/templates"
+          >
+            Templates
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <ThemeToggle />
@@ -94,6 +100,13 @@ const NavBar = () => {
               to="/components"
             >
               Components
+            </Link>
+            <Link
+              onClick={() => setIsOpen(false)}
+              className="text-primary/70 font-medium text-lg hover:text-error-warm transition-colors w-full text-center"
+              to="/templates"
+            >
+              Templates
             </Link>
             <div className="w-full px-6 pt-4 border-t oklab-border flex flex-col gap-4">
               <button className="w-full bg-primary text-on-primary py-3 rounded-lg text-base font-medium font-['Space_Grotesk'] hover:bg-error-warm transition-all active:scale-[0.98] flex items-center justify-center gap-2">

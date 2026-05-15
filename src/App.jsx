@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ComponentPage from "./Pages/ComponentPage";
 import ComponentsIndex from "./Pages/ComponentsIndex";
+import TemplatesPage from "./Pages/TemplatesPage";
 
 // ── Old component page imports (commented out — kept for rollback) ──
 // import ButtonComponentPage from "./Pages/Components/ButtonComponentPage";
@@ -37,6 +38,7 @@ const App = () => {
       {!isPreview && <NavBar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/templates" element={<TemplatesPage />} />
         <Route path="/docs/introduction" element={<IntroductionPage />} />
         <Route path="/docs/installation" element={<InstallationPage />} />
 

@@ -41,7 +41,7 @@ const ThemeToggle = () => {
       </div>
       
       <span className="font-mono text-[10px] font-medium tracking-wider text-primary/70 uppercase select-none">
-        {theme === "light" ? "Light" : "Dark"}
+        {theme === "light" ? "Dark" : "Light"}
       </span>
       
       {/* Subtle hover effect */}
