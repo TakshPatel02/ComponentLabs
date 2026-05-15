@@ -1,8 +1,8 @@
 import React from "react";
 import DocumentationPanel from "../../components/DocumentationPanel";
-import ClipPathLinks from "../../components/linkcomponent/ClipPathLinks";
-import TakeoverLinks from "../../components/linkcomponent/TakeoverLinks";
-import { NeuralHoverLinks } from "../../components/linkcomponent/NeuralHoverLinks";
+import ClipPathLinks from "../../components/LinkComponents/ClipPathLinks";
+import TakeoverLinks from "../../components/LinkComponents/TakeoverLinks";
+import { NeuralHoverLinks } from "../../components/LinkComponents/NeuralHoverLinks";
 
 const LinkComponentPage = () => {
   return (
@@ -26,7 +26,7 @@ const LinkComponentPage = () => {
 
         <DocumentationPanel
           componentName="ClipPathLinks"
-          importPath="../src/components/Linkcomponent/ClipPathLinks"
+          importPath="../src/components/LinkComponents/ClipPathLinks"
           defaultUsage="<ClipPathLinks />"
           props={[
             {
@@ -88,7 +88,7 @@ const groups = [
 
         <DocumentationPanel
           componentName="TakeoverLinks"
-          importPath="../src/components/Linkcomponent/TakeoverLinks"
+          importPath="../src/components/LinkComponents/TakeoverLinks"
           defaultUsage="<TakeoverLinks />"
           props={[
             {
@@ -147,7 +147,7 @@ const groups = [
 
         <DocumentationPanel
           componentName="NeuralHoverLinks"
-          importPath="../src/components/Linkcomponent/NeuralHoverLinks"
+          importPath="../src/components/LinkComponents/NeuralHoverLinks"
           defaultUsage="<NeuralHoverLinks />"
           props={[]}
           examples={[

@@ -17,9 +17,9 @@ import CommandSearch from '../components/FormComponents/CommandSearch';
 import MinimalAuth from '../components/FormComponents/MinimalAuth';
 import RichComposer from '../components/FormComponents/RichComposer';
 
-import ClipPathLinks from '../components/Linkcomponent/ClipPathLinks';
-import TakeoverLinks from '../components/Linkcomponent/TakeoverLinks';
-import { NeuralHoverLinks } from '../components/Linkcomponent/NeuralHoverLinks';
+import ClipPathLinks from '../components/LinkComponents/ClipPathLinks';
+import TakeoverLinks from '../components/LinkComponents/TakeoverLinks';
+import { NeuralHoverLinks } from '../components/LinkComponents/NeuralHoverLinks';
 
 import StateSynthesisCard from '../components/CardComponents/StateSynthesisCard';
 import AgenticFlowCard from '../components/CardComponents/AgenticFlowCard';

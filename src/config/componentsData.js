@@ -21,9 +21,9 @@ import MinimalAuth from "../components/FormComponents/MinimalAuth";
 import RichComposer from "../components/FormComponents/RichComposer";
 
 // Links & Navigation
-import ClipPathLinks from "../components/Linkcomponent/ClipPathLinks";
-import TakeoverLinks from "../components/Linkcomponent/TakeoverLinks";
-import { NeuralHoverLinks } from "../components/Linkcomponent/NeuralHoverLinks";
+import ClipPathLinks from "../components/LinkComponents/ClipPathLinks";
+import TakeoverLinks from "../components/LinkComponents/TakeoverLinks";
+import { NeuralHoverLinks } from "../components/LinkComponents/NeuralHoverLinks";
 
 // Cards & Layouts
 import StateSynthesisCard from "../components/CardComponents/StateSynthesisCard";
@@ -401,7 +401,7 @@ export const componentsData = {
     description: "Icon link grid with clip-path hover animation effect.",
     component: ClipPathLinks,
     published: true,
-    usage: `import { ClipPathLinks } from "../components/Linkcomponent/ClipPathLinks";
+    usage: `import { ClipPathLinks } from "../components/LinkComponents/ClipPathLinks";
 
 <ClipPathLinks />`,
     props: [
@@ -422,7 +422,7 @@ export const componentsData = {
     description: "Full-section color takeover navigation with split-text animation.",
     component: TakeoverLinks,
     published: true,
-    usage: `import TakeoverLinks from "../components/Linkcomponent/TakeoverLinks";
+    usage: `import TakeoverLinks from "../components/LinkComponents/TakeoverLinks";
 
 <TakeoverLinks links={[{ label: "WORK", href: "/work", color: "#2f4858" }]} />`,
     props: [
@@ -443,7 +443,7 @@ export const componentsData = {
     description: "Parallax link rows with mouse-driven scramble and image effects.",
     component: NeuralHoverLinks,
     published: true,
-    usage: `import NeuralHoverLinks from "../components/Linkcomponent/NeuralHoverLinks";
+    usage: `import NeuralHoverLinks from "../components/LinkComponents/NeuralHoverLinks";
 
 <NeuralHoverLinks />`,
     props: [
