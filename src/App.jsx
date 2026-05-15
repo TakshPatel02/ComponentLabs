@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import DocsPage from "./Pages/DocsPage";
+import IntroductionPage from "./Pages/IntroductionPage";
+import InstallationPage from "./Pages/InstallationPage";
 import NavBar from "./components/NavBar";
 import ComponentsPage from "./Pages/ComponentsPage";
 import TermsPage from "./Pages/TermsPage";
@@ -37,7 +39,8 @@ const App = () => {
       {!isPreview && <NavBar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/docs" element={<DocsPage />} />
+        <Route path="/docs/introduction" element={<IntroductionPage />} />
+        <Route path="/docs/installation" element={<InstallationPage />} />
 
         {/* Components index page (sidebar + placeholder) */}
         <Route path="/components" element={<ComponentsIndex />} />
@@ -69,7 +72,7 @@ const App = () => {
         {/* Preview routes — no NavBar / Footer */}
         <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
       </Routes>
-      {!isPreview && !location.pathname.startsWith("/components") && <Footer />}
+      {!isPreview && !location.pathname.startsWith("/components") && !location.pathname.startsWith("/docs") && <Footer />}
     </>
   );
 };
