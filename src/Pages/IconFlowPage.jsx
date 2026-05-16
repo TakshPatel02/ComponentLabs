@@ -85,7 +85,7 @@ const IconFlowPage = () => {
       >
         {/* TOP BADGE */}
         <motion.div variants={itemVariants} className="mb-8 w-full flex justify-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/10 dark:border-white/10 bg-surface-container/50 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/10 bg-surface-container/50 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E8567A] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8567A]"></span>
@@ -135,7 +135,7 @@ const IconFlowPage = () => {
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {/* Search - Shake */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Search className="text-primary w-6 h-6 animate-search" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">shake</span>
@@ -143,7 +143,7 @@ const IconFlowPage = () => {
             
             {/* Check - Bounce */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Check className="text-primary w-6 h-6 animate-bounce-loop" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">bounce</span>
@@ -151,7 +151,7 @@ const IconFlowPage = () => {
 
             {/* Loader - Spin */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Loader className="text-primary w-6 h-6 animate-spin-loop" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">spin</span>
@@ -159,7 +159,7 @@ const IconFlowPage = () => {
 
             {/* Bell - Swing */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Bell className="text-primary w-6 h-6 animate-swing" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">swing</span>
@@ -167,7 +167,7 @@ const IconFlowPage = () => {
 
             {/* Star - Pulse */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Star className="text-primary w-6 h-6 animate-pulse-loop" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">pulse</span>
@@ -175,7 +175,7 @@ const IconFlowPage = () => {
 
             {/* Heart - Heartbeat */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-2xl bg-[#e8e6e1] dark:bg-[#1a1a1a] border border-primary/10 dark:border-white/5 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-surface-container border border-primary/10 flex items-center justify-center hover:border-[#E8567A]/30 transition-colors shadow-sm">
                 <Heart className="text-primary w-6 h-6 animate-heartbeat" />
               </div>
               <span className="text-[11px] font-mono text-on-surface-variant">heartbeat</span>
@@ -207,7 +207,7 @@ const IconFlowPage = () => {
               href="https://x.com/TakshPatel02" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg border border-primary/20 dark:border-white/20 text-primary font-medium text-sm hover:bg-primary/5 dark:hover:bg-white/5 hover:border-[#E8567A]/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
+              className="px-6 py-3 rounded-lg border border-primary/20 text-primary font-medium text-sm hover:bg-primary/5 hover:border-[#E8567A]/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
             >
               FOLLOW ON X <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
@@ -215,7 +215,7 @@ const IconFlowPage = () => {
               href="https://github.com/TakshPatel02" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg border border-primary/20 dark:border-white/20 text-primary font-medium text-sm hover:bg-primary/5 dark:hover:bg-white/5 hover:border-[#E8567A]/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
+              className="px-6 py-3 rounded-lg border border-primary/20 text-primary font-medium text-sm hover:bg-primary/5 hover:border-[#E8567A]/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
             >
               STAR ON GITHUB <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
@@ -232,7 +232,7 @@ const IconFlowPage = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="w-full max-w-4xl mt-auto pt-8 border-t border-primary/10 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4"
+        className="w-full max-w-4xl mt-auto pt-8 border-t border-primary/10 flex flex-col sm:flex-row justify-between items-center gap-4"
       >
         <Link to="/" className="text-xs font-mono text-on-surface-variant hover:text-[#E8567A] transition-colors">
           ← Back to ComponentLab
