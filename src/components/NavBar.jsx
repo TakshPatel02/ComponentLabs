@@ -52,6 +52,12 @@ const NavBar = () => {
           >
             Templates
           </Link>
+          <Link
+            className="text-[#E8567A] hover:opacity-80 transition-opacity flex items-center gap-1"
+            to="/iconflow"
+          >
+            IconFlow <span className="text-xs">✦</span>
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <ThemeToggle />
@@ -107,6 +113,13 @@ const NavBar = () => {
               to="/templates"
             >
               Templates
+            </Link>
+            <Link
+              onClick={() => setIsOpen(false)}
+              className="text-[#E8567A] font-medium text-lg hover:opacity-80 transition-opacity w-full text-center flex items-center justify-center gap-1"
+              to="/iconflow"
+            >
+              IconFlow <span className="text-sm">✦</span>
             </Link>
             <div className="w-full px-6 pt-4 border-t oklab-border flex flex-col gap-4">
               <button className="w-full bg-primary text-on-primary py-3 rounded-lg text-base font-medium font-['Space_Grotesk'] hover:bg-error-warm transition-all active:scale-[0.98] flex items-center justify-center gap-2">

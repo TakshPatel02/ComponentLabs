@@ -10,6 +10,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ComponentPage from "./Pages/ComponentPage";
 import ComponentsIndex from "./Pages/ComponentsIndex";
 import TemplatesPage from "./Pages/TemplatesPage";
+import IconFlowPage from "./Pages/IconFlowPage";
 
 // ── Old component page imports (commented out — kept for rollback) ──
 // import ButtonComponentPage from "./Pages/Components/ButtonComponentPage";
@@ -69,6 +70,7 @@ const App = () => {
         */}
 
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/iconflow" element={<IconFlowPage />} />
         {/* Preview routes — no NavBar / Footer */}
         <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
       </Routes>
