@@ -114,4 +114,11 @@ export const navConfig = [
       { label: "Terminal Typing Window", href: "/components/other/terminaltypingwindow" },
     ]
   },
+  {
+    section: "CREATIVE",
+    items: [
+      { label: "Cinematic Cards", href: "/components/creative/cinematiccards" },
+      { label: "Fluid Cursor Trail", href: "/components/creative/fluidcursortrail" },
+    ]
+  },
 ]

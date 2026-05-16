@@ -220,5 +220,9 @@ export const componentPreviews = {
   // GRIDS
   bentostatsboard: { previewContainerClass: noBoxClass },
   masonryshowcase: { previewContainerClass: noBoxClass },
-  technicalcrosshairs: { previewContainerClass: noBoxClass }
+  technicalcrosshairs: { previewContainerClass: noBoxClass },
+
+  // CREATIVE
+  cinematiccards: { previewContainerClass: fullWidthNoBoxClass },
+  fluidcursortrail: { previewContainerClass: noBoxClass }
 };

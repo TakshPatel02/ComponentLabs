@@ -68,6 +68,9 @@ import KanbanBoard from "../components/OtherComponents/KanbanBoard";
 import { VintageFader } from "../components/OtherComponents/EditorialSlider";
 import { TerminalTypingCard } from "../components/OtherComponents/TerminalTypingCard";
 
+// Creative
+import FluidCursorTrail from "../components/CreativeComponents/FluidCursorTrail";
+import CinematicCards from "../components/CreativeComponents/CinematicCards";
 
 // Components Data
 export const componentsData = {
@@ -1013,6 +1016,47 @@ const tasks = [
       "macOS traffic light header",
       "Blinking cursor animation",
       "Dark terminal background",
+    ],
+  },
+
+  // CREATIVE
+  "cinematiccards": {
+    title: "Cinematic Reveal Grid",
+    category: "CREATIVE",
+    description: "Fluid, expanding cinematic grid with layout-driven animations and editorial typography.",
+    component: CinematicCards,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Dynamic layout-based expansion using Framer Motion",
+      "Cinematic image bloom and focus transitions",
+      "Staggered editorial-style typography reveals",
+      "Responsive flex-based grid architecture",
+      "Integrated background numeric accents",
+    ],
+    notes: [
+      "Optimized for a 4-column layout on desktop.",
+      "Uses Framer Motion's layout prop for fluid aspect-ratio transitions.",
+      "Requires 'Space Grotesk' for the numeric accents and headings.",
+      "Best used with high-resolution cinematic photography.",
+    ],
+  },
+
+  "fluidcursortrail": {
+    title: "Fluid Cursor Trail",
+    category: "CREATIVE",
+    description: "Interactive canvas drawing a trailing snake/spring-like effect following the mouse pointer.",
+    component: FluidCursorTrail,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Smooth cursor trailing physics",
+      "Spring and friction-based animation",
+      "Uses HTML Canvas API",
+      "Dynamic responsive sizing",
+      "Self-contained isolated scope",
     ],
   },
 };
