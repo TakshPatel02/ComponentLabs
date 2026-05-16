@@ -118,6 +118,7 @@ export const navConfig = [
     section: "CREATIVE",
     items: [
       { label: "Cinematic Cards", href: "/components/creative/cinematiccards" },
+      { label: "Elastic Stretch Text", href: "/components/creative/elasticstretchtext" },
       { label: "Fluid Cursor Trail", href: "/components/creative/fluidcursortrail" },
     ]
   },

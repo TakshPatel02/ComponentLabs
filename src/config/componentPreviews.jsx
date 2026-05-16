@@ -224,5 +224,6 @@ export const componentPreviews = {
 
   // CREATIVE
   cinematiccards: { previewContainerClass: fullWidthNoBoxClass },
+  elasticstretchtext: { previewContainerClass: standardBoxClass },
   fluidcursortrail: { previewContainerClass: noBoxClass }
 };

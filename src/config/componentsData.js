@@ -68,9 +68,9 @@ import KanbanBoard from "../components/OtherComponents/KanbanBoard";
 import { VintageFader } from "../components/OtherComponents/EditorialSlider";
 import { TerminalTypingCard } from "../components/OtherComponents/TerminalTypingCard";
 
-// Creative
 import FluidCursorTrail from "../components/CreativeComponents/FluidCursorTrail";
 import CinematicCards from "../components/CreativeComponents/CinematicCards";
+import ElasticStretchText from "../components/CreativeComponents/ElasticStretchText";
 
 // Components Data
 export const componentsData = {
@@ -1043,6 +1043,28 @@ const tasks = [
     ],
   },
 
+  "elasticstretchtext": {
+    title: "Elastic Stretch Text",
+    category: "CREATIVE",
+    description: "Highly interactive typography that stretches vertically and compresses horizontally on hover.",
+    component: ElasticStretchText,
+    published: false,
+    usage: null,
+    props: [
+      { name: "text", type: "string", default: '"CREATIVE"', description: "The text string to animate." },
+    ],
+    features: [
+      "Individual character hover detection",
+      "Spring-physics based deformation",
+      "Variable scaleY and scaleX ratios",
+      "Dynamic color shifting",
+      "Responsive typography scaling",
+    ],
+    notes: [
+      "Uses Framer Motion's spring transition for organic responsiveness.",
+      "Best used with bold, uppercase sans-serif fonts.",
+    ],
+  },
   "fluidcursortrail": {
     title: "Fluid Cursor Trail",
     category: "CREATIVE",
