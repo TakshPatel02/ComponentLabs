@@ -53,14 +53,14 @@ const SECTIONS = [
 ];
 
 // ── Right sidebar: "On This Page" anchor nav
-const OnThisPageNav = ({ activeSection }) => {
+const OnThisPageNav = ({ activeSection, sections }) => {
   return (
     <nav className="hidden xl:block fixed right-0 top-0 w-[200px] h-screen pt-24 pr-6 pl-4 bg-surface">
       <div className="font-system-micro text-[10.5px] font-semibold uppercase tracking-widest mb-4 select-none text-on-surface-variant/60">
         On This Page
       </div>
       <ul className="list-none m-0 p-0 flex flex-col gap-0.5">
-        {SECTIONS.map((s) => {
+        {sections.map((s) => {
           const isActive = activeSection === s.id;
           return (
             <li key={s.id}>
@@ -112,7 +112,11 @@ const ComponentPage = () => {
     setActiveTab("component");
   }, [slug]);
 
-  const setupObserver = useCallback(() => {
+  const sections = data?.hideCode
+    ? [{ id: "preview", label: "Preview" }]
+    : SECTIONS;
+
+  const setupObserver = useCallback((sectionsList) => {
     if (observerRef.current) observerRef.current.disconnect();
 
     const observer = new IntersectionObserver(
@@ -126,7 +130,7 @@ const ComponentPage = () => {
       { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
     );
 
-    SECTIONS.forEach(({ id }) => {
+    sectionsList.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -136,9 +140,9 @@ const ComponentPage = () => {
   }, []);
 
   useEffect(() => {
-    const cleanup = setupObserver();
+    const cleanup = setupObserver(sections);
     return cleanup;
-  }, [setupObserver, slug]);
+  }, [setupObserver, slug, sections]);
 
   // 404 for unknown slugs
   if (!data) {
@@ -238,40 +242,42 @@ const ComponentPage = () => {
           {/* ── Preview / Code Tab Section ── */}
           <section className="mb-12 scroll-mt-20">
             {/* Tab Toggle — matches DocumentationPanel style */}
-            <div className="flex gap-3 oklab-border-b pb-4">
-              <button
-                onClick={() => setActiveTab("component")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "component"
-                    ? "bg-primary text-surface"
-                    : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                  }`}
-              >
-                <Eye size={18} />
-                Component View
-              </button>
-              <button
-                onClick={() => setActiveTab("code")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "code"
-                    ? "bg-primary text-surface"
-                    : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                  }`}
-              >
-                <Code size={18} />
-                Code
-              </button>
-
-              {activeTab === "component" && previewData.hasRewatch && (
+            {!data.hideCode && (
+              <div className="flex gap-3 oklab-border-b pb-4">
                 <button
-                  onClick={() => setReplayKey((v) => v + 1)}
-                  className="ml-auto flex items-center justify-center gap-2 bg-primary text-cursor-cream hover:bg-error-warm px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98] shadow-sm hover:shadow-md"
+                  onClick={() => setActiveTab("component")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "component"
+                      ? "bg-primary text-surface"
+                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
+                    }`}
                 >
-                  <span className="material-symbols-outlined text-[18px]">
-                    replay
-                  </span>
-                  Rewatch
+                  <Eye size={18} />
+                  Component View
                 </button>
-              )}
-            </div>
+                <button
+                  onClick={() => setActiveTab("code")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium ${activeTab === "code"
+                      ? "bg-primary text-surface"
+                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
+                    }`}
+                >
+                  <Code size={18} />
+                  Code
+                </button>
+
+                {activeTab === "component" && previewData.hasRewatch && (
+                  <button
+                    onClick={() => setReplayKey((v) => v + 1)}
+                    className="ml-auto flex items-center justify-center gap-2 bg-primary text-cursor-cream hover:bg-error-warm px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98] shadow-sm hover:shadow-md"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">
+                      replay
+                    </span>
+                    Rewatch
+                  </button>
+                )}
+              </div>
+            )}
 
             {/* Content — animated transition */}
             <AnimatePresence mode="wait">
@@ -308,81 +314,85 @@ const ComponentPage = () => {
           </section>
 
           {/* ── Usage Section ── */}
-          <section id="usage" className="mb-12 scroll-mt-20">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Code size={20} className="text-on-surface-variant/60" />
-                <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
-                  Usage
-                </h2>
+          {!data.hideCode && (
+            <section id="usage" className="mb-12 scroll-mt-20">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Code size={20} className="text-on-surface-variant/60" />
+                  <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
+                    Usage
+                  </h2>
+                </div>
+                {usage && (
+                  <button
+                    onClick={handleCopyCode}
+                    className="flex items-center gap-2 text-xs md:text-sm font-medium text-on-surface-variant/60 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-surface-container/50"
+                  >
+                    <Copy size={16} />
+                    {copyFeedback ? "Copied!" : "Copy Snippet"}
+                  </button>
+                )}
               </div>
-              {usage && (
-                <button
-                  onClick={handleCopyCode}
-                  className="flex items-center gap-2 text-xs md:text-sm font-medium text-on-surface-variant/60 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-surface-container/50"
-                >
-                  <Copy size={16} />
-                  {copyFeedback ? "Copied!" : "Copy Snippet"}
-                </button>
+              {usage ? (
+                renderCode(usage)
+              ) : (
+                <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
+                  This component is not yet published. Usage documentation will be available once it's added to the npm package.
+                </div>
               )}
-            </div>
-            {usage ? (
-              renderCode(usage)
-            ) : (
-              <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
-                This component is not yet published. Usage documentation will be available once it's added to the npm package.
-              </div>
-            )}
-          </section>
+            </section>
+          )}
 
           {/* ── Props Section ── */}
-          <section id="props" className="mb-12 scroll-mt-20">
-            <div className="flex items-center gap-3 mb-4">
-              <Settings size={20} className="text-on-surface-variant/60" />
-              <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
-                Available Props
-              </h2>
-            </div>
+          {!data.hideCode && (
+            <section id="props" className="mb-12 scroll-mt-20">
+              <div className="flex items-center gap-3 mb-4">
+                <Settings size={20} className="text-on-surface-variant/60" />
+                <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
+                  Available Props
+                </h2>
+              </div>
 
-            {componentProps && componentProps.length > 0 ? (
-              <div className="space-y-3">
-                {componentProps.map((prop, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-xl border oklab-border bg-surface-container/60 p-4 hover:bg-surface-container/80 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <div>
-                        <div className="font-mono text-[14px] md:text-[15px] text-primary font-semibold">
-                          {prop.name}
+              {componentProps && componentProps.length > 0 ? (
+                <div className="space-y-3">
+                  {componentProps.map((prop, idx) => (
+                    <div
+                      key={idx}
+                      className="rounded-xl border oklab-border bg-surface-container/60 p-4 hover:bg-surface-container/80 transition-colors"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <div>
+                          <div className="font-mono text-[14px] md:text-[15px] text-primary font-semibold">
+                            {prop.name}
+                          </div>
+                          <div className="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mt-1 mb-2">
+                            {prop.type}
+                          </div>
                         </div>
-                        <div className="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mt-1 mb-2">
-                          {prop.type}
-                        </div>
+                        {prop.default && (
+                          <div className="text-right">
+                            <div className="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">
+                              DEFAULT
+                            </div>
+                            <div className="font-mono text-[13px] text-on-surface-variant mt-1">
+                              {prop.default}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      {prop.default && (
-                        <div className="text-right">
-                          <div className="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">
-                            DEFAULT
-                          </div>
-                          <div className="font-mono text-[13px] text-on-surface-variant mt-1">
-                            {prop.default}
-                          </div>
-                        </div>
-                      )}
+                      <div className="text-[15px] md:text-[16px] text-on-surface-variant leading-relaxed">
+                        {prop.description}
+                      </div>
                     </div>
-                    <div className="text-[15px] md:text-[16px] text-on-surface-variant leading-relaxed">
-                      {prop.description}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
-                No public props documented for this component yet.
-              </div>
-            )}
-          </section>
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
+                  No public props documented for this component yet.
+                </div>
+              )}
+            </section>
+          )}
 
           {/* ── Features Section (if available) ── */}
           {features && features.length > 0 && (
@@ -409,7 +419,7 @@ const ComponentPage = () => {
       </main>
 
       {/* Right sidebar */}
-      <OnThisPageNav activeSection={activeSection} />
+      <OnThisPageNav activeSection={activeSection} sections={sections} />
     </div>
   );
 };
