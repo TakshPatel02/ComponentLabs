@@ -83,7 +83,7 @@ export const componentsData = {
     description: "Text scramble-and-reveal animation using randomized glyphs.",
     component: EncryptedText,
     published: true,
-    usage: `import { EncryptedText } from "../components/TextComponents/EncryptedText";
+    usage: `import { EncryptedText } from "component-labs";
 
 <EncryptedText text="Access granted" />`,
     props: [
@@ -106,7 +106,7 @@ export const componentsData = {
     description: "Typewriter-style text animation with staggered character reveal.",
     component: StripeWriter,
     published: true,
-    usage: `import { StripeWriter } from "../components/TextComponents/StripeWriter";
+    usage: `import { StripeWriter } from "component-labs";
 
 <StripeWriter text="Hello world" speed={0.02} delay={0.2} />`,
     props: [
@@ -131,7 +131,7 @@ export const componentsData = {
     description: "Scroll-driven horizontal marquee with velocity-based skew distortion.",
     component: VelocityText,
     published: true,
-    usage: `import { VelocityText } from "../components/TextComponents/VelocityText";
+    usage: `import { VelocityText } from "component-labs";
 
 <VelocityText text="Scroll to distort and slide this message" />`,
     props: [
@@ -152,7 +152,7 @@ export const componentsData = {
     description: "Headline component with inline SVG accents and animated sparkles.",
     component: CreativeHighlightText,
     published: true,
-    usage: `import { CreativeHighlightText } from "../components/TextComponents/CreativeHighlightText";
+    usage: `import { CreativeHighlightText } from "component-labs";
 
 <CreativeHighlightText text="Main heading" decorText="accent" para="Supporting paragraph." />`,
     props: [
@@ -231,7 +231,7 @@ export const componentsData = {
     description: "Magnetic cursor-follow effect button that tracks mouse position.",
     component: MagnetButton,
     published: true,
-    usage: `import { MagnetButton } from "../components/ButtonComponents/MagnetButton";
+    usage: `import { MagnetButton } from "component-labs";
 
 <MagnetButton text="Try this" onClick={() => alert("clicked")} />`,
     props: [
@@ -251,7 +251,7 @@ export const componentsData = {
     description: "Button with hover-triggered scramble/decrypt text animation.",
     component: EncryptButton,
     published: true,
-    usage: `import { EncryptButton } from "../components/ButtonComponents/EncryptButton";
+    usage: `import { EncryptButton } from "component-labs";
 
 <EncryptButton targetText="Secure Now" className="my-4" />`,
     props: [
@@ -289,7 +289,7 @@ export const componentsData = {
     description: "Neumorphism-styled button with soft shadow depth effect.",
     component: NeumorphismButton,
     published: true,
-    usage: `import { NeumorphismButton } from "../components/ButtonComponents/NeumorphismButton";
+    usage: `import { NeumorphismButton } from "component-labs";
 
 <NeumorphismButton text="Start" />`,
     props: [
@@ -404,7 +404,7 @@ export const componentsData = {
     description: "Icon link grid with clip-path hover animation effect.",
     component: ClipPathLinks,
     published: true,
-    usage: `import { ClipPathLinks } from "../components/LinkComponents/ClipPathLinks";
+    usage: `import { ClipPathLinks } from "component-labs";
 
 <ClipPathLinks />`,
     props: [
@@ -425,7 +425,7 @@ export const componentsData = {
     description: "Full-section color takeover navigation with split-text animation.",
     component: TakeoverLinks,
     published: true,
-    usage: `import TakeoverLinks from "../components/LinkComponents/TakeoverLinks";
+    usage: `import TakeoverLinks from "component-labs";
 
 <TakeoverLinks links={[{ label: "WORK", href: "/work", color: "#2f4858" }]} />`,
     props: [
@@ -446,7 +446,7 @@ export const componentsData = {
     description: "Parallax link rows with mouse-driven scramble and image effects.",
     component: NeuralHoverLinks,
     published: true,
-    usage: `import NeuralHoverLinks from "../components/LinkComponents/NeuralHoverLinks";
+    usage: `import NeuralHoverLinks from "component-labs";
 
 <NeuralHoverLinks />`,
     props: [
@@ -673,7 +673,7 @@ export const componentsData = {
     description: "Hero section with spring-physics staggered entrance animation.",
     component: StaggeredEntranceHero,
     published: true,
-    usage: `import { StaggeredEntranceHero } from "../components/HeroComponents/StaggeredEntranceHero";
+    usage: `import { StaggeredEntranceHero } from "component-labs";
 
 <StaggeredEntranceHero />`,
     props: [
@@ -777,7 +777,7 @@ export const componentsData = {
     description: "Simple animated FAQ accordion with motion expand/collapse.",
     component: AnimatedFAQ,
     published: true,
-    usage: `import { AnimatedFAQ } from "../components/OtherComponents/AnimatedFAQ";
+    usage: `import { AnimatedFAQ } from "component-labs";
 
 <AnimatedFAQ />`,
     props: [
@@ -977,7 +977,7 @@ const tasks = [
     description: "Vintage audio mixer fader with VU-style readout and pointer-driven drag.",
     component: VintageFader,
     published: true,
-    usage: `import { VintageFader } from "../components/OtherComponents/EditorialSlider";
+    usage: `import { VintageFader } from "component-labs";
 
 <VintageFader onChange={(value) => console.log(value)} />`,
     props: [
@@ -1003,7 +1003,7 @@ const tasks = [
     description: "Terminal card with typewriter command lines and styled output types.",
     component: TerminalTypingCard,
     published: true,
-    usage: `import { TerminalTypingCard } from "../components/OtherComponents/TerminalTypingCard";
+    usage: `import { TerminalTypingCard } from "component-labs";
 
 <TerminalTypingCard />`,
     props: [
