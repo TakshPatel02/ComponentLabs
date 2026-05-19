@@ -49,7 +49,9 @@ const CodeBlock = ({ code, language = "bash" }) => {
               return (
                 <div key={i} {...lineRestProps}>
                   {line.map((token, j) => {
-                    const { key: _tk, ...tokenRestProps } = getTokenProps({ token });
+                    const { key: _tk, ...tokenRestProps } = getTokenProps({
+                      token,
+                    });
                     return <span key={j} {...tokenRestProps} />;
                   })}
                 </div>
@@ -85,7 +87,7 @@ const SECTIONS = [
 ];
 
 const OnThisPageNav = ({ activeSection }) => (
-  <nav className="hidden xl:block fixed right-0 top-0 w-[200px] h-screen pt-24 pr-6 pl-4 bg-surface">
+  <nav className="hidden xl:block fixed right-0 top-0 w-50 h-screen pt-24 pr-6 pl-4 bg-surface">
     <div className="font-system-micro text-[10.5px] font-semibold uppercase tracking-widest mb-4 select-none text-on-surface-variant/60">
       On This Page
     </div>
@@ -98,14 +100,17 @@ const OnThisPageNav = ({ activeSection }) => (
               href={`#${s.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                document
+                  .getElementById(s.id)
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
               className={`
                 block py-1.5 text-[13px] no-underline transition-colors duration-150
                 font-ui-body
-                ${isActive
-                  ? "text-error-warm font-medium"
-                  : "text-on-surface-variant hover:text-primary"
+                ${
+                  isActive
+                    ? "text-error-warm font-medium"
+                    : "text-on-surface-variant hover:text-primary"
                 }
               `}
             >
@@ -126,8 +131,14 @@ const StackItem = ({ name, role, isDark }) => (
       ${isDark ? "bg-white/3" : "bg-black/2"}
     `}
   >
-    <span className="font-['Space_Grotesk'] text-[15px] font-semibold text-primary">{name}</span>
-    <span className={`font-['Inter'] text-[13px] ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}>{role}</span>
+    <span className="font-['Space_Grotesk'] text-[15px] font-semibold text-primary">
+      {name}
+    </span>
+    <span
+      className={`font-['Inter'] text-[13px] ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}
+    >
+      {role}
+    </span>
   </div>
 );
 
@@ -151,7 +162,7 @@ const IntroductionPage = () => {
           }
         }
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
     );
 
     SECTIONS.forEach(({ id }) => {
@@ -174,9 +185,8 @@ const IntroductionPage = () => {
       <DocsSidebar />
 
       {/* Main content */}
-      <main className="ml-0 md:ml-[240px] xl:mr-[200px] flex-1 min-w-0 min-h-screen">
+      <main className="ml-0 md:ml-60 xl:mr-50 flex-1 min-w-0 min-h-screen">
         <div className="max-w-3xl min-w-0 mx-auto px-6 md:px-8 py-16 md:py-24">
-
           {/* ── Page Header ── */}
           <header className="mb-14">
             <span className="font-system-micro text-system-micro text-on-surface-variant/60 tracking-widest uppercase mb-2 block">
@@ -194,17 +204,22 @@ const IntroductionPage = () => {
             </h2>
             <div className="space-y-4">
               <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px]">
-                ComponentLab is a curated collection of production-ready React UI primitives
-                built with Motion, Tailwind CSS, and AI-assisted development.
+                ComponentLab is a curated collection of production-ready React
+                UI primitives built with Motion, Tailwind CSS, and AI-assisted
+                development.
               </p>
               <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px]">
-                It started as a single portfolio page to showcase components. Then became a
-                standalone site. Then became a published npm package. Every stage was driven
-                by one question — <em>what would make this actually useful to other developers?</em>
+                It started as a single portfolio page to showcase components.
+                Then became a standalone site. Then became a published npm
+                package. Every stage was driven by one question —{" "}
+                <em>
+                  what would make this actually useful to other developers?
+                </em>
               </p>
               <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px]">
-                The answer: components that feel alive, are properly documented, accept real
-                props, and can drop into any React project without fighting the codebase.
+                The answer: components that feel alive, are properly documented,
+                accept real props, and can drop into any React project without
+                fighting the codebase.
               </p>
             </div>
           </section>
@@ -215,9 +230,9 @@ const IntroductionPage = () => {
               What's inside
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-5">
-              43 interactive components across 13 categories — buttons, text effects, forms,
-              grids, keyboards, hero sections, navigation, cards, logo clouds, footers, FAQs,
-              templates and more.
+              46 interactive components across 14 categories — buttons, text
+              effects, forms, grids, keyboards, hero sections, navigation,
+              cards, logo clouds, footers, FAQs, templates and more.
             </p>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-4">
               Every component includes:
@@ -233,14 +248,17 @@ const IntroductionPage = () => {
                   key={text}
                   className={`
                     flex items-center gap-3 px-4 py-3 rounded-xl border
-                    ${isDark
-                      ? "bg-white/3 border-white/6"
-                      : "bg-black/2 border-black/5"
+                    ${
+                      isDark
+                        ? "bg-white/3 border-white/6"
+                        : "bg-black/2 border-black/5"
                     }
                   `}
                 >
                   <Icon size={18} className="text-[#E8567A] shrink-0" />
-                  <span className="font-['Inter'] text-[14px] text-primary/80">{text}</span>
+                  <span className="font-['Inter'] text-[14px] text-primary/80">
+                    {text}
+                  </span>
                 </div>
               ))}
             </div>
@@ -261,7 +279,9 @@ const IntroductionPage = () => {
                 `}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? "bg-white/6" : "bg-black/4"}`}>
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? "bg-white/6" : "bg-black/4"}`}
+                  >
                     <Layers size={18} className="text-[#E8567A]" />
                   </div>
                   <h3 className="font-['Space_Grotesk'] text-[17px] font-bold text-primary">
@@ -270,11 +290,14 @@ const IntroductionPage = () => {
                 </div>
                 <p className="leading-relaxed text-primary/80 font-['Inter'] text-[15px]">
                   Visit the{" "}
-                  <Link to="/components" className="text-[#E8567A] hover:underline no-underline font-medium">
+                  <Link
+                    to="/components"
+                    className="text-[#E8567A] hover:underline no-underline font-medium"
+                  >
                     Components page
                   </Link>
-                  , find what you need, copy the code directly
-                  into your project. No installation required.
+                  , find what you need, copy the code directly into your
+                  project. No installation required.
                 </p>
               </div>
 
@@ -286,7 +309,9 @@ const IntroductionPage = () => {
                 `}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? "bg-white/6" : "bg-black/4"}`}>
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? "bg-white/6" : "bg-black/4"}`}
+                  >
                     <Package size={18} className="text-[#E8567A]" />
                   </div>
                   <h3 className="font-['Space_Grotesk'] text-[17px] font-bold text-primary">
@@ -294,12 +319,18 @@ const IntroductionPage = () => {
                   </h3>
                 </div>
                 <div className="mb-3">
-                  <CodeBlock code="npm install component-labs" language="bash" />
+                  <CodeBlock
+                    code="npm install component-labs"
+                    language="bash"
+                  />
                 </div>
                 <p className="leading-relaxed text-primary/70 font-['Inter'] text-[14px]">
-                  Add to your Tailwind config so styles are picked up correctly, import
-                  any component and use it directly. Full installation guide in the{" "}
-                  <Link to="/docs/installation" className="text-[#E8567A] hover:underline no-underline font-medium">
+                  Import the styles globally, import any component and use it
+                  directly. Full installation guide in the{" "}
+                  <Link
+                    to="/docs/installation"
+                    className="text-[#E8567A] hover:underline no-underline font-medium"
+                  >
                     next section
                   </Link>
                   .
@@ -319,9 +350,9 @@ const IntroductionPage = () => {
                   Motion should be earned.
                 </strong>
                 <p className="leading-relaxed text-primary/80 font-['Inter'] text-[15px]">
-                  Animation exists to communicate, not decorate. Every transition
-                  in ComponentLab has a reason — it guides attention, confirms an
-                  action, or reveals hierarchy.
+                  Animation exists to communicate, not decorate. Every
+                  transition in ComponentLab has a reason — it guides attention,
+                  confirms an action, or reveals hierarchy.
                 </p>
               </div>
               <div>
@@ -329,8 +360,8 @@ const IntroductionPage = () => {
                   Minimalism with a pulse.
                 </strong>
                 <p className="leading-relaxed text-primary/80 font-['Inter'] text-[15px]">
-                  Clean doesn't mean cold. The best components feel alive without
-                  being loud. Restraint in color, intention in motion.
+                  Clean doesn't mean cold. The best components feel alive
+                  without being loud. Restraint in color, intention in motion.
                 </p>
               </div>
               <div>
@@ -338,9 +369,9 @@ const IntroductionPage = () => {
                   AI is a collaborator, not a vending machine.
                 </strong>
                 <p className="leading-relaxed text-primary/80 font-['Inter'] text-[15px]">
-                  The output is only as good as the thinking behind the prompt. AI
-                  handles the syntax. The architecture, the edge cases, the "does
-                  this actually feel right" — that's still human work.
+                  The output is only as good as the thinking behind the prompt.
+                  AI handles the syntax. The architecture, the edge cases, the
+                  "does this actually feel right" — that's still human work.
                 </p>
               </div>
               <div>
@@ -348,8 +379,8 @@ const IntroductionPage = () => {
                   Production-ready or not at all.
                 </strong>
                 <p className="leading-relaxed text-primary/80 font-['Inter'] text-[15px]">
-                  No half-built demos. Every component handles error states, accessibility,
-                  and real interaction — not just the happy path.
+                  No half-built demos. Every component handles error states,
+                  accessibility, and real interaction — not just the happy path.
                 </p>
               </div>
             </div>
@@ -367,9 +398,21 @@ const IntroductionPage = () => {
               `}
             >
               <div className="divide-y divide-border-fallback-10">
-                <StackItem name="React 18" role="Component foundation" isDark={isDark} />
-                <StackItem name="Motion" role="Animations and interactions" isDark={isDark} />
-                <StackItem name="Tailwind CSS v4" role="Styling" isDark={isDark} />
+                <StackItem
+                  name="React 18"
+                  role="Component foundation"
+                  isDark={isDark}
+                />
+                <StackItem
+                  name="Motion"
+                  role="Animations and interactions"
+                  isDark={isDark}
+                />
+                <StackItem
+                  name="Tailwind CSS v4"
+                  role="Styling"
+                  isDark={isDark}
+                />
                 <StackItem name="Vite" role="Build tool" isDark={isDark} />
                 <StackItem name="Vercel" role="Deployment" isDark={isDark} />
               </div>
@@ -387,9 +430,21 @@ const IntroductionPage = () => {
 
             <div className="space-y-2 mb-6">
               {[
-                { label: "Website repo", url: "https://github.com/TakshPatel02/ComponentLabs", display: "github.com/TakshPatel02/ComponentLabs" },
-                { label: "npm package repo", url: "https://github.com/TakshPatel02/ComponentLabs-npm", display: "github.com/TakshPatel02/ComponentLabs-npm" },
-                { label: "npm package", url: "https://npmjs.com/package/component-labs", display: "npmjs.com/package/component-labs" },
+                {
+                  label: "Website repo",
+                  url: "https://github.com/TakshPatel02/ComponentLabs",
+                  display: "github.com/TakshPatel02/ComponentLabs",
+                },
+                {
+                  label: "npm package repo",
+                  url: "https://github.com/TakshPatel02/ComponentLabs-npm",
+                  display: "github.com/TakshPatel02/ComponentLabs-npm",
+                },
+                {
+                  label: "npm package",
+                  url: "https://npmjs.com/package/component-labs",
+                  display: "npmjs.com/package/component-labs",
+                },
               ].map(({ label, url, display }) => (
                 <div
                   key={label}
@@ -398,7 +453,11 @@ const IntroductionPage = () => {
                     ${isDark ? "bg-white/3" : "bg-black/2"}
                   `}
                 >
-                  <span className={`font-['Inter'] text-[14px] ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}>{label}</span>
+                  <span
+                    className={`font-['Inter'] text-[14px] ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}
+                  >
+                    {label}
+                  </span>
                   <a
                     href={url}
                     target="_blank"
@@ -424,7 +483,9 @@ const IntroductionPage = () => {
               ${isDark ? "bg-white/3 border-white/6" : "bg-black/15 border-black/5"}
             `}
           >
-            <p className={`font-['Inter'] text-[14px] mb-4 ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}>
+            <p
+              className={`font-['Inter'] text-[14px] mb-4 ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}
+            >
               Ready to get started?
             </p>
             <Link

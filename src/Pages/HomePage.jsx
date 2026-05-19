@@ -26,7 +26,7 @@ const NpmCopyButton = () => {
     <button
       onClick={handleCopy}
       className={`
-        inline-flex items-center justify-center gap-2.5 px-[28px] py-[14px] rounded-lg
+        inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg
         font-mono-code text-[13px] tracking-widest uppercase
         border border-border-fallback-10 bg-transparent
         text-on-surface-variant
@@ -131,7 +131,7 @@ const HomePage = () => {
                 : "bg-black/3 border-black/15 text-black/80"
             }`}
           >
-            ✦ 43 Production-Ready React Primitives
+            ✦ 46 Production-Ready React Primitives
           </motion.div>
 
           {/* Heading */}
@@ -174,7 +174,7 @@ const HomePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial-body text-[18px] md:text-[20px] text-on-surface-variant max-w-[600px] mx-auto text-center italic mb-10 leading-relaxed"
+            className="font-editorial-body text-[18px] md:text-[20px] text-on-surface-variant max-w-150 mx-auto text-center italic mb-10 leading-relaxed"
           >
             A premium collection of high-density UI primitives, engineered with
             the precision of a code editor and the soul of a classic
@@ -190,7 +190,7 @@ const HomePage = () => {
           >
             <Link
               to="/components"
-              className={`w-full sm:w-auto px-[28px] py-[14px] rounded-lg font-mono-code text-[13px] uppercase tracking-widest transition-all duration-300 active:scale-95 no-underline flex items-center justify-center ${
+              className={`w-full sm:w-auto px-7 py-3.5 rounded-lg font-mono-code text-[13px] uppercase tracking-widest transition-all duration-300 active:scale-95 no-underline flex items-center justify-center ${
                 isDark ? "bg-white text-black hover:bg-gray-200" : "bg-black text-white hover:bg-gray-800"
               }`}
             >
@@ -206,7 +206,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center gap-3 mt-10 flex-wrap"
           >
-            {["43 COMPONENTS", "13 CATEGORIES", "OPEN SOURCE"].map((stat) => (
+            {["46 COMPONENTS", "14 CATEGORIES", "OPEN SOURCE"].map((stat) => (
               <span
                 key={stat}
                 className="font-mono-code text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/60 border border-border-fallback-10 rounded-full px-4 py-1.5 select-none bg-transparent"
@@ -281,7 +281,7 @@ const HomePage = () => {
         </section>
 
         {/* ── Main Content Area ── */}
-        <main className="max-w-[1200px] mx-auto sm:px-8">
+        <main className="max-w-300 mx-auto sm:px-8">
 
           {/* ── Selected Primitives ── */}
           <section className="py-16 md:py-32 px-4 md:px-0">
@@ -300,7 +300,7 @@ const HomePage = () => {
                 </p>
               </div>
               <Link to="/components" className="group flex items-center gap-2 text-sm font-mono-code uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
-                View all 43 <span className="group-hover:translate-x-1 transition-transform">→</span>
+                View all 46 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -311,7 +311,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
                 
                 {/* Left (65%): Kinetic 3D Card */}
-                <div className="md:col-span-8 group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[380px]">
+                <div className="md:col-span-8 group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-95">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Spatial Depth
@@ -332,7 +332,7 @@ const HomePage = () => {
                 <div className="md:col-span-4 flex flex-col gap-5 md:gap-6">
                   
                   {/* Top: Flip Links */}
-                  <div className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[220px]">
+                  <div className="grow group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-55">
                     <div className="mb-6 relative z-10">
                       <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                         Navigation
@@ -351,7 +351,7 @@ const HomePage = () => {
 
                   {/* Bottom: Encrypted Text */}
                   <div 
-                    className="grow group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-[220px]"
+                    className="grow group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-55"
                     onMouseEnter={() => setHoveredCard('encrypted')}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
@@ -385,7 +385,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                 
                 {/* Neural Trace */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       AI Timeline
@@ -403,7 +403,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Mac Style Layout */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
                   <div className="mb-6 relative z-20">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Keyboards
@@ -413,7 +413,7 @@ const HomePage = () => {
                     </h3>
                   </div>
                   <div className="grow flex items-center justify-center rounded-lg overflow-hidden transition-colors duration-500 relative z-10 -mx-4">
-                    <div className="scale-[0.4] md:scale-[0.45] origin-center w-[780px]">
+                    <div className="scale-[0.4] md:scale-[0.45] origin-center w-195">
                       <MacKeyboard />
                     </div>
                   </div>
@@ -423,7 +423,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Ghost Forms */}
-                <div className="group relative rounded-[12px] overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:translate-y-[-2px] bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-[360px]">
+                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Forms &amp; Inputs
@@ -452,8 +452,8 @@ const HomePage = () => {
         <section className="relative w-full border-y border-border-fallback-10 overflow-hidden select-none bg-transparent">
           <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10">
             {[
-              { num: "43", label: "Components" },
-              { num: "13", label: "Categories" },
+              { num: "46", label: "Components" },
+              { num: "14", label: "Categories" },
               { num: "1", label: "npm Package" },
               { num: "MIT", label: "Licensed" },
             ].map((stat, i) => (
@@ -469,7 +469,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <main className="max-w-[1200px] mx-auto sm:px-8">
+        <main className="max-w-300 mx-auto sm:px-8">
         {/* Text CTA Section (Desktop & Mobile) */}
         <section className="py-16 md:py-32 px-4 md:px-0 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
           
@@ -493,7 +493,7 @@ const HomePage = () => {
 
           {/* Right Side (45%) */}
           <div className="w-full md:w-[45%]">
-            <div className={`p-6 rounded-[12px] border transition-all duration-300 ${isDark ? 'bg-[#1a1a1a] border-white/8' : 'bg-[#e8e6e1] border-black/8'} flex flex-col`}>
+            <div className={`p-6 rounded-xl border transition-all duration-300 ${isDark ? 'bg-[#1a1a1a] border-white/8' : 'bg-[#e8e6e1] border-black/8'} flex flex-col`}>
               
               {/* Top: Install */}
               <div className="mb-6">

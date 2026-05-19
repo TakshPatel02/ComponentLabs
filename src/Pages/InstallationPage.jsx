@@ -67,13 +67,13 @@ const CodeBlock = ({ code, language = "bash" }) => {
 /* ── On This Page sidebar ── */
 const SECTIONS = [
   { id: "install", label: "Installation" },
-  { id: "tailwind-config", label: "Tailwind Config" },
+  { id: "import-styles", label: "Import Styles" },
   { id: "peer-deps", label: "Peer Dependencies" },
   { id: "usage", label: "Basic Usage" },
 ];
 
 const OnThisPageNav = ({ activeSection }) => (
-  <nav className="hidden xl:block fixed right-0 top-0 w-[200px] h-screen pt-24 pr-6 pl-4 bg-surface">
+  <nav className="hidden xl:block fixed right-0 top-0 w-50 h-screen pt-24 pr-6 pl-4 bg-surface">
     <div className="font-system-micro text-[10.5px] font-semibold uppercase tracking-widest mb-4 select-none text-on-surface-variant/60">
       On This Page
     </div>
@@ -149,7 +149,7 @@ const InstallationPage = () => {
       <DocsSidebar />
 
       {/* Main content */}
-      <main className="ml-0 md:ml-[240px] xl:mr-[200px] flex-1 min-w-0 min-h-screen">
+      <main className="ml-0 md:ml-60 xl:mr-50 flex-1 min-w-0 min-h-screen">
         <div className="max-w-3xl min-w-0 mx-auto px-6 md:px-8 py-16 md:py-24">
 
           {/* ── Page Header ── */}
@@ -173,37 +173,20 @@ const InstallationPage = () => {
             <CodeBlock code="npm install component-labs" language="bash" />
           </section>
 
-          {/* ── Section 2: Tailwind Config ── */}
-          <section id="tailwind-config" className="mb-14 scroll-mt-20">
+          {/* ── Section 2: Import Styles ── */}
+          <section id="import-styles" className="mb-14 scroll-mt-20">
             <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2 font-['Space_Grotesk'] text-primary mb-5">
-              Configure Tailwind
+              Import Styles
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-5">
-              Add the ComponentLab dist path to your Tailwind config so styles are picked up correctly.
+              Import the styles globally in your application's entry file (e.g., <code>main.jsx</code> or <code>App.jsx</code>):
             </p>
 
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-semibold text-primary/70 font-['Space_Grotesk']">
-                  tailwind.config.js (v3)
-                </p>
                 <CodeBlock
-                  code={`content: [
-  "./src/**/*.{js,jsx,ts,tsx}",
-  "./node_modules/component-labs/dist/**/*.{js,mjs}"
-]`}
+                  code={`import "component-labs/styles";`}
                   language="javascript"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-sm font-semibold text-primary/70 font-['Space_Grotesk']">
-                  tailwind.config.css (v4)
-                </p>
-                <CodeBlock
-                  code={`@import "tailwindcss";
-@source "../node_modules/component-labs/dist";`}
-                  language="css"
                 />
               </div>
             </div>
