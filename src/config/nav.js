@@ -104,6 +104,8 @@ export const navConfig = [
     items: [
       { label: "SaaS Footer", href: "/components/footers/sassfooter" },
       { label: "Minimal Footer", href: "/components/footers/minimalfooter" },
+      { label: "Editorial Brand Footer", href: "/components/footers/editorialbrandfooter" },
+      { label: "Engineering Status Footer", href: "/components/footers/engineeringstatusfooter" },
     ]
   },
   {

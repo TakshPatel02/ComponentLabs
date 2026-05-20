@@ -49,6 +49,8 @@ import { CrosshairLogoCloud } from '../components/LogoCloudComponents/CrosshairL
 
 import SaaSFooter from '../components/FooterComponents/SaaSFooter';
 import MinimalFooter from '../components/FooterComponents/MinimalFooter';
+import EditorialBrandFooter from '../components/FooterComponents/EditorialBrandFooter';
+import EngineeringStatusFooter from '../components/FooterComponents/EngineeringStatusFooter';
 
 import { AnimatedFAQ } from '../components/OtherComponents/AnimatedFAQ';
 import CategorizedFAQ from '../components/OtherComponents/CategorizedFAQ';
@@ -209,6 +211,14 @@ export const componentPreviews = {
   },
   minimalfooter: {
     previewContainerClass: fullWidthNoBoxClass
+  },
+  editorialbrandfooter: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <EditorialBrandFooter key={key} />
+  },
+  engineeringstatusfooter: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <EngineeringStatusFooter key={key} />
   },
 
   // CARDS

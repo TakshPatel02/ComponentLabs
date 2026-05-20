@@ -62,6 +62,8 @@ import { CrosshairLogoCloud } from "../components/LogoCloudComponents/CrosshairL
 // Footers
 import SaaSFooter from "../components/FooterComponents/SaaSFooter";
 import MinimalFooter from "../components/FooterComponents/MinimalFooter";
+import EditorialBrandFooter from "../components/FooterComponents/EditorialBrandFooter";
+import EngineeringStatusFooter from "../components/FooterComponents/EngineeringStatusFooter";
 
 // Other Primitives
 import KanbanBoard from "../components/OtherComponents/KanbanBoard";
@@ -919,6 +921,43 @@ export const componentsData = {
       "Underline hover effect on nav links",
       "Clean two-section border layout",
       "Dark mode compatible",
+    ],
+  },
+
+  "editorialbrandfooter": {
+    title: "Editorial Brand Footer",
+    category: "FOOTERS",
+    description: "Premium large-brand editorial footer with massive condensed heading, serif design tag, 4-column links, and social copyright bar.",
+    component: EditorialBrandFooter,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Massive high-impact editorial brand logo",
+      "Serif lowercase design wordmark accent",
+      "4-column structured link layout",
+      "Trademark status indicator circle",
+      "Fully responsive mobile stacking layout",
+      "Premium dark container with custom rounded corners",
+    ],
+  },
+
+  "engineeringstatusfooter": {
+    title: "Engineering Status Footer",
+    category: "FOOTERS",
+    description: "Ultra-premium brand footer with technical operational status bar, centered dot-separated navigation, dynamic backdrop spotlight, and individual letter spring reactions.",
+    component: EngineeringStatusFooter,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Technical operational status bar with boxed registry identifier",
+      "Pulsating green status beacon with Systems Nominal underline",
+      "Centered dot-separated responsive links with sibling focus-dimming",
+      "Book a Demo high-contrast pill with spring-animating arrow action",
+      "Massive bold wordmark COMPONENTLAB with organic letter-by-letter spring wave on hover",
+      "Dynamic cursor-tracking backlit ambient spotlight glow",
+      "Serif Georgia copyright signature styling",
     ],
   },
 
