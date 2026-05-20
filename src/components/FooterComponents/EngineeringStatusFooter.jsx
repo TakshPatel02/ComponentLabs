@@ -66,7 +66,7 @@ const EngineeringStatusFooter = () => {
           {/* ── 1. Top Status Grid Row (4 Columns in Desktop) ── */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pb-6 border-b text-[11px] sm:text-xs max-w-6xl mx-auto w-full items-center border-border-fallback-10"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-6 border-b text-[11px] sm:text-xs max-w-6xl mx-auto w-full items-center border-border-fallback-10"
           >
             {/* System Registry */}
             <div className="flex items-center gap-3 justify-start">
@@ -79,27 +79,6 @@ const EngineeringStatusFooter = () => {
                 </div>
                 <div className="font-mono font-bold mt-1 text-[11px] sm:text-xs text-primary">
                   v2.0.4 - <span className="opacity-90">STABLE_BUILD</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Theme Status Card (CSS theme switching) */}
-            <div className="flex items-center gap-3 justify-start">
-              <div className="rounded-xs w-6.5 h-6.5 flex items-center justify-center font-mono font-medium text-xs shadow-sm select-none border border-border-fallback-10 text-primary bg-surface">
-                <Sun className="w-3.5 h-3.5 text-amber-500 block dark:hidden" />
-                <Moon className="w-3.5 h-3.5 text-blue-400 hidden dark:block" />
-              </div>
-              <div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.2em] font-semibold leading-none text-on-surface-variant">
-                  Theme Status
-                </div>
-                <div className="font-mono font-bold mt-1 text-[11px] sm:text-xs flex items-center gap-1.5 text-primary">
-                  <span className="relative flex h-1.5 w-1.5 shrink-0">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-amber-400 dark:bg-blue-400"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500 dark:bg-blue-500"></span>
-                  </span>
-                  <span className="block dark:hidden">LIGHT_MODE</span>
-                  <span className="hidden dark:block">DARK_MODE</span>
                 </div>
               </div>
             </div>

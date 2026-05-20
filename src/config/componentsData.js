@@ -68,6 +68,7 @@ import EngineeringStatusFooter from "../components/FooterComponents/EngineeringS
 // CTA Sections
 import SmartInterfaceCTA from "../components/CTAComponents/SmartInterfaceCTA";
 import CreativeIntelligenceCTA from "../components/CTAComponents/CreativeIntelligenceCTA";
+import ProTierPricingCTA from "../components/CTAComponents/ProTierPricingCTA";
 
 // Other Primitives
 import KanbanBoard from "../components/OtherComponents/KanbanBoard";
@@ -973,9 +974,7 @@ export const componentsData = {
     description: "Premium call-to-action block featuring vertical drafting guidelines, blueprint grids, a modular engineer trust badge, compact tracking headers, elegant Georgia-serif italic subtitles, and spring-responsive action buttons.",
     component: SmartInterfaceCTA,
     published: false,
-    usage: `import { SmartInterfaceCTA } from "component-labs";
-
-<SmartInterfaceCTA />`,
+    usage: null,
     props: [],
     features: [
       "Precision drafting board aesthetic with flanking coordinate vertical columns",
@@ -994,9 +993,7 @@ export const componentsData = {
     description: "High-fidelity brand call-to-action displaying a copper network node icon, bold section title, elegant italicised serif subtitle, pill-shaped action button with spaced-out tracking, and an organic flowing waves visual card.",
     component: CreativeIntelligenceCTA,
     published: false,
-    usage: `import { CreativeIntelligenceCTA } from "component-labs";
-
-<CreativeIntelligenceCTA />`,
+    usage: null,
     props: [],
     features: [
       "Centered copper network node brand mark symbol",
@@ -1005,6 +1002,24 @@ export const componentsData = {
       "Pill-shaped BEGIN CREATION action button with spaced-out font tracking",
       "Stunning rounded cards displaying abstract satin copper and bronze silk waves",
       "Seamless Tailwind-powered dark and light theme switching out-of-the-box"
+    ],
+  },
+
+  "protierpricingcta": {
+    title: "Pro Tier Pricing CTA",
+    category: "CTA SECTIONS",
+    description: "Premium high-contrast split CTA combining a bold 'Unlock the Pro Tier' left-column message with a gold status badge, serif italicised description, checkmark feature list, and a clean professional-tier pricing card.",
+    component: ProTierPricingCTA,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Gold pulsating border capsule 'New Pro Features Available'",
+      "Bold typographic 'Unlock the Pro Tier' heading styled in warm hues",
+      "Serif Georgia-style italic description layout",
+      "Circular green checkmark list representing premium feature options",
+      "Professional tier card with '$10/mo' layout and dark highlight button",
+      "Standard design system Tailwind styles for flawless dark/light transition switching"
     ],
   },
 

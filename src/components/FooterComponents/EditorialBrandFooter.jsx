@@ -143,7 +143,7 @@ const EditorialBrandFooter = () => {
             {/* Wordmark with a circled dynamic logo badge */}
             <div className="relative flex items-center justify-center overflow-visible">
               <h2 
-                className="font-section-heading font-bold tracking-[-0.05em] leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
+                className="font-section-heading font-bold tracking-tighter leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
               >
                 COMPONENTLAB
               </h2>

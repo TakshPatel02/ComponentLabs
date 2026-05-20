@@ -113,6 +113,7 @@ export const navConfig = [
     items: [
       { label: "Smart Interface CTA", href: "/components/cta/smartinterfacecta" },
       { label: "Creative Intelligence CTA", href: "/components/cta/creativeintelligencecta" },
+      { label: "Pro Tier Pricing CTA", href: "/components/cta/protierpricingcta" },
     ]
   },
   {
