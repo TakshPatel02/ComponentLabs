@@ -40,7 +40,15 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="font-['Space_Grotesk'] text-[11px] md:text-[13px] uppercase tracking-widest text-primary/40 order-2 md:order-3 w-full md:w-auto">
-          © 2026 ComponentLab. Built for the era of AI.
+          © 2026 ComponentLab. Designed & Built by{" "}
+          <a
+            href="https://takshpatel.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-error-warm font-medium transition-colors underline decoration-primary/20 decoration-1 underline-offset-4"
+          >
+            Taksh Patel
+          </a>
         </div>
       </div>
     </footer>

@@ -206,7 +206,15 @@ const IntroductionPage = () => {
               <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px]">
                 ComponentLab is a curated collection of production-ready React
                 UI primitives built with Motion, Tailwind CSS, and AI-assisted
-                development.
+                development, designed and developed by{" "}
+                <a
+                  href="https://takshpatel.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#E8567A] hover:underline no-underline font-medium"
+                >
+                  Taksh Patel
+                </a>.
               </p>
               <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px]">
                 It started as a single portfolio page to showcase components.
