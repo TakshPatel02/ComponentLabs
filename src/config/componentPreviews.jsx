@@ -52,6 +52,9 @@ import MinimalFooter from '../components/FooterComponents/MinimalFooter';
 import EditorialBrandFooter from '../components/FooterComponents/EditorialBrandFooter';
 import EngineeringStatusFooter from '../components/FooterComponents/EngineeringStatusFooter';
 
+// CTA Sections
+import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
+
 import { AnimatedFAQ } from '../components/OtherComponents/AnimatedFAQ';
 import CategorizedFAQ from '../components/OtherComponents/CategorizedFAQ';
 
@@ -235,5 +238,11 @@ export const componentPreviews = {
   // CREATIVE
   cinematiccards: { previewContainerClass: fullWidthNoBoxClass },
   elasticstretchtext: { previewContainerClass: standardBoxClass },
-  fluidcursortrail: { previewContainerClass: noBoxClass }
+  fluidcursortrail: { previewContainerClass: noBoxClass },
+
+  // CTA
+  smartinterfacecta: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <SmartInterfaceCTA key={key} />
+  }
 };

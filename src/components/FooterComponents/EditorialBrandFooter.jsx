@@ -1,26 +1,10 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { motion } from "framer-motion";
 
 const EditorialBrandFooter = () => {
   const [hoveredLinkIdx, setHoveredLinkIdx] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isWordmarkHovered, setIsWordmarkHovered] = useState(false);
-  const [localThemeOverride, setLocalThemeOverride] = useState(null);
-
-  // Safe context check to prevent runtime crashes if rendered outside ThemeProvider
-  let globalTheme = "light";
-  try {
-    const context = useTheme();
-    if (context) {
-      globalTheme = context.theme;
-    }
-  } catch (e) {
-    // Fallback silently if ThemeProvider is not in parent tree
-  }
-
-  const activeTheme = localThemeOverride || globalTheme || "dark";
 
   const linkColumns = [
     {
@@ -97,17 +81,9 @@ const EditorialBrandFooter = () => {
   // Flattened link index helper for global sibling dimming
   let absoluteLinkCounter = 0;
 
-  const toggleLocalTheme = () => {
-    setLocalThemeOverride((prev) => (prev === "dark" || (prev === null && globalTheme === "dark") ? "light" : "dark"));
-  };
-
   return (
-    <div className={activeTheme === "dark" ? "dark" : ""}>
-      <footer className={`w-full font-sans overflow-hidden border-t transition-colors duration-500 relative ${
-        activeTheme === "dark"
-          ? "bg-[#0c0c0c] border-neutral-900 text-[#faf9f5]"
-          : "bg-[#faf9f5] border-neutral-200 text-neutral-900"
-      }`}>
+    <div>
+      <footer className="w-full font-sans overflow-hidden border-t border-border-fallback-10 transition-colors duration-500 relative bg-background text-on-surface">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -116,9 +92,7 @@ const EditorialBrandFooter = () => {
           className="w-full p-6 sm:p-10 md:p-14 flex flex-col justify-between"
         >
           {/* Ambient Top Light Reflection Edge Line */}
-          <div className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent to-transparent ${
-            activeTheme === "dark" ? "via-neutral-800/60" : "via-neutral-300/40"
-          }`} />
+          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-border-fallback-10 to-transparent" />
 
           {/* ── 1. Top Brand Header Area (Wordmark + Serif design word) ── */}
           <motion.div
@@ -130,67 +104,55 @@ const EditorialBrandFooter = () => {
           >
             {/* Dynamic Spotlight Glow Backdrop */}
             <div className="absolute inset-0 pointer-events-none overflow-visible flex items-center justify-center">
-              {activeTheme === "dark" ? (
-                /* Spotlight for Dark Mode */
-                <motion.div
-                  className="absolute rounded-full blur-3xl pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 60%)",
-                    width: "420px",
-                    height: "240px",
-                    left: mousePos.x - 210,
-                    top: mousePos.y - 120,
-                    position: "absolute",
-                  }}
-                  animate={{
-                    scale: isWordmarkHovered ? 1.25 : 0.8,
-                    opacity: isWordmarkHovered ? 0.9 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 80, damping: 22 }}
-                />
-              ) : (
-                /* Spotlight for Light Mode */
-                <motion.div
-                  className="absolute rounded-full blur-3xl pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle, rgba(25, 25, 21, 0.02) 0%, transparent 60%)",
-                    width: "420px",
-                    height: "240px",
-                    left: mousePos.x - 210,
-                    top: mousePos.y - 120,
-                    position: "absolute",
-                  }}
-                  animate={{
-                    scale: isWordmarkHovered ? 1.15 : 0.8,
-                    opacity: isWordmarkHovered ? 0.75 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 80, damping: 22 }}
-                />
-              )}
+              {/* Spotlight for Dark Mode */}
+              <motion.div
+                className="hidden dark:block absolute rounded-full blur-3xl pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 60%)",
+                  width: "420px",
+                  height: "240px",
+                  left: mousePos.x - 210,
+                  top: mousePos.y - 120,
+                  position: "absolute",
+                }}
+                animate={{
+                  scale: isWordmarkHovered ? 1.25 : 0.8,
+                  opacity: isWordmarkHovered ? 0.9 : 0,
+                }}
+                transition={{ type: "spring", stiffness: 80, damping: 22 }}
+              />
+              {/* Spotlight for Light Mode */}
+              <motion.div
+                className="block dark:hidden absolute rounded-full blur-3xl pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(25, 25, 21, 0.02) 0%, transparent 60%)",
+                  width: "420px",
+                  height: "240px",
+                  left: mousePos.x - 210,
+                  top: mousePos.y - 120,
+                  position: "absolute",
+                }}
+                animate={{
+                  scale: isWordmarkHovered ? 1.15 : 0.8,
+                  opacity: isWordmarkHovered ? 0.75 : 0,
+                }}
+                transition={{ type: "spring", stiffness: 80, damping: 22 }}
+              />
             </div>
 
             {/* Letter-by-letter springy wordmark with a circled dynamic logo badge */}
             <div className="relative flex items-center justify-center overflow-visible">
               <h2 
-                className={`font-sans font-[950] tracking-[-0.07em] scale-y-[1.15] origin-bottom leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible ${
-                  activeTheme === "dark" ? "text-white" : "text-neutral-950"
-                }`}
+                className="font-sans font-[950] tracking-[-0.07em] scale-y-[1.15] origin-bottom leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
               >
-                {wordmarkLetters.map((char, index) => (
-                  <motion.span
-                    key={index}
-                    className="inline-block origin-bottom cursor-default"
-                    whileHover={{
-                      scaleY: 1.04,
-                      scaleX: 0.98,
-                      y: -4,
-                      textShadow: activeTheme === "dark" ? "0 0 25px rgba(255,255,255,0.4)" : "0 0 25px rgba(0,0,0,0.1)",
-                      transition: { type: "spring", stiffness: 450, damping: 12 }
-                    }}
+                
+                  <span
+                    className="inline-block origin-bottom cursor-default transition-all duration-300 "
+                    
                   >
-                    {char}
-                  </motion.span>
-                ))}
+                    {wordmarkLetters}
+                  </span>
+                
               </h2>
 
               {/* Centered Segmented Circular Custom SVG Logo Badge matching mockup */}
@@ -198,9 +160,7 @@ const EditorialBrandFooter = () => {
                 <motion.div
                   whileHover={{ scale: 1.12, rotate: 20, transition: { type: "spring", stiffness: 400, damping: 10 } }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-5.5 h-5.5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-black shadow-md flex items-center justify-center relative overflow-hidden cursor-pointer border ${
-                    activeTheme === "dark" ? "border-white/20" : "border-neutral-300"
-                  }`}
+                  className="w-5.5 h-5.5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-primary shadow-md flex items-center justify-center relative overflow-hidden cursor-pointer border border-border-fallback-10 text-on-primary"
                 >
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Concentric rings background */}
@@ -220,9 +180,7 @@ const EditorialBrandFooter = () => {
             {/* Centered flowing lowercase design label in elegant Georgia serif */}
             <motion.div
               variants={itemVariants}
-              className={`font-serif italic font-normal text-[5.5vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[3.2vw] mt-2 select-none z-10 transition-colors duration-300 ${
-                activeTheme === "dark" ? "text-[#faf9f5]" : "text-neutral-800"
-              }`}
+              className="font-serif italic font-normal text-[5.5vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[3.2vw] mt-2 select-none z-10 transition-colors duration-300 text-on-surface-variant"
             >
               design
             </motion.div>
@@ -231,15 +189,11 @@ const EditorialBrandFooter = () => {
           {/* ── 2. Links Columns Grid Row ── */}
           <motion.div
             variants={itemVariants}
-            className={`grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 py-12 border-t max-w-6xl mx-auto w-full ${
-              activeTheme === "dark" ? "border-neutral-900" : "border-neutral-200"
-            }`}
+            className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 py-12 border-t max-w-6xl mx-auto w-full border-border-fallback-10"
           >
             {linkColumns.map((col, colIdx) => (
               <div key={colIdx} className="flex flex-col gap-5">
-                <h3 className={`font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] ${
-                  activeTheme === "dark" ? "text-neutral-500" : "text-neutral-400"
-                }`}>
+                <h3 className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
                   {col.title}
                 </h3>
                 <ul className="flex flex-col gap-2.5 sm:gap-3 text-[13px] sm:text-sm">
@@ -255,14 +209,10 @@ const EditorialBrandFooter = () => {
                           onMouseLeave={() => setHoveredLinkIdx(null)}
                           animate={{ opacity: isDimmed ? 0.45 : 1 }}
                           transition={{ duration: 0.25 }}
-                          className={`transition-colors duration-200 font-semibold tracking-wide inline-block py-0.5 relative group ${
-                            activeTheme === "dark" ? "text-[#d6d4c7] hover:text-white" : "text-neutral-600 hover:text-neutral-950"
-                          }`}
+                          className="transition-colors duration-200 font-semibold tracking-wide inline-block py-0.5 relative group text-on-surface-variant hover:text-primary"
                         >
                           {link.label}
-                          <span className={`absolute bottom-0 left-0 w-0 h-micro-1 transition-all duration-300 ease-out group-hover:w-full ${
-                            activeTheme === "dark" ? "bg-[#faf9f5]" : "bg-neutral-950"
-                          }`} />
+                          <span className="absolute bottom-0 left-0 w-0 h-micro-1 transition-all duration-300 ease-out group-hover:w-full bg-primary" />
                         </motion.a>
                       </li>
                     );
@@ -275,73 +225,21 @@ const EditorialBrandFooter = () => {
           {/* ── 3. Monospace copyright and social links bottom row ── */}
           <motion.div
             variants={itemVariants}
-            className={`pt-6 mt-4 border-t flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between max-w-6xl mx-auto w-full ${
-              activeTheme === "dark" ? "border-neutral-900 text-neutral-500" : "border-neutral-200 text-neutral-400"
-            }`}
+            className="pt-6 mt-4 border-t flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between max-w-6xl mx-auto w-full border-border-fallback-10 text-on-surface-variant/80"
           >
             {/* Monospace copyright */}
             <div className="text-center sm:text-left font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-widest select-none">
               &copy; 2026 COMPONENTLAB. ALL RIGHTS RESERVED.
             </div>
 
-            {/* Micro-interactive dynamic theme stage switch + Social Links */}
+            {/* Social Links Row */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em]">
-              
-              {/* THEME_STAGE Switch Control */}
-              <div className={`flex items-center gap-2.5 mr-2 pr-4 border-r ${
-                activeTheme === "dark" ? "border-neutral-900" : "border-neutral-200"
-              }`}>
-                <span className={`text-[9px] uppercase tracking-[0.15em] select-none ${
-                  activeTheme === "dark" ? "text-neutral-500" : "text-neutral-400"
-                }`}>
-                  STAGE:
-                </span>
-                <button
-                  onClick={toggleLocalTheme}
-                  className={`w-7 h-7 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xs relative overflow-hidden border ${
-                    activeTheme === "dark"
-                      ? "border-neutral-800 bg-neutral-900/60 text-neutral-300 hover:bg-neutral-900"
-                      : "border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50"
-                  }`}
-                  title={`Switch to ${activeTheme === "dark" ? "light" : "dark"} mode`}
-                >
-                  <AnimatePresence mode="wait">
-                    {activeTheme === "dark" ? (
-                      <motion.div
-                        key="moon"
-                        initial={{ y: 8, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -8, opacity: 0 }}
-                        transition={{ duration: 0.15 }}
-                        className="text-blue-400"
-                      >
-                        <Moon className="w-3.5 h-3.5" />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="sun"
-                        initial={{ y: 8, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -8, opacity: 0 }}
-                        transition={{ duration: 0.15 }}
-                        className="text-amber-500"
-                      >
-                        <Sun className="w-3.5 h-3.5" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
-              </div>
-
-              {/* Social Links */}
               {["TWITTER", "GITHUB", "DRIBBBLE", "LINKEDIN"].map((social, idx) => (
                 <motion.a
                   key={idx}
                   href="#"
                   whileHover={{ y: -2 }}
-                  className={`transition-colors duration-250 cursor-pointer ${
-                    activeTheme === "dark" ? "hover:text-[#faf9f5]" : "hover:text-neutral-950"
-                  }`}
+                  className="transition-colors duration-250 cursor-pointer hover:text-primary"
                 >
                   {social}
                 </motion.a>

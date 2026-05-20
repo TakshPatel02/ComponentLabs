@@ -18,6 +18,7 @@ import {
   PanelBottom,
   Puzzle,
   ArrowRight,
+  Megaphone,
 } from "lucide-react";
 
 /* ── Category icon mapping ── */
@@ -35,6 +36,7 @@ const categoryIcons = {
   "LOGO CLOUDS": Cloud,
   "FOOTERS": PanelBottom,
   "OTHER PRIMITIVES": Puzzle,
+  "CTA SECTIONS": Megaphone,
 };
 
 /* ── Category Card Component ── */

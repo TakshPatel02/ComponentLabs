@@ -109,6 +109,12 @@ export const navConfig = [
     ]
   },
   {
+    section: "CTA SECTIONS",
+    items: [
+      { label: "Smart Interface CTA", href: "/components/cta/smartinterfacecta" },
+    ]
+  },
+  {
     section: "OTHER PRIMITIVES",
     items: [
       { label: "Kanban Board", href: "/components/other/kanbanboard" },

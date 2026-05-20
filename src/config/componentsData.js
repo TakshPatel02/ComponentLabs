@@ -65,6 +65,9 @@ import MinimalFooter from "../components/FooterComponents/MinimalFooter";
 import EditorialBrandFooter from "../components/FooterComponents/EditorialBrandFooter";
 import EngineeringStatusFooter from "../components/FooterComponents/EngineeringStatusFooter";
 
+// CTA Sections
+import SmartInterfaceCTA from "../components/CTAComponents/SmartInterfaceCTA";
+
 // Other Primitives
 import KanbanBoard from "../components/OtherComponents/KanbanBoard";
 import { VintageFader } from "../components/OtherComponents/EditorialSlider";
@@ -958,6 +961,29 @@ export const componentsData = {
       "Massive bold wordmark COMPONENTLAB with organic letter-by-letter spring wave on hover",
       "Dynamic cursor-tracking backlit ambient spotlight glow",
       "Serif Georgia copyright signature styling",
+    ],
+  },
+
+  // CTA SECTIONS
+
+  "smartinterfacecta": {
+    title: "Smart Interface CTA",
+    category: "CTA SECTIONS",
+    description: "Premium call-to-action block featuring vertical drafting guidelines, blueprint grids, a modular engineer trust badge, compact tracking headers, elegant Georgia-serif italic subtitles, and spring-responsive action buttons.",
+    component: SmartInterfaceCTA,
+    published: false,
+    usage: `import { SmartInterfaceCTA } from "component-labs";
+
+<SmartInterfaceCTA />`,
+    props: [],
+    features: [
+      "Precision drafting board aesthetic with flanking coordinate vertical columns",
+      "Background blueprint circular dotted alignment guides",
+      "Pulsating interactive 'Trusted by 2,000+ Engineers' floating badge",
+      "Highly responsive typographic scaling with micro-condensed tracking",
+      "Elegant Georgia-style serif italic subtitle layout",
+      "Spring-responsive action button elements with hover-sliding vector arrows",
+      "Flawless light and dark visual themes isolated for nested rendering"
     ],
   },
 
