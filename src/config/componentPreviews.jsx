@@ -59,8 +59,10 @@ import ProTierPricingCTA from '../components/CTAComponents/ProTierPricingCTA';
 
 import { AnimatedFAQ } from '../components/OtherComponents/AnimatedFAQ';
 import CategorizedFAQ from '../components/OtherComponents/CategorizedFAQ';
+import MinimalGridFAQ from '../components/OtherComponents/MinimalGridFAQ';
 
 import CodeShowcaseFeature from '../components/FeatureComponents/CodeShowcaseFeature';
+import InteractiveSpotlightFeatures from '../components/FeatureComponents/InteractiveSpotlightFeatures';
 
 // A completely transparent wrapper with NO background, NO border, and NO shadow.
 // This allows components that render their own boxes to be the only box visible.
@@ -254,5 +256,13 @@ export const componentPreviews = {
   protierpricingcta: {
     previewContainerClass: fullWidthNoBoxClass,
     renderPreview: (key) => <ProTierPricingCTA key={key} />
+  },
+  minimalgridfaq: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <MinimalGridFAQ key={key} />
+  },
+  interactivespotlightfeatures: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <InteractiveSpotlightFeatures key={key} />
   }
 };

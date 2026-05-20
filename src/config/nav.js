@@ -81,6 +81,7 @@ export const navConfig = [
     section: "FEATURES",
     items: [
       { label: "Code Showcase Segment", href: "/components/features/codeshowcasesegment" },
+      { label: "Interactive Spotlight", href: "/components/features/interactivespotlightfeatures" },
     ]
   },
   {
@@ -88,6 +89,7 @@ export const navConfig = [
     items: [
       { label: "Categorized FAQ", href: "/components/faqs/categorizedfaq" },
       { label: "Standard FAQ", href: "/components/faqs/standardfaq" },
+      { label: "Minimal Grid FAQ", href: "/components/faqs/minimalgridfaq" },
     ]
   },
   {

@@ -48,10 +48,12 @@ import AuroraHero from "../components/HeroComponents/AuroraHero";
 
 // Features
 import CodeShowcaseFeature from "../components/FeatureComponents/CodeShowcaseFeature";
+import InteractiveSpotlightFeatures from "../components/FeatureComponents/InteractiveSpotlightFeatures";
 
 // FAQs
 import CategorizedFAQ from "../components/OtherComponents/CategorizedFAQ";
 import { AnimatedFAQ } from "../components/OtherComponents/AnimatedFAQ";
+import MinimalGridFAQ from "../components/OtherComponents/MinimalGridFAQ";
 
 // Logo Clouds
 import { LogoCloud } from "../components/LogoCloudComponents/LogoCloud";
@@ -756,6 +758,23 @@ export const componentsData = {
     ],
   },
 
+  "interactivespotlightfeatures": {
+    title: "Interactive Spotlight Features",
+    category: "FEATURES",
+    description: "Premium SaaS-oriented feature cards leveraging local mouse tracking to drive glowing spotlights, accompanied by high-fidelity SVG technical grids.",
+    component: InteractiveSpotlightFeatures,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Real-time cursor coordinate spotlight tracking",
+      "SVG-drawn blueprint grid backdrops with crosshairs",
+      "Spring-responsive card transformations & micro-lifts",
+      "Lucide vector icon layouts",
+      "Unified dark and light theme compliance",
+    ],
+  },
+
   // FAQS
 
   "categorizedfaq": {
@@ -797,6 +816,23 @@ export const componentsData = {
       "Plus icon rotates to X on open",
       "Background color change on active",
       "Single FAQ or list mode",
+    ],
+  },
+
+  "minimalgridfaq": {
+    title: "Minimal Grid FAQ",
+    category: "FAQS",
+    description: "High-fidelity responsive grid callout mapping key FAQs with circular help decorators, Space Grotesk section titles, and micro-hover interactions.",
+    component: MinimalGridFAQ,
+    published: false,
+    usage: null,
+    props: [],
+    features: [
+      "Clean responsive 3-column desktop layout grid",
+      "Geometric Space Grotesk section title",
+      "Interactive help mark vector decorators",
+      "Spring-animated micro-hover lifts",
+      "Seamless dark and light theme compliance using Tailwind variables",
     ],
   },
 
