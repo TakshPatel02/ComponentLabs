@@ -112,6 +112,7 @@ export const navConfig = [
     section: "CTA SECTIONS",
     items: [
       { label: "Smart Interface CTA", href: "/components/cta/smartinterfacecta" },
+      { label: "Creative Intelligence CTA", href: "/components/cta/creativeintelligencecta" },
     ]
   },
   {

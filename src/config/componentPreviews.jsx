@@ -54,6 +54,7 @@ import EngineeringStatusFooter from '../components/FooterComponents/EngineeringS
 
 // CTA Sections
 import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
+import CreativeIntelligenceCTA from '../components/CTAComponents/CreativeIntelligenceCTA';
 
 import { AnimatedFAQ } from '../components/OtherComponents/AnimatedFAQ';
 import CategorizedFAQ from '../components/OtherComponents/CategorizedFAQ';
@@ -244,5 +245,9 @@ export const componentPreviews = {
   smartinterfacecta: {
     previewContainerClass: fullWidthNoBoxClass,
     renderPreview: (key) => <SmartInterfaceCTA key={key} />
+  },
+  creativeintelligencecta: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <CreativeIntelligenceCTA key={key} />
   }
 };

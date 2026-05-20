@@ -52,7 +52,7 @@ const EngineeringStatusFooter = () => {
 
   return (
     <div>
-      <footer className="w-full font-sans overflow-hidden border-t border-border-fallback-10 transition-colors duration-500 relative flex flex-col justify-between bg-background text-on-surface">
+      <footer className="w-full font-sans overflow-hidden border-t border-border-fallback-10 transition-colors duration-500 relative flex flex-col justify-between bg-surface-container text-on-surface">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -61,7 +61,7 @@ const EngineeringStatusFooter = () => {
           className="w-full p-6 sm:p-10 md:p-14 flex flex-col justify-between"
         >
           {/* Ambient Top Light Reflection Edge Line */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-linear-to-r from-transparent via-border-fallback-10 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-border-fallback-10 to-transparent" />
 
           {/* ── 1. Top Status Grid Row (4 Columns in Desktop) ── */}
           <motion.div
@@ -70,7 +70,7 @@ const EngineeringStatusFooter = () => {
           >
             {/* System Registry */}
             <div className="flex items-center gap-3 justify-start">
-              <div className="rounded-xs w-6.5 h-6.5 flex items-center justify-center font-mono font-medium text-xs shadow-sm select-none border border-border-fallback-10 text-primary bg-surface-container">
+              <div className="rounded-xs w-6.5 h-6.5 flex items-center justify-center font-mono font-medium text-xs shadow-sm select-none border border-border-fallback-10 text-primary bg-surface">
                 2
               </div>
               <div>
@@ -85,7 +85,7 @@ const EngineeringStatusFooter = () => {
 
             {/* Theme Status Card (CSS theme switching) */}
             <div className="flex items-center gap-3 justify-start">
-              <div className="rounded-xs w-6.5 h-6.5 flex items-center justify-center font-mono font-medium text-xs shadow-sm select-none border border-border-fallback-10 text-primary bg-surface-container">
+              <div className="rounded-xs w-6.5 h-6.5 flex items-center justify-center font-mono font-medium text-xs shadow-sm select-none border border-border-fallback-10 text-primary bg-surface">
                 <Sun className="w-3.5 h-3.5 text-amber-500 block dark:hidden" />
                 <Moon className="w-3.5 h-3.5 text-blue-400 hidden dark:block" />
               </div>
@@ -175,7 +175,7 @@ const EngineeringStatusFooter = () => {
                     >
                       {link.label}
                       {/* Sliding underline */}
-                      <span className="absolute bottom-0.5 left-0 w-0 h-[1.5px] transition-all duration-300 ease-out group-hover:w-full bg-primary" />
+                      <span className="absolute bottom-0.5 left-0 w-0 h-micro-1 transition-all duration-300 ease-out group-hover:w-full bg-primary" />
                     </motion.a>
                   )}
                 </React.Fragment>
@@ -231,7 +231,7 @@ const EngineeringStatusFooter = () => {
 
             {/* Letter by Letter interactive spring wordmark */}
             <h2 
-              className="font-sans font-[950] tracking-[-0.04em] leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
+              className="font-section-heading font-bold tracking-[-0.04em] leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
               style={{
                 textShadow: "0 0 35px rgba(0, 0, 0, 0.02)",
               }}
@@ -263,7 +263,7 @@ const EngineeringStatusFooter = () => {
             </div>
 
             {/* Right link list (spaced out legal) */}
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em]">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 font-mono-code text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em]">
               {["PRIVACY", "TERMS", "CONTACT"].map((legal, idx) => (
                 <a
                   key={idx}

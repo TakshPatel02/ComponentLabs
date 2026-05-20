@@ -30,7 +30,7 @@ const SmartInterfaceCTA = () => {
   };
 
   return (
-    <div className="w-full relative overflow-hidden bg-background text-on-surface py-24 sm:py-32 flex flex-col items-center justify-center min-h-[500px] transition-colors duration-500">
+    <div className="w-full relative overflow-hidden bg-background text-on-surface py-24 sm:py-32 flex flex-col items-center justify-center min-h-125 transition-colors duration-500">
       
       {/* ── Main Content Container ── */}
       <motion.div

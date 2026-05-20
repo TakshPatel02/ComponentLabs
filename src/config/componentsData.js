@@ -67,6 +67,7 @@ import EngineeringStatusFooter from "../components/FooterComponents/EngineeringS
 
 // CTA Sections
 import SmartInterfaceCTA from "../components/CTAComponents/SmartInterfaceCTA";
+import CreativeIntelligenceCTA from "../components/CTAComponents/CreativeIntelligenceCTA";
 
 // Other Primitives
 import KanbanBoard from "../components/OtherComponents/KanbanBoard";
@@ -984,6 +985,26 @@ export const componentsData = {
       "Elegant Georgia-style serif italic subtitle layout",
       "Spring-responsive action button elements with hover-sliding vector arrows",
       "Flawless light and dark visual themes isolated for nested rendering"
+    ],
+  },
+
+  "creativeintelligencecta": {
+    title: "Creative Intelligence CTA",
+    category: "CTA SECTIONS",
+    description: "High-fidelity brand call-to-action displaying a copper network node icon, bold section title, elegant italicised serif subtitle, pill-shaped action button with spaced-out tracking, and an organic flowing waves visual card.",
+    component: CreativeIntelligenceCTA,
+    published: false,
+    usage: `import { CreativeIntelligenceCTA } from "component-labs";
+
+<CreativeIntelligenceCTA />`,
+    props: [],
+    features: [
+      "Centered copper network node brand mark symbol",
+      "Massive bold headline typography matching editorial aesthetics",
+      "Flowing Georgia-style serif italic subtitle",
+      "Pill-shaped BEGIN CREATION action button with spaced-out font tracking",
+      "Stunning rounded cards displaying abstract satin copper and bronze silk waves",
+      "Seamless Tailwind-powered dark and light theme switching out-of-the-box"
     ],
   },
 

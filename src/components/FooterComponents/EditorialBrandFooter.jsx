@@ -83,7 +83,7 @@ const EditorialBrandFooter = () => {
 
   return (
     <div>
-      <footer className="w-full font-sans overflow-hidden border-t border-border-fallback-10 transition-colors duration-500 relative bg-background text-on-surface">
+      <footer className="w-full font-sans overflow-hidden border-t border-border-fallback-10 transition-colors duration-500 relative bg-surface-container text-on-surface">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -140,19 +140,12 @@ const EditorialBrandFooter = () => {
               />
             </div>
 
-            {/* Letter-by-letter springy wordmark with a circled dynamic logo badge */}
+            {/* Wordmark with a circled dynamic logo badge */}
             <div className="relative flex items-center justify-center overflow-visible">
               <h2 
-                className="font-sans font-[950] tracking-[-0.07em] scale-y-[1.15] origin-bottom leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
+                className="font-section-heading font-bold tracking-[-0.05em] leading-none text-[11vw] sm:text-[9.5vw] md:text-[8vw] lg:text-[7.2vw] uppercase text-center transition-colors duration-300 relative z-10 select-none flex items-center justify-center overflow-visible text-primary"
               >
-                
-                  <span
-                    className="inline-block origin-bottom cursor-default transition-all duration-300 "
-                    
-                  >
-                    {wordmarkLetters}
-                  </span>
-                
+                COMPONENTLAB
               </h2>
 
               {/* Centered Segmented Circular Custom SVG Logo Badge matching mockup */}
@@ -209,7 +202,7 @@ const EditorialBrandFooter = () => {
                           onMouseLeave={() => setHoveredLinkIdx(null)}
                           animate={{ opacity: isDimmed ? 0.45 : 1 }}
                           transition={{ duration: 0.25 }}
-                          className="transition-colors duration-200 font-semibold tracking-wide inline-block py-0.5 relative group text-on-surface-variant hover:text-primary"
+                          className="transition-colors duration-200 font-ui-body font-semibold tracking-wide inline-block py-0.5 relative group text-on-surface-variant hover:text-primary"
                         >
                           {link.label}
                           <span className="absolute bottom-0 left-0 w-0 h-micro-1 transition-all duration-300 ease-out group-hover:w-full bg-primary" />
@@ -228,12 +221,12 @@ const EditorialBrandFooter = () => {
             className="pt-6 mt-4 border-t flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between max-w-6xl mx-auto w-full border-border-fallback-10 text-on-surface-variant/80"
           >
             {/* Monospace copyright */}
-            <div className="text-center sm:text-left font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-widest select-none">
+            <div className="text-center sm:text-left font-mono-code text-[10px] sm:text-xs font-semibold uppercase tracking-widest select-none">
               &copy; 2026 COMPONENTLAB. ALL RIGHTS RESERVED.
             </div>
 
             {/* Social Links Row */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em]">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-mono-code text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em]">
               {["TWITTER", "GITHUB", "DRIBBBLE", "LINKEDIN"].map((social, idx) => (
                 <motion.a
                   key={idx}
