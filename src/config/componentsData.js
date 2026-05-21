@@ -4,6 +4,8 @@ import EncryptedText from "../components/TextComponents/EncryptedText";
 import StripeWriter from "../components/TextComponents/StripeWriter";
 import VelocityText from "../components/TextComponents/VelocityText";
 import { CreativeHighlightText } from "../components/TextComponents/CreativeHighlightText";
+import KineticSplitReveal from "../components/TextComponents/KineticSplitReveal";
+import GeometricReconstitution from "../components/TextComponents/GeometricReconstitution";
 
 // Buttons
 import FillButton from "../components/ButtonComponents/FillButton";
@@ -174,6 +176,43 @@ export const componentsData = {
       "Inline SVG accent decorations",
       "Animated sparkle effects",
       "Tailwind-styled typography",
+    ],
+  },
+
+  "kineticsplitreveal": {
+    title: "Kinetic Split Reveal",
+    category: "TEXT & TYPOGRAPHY",
+    description: "A premium typographic reveal where a headline splits vertically to uncover editorial insights on hover.",
+    component: KineticSplitReveal,
+    published: false,
+    usage: null,
+    props: [
+      { name: "text", type: "string", default: '"ENGINEERED SOUL"', description: "Primary Gothic/sans-serif text to split." },
+      { name: "quote", type: "string", default: '"The tension between the calculated and the felt. A digital heart in a biological cage."', description: "Inner Serif quote/message revealed in the split." },
+    ],
+    features: [
+      "Vertical split-and-reveal dynamic masking using clip-path",
+      "Weighted physical easing profile for interactive tension",
+      "Mouse-movement parallax micro-interaction",
+      "Responsive typographic layout for all screens",
+    ],
+  },
+
+  "geometricreconstitution": {
+    title: "Geometric Reconstitution",
+    category: "TEXT & TYPOGRAPHY",
+    description: "A typographic reconstitution engine that elasticates and fragments letters on hover using physics springs.",
+    component: GeometricReconstitution,
+    published: false,
+    usage: null,
+    props: [
+      { name: "text", type: "string", default: '"ENGINEERED SOUL"', description: "Text content to fragment and reconstitute." },
+    ],
+    features: [
+      "High-performance spring physics for fluid letter scatter and snap",
+      "Ambient staggered liquid floating keyframe animations",
+      "Consistent random target offsets for uniform layout snapping",
+      "Responsive, clean editorial styling",
     ],
   },
 

@@ -13,6 +13,8 @@ export const navConfig = [
       { label: "Stripe Text Writer", href: "/components/text/stripetextwriter" },
       { label: "Velocity Text", href: "/components/text/velocitytext" },
       { label: "Creative Highlight", href: "/components/text/creativehighlight" },
+      { label: "Kinetic Split Reveal", href: "/components/text/kineticsplitreveal" },
+      { label: "Geometric Reconstitution", href: "/components/text/geometricreconstitution" },
     ]
   },
   {

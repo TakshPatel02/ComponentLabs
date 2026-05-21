@@ -3,6 +3,8 @@ import EncryptedText from '../components/TextComponents/EncryptedText';
 import StripeWriter from '../components/TextComponents/StripeWriter';
 import VelocityText from '../components/TextComponents/VelocityText';
 import { CreativeHighlightText } from '../components/TextComponents/CreativeHighlightText';
+import KineticSplitReveal from '../components/TextComponents/KineticSplitReveal';
+import GeometricReconstitution from '../components/TextComponents/GeometricReconstitution';
 
 import FillButton from '../components/ButtonComponents/FillButton';
 import UploadButton from '../components/ButtonComponents/UploadButton';
@@ -103,6 +105,22 @@ export const componentPreviews = {
     hasRewatch: true,
     previewContainerClass: standardBoxClass,
     renderPreview: (key) => <CreativeHighlightText key={key} />
+  },
+  kineticsplitreveal: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="w-full h-full flex items-center justify-center">
+        <KineticSplitReveal key={key} />
+      </div>
+    )
+  },
+  geometricreconstitution: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="w-full h-full flex items-center justify-center">
+        <GeometricReconstitution key={key} />
+      </div>
+    )
   },
 
   // BUTTONS (Using standardBoxClass so they get exactly 1 box)
