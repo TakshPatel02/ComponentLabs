@@ -29,7 +29,7 @@ const KineticSplitReveal = ({
 
   return (
     <div
-      className={`relative w-full min-h-[300px] flex flex-col justify-center items-center py-12 select-none ${className}`}
+      className={`relative w-full min-h-75 flex flex-col justify-center items-center py-12 select-none ${className}`}
     >
       <div className="relative w-full flex justify-center py-12 overflow-visible">
         {/* Inner Reveal Layer (Quote) */}

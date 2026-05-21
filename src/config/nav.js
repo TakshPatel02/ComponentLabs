@@ -15,6 +15,7 @@ export const navConfig = [
       { label: "Creative Highlight", href: "/components/text/creativehighlight" },
       { label: "Kinetic Split Reveal", href: "/components/text/kineticsplitreveal" },
       { label: "Geometric Reconstitution", href: "/components/text/geometricreconstitution" },
+      { label: "Atmospheric Distortion", href: "/components/text/atmosphericdistortion" },
     ]
   },
   {

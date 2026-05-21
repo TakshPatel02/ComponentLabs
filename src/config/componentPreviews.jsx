@@ -5,6 +5,7 @@ import VelocityText from '../components/TextComponents/VelocityText';
 import { CreativeHighlightText } from '../components/TextComponents/CreativeHighlightText';
 import KineticSplitReveal from '../components/TextComponents/KineticSplitReveal';
 import GeometricReconstitution from '../components/TextComponents/GeometricReconstitution';
+import AtmosphericDistortion from '../components/TextComponents/AtmosphericDistortion';
 
 import FillButton from '../components/ButtonComponents/FillButton';
 import UploadButton from '../components/ButtonComponents/UploadButton';
@@ -115,10 +116,19 @@ export const componentPreviews = {
     )
   },
   geometricreconstitution: {
+    hasRewatch: true,
     previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
       <div className="w-full h-full flex items-center justify-center">
         <GeometricReconstitution key={key} />
+      </div>
+    )
+  },
+  atmosphericdistortion: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="w-full h-full flex items-center justify-center">
+        <AtmosphericDistortion key={key} />
       </div>
     )
   },

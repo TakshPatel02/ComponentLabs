@@ -6,6 +6,7 @@ import VelocityText from "../components/TextComponents/VelocityText";
 import { CreativeHighlightText } from "../components/TextComponents/CreativeHighlightText";
 import KineticSplitReveal from "../components/TextComponents/KineticSplitReveal";
 import GeometricReconstitution from "../components/TextComponents/GeometricReconstitution";
+import AtmosphericDistortion from "../components/TextComponents/AtmosphericDistortion";
 
 // Buttons
 import FillButton from "../components/ButtonComponents/FillButton";
@@ -213,6 +214,24 @@ export const componentsData = {
       "Ambient staggered liquid floating keyframe animations",
       "Consistent random target offsets for uniform layout snapping",
       "Responsive, clean editorial styling",
+    ],
+  },
+
+  "atmosphericdistortion": {
+    title: "Atmospheric Distortion",
+    category: "TEXT & TYPOGRAPHY",
+    description: "A physics-based typographic engine that simulates the weight and friction of digital atmosphere using spring layouts.",
+    component: AtmosphericDistortion,
+    published: false,
+    usage: null,
+    props: [
+      { name: "text", type: "string", default: '"ATMOSPHERIC"', description: "Text content to distort." },
+    ],
+    features: [
+      "Physical spring-based text leaning, translation, and skewing",
+      "Ambient living float keyframes with unique character offsets",
+      "Native CSS Flexbox + Framer Motion layout displacement waves",
+      "Zero JS event listener loop overhead",
     ],
   },
 
