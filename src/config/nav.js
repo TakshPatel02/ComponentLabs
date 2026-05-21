@@ -82,6 +82,7 @@ export const navConfig = [
     items: [
       { label: "Code Showcase Segment", href: "/components/features/codeshowcasesegment" },
       { label: "Interactive Spotlight", href: "/components/features/interactivespotlightfeatures" },
+      { label: "Creative Teams Feature", href: "/components/features/creativeteamsfeature" },
     ]
   },
   {

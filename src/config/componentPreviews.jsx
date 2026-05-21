@@ -63,6 +63,7 @@ import MinimalGridFAQ from '../components/OtherComponents/MinimalGridFAQ';
 
 import CodeShowcaseFeature from '../components/FeatureComponents/CodeShowcaseFeature';
 import InteractiveSpotlightFeatures from '../components/FeatureComponents/InteractiveSpotlightFeatures';
+import CreativeTeamsFeature from '../components/FeatureComponents/CreativeTeamsFeature';
 
 // A completely transparent wrapper with NO background, NO border, and NO shadow.
 // This allows components that render their own boxes to be the only box visible.
@@ -264,5 +265,9 @@ export const componentPreviews = {
   interactivespotlightfeatures: {
     previewContainerClass: fullWidthNoBoxClass,
     renderPreview: (key) => <InteractiveSpotlightFeatures key={key} />
+  },
+  creativeteamsfeature: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <CreativeTeamsFeature key={key} />
   }
 };

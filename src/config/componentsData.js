@@ -49,6 +49,7 @@ import AuroraHero from "../components/HeroComponents/AuroraHero";
 // Features
 import CodeShowcaseFeature from "../components/FeatureComponents/CodeShowcaseFeature";
 import InteractiveSpotlightFeatures from "../components/FeatureComponents/InteractiveSpotlightFeatures";
+import CreativeTeamsFeature from "../components/FeatureComponents/CreativeTeamsFeature";
 
 // FAQs
 import CategorizedFAQ from "../components/OtherComponents/CategorizedFAQ";
@@ -772,6 +773,23 @@ export const componentsData = {
       "Spring-responsive card transformations & micro-lifts",
       "Lucide vector icon layouts",
       "Unified dark and light theme compliance",
+    ],
+  },
+
+  "creativeteamsfeature": {
+    title: "Creative Teams Feature",
+    category: "FEATURES",
+    description: "A highly polished, responsive bento-grid feature section displaying fast integration, powerful core library, enterprise-grade security, and an interactive, animated circuit board tracing pattern for intelligent layouts.",
+    component: CreativeTeamsFeature,
+    published: true,
+    usage: null,
+    props: [],
+    features: [
+      "Dynamic 12-column responsive bento grid",
+      "Looping glowing pulse animations along trace paths",
+      "Highly detailed vector microchip layout built entirely using custom SVG lines",
+      "Elegant Space Grotesk / Inter typography styling",
+      "Seamless dark mode and light mode responsiveness out-of-the-box",
     ],
   },
 
