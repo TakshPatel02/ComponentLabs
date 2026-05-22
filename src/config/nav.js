@@ -56,6 +56,7 @@ export const navConfig = [
       { label: "Agentic Flow", href: "/components/cards/agenticflow" },
       { label: "Depth Perception", href: "/components/cards/depthperception" },
       { label: "Pricing Tiers", href: "/components/cards/pricingtiers" },
+      { label: "Premium Tilt Card", href: "/components/cards/premiumtiltcard" },
     ]
   },
   {

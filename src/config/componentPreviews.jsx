@@ -30,6 +30,7 @@ import StateSynthesisCard from '../components/CardComponents/StateSynthesisCard'
 import AgenticFlowCard from '../components/CardComponents/AgenticFlowCard';
 import DepthPerceptionCard from '../components/CardComponents/DepthPerceptionCard';
 import PricingCard from '../components/CardComponents/PricingCard';
+import PremiumTiltCard from '../components/CardComponents/PremiumTiltCard';
 
 import MacKeyboard from '../components/KeyBoardComponents/MacKeyboard';
 import MacKeyboardDark from '../components/KeyBoardComponents/MacKeyboardDark';
@@ -275,6 +276,7 @@ export const componentPreviews = {
   agenticflow: { previewContainerClass: noBoxClass },
   depthperception: { previewContainerClass: noBoxClass },
   pricingtiers: { previewContainerClass: noBoxClass },
+  premiumtiltcard: { previewContainerClass: noBoxClass },
 
   // GRIDS
   bentostatsboard: { previewContainerClass: noBoxClass },

@@ -35,6 +35,7 @@ import StateSynthesisCard from "../components/CardComponents/StateSynthesisCard"
 import AgenticFlowCard from "../components/CardComponents/AgenticFlowCard";
 import DepthPerceptionCard from "../components/CardComponents/DepthPerceptionCard";
 import PricingCard from "../components/CardComponents/PricingCard";
+import PremiumTiltCard from "../components/CardComponents/PremiumTiltCard";
 
 // Keyboards
 import MacKeyboard from "../components/KeyBoardComponents/MacKeyboard";
@@ -653,6 +654,26 @@ export const componentsData = {
       "Hover lift animation",
       "Active/locked feature indicators",
       "Staggered entrance animation",
+    ],
+  },
+
+  "premiumtiltcard": {
+    title: "Premium Tilt Card",
+    category: "CARDS & LAYOUTS",
+    description: "Premium dynamic 3D tilt card with glare and layered parallax.",
+    component: PremiumTiltCard,
+    published: false,
+    usage: null,
+    props: [
+      { name: "title", type: "string", default: '"Premium Card"', description: "Card title." },
+      { name: "description", type: "string", default: '"Experience depth and physics with every interaction."', description: "Card description text." },
+      { name: "href", type: "string", default: '"#"', description: "Target URL for the button." }
+    ],
+    features: [
+      "Dynamic volumetric lighting glare",
+      "Deep parallax multi-layer z-translation",
+      "Floating border glow",
+      "Interactive spring physics"
     ],
   },
 
