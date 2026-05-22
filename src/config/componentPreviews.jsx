@@ -13,6 +13,8 @@ import MagnetButton from '../components/ButtonComponents/MagnetButton';
 import EncryptButton from '../components/ButtonComponents/EncryptButton';
 import GithubStarsButton from '../components/ButtonComponents/GithubStarsButton';
 import NeumorphismButton from '../components/ButtonComponents/NeumorphismButton';
+import GeometricPathButton from '../components/ButtonComponents/GeometricPathButton';
+import CinematicToggle from '../components/ButtonComponents/CinematicToggle';
 
 import TerminalContactForm from '../components/FormComponents/TerminalContactForm';
 import PromptBar from '../components/FormComponents/PromptBar';
@@ -116,7 +118,6 @@ export const componentPreviews = {
     )
   },
   geometricreconstitution: {
-    hasRewatch: true,
     previewContainerClass: standardBoxClass,
     renderPreview: (key) => (
       <div className="w-full h-full flex items-center justify-center">
@@ -149,6 +150,17 @@ export const componentPreviews = {
   encryptbutton: { previewContainerClass: standardBoxClass },
   animatedcounterbutton: { previewContainerClass: standardBoxClass },
   neumorphicbutton: { previewContainerClass: standardBoxClass },
+  geometricpathbutton: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="flex flex-col gap-6 md:flex-row md:gap-8 items-center justify-center">
+        <GeometricPathButton key={`${key}-1`} text="Trace Path" />
+        <GeometricPathButton key={`${key}-2`} text="Secure Trace" strokeColor="#c08532" particleColor="#c08532" />
+        <GeometricPathButton key={`${key}-3`} text="Accent Trace" strokeColor="#390b00" particleColor="#390b00" />
+      </div>
+    )
+  },
+  cinematictoggle: { previewContainerClass: standardBoxClass },
 
   // FORMS (They have their own internal boxes, so use noBoxClass)
   terminalcontactform: {

@@ -27,6 +27,8 @@ export const navConfig = [
       { label: "Encrypt Button", href: "/components/button/encryptbutton" },
       { label: "Animated Counter", href: "/components/button/animatedcounterbutton" },
       { label: "Neumorphic Button", href: "/components/button/neumorphicbutton" },
+      { label: "Geometric Path Button", href: "/components/button/geometricpathbutton" },
+      { label: "Cinematic Toggle", href: "/components/button/cinematictoggle" },
     ]
   },
   {

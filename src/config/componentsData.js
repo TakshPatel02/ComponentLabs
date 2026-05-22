@@ -15,6 +15,8 @@ import MagnetButton from "../components/ButtonComponents/MagnetButton";
 import EncryptButton from "../components/ButtonComponents/EncryptButton";
 import GithubStarsButton from "../components/ButtonComponents/GithubStarsButton";
 import NeumorphismButton from "../components/ButtonComponents/NeumorphismButton";
+import GeometricPathButton from "../components/ButtonComponents/GeometricPathButton";
+import CinematicToggle from "../components/ButtonComponents/CinematicToggle";
 
 // Forms & Identity
 import TerminalContactForm from "../components/FormComponents/TerminalContactForm";
@@ -367,6 +369,52 @@ export const componentsData = {
       "Neumorphic soft shadow styling",
       "Light surface background design",
       "Tailwind-based depth illusion",
+    ],
+  },
+
+  "geometricpathbutton": {
+    title: "Geometric Path Button",
+    category: "BUTTONS",
+    description: "A digital ink trace following the vector boundary of the button container with modern kinetic particle tracking.",
+    component: GeometricPathButton,
+    published: false,
+    usage: null,
+    props: [
+      { name: "text", type: "string", default: '"Trace Path"', description: "Label shown inside the button." },
+      { name: "onClick", type: "function", default: "undefined", description: "Optional click handler callback." },
+      { name: "strokeColor", type: "string", default: '"#cf2d56"', description: "Color of the stroke vector outline path." },
+      { name: "particleColor", type: "string", default: '"#cf2d56"', description: "Color of the kinetic follow particle." },
+      { name: "className", type: "string", default: '""', description: "Additional classes for the inner button element." },
+      { name: "wrapperClassName", type: "string", default: '""', description: "Additional classes for the outer wrapper div container." },
+    ],
+    features: [
+      "Dynamic ink trace outline vector animation on hover",
+      "Interactive kinetic path-particle tracking",
+      "Fully responsive with flexible dimensions",
+      "Micro-interactions powered by premium cubic-bezier easing",
+    ],
+  },
+
+  "cinematictoggle": {
+    title: "Cinematic Toggle",
+    category: "BUTTONS",
+    description: "A physics-driven theme toggle with elastic spring motion and cinematic icon rotation.",
+    component: CinematicToggle,
+    published: false,
+    usage: null,
+    props: [
+      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new boolean state on each toggle." },
+      { name: "defaultActive", type: "boolean", default: "false", description: "Initial toggle state." },
+      { name: "activeLabel", type: "string", default: '"LUNAR_ACTIVE"', description: "Status text shown when toggled on." },
+      { name: "inactiveLabel", type: "string", default: '"SOLAR_ACTIVE"', description: "Status text shown when toggled off." },
+      { name: "showLabel", type: "boolean", default: "true", description: "Whether to render the status label below the toggle." },
+      { name: "className", type: "string", default: '""', description: "Additional classes for the outer wrapper." },
+    ],
+    features: [
+      "GPU-accelerated x transform for thumb slide",
+      "Spring physics with configurable stiffness and damping",
+      "Cinematic 180° icon rotation on state change",
+      "Zero useEffect — pure render-driven animations",
     ],
   },
 
