@@ -138,6 +138,7 @@ export const navConfig = [
       { label: "Cinematic Cards", href: "/components/creative/cinematiccards" },
       { label: "Elastic Stretch Text", href: "/components/creative/elasticstretchtext" },
       { label: "Fluid Cursor Trail", href: "/components/creative/fluidcursortrail" },
+      { label: "Morph Card Button", href: "/components/creative/morphcardbutton" },
     ]
   },
 ]

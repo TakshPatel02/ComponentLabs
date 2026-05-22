@@ -59,7 +59,7 @@ const DocsSidebar = () => {
       {/* ── Sidebar ── */}
       <aside
         className={`
-          fixed top-0 left-0 w-[240px] h-screen z-40
+          fixed top-0 left-0 w-60 h-screen z-40
           flex flex-col
           border-r border-border-fallback-10
           transition-transform duration-300 ease-in-out
@@ -110,12 +110,12 @@ const DocsSidebar = () => {
                       <Link
                         to={item.href}
                         className={`
-                          block py-[5px] pl-7 pr-5
+                          block py-1.25 pl-7 pr-5
                           font-['Inter'] text-[15px] leading-normal
                           no-underline cursor-pointer
                           transition-colors duration-150
                           ${isActive
-                            ? "text-[#E8567A] font-medium"
+                            ? "text-[#E8567A]"
                             : isDark
                               ? "text-[#a8a49c] hover:text-[#e6e2e0]"
                               : "text-on-surface-variant hover:text-on-surface"

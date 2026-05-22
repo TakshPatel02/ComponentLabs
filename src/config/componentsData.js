@@ -86,6 +86,7 @@ import { TerminalTypingCard } from "../components/OtherComponents/TerminalTyping
 import FluidCursorTrail from "../components/CreativeComponents/FluidCursorTrail";
 import CinematicCards from "../components/CreativeComponents/CinematicCards";
 import ElasticStretchText from "../components/CreativeComponents/ElasticStretchText";
+import MorphCardButton from "../components/CreativeComponents/MorphCardButton";
 
 // Components Data
 export const componentsData = {
@@ -1340,6 +1341,42 @@ const tasks = [
       "Uses HTML Canvas API",
       "Dynamic responsive sizing",
       "Self-contained isolated scope",
+    ],
+  },
+
+  "morphcardbutton": {
+    title: "Morph Card Button",
+    category: "CREATIVE",
+    description: "A layout morph primitive that transforms from a minimal click button into an expanded info card with spring physics.",
+    component: MorphCardButton,
+    published: true,
+    usage: `import { MorphCardButton } from "component-labs";
+
+<MorphCardButton
+  buttonText="Click Me"
+  tag="Lab Report"
+  badge="07"
+  heading="Precision UI: Engineered for the modern stack"
+  subtitle="ComponentLab Studios"
+  imageSrc="/avatar.png"
+/>`,
+    props: [
+      { name: "buttonText", type: "string", default: '"Click Me"', description: "Label shown in the collapsed button state." },
+      { name: "tag", type: "string", default: '"Lab Report"', description: "Small category tag in the expanded card." },
+      { name: "badge", type: "string", default: '"07"', description: "Badge text next to the tag." },
+      { name: "heading", type: "string", default: '"Precision UI: Engineered..."', description: "Main heading in the expanded card." },
+      { name: "subtitle", type: "string", default: '"ComponentLab Studios"', description: "Subtitle text below the heading." },
+      { name: "imageSrc", type: "string", default: "undefined", description: "URL for the card image. Shows a geometric placeholder when omitted." },
+      { name: "onExpand", type: "function", default: "undefined", description: "Callback fired when the button expands into a card." },
+      { name: "onCollapse", type: "function", default: "undefined", description: "Callback fired when the card collapses back to a button." },
+      { name: "className", type: "string", default: '""', description: "Additional classes for the outer wrapper." },
+    ],
+    features: [
+      "Framer Motion layout animation for seamless dimension morph",
+      "AnimatePresence with blur transitions for content swap",
+      "Spring physics for natural, elastic motion",
+      "Zero useEffect — pure render-driven",
+      "Geometric grid placeholder when no image provided",
     ],
   },
 };

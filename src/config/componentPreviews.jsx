@@ -56,6 +56,7 @@ import SaaSFooter from '../components/FooterComponents/SaaSFooter';
 import MinimalFooter from '../components/FooterComponents/MinimalFooter';
 import EditorialBrandFooter from '../components/FooterComponents/EditorialBrandFooter';
 import EngineeringStatusFooter from '../components/FooterComponents/EngineeringStatusFooter';
+import MorphCardButton from '../components/CreativeComponents/MorphCardButton';
 
 // CTA Sections
 import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
@@ -284,6 +285,10 @@ export const componentPreviews = {
   cinematiccards: { previewContainerClass: fullWidthNoBoxClass },
   elasticstretchtext: { previewContainerClass: standardBoxClass },
   fluidcursortrail: { previewContainerClass: noBoxClass },
+  morphcardbutton: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => <MorphCardButton key={key} imageSrc="https://res.cloudinary.com/portfolioblog/image/upload/v1772124137/ghibli_by7gu7.webp" />
+  },
 
   // CTA
   smartinterfacecta: {
