@@ -7,7 +7,7 @@ import TiltHoverCard from "../components/HomePageComponents/TiltHoverCard";
 import EncryptedText from "../components/TextComponents/EncryptedText";
 import MacKeyboard from "../components/KeyBoardComponents/MacKeyboard";
 import { Link } from "react-router-dom";
-import { Check, Copy, ChevronDown } from "lucide-react";
+import { Check, Copy, ChevronDown, Search, Loader, Bell, Star, Heart, ArrowRight } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 /* ── npm install copy button ── */
@@ -103,19 +103,6 @@ const HomePage = () => {
       
       {/* ── Full Viewport Hero Section ── */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-        
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* Radial Glow (Dark Mode Only) */}
-          {isDark && (
-            <div 
-              className="absolute inset-0"
-              style={{
-                background: "radial-gradient(circle at center, rgba(147, 51, 234, 0.08) 0%, rgba(0,0,0,0) 50%)"
-              }}
-            />
-          )}
-        </div>
 
         {/* Foreground Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl mx-auto px-4 sm:px-8">
@@ -131,7 +118,7 @@ const HomePage = () => {
                 : "bg-black/3 border-black/15 text-black/80"
             }`}
           >
-            ✦ 53 Production-Ready React Primitives
+            ✦ 61 Production-Ready React Primitives
           </motion.div>
 
           {/* Heading */}
@@ -206,7 +193,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center gap-3 mt-10 flex-wrap"
           >
-            {["53 COMPONENTS", "15 CATEGORIES", "OPEN SOURCE"].map((stat) => (
+            {["61 COMPONENTS", "15 CATEGORIES", "OPEN SOURCE"].map((stat) => (
               <span
                 key={stat}
                 className="font-mono-code text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/60 border border-border-fallback-10 rounded-full px-4 py-1.5 select-none bg-transparent"
@@ -300,7 +287,7 @@ const HomePage = () => {
                 </p>
               </div>
               <Link to="/components" className="group flex items-center gap-2 text-sm font-mono-code uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
-                View all 53 <span className="group-hover:translate-x-1 transition-transform">→</span>
+                View all 61 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -449,12 +436,25 @@ const HomePage = () => {
         </main>
 
         {/* ── Horizontal Strip Stats Section ── */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes hp-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px) rotate(-2deg); } 75% { transform: translateX(2px) rotate(2deg); } }
+          @keyframes hp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+          @keyframes hp-swing { 0%, 100% { transform: rotate(0deg); } 20% { transform: rotate(12deg); } 40% { transform: rotate(-8deg); } 60% { transform: rotate(4deg); } 80% { transform: rotate(-4deg); } }
+          @keyframes hp-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.92); } }
+          @keyframes hp-heartbeat { 0% { transform: scale(1); } 14% { transform: scale(1.3); } 28% { transform: scale(1); } 42% { transform: scale(1.3); } 70% { transform: scale(1); } }
+          .hp-shake { animation: hp-shake 1.5s ease-in-out infinite; }
+          .hp-spin { animation: hp-spin 2s linear infinite; }
+          .hp-swing { animation: hp-swing 2s ease-in-out infinite; transform-origin: top center; }
+          .hp-pulse { animation: hp-pulse 2s ease-in-out infinite; }
+          .hp-heartbeat { animation: hp-heartbeat 1.5s ease-in-out infinite; }
+        `}} />
         <section className="relative w-full border-y border-border-fallback-10 overflow-hidden select-none bg-transparent">
           <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10">
             {[
-              { num: "53", label: "Components" },
+              { num: "61", label: "Components" },
               { num: "15", label: "Categories" },
-              { num: "1", label: "npm Package" },
+              { num: "1000+", label: "Animated Icons" },
+              { num: "2", label: "npm Packages" },
               { num: "MIT", label: "Licensed" },
             ].map((stat, i) => (
               <div key={i} className="flex-1 flex flex-col items-center justify-center py-8 md:py-10 w-full">
@@ -498,13 +498,10 @@ const HomePage = () => {
               {/* Top: Install */}
               <div className="mb-6">
                 <span className="font-mono-code text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-3 block">
-                  INSTALL
+                  INSTALL COMPONENT-LABS
                 </span>
                 <InlineCopyBlock />
               </div>
-
-              {/* Divider */}
-              <div className={`w-full h-px mb-6 ${isDark ? 'bg-white/6' : 'bg-black/6'}`} />
 
               {/* Buttons */}
               <div className="flex flex-col gap-3 mb-6">
@@ -521,11 +518,12 @@ const HomePage = () => {
               </div>
 
               {/* Checks */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2.5 mb-6">
                 {[
                   "MIT Licensed",
                   "Open Source",
-                  "npm package available",
+                  "53 Components",
+                  "2 npm packages",
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3">
                     <Check size={14} className="text-[#E8567A]" />
@@ -533,6 +531,25 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Divider */}
+              <div className={`w-full h-px mb-5 ${isDark ? 'bg-white/6' : 'bg-black/6'}`} />
+
+              {/* IconFlow integration in the same box */}
+              <Link to="/iconflow" className="group block">
+                <div className={`p-4 rounded-lg border transition-all duration-300 flex items-center justify-between ${isDark ? 'bg-white/2 border-white/5 group-hover:bg-white/4' : 'bg-black/2 border-black/5 group-hover:bg-black/4'}`}>
+                  <div className="flex flex-col">
+                    <span className="font-section-heading text-[15px] text-primary font-medium mb-1 flex items-center gap-2">
+                      <Heart size={13} className="text-[#E8567A]" />
+                      IconFlow
+                    </span>
+                    <span className="font-editorial-standard text-[12px] text-on-surface-variant/70 italic">
+                      Animated Lucide icons for React
+                    </span>
+                  </div>
+                  <ArrowRight size={16} className="text-on-surface-variant/40 group-hover:text-[#E8567A] group-hover:translate-x-1 transition-all" />
+                </div>
+              </Link>
             </div>
           </div>
         </section>
