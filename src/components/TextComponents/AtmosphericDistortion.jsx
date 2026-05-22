@@ -70,7 +70,7 @@ const AtmosphericDistortion = ({
                 {/* Layer 2: Interactive Spring Distortion with Native Layout displacement */}
                 <motion.span
                   layout
-                  className="inline-block origin-center whitespace-pre cursor-pointer"
+                  className="inline-block origin-center whitespace-pre cursor-pointer transition-colors duration-300 hover:text-error-warm"
                   style={{ display: "inline-block" }}
                   whileHover={{
                     x: driftX * (index % 2 === 0 ? 1 : -1),
@@ -78,7 +78,6 @@ const AtmosphericDistortion = ({
                     rotate: rotateAngle * (index % 2 === 0 ? 1 : -1),
                     scale: 1.25,
                     filter: `blur(${blurAmount}px)`,
-                    color: hoverColor,
                   }}
                   transition={{
                     default: springTransition,
