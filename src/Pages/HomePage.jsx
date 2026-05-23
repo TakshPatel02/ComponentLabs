@@ -161,7 +161,7 @@ const HomePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial-body text-[18px] md:text-[20px] text-on-surface-variant max-w-150 mx-auto text-center italic mb-10 leading-relaxed"
+            className="font-editorial-body text-[18px] md:text-[20px] text-on-surface-variant max-w-160 mx-auto text-center italic mb-10 leading-relaxed"
           >
             A premium collection of high-density UI primitives, engineered with
             the precision of a code editor and the soul of a classic
@@ -522,7 +522,7 @@ const HomePage = () => {
                 {[
                   "MIT Licensed",
                   "Open Source",
-                  "53 Components",
+                  "61 Components",
                   "2 npm packages",
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3">
@@ -537,7 +537,7 @@ const HomePage = () => {
 
               {/* IconFlow integration in the same box */}
               <Link to="/iconflow" className="group block">
-                <div className={`p-4 rounded-lg border transition-all duration-300 flex items-center justify-between ${isDark ? 'bg-white/2 border-white/5 group-hover:bg-white/4' : 'bg-black/2 border-black/5 group-hover:bg-black/4'}`}>
+                <div className={`p-4 rounded-lg border transition-all duration-300 flex items-center justify-between ${isDark ? 'bg-white/2 border-white/5 group-hover:bg-white/4' : 'bg-black/2 border-black/5 group-hover:bg-black/npm4'}`}>
                   <div className="flex flex-col">
                     <span className="font-section-heading text-[15px] text-primary font-medium mb-1 flex items-center gap-2">
                       <Heart size={13} className="text-[#E8567A]" />
