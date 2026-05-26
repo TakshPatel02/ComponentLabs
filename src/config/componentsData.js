@@ -20,6 +20,7 @@ import CinematicToggle from "../components/ButtonComponents/CinematicToggle";
 
 // Numbers & Counters
 import NumberFlowInput from "../components/NumberComponents/NumberFlowInput";
+import KineticNumberShowcase from "../components/NumberComponents/KineticNumberShowcase";
 
 // Forms & Identity
 import TerminalContactForm from "../components/FormComponents/TerminalContactForm";
@@ -443,6 +444,25 @@ export const componentsData = {
       "Blinking cursor indicator on focus",
       "Hidden input for accessible keyboard capture",
       "Responsive digit sizing across breakpoints",
+    ],
+  },
+
+  "kineticnumbershowcase": {
+    title: "Kinetic Countdown Timer",
+    category: "NUMBERS & COUNTERS",
+    description: "A premium, high-performance kinetic countdown timer with interactive play, pause, and reset controls.",
+    component: KineticNumberShowcase,
+    published: false,
+    usage: null,
+    props: [
+      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the outer container." },
+    ],
+    features: [
+      "Interactive play, pause, and manual rotate-reset controls",
+      "Bespoke character-by-character bounce entrance animations",
+      "Only changing digits transition, keeping static prefix elements still",
+      "Full light and dark mode integration using tailwind CSS variables",
+      "Robust width-capped layout preventing container collapse in flexboxes",
     ],
   },
 

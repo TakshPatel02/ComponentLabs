@@ -35,6 +35,7 @@ export const navConfig = [
     section: "NUMBERS & COUNTERS",
     items: [
       { label: "Number Flow Input", href: "/components/numbers/numberflowigniput" },
+      { label: "Kinetic Countdown Timer", href: "/components/numbers/kineticnumbershowcase" },
     ]
   },
   {

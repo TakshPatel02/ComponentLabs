@@ -17,6 +17,7 @@ import GeometricPathButton from '../components/ButtonComponents/GeometricPathBut
 import CinematicToggle from '../components/ButtonComponents/CinematicToggle';
 
 import NumberFlowInput from '../components/NumberComponents/NumberFlowInput';
+import KineticNumberShowcase from '../components/NumberComponents/KineticNumberShowcase';
 
 import TerminalContactForm from '../components/FormComponents/TerminalContactForm';
 import PromptBar from '../components/FormComponents/PromptBar';
@@ -170,6 +171,10 @@ export const componentPreviews = {
   numberflowigniput: {
     previewContainerClass: noBoxClass,
     renderPreview: (key) => <NumberFlowInput key={key} />
+  },
+  kineticnumbershowcase: {
+    previewContainerClass: "w-full py-12 flex flex-col items-center justify-center overflow-hidden",
+    renderPreview: (key) => <KineticNumberShowcase key={key} />
   },
 
   // FORMS (They have their own internal boxes, so use noBoxClass)
