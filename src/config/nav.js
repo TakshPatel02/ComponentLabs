@@ -32,6 +32,12 @@ export const navConfig = [
     ]
   },
   {
+    section: "NUMBERS & COUNTERS",
+    items: [
+      { label: "Number Flow Input", href: "/components/numbers/numberflowigniput" },
+    ]
+  },
+  {
     section: "FORMS & IDENTITY",
     items: [
       { label: "Terminal Contact Form", href: "/components/form/terminalcontactform" },

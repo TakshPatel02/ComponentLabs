@@ -28,7 +28,7 @@ class PreviewErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex flex-col items-center justify-center min-h-[300px] gap-3 text-center px-6">
+        <div className="flex flex-col items-center justify-center min-h-75 gap-3 text-center px-6">
           <span className="text-error-warm font-system-micro text-system-micro font-semibold uppercase tracking-wider">
             Preview Unavailable
           </span>
@@ -55,7 +55,7 @@ const SECTIONS = [
 // ── Right sidebar: "On This Page" anchor nav
 const OnThisPageNav = ({ activeSection, sections }) => {
   return (
-    <nav className="hidden xl:block fixed right-0 top-0 w-[200px] h-screen pt-24 pr-6 pl-4 bg-surface">
+    <nav className="hidden xl:block fixed right-0 top-0 w-50 h-screen pt-24 pr-6 pl-4 bg-surface">
       <div className="font-system-micro text-[10.5px] font-semibold uppercase tracking-widest mb-4 select-none text-on-surface-variant/60">
         On This Page
       </div>
@@ -149,7 +149,7 @@ const ComponentPage = () => {
     return (
       <div className="flex min-h-screen bg-surface">
         <DocsSidebar />
-        <main className="ml-0 md:ml-[240px] flex-1 min-h-screen flex items-center justify-center">
+        <main className="ml-0 md:ml-60 flex-1 min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="font-section-heading text-4xl text-primary mb-3">
               Component Not Found
@@ -223,7 +223,7 @@ const ComponentPage = () => {
       <DocsSidebar />
 
       {/* Main content */}
-      <main className="ml-0 md:ml-[240px] xl:mr-[200px] flex-1 min-w-0 min-h-screen">
+      <main className="ml-0 md:ml-60 xl:mr-50 flex-1 min-w-0 min-h-screen">
         <div className="max-w-7xl min-w-0 mx-auto px-4 sm:px-8 py-16 md:py-24">
 
           {/* ── Header ── */}
@@ -234,7 +234,7 @@ const ComponentPage = () => {
             <h1 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary tracking-tight transition-colors">
               {title}
             </h1>
-            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-2xl">
+            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-6xl">
               {description}
             </p>
           </div>

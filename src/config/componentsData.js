@@ -18,6 +18,9 @@ import NeumorphismButton from "../components/ButtonComponents/NeumorphismButton"
 import GeometricPathButton from "../components/ButtonComponents/GeometricPathButton";
 import CinematicToggle from "../components/ButtonComponents/CinematicToggle";
 
+// Numbers & Counters
+import NumberFlowInput from "../components/NumberComponents/NumberFlowInput";
+
 // Forms & Identity
 import TerminalContactForm from "../components/FormComponents/TerminalContactForm";
 import PromptBar from "../components/FormComponents/PromptBar";
@@ -417,6 +420,29 @@ export const componentsData = {
       "Spring physics with configurable stiffness and damping",
       "Cinematic 180° icon rotation on state change",
       "Zero useEffect — pure render-driven animations",
+    ],
+  },
+
+  // NUMBERS & COUNTERS
+
+  "numberflowigniput": {
+    title: "Number Flow Input",
+    category: "NUMBERS & COUNTERS",
+    description: "An interactive number input with smooth spring-physics digit scrolling animation. Digits roll from bottom to top as you type.",
+    component: NumberFlowInput,
+    published: false,
+    usage: null,
+    props: [
+      { name: "maxDigits", type: "number", default: "3", description: "Maximum number of digit columns to display." },
+      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the outer container." },
+    ],
+    features: [
+      "Spring-physics digit scroll animation",
+      "Digits shift left as new numbers are entered",
+      "Backspace support to clear digits",
+      "Blinking cursor indicator on focus",
+      "Hidden input for accessible keyboard capture",
+      "Responsive digit sizing across breakpoints",
     ],
   },
 

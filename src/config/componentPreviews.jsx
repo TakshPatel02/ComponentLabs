@@ -16,6 +16,8 @@ import NeumorphismButton from '../components/ButtonComponents/NeumorphismButton'
 import GeometricPathButton from '../components/ButtonComponents/GeometricPathButton';
 import CinematicToggle from '../components/ButtonComponents/CinematicToggle';
 
+import NumberFlowInput from '../components/NumberComponents/NumberFlowInput';
+
 import TerminalContactForm from '../components/FormComponents/TerminalContactForm';
 import PromptBar from '../components/FormComponents/PromptBar';
 import CommandSearch from '../components/FormComponents/CommandSearch';
@@ -74,13 +76,13 @@ import CreativeTeamsFeature from '../components/FeatureComponents/CreativeTeamsF
 
 // A completely transparent wrapper with NO background, NO border, and NO shadow.
 // This allows components that render their own boxes to be the only box visible.
-const noBoxClass = "w-full py-12 flex flex-col items-stretch justify-center overflow-hidden";
+const noBoxClass = "w-full mt-4 flex flex-col items-stretch justify-center overflow-hidden";
 
 // Specific for items that need to go edge-to-edge but have no box
-const fullWidthNoBoxClass = "w-full flex flex-col items-stretch justify-center overflow-hidden";
+const fullWidthNoBoxClass = "w-full mt-4 flex flex-col items-stretch justify-center overflow-hidden";
 
 // Standard preview box for components that do not have an internal box
-const standardBoxClass = "w-full bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden p-6 md:p-8 transition-all duration-500 ";
+const standardBoxClass = "w-full mt-4 bg-cursor-cream/50 min-h-96 rounded-xl oklab-border flex flex-col items-center justify-center overflow-hidden p-6 md:p-8 transition-all duration-500 ";
 
 export const componentPreviews = {
   // TEXT (Using standardBoxClass so they get exactly 1 box)
@@ -163,6 +165,12 @@ export const componentPreviews = {
     )
   },
   cinematictoggle: { previewContainerClass: standardBoxClass },
+
+  // NUMBERS & COUNTERS
+  numberflowigniput: {
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <NumberFlowInput key={key} />
+  },
 
   // FORMS (They have their own internal boxes, so use noBoxClass)
   terminalcontactform: {
@@ -316,5 +324,9 @@ export const componentPreviews = {
   creativeteamsfeature: {
     previewContainerClass: fullWidthNoBoxClass,
     renderPreview: (key) => <CreativeTeamsFeature key={key} />
-  }
+  },
+  codeshowcasesegment: {
+    previewContainerClass: fullWidthNoBoxClass,
+    renderPreview: (key) => <CodeShowcaseFeature key={key} />
+  },
 };

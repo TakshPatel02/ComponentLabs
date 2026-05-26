@@ -19,12 +19,14 @@ import {
   Puzzle,
   ArrowRight,
   Megaphone,
+  Hash,
 } from "lucide-react";
 
 /* ── Category icon mapping ── */
 const categoryIcons = {
   "TEXT & TYPOGRAPHY": Type,
   "BUTTONS": RectangleHorizontal,
+  "NUMBERS & COUNTERS": Hash,
   "FORMS & IDENTITY": FileText,
   "LINKS & NAVIGATION": Link2,
   "CARDS & LAYOUTS": LayoutDashboard,
@@ -130,7 +132,7 @@ const CategoryCard = ({ group, index, isDark }) => {
             <div key={item.href} className="flex items-center gap-2">
               <div
                 className={`
-                  w-[5px] h-[5px] rounded-full shrink-0
+                  w-1.25 h-1.25 rounded-full shrink-0
                   ${isDark ? "bg-[#48473f]" : "bg-[#C0BCB5]"}
                 `}
               />
@@ -147,7 +149,7 @@ const CategoryCard = ({ group, index, isDark }) => {
           {group.items.length > 3 && (
             <span
               className={`
-                font-['Inter'] text-[12px] ml-[13px]
+                font-['Inter'] text-[12px] ml-3.25
                 ${isDark ? "text-[#5a574f]" : "text-[#b0ada6]"}
               `}
             >
@@ -209,8 +211,8 @@ const ComponentsIndex = () => {
       <DocsSidebar />
 
       {/* Main content area */}
-      <main className="ml-0 md:ml-[240px] flex-1 min-h-screen px-6 md:px-10 lg:px-14 py-12 md:py-16">
-        <div className="max-w-[1080px] mx-auto">
+      <main className="ml-0 md:ml-60 flex-1 min-h-screen px-6 md:px-10 lg:px-14 py-12 md:py-16">
+        <div className="max-w-270 mx-auto">
 
           {/* ── Header ── */}
           <div className="mb-12 md:mb-14">
@@ -230,7 +232,7 @@ const ComponentsIndex = () => {
 
             {/* Description */}
             <p className={`
-              font-['Inter'] text-base md:text-[17px] leading-relaxed max-w-[540px]
+              font-['Inter'] text-base md:text-[17px] leading-relaxed max-w-135
               ${isDark ? "text-[#a8a49c]" : "text-on-surface-variant"}
             `}>
               Explore {totalComponents} handcrafted components across {categories.length} categories.

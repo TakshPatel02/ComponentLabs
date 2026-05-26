@@ -70,6 +70,7 @@
     --text-ui-body--font-weight: 400;
 
     --animate-marquee: marquee 30s linear infinite;
+    --animate-nfi-blink: nfi-blink 1s ease-in-out infinite;
 }
 
 :root {
@@ -190,4 +191,9 @@
     100% {
         transform: translateX(-50%);
     }
+}
+
+@keyframes nfi-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
 }
