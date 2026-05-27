@@ -354,37 +354,54 @@ const ComponentPage = () => {
               </div>
 
               {componentProps && componentProps.length > 0 ? (
-                <div className="space-y-3">
-                  {componentProps.map((prop, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-xl border oklab-border bg-surface-container/60 p-4 hover:bg-surface-container/80 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-2">
-                        <div>
-                          <div className="font-mono text-[14px] md:text-[15px] text-primary font-semibold">
-                            {prop.name}
-                          </div>
-                          <div className="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mt-1 mb-2">
-                            {prop.type}
-                          </div>
+                <div className="border border-border-fallback-10 rounded-2xl bg-surface-container/20 overflow-hidden shadow-sm">
+                  {/* Table Header (hidden on mobile, grid on desktop) */}
+                  <div className="hidden md:grid md:grid-cols-[180px_120px_130px_1fr] md:gap-4 md:px-6 md:py-3.5 border-b border-border-fallback-10 bg-surface-container/45 text-[11px] font-bold text-on-surface-variant/50 uppercase tracking-[0.15em] font-section-heading">
+                    <div>Prop</div>
+                    <div>Type</div>
+                    <div>Default</div>
+                    <div>Description</div>
+                  </div>
+
+                  {/* Table Rows */}
+                  <div className="divide-y divide-border-fallback-10">
+                    {componentProps.map((prop, idx) => (
+                      <div
+                        key={idx}
+                        className="grid grid-cols-1 md:grid-cols-[180px_120px_130px_1fr] md:gap-4 gap-2 px-6 py-4.5 hover:bg-surface-container/30 transition-colors items-start md:items-center text-left"
+                      >
+                        {/* Column 1: Prop Name */}
+                        <div className="font-mono text-[14px] md:text-[15px] text-primary font-semibold break-all leading-tight">
+                          {prop.name}
                         </div>
-                        {prop.default && (
-                          <div className="text-right">
-                            <div className="text-xs font-bold text-on-surface-variant/70 uppercase tracking-widest">
-                              DEFAULT
-                            </div>
-                            <div className="font-mono text-[13px] text-on-surface-variant mt-1">
+
+                        {/* Column 2: Type */}
+                        <div className="flex md:block items-center gap-2">
+                          <span className="md:hidden text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-wider">Type:</span>
+                          <code className="text-[11px] font-semibold text-secondary uppercase tracking-widest px-2 py-0.5 rounded bg-surface-container-highest border border-border-fallback-10 font-mono w-fit block leading-none">
+                            {prop.type}
+                          </code>
+                        </div>
+
+                        {/* Column 3: Default */}
+                        <div className="flex md:block items-center gap-2">
+                          <span className="md:hidden text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-wider">Default:</span>
+                          {prop.default ? (
+                            <code className="text-[12px] font-mono text-on-surface-variant/80 bg-surface-container/50 border border-border-fallback-10/50 px-1.5 py-0.5 rounded leading-none w-fit block">
                               {prop.default}
-                            </div>
-                          </div>
-                        )}
+                            </code>
+                          ) : (
+                            <span className="text-on-surface-variant/30 font-mono text-[13px]">—</span>
+                          )}
+                        </div>
+
+                        {/* Column 4: Description */}
+                        <div className="text-[14px] sm:text-[15px] text-on-surface-variant leading-relaxed md:col-span-1 col-span-full pt-1 md:pt-0">
+                          {prop.description}
+                        </div>
                       </div>
-                      <div className="text-[15px] md:text-[16px] text-on-surface-variant leading-relaxed">
-                        {prop.description}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">

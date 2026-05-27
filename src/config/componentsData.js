@@ -894,20 +894,44 @@ export const componentsData = {
   "auroragradienthero": {
     title: "Aurora Gradient Hero",
     category: "HERO SECTIONS",
-    description: "Dark hero section with animated aurora gradient background and canvas starfield.",
+    description: "A dark premium hero section with an animated aurora radial gradient background and interactive canvas starfield.",
     component: AuroraHero,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { AuroraHero } from "component-labs";
+
+// Default usage
+<AuroraHero />
+
+// Custom configuration example
+<AuroraHero
+  badgeText="New Update"
+  title="Create beautifully interactive React dashboards in seconds"
+  description="Bring your interfaces to life with fully customizable components built with Tailwind CSS and Framer Motion."
+  ctaText="Explore Docs"
+  starCount={150}
+  colors={["#FF0055", "#00FF55", "#0055FF"]}
+  onCtaClick={() => console.log("cta clicked!")}
+/>`,
     props: [
-      { name: "colors", type: "array", default: '["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"]', description: "Aurora gradient color cycle (hardcoded)." },
-      { name: "starCount", type: "number", default: "250", description: "Number of twinkling stars rendered on canvas." },
+      { name: "badgeText", type: "string", default: '"Beta Now Live!"', description: "Supporting status tag above heading. Set to null or \"\" to hide it." },
+      { name: "title", type: "string", default: '"Decrease your SaaS churn by over 90%"', description: "Main title text." },
+      { name: "description", type: "string", default: "Built-in retention text", description: "Paragraph description copy." },
+      { name: "ctaText", type: "string", default: '"Start free trial"', description: "Call to action button label." },
+      { name: "onCtaClick", type: "function", default: "undefined", description: "Click event callback handler for CTA button." },
+      { name: "starCount", type: "number", default: "250", description: "Density of the canvas-based starfield." },
+      { name: "colors", type: "array", default: "Signature mint/blue/lavender/pink sequence", description: "Custom hex color strings for the animated aurora gradient background." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
     ],
     features: [
-      "Animated aurora gradient background",
-      "Canvas-based twinkling starfield",
-      "Radial gradient with motion values",
-      "Glowing CTA button with dynamic border",
-      "Badge and headline entrance animations",
+      "Twinkling starfield background using HTML5 Canvas",
+      "Framer Motion animated aurora radial gradients",
+      "Interactive CTA button with dynamic border glow effect",
+      "Fully customizable supporting badge, main title, and description text",
+      "Stunning premium entrance animations for headings and button groups",
+    ],
+    notes: [
+      "Implements a canvas-based twinkling starfield background combined with an animated radial gradient using Framer Motion.",
+      "Sizing bounds-checks are built-in defensively to ensure canvas rendering is always clean.",
     ],
   },
 
@@ -1072,24 +1096,42 @@ export const componentsData = {
   },
 
   "animatedmarqueelogocloud": {
-    title: "Animated Marquee",
+    title: "Marquee Logo Cloud",
     category: "LOGO CLOUDS",
-    description: "Infinite horizontal marquee logo cloud with configurable scroll speed.",
+    description: "An infinite, ultra-wide horizontal scrolling marquee logo cloud.",
     component: MarqueeLogoCloud,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { MarqueeLogoCloud } from "component-labs";
+
+// Default usage
+<MarqueeLogoCloud />
+
+// Custom companies example
+import { SiGithub, SiGithubactions, SiSlack } from "react-icons/si";
+
+const myPartners = [
+  { name: "GitHub", icon: <SiGithub /> },
+  { name: "Actions", icon: <SiGithubactions /> },
+  { name: "Slack", icon: <SiSlack /> },
+];
+
+<MarqueeLogoCloud headline="Our Ecosystem" companies={myPartners} speed={25} />`,
     props: [
-      { name: "headline", type: "string", default: '"Your favorite companies are our partners."', description: "Headline text above the marquee." },
-      { name: "companies", type: "array", default: "Built-in 10 companies", description: "Array of { name, icon } objects." },
-      { name: "className", type: "string", default: '""', description: "Additional wrapper classes." },
-      { name: "speed", type: "number", default: "40", description: "Duration in seconds for one full loop cycle." },
+      { name: "headline", type: "string", default: '"Your favorite companies are our partners."', description: "Optional heading text above the marquee. Set to null or \"\" to hide it." },
+      { name: "companies", type: "array", default: "Built-in list of 9 platforms", description: "List of company logo objects formatted as { name, icon }." },
+      { name: "speed", type: "number", default: "40", description: "Animation cycle duration in seconds (smaller = faster scroll speed)." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
     ],
     features: [
-      "Infinite horizontal scroll loop",
-      "Configurable scroll speed",
-      "Gradient edge mask for seamless fade",
-      "Triple array duplication for seamless loop",
-      "Grayscale to color on hover",
+      "Infinite horizontal marquee auto-scrolling logo trail",
+      "Customizable speed and headline text parameters",
+      "Seamless translation loop using a dynamic relative offset formula",
+      "Grayscale-filtered logos that transition beautifully on hover",
+      "Built-in auto-repeat helper duplicating array items to guarantee a gapless loop on ultra-wide screens",
+    ],
+    notes: [
+      "Uses a dynamic -50% relative translation loop, ensuring perfect loop seamlessness on any screen size regardless of custom logo widths or names.",
+      "Includes a built-in repeatCompaniesToFit helper that replicates the company logos array until it has at least 15 items, ensuring a perfect full-bleed layout without gaps even on ultra-wide screens.",
     ],
   },
 
@@ -1350,25 +1392,54 @@ const tasks = [
 
   // CREATIVE
   "cinematiccards": {
-    title: "Cinematic Reveal Grid",
+    title: "Cinematic Cards",
     category: "CREATIVE",
-    description: "Fluid, expanding cinematic grid with layout-driven animations and editorial typography.",
+    description: "An editorial, fluid expanding grid of cards with layout-driven bloom and focus animations.",
     component: CinematicCards,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { CinematicCards } from "component-labs";
+
+// Default usage
+<CinematicCards />
+
+// Custom slides example
+const customSlides = [
+  {
+    id: 1,
+    title: "Cyber City",
+    subtitle: "NEON DREAMS",
+    copy: "Explore future streetscapes and high-tech corporate heights.",
+    button: "Enter City",
+    image: "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?w=800"
+  },
+  {
+    id: 2,
+    title: "Deep Sea",
+    subtitle: "ABYSS VOYAGE",
+    copy: "Submerge into pitch-black waters and glowing marine biology.",
+    button: "Submerge",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
+  }
+];
+
+<CinematicCards items={customSlides} hoverToActivate={false} onCardChange={(idx, item) => console.log(item)} />`,
+    props: [
+      { name: "items", type: "array", default: "Built-in list of 4 cards", description: "Custom array of card items containing { id, title, subtitle, copy, button, image }." },
+      { name: "hoverToActivate", type: "boolean", default: "true", description: "If true, hovering over collapsed cards expands them. If false, click interaction is required." },
+      { name: "onCardChange", type: "function", default: "undefined", description: "Callback triggered when active card changes: (index, card) => void." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for outer container." },
+      { name: "containerClassName", type: "string", default: '""', description: "Custom classes for inner flex container." },
+    ],
     features: [
-      "Dynamic layout-based expansion using Framer Motion",
-      "Cinematic image bloom and focus transitions",
-      "Staggered editorial-style typography reveals",
-      "Responsive flex-based grid architecture",
-      "Integrated background numeric accents",
+      "Accordion-style slide layout animations driven by Framer Motion",
+      "Interactive card triggers supporting both hover and click modes",
+      "Dynamic grayscale, brightness, and bloom focus transitions",
+      "Sleek editorial-style numeric backdrop side accents",
+      "Beautiful visual coherence utilizing theme-inspired brand colors (#cf2d56)",
     ],
     notes: [
-      "Optimized for a 4-column layout on desktop.",
-      "Uses Framer Motion's layout prop for fluid aspect-ratio transitions.",
-      "Requires 'Space Grotesk' for the numeric accents and headings.",
-      "Best used with high-resolution cinematic photography.",
+      "Leverages Framer Motion's layout animations (layout and layout=\"position\") for smooth accordion-like slide expansions.",
+      "Incorporates selective grayscale and brightness transitions, custom number side accents, and consistent visual details using the signature accent color #cf2d56.",
     ],
   },
 
@@ -1399,15 +1470,35 @@ const tasks = [
     category: "CREATIVE",
     description: "Interactive canvas drawing a trailing snake/spring-like effect following the mouse pointer.",
     component: FluidCursorTrail,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { FluidCursorTrail } from "../components/CreativeComponents/FluidCursorTrail";
+
+// Default usage (Global fullscreen mode)
+<FluidCursorTrail isGlobal={true} />
+
+// Local container mode usage
+<div className="relative w-full h-125">
+  <FluidCursorTrail isGlobal={false} />
+</div>`,
+    props: [
+      { name: "isGlobal", type: "boolean", default: "true", description: "If true, the canvas trail is fixed fullscreen, functioning as a global backdrop. If false, it stays locally in its parent container as a card widget." },
+      { name: "color", type: "string", default: '"rgba(232, 86, 122, 0.85)"', description: "Trail color (hex, rgb, rgba)." },
+      { name: "pointsNumber", type: "number", default: "40", description: "Quantity of points in the fluid physics chain (trail length)." },
+      { name: "widthFactor", type: "number", default: "0.3", description: "Thickness multiplier for the trail." },
+      { name: "spring", type: "number", default: "0.4", description: "Spring stiffness of the trail (larger = faster trail reaction)." },
+      { name: "friction", type: "number", default: "0.5", description: "Movement damping of the trail (larger = more friction / slower slide)." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
+    ],
     features: [
-      "Smooth cursor trailing physics",
-      "Spring and friction-based animation",
-      "Uses HTML Canvas API",
-      "Dynamic responsive sizing",
-      "Self-contained isolated scope",
+      "Fluid physics canvas-based cursor trailing effect",
+      "Dual modes: fixed fullscreen backdrop or local container widget",
+      "Customizable trail colors, length (points), thickness, spring stiffness, and friction",
+      "Interactive pointer-events: none overlay allows normal click navigation",
+      "Elegant automatic idle motion: floats in a smooth looping path when stationary",
+    ],
+    notes: [
+      "When isGlobal={true} is active, the overlay uses pointer-events: none, meaning visitors can click links, buttons, and fully interact with and navigate the page normally.",
+      "If the mouse is stationary or hasn't moved yet, the trail floats automatically in a elegant, looping sine/cosine path, keeping the page feeling alive.",
     ],
   },
 
