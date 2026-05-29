@@ -471,19 +471,47 @@ export const componentsData = {
   "terminalcontactform": {
     title: "Terminal Contact Form",
     category: "FORMS & IDENTITY",
-    description: "Multi-step terminal-themed contact form with typewriter prompts.",
+    description: "A multi-step, interactive terminal-themed contact form with macOS window styling and custom typewriter prompts.",
     component: TerminalContactForm,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { TerminalContactForm } from "../components/FormComponents/TerminalContactForm";
+
+// Default usage
+<TerminalContactForm />
+
+// Custom feedback terminal example
+const customSteps = [
+  { key: "username", prompt: "Hello! What's your ", hl: "GitHub username?", type: "text", ph: "octocat" },
+  { key: "rating", prompt: "Awesome! How would you rate ", hl: "our library (1-10)?", type: "number", ph: "10" },
+  { key: "notes", prompt: "Perfect, any ", hl: "final thoughts?", type: "text", ph: "It's awesome!" }
+];
+
+<TerminalContactForm
+  fields={customSteps}
+  greetingText="Welcome to the feedback terminal!"
+  terminalTitle="feedback@componentlabs.in"
+  successMessage="Thanks for the feedback! 🚀"
+  onSubmit={(data) => console.log("Received data:", data)}
+/>`,
     props: [
-      { name: "fields", type: "array", default: "Built-in FIELDS array", description: "Array of field objects with key, prompt, hl, type, and ph properties." },
+      { name: "fields", type: "array", default: "Name/Email/Description array", description: "Custom list of input step objects, shaped like { key, prompt, hl, type, ph }." },
+      { name: "greetingText", type: "string", default: '"Hey there! We\'re excited to link 🔗"', description: "The typewriter greeting shown when the component mounts." },
+      { name: "terminalTitle", type: "string", default: '"contact@componentlabs.in"', description: "The label in the center of the terminal title bar." },
+      { name: "onSubmit", type: "function", default: "undefined", description: "Callback function triggered on successful form submission: (data) => void, where data is an object of entered answers." },
+      { name: "successMessage", type: "string", default: '"Sent! We\'ll get back to you ASAP 😎"', description: "Custom message shown after the form has been successfully sent." },
+      { name: "typerSpeed", type: "number", default: "30", description: "Typing animation speed in milliseconds per character." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for outer container overrides." },
     ],
     features: [
-      "Typewriter-style prompt animation",
-      "Multi-step sequential form flow",
-      "macOS-style terminal header",
-      "Summary review before submission",
-      "Submit and restart actions",
+      "Interactive multi-step form flow with typewriter prompt animations",
+      "macOS-style terminal header layout with interactive traffic buttons",
+      "Smooth auto-scroll container logic and active keyboard focus control on each step",
+      "Dynamic summary review step displaying entered answers before submission",
+      "Custom submit callbacks and configurable typewriter speed parameters",
+    ],
+    notes: [
+      "Styled as a dark macOS-style terminal window with traffic light headers, prompt lines (❯), and an inline blinking cursor block.",
+      "Implements smooth auto-scroll to the bottom of the log container and auto-focuses the input at each step to keep the experience friction-free.",
     ],
   },
 
@@ -706,20 +734,47 @@ export const componentsData = {
   "premiumtiltcard": {
     title: "Premium Tilt Card",
     category: "CARDS & LAYOUTS",
-    description: "Premium dynamic 3D tilt card with glare and layered parallax.",
+    description: "An elegant, physics-driven 3D tilt card with a dynamic radial glare effect tracking the cursor.",
     component: PremiumTiltCard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { PremiumTiltCard } from "../components/CardComponents/PremiumTiltCard";
+
+// Default usage
+<PremiumTiltCard />
+
+// Custom cards with React Router Link
+import { Link } from "react-router-dom";
+import { Folder } from "lucide-react";
+
+<PremiumTiltCard
+  title="Project Folder"
+  description="Manage all your visual and asset files cleanly in a premium physics-driven card layout."
+  href="/projects"
+  as={Link}
+  icon={<Folder className="w-5 h-5 text-neutral-400" />}
+  actionText="Open Projects"
+/>`,
     props: [
-      { name: "title", type: "string", default: '"Premium Card"', description: "Card title." },
-      { name: "description", type: "string", default: '"Experience depth and physics with every interaction."', description: "Card description text." },
-      { name: "href", type: "string", default: '"#"', description: "Target URL for the button." }
+      { name: "title", type: "string", default: '"Premium Interface"', description: "Primary heading text on the card." },
+      { name: "description", type: "string", default: "Original depth description", description: "Supporting copy description below the title." },
+      { name: "href", type: "string", default: '"#"', description: "Destination path/URL." },
+      { name: "as", type: "element / string", default: '"a"', description: "Polymorphic wrapper for the action link. Defaults to standard HTML anchor to avoid SSR router failures." },
+      { name: "icon", type: "element / string", default: '"⌘"', description: "Minimal circular header badge content. Can be text or full custom SVG element." },
+      { name: "actionText", type: "string", default: '"Explore Component"', description: "Label for the bottom action link." },
+      { name: "rotationRange", type: "number", default: "18", description: "Rotation threshold sensitivity on hover mouse movements." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for outer card overrides." },
     ],
     features: [
-      "Dynamic volumetric lighting glare",
-      "Deep parallax multi-layer z-translation",
-      "Floating border glow",
-      "Interactive spring physics"
+      "Interactive 3D tilt physics using mouse coordinates tracking",
+      "Radial glare lighting effect overlay dynamically aligned with the cursor",
+      "Flexible polymorphic wrapper support (as prop) for router compatibility",
+      "Clean visual structure with circular badge icons and action indicators",
+      "Highly premium dark design system preserving original styles and branding",
+    ],
+    notes: [
+      "Styled as an elegant, physics-driven tilt card with a dynamic radial glare effect overlay that tracks the user's cursor position.",
+      "Offers a premium 3D transform effect utilizing Framer Motion's preserve-3d standard styles.",
+      "Strictly preserves all original styles, custom dimensions (h-100, w-75), borders, glare calculations, and colors (like text-primary and #E8567A).",
     ],
   },
 
@@ -1241,55 +1296,152 @@ const myPartners = [
   "smartinterfacecta": {
     title: "Smart Interface CTA",
     category: "CTA SECTIONS",
-    description: "Premium call-to-action block featuring vertical drafting guidelines, blueprint grids, a modular engineer trust badge, compact tracking headers, elegant Georgia-serif italic subtitles, and spring-responsive action buttons.",
+    description: "A drafting-board themed section with background blueprints, a coordinate grid framework, and trust badges.",
     component: SmartInterfaceCTA,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { SmartInterfaceCTA } from "../components/CTAComponents/SmartInterfaceCTA";
+
+// Default usage
+<SmartInterfaceCTA />
+
+// Custom consulting promotion example
+import { MessageSquare } from "lucide-react";
+
+<SmartInterfaceCTA
+  badgeText="100% Client Satisfaction"
+  headline="Ready to scale your product design?"
+  subtitle="Schedule an elite 1-on-1 strategy call with our core design engineering team."
+  primaryCtaText="Schedule Call"
+  secondaryCtaText="View Portfolio"
+  secondaryCtaHref="https://componentlabs.in/portfolio"
+  icon={<MessageSquare className="w-7 h-7" />}
+  onPrimaryCtaClick={() => window.open("https://calendly.com", "_blank")}
+/>`,
+    props: [
+      { name: "badgeText", type: "string", default: '"Trusted by 2,000+ Engineers"', description: "Centered floating trust/social badge text." },
+      { name: "headline", type: "element / string", default: '"The smartest interface decision you’ve ever made."', description: "Core bold headline text." },
+      { name: "subtitle", type: "element / string", default: "Original design system text", description: "Serif subtitle with responsive breakpoints." },
+      { name: "primaryCtaText", type: "string", default: '"Start Building"', description: "Label for the prominent primary solid button." },
+      { name: "onPrimaryCtaClick", type: "function", default: "undefined", description: "Callback function triggered when primary CTA is clicked." },
+      { name: "secondaryCtaText", type: "string", default: '"Book a Demo"', description: "Label for the inline link action." },
+      { name: "secondaryCtaHref", type: "string", default: '"#"', description: "Anchor destination for the secondary link." },
+      { name: "onSecondaryCtaClick", type: "function", default: "undefined", description: "Click event handler for the secondary link action." },
+      { name: "icon", type: "element", default: "Lucide DraftingCompass in circle", description: "Centered rounded badge icon." },
+      { name: "className", type: "string", default: '""', description: "Container wrapper style overrides." },
+    ],
     features: [
-      "Precision drafting board aesthetic with flanking coordinate vertical columns",
-      "Background blueprint circular dotted alignment guides",
-      "Pulsating interactive 'Trusted by 2,000+ Engineers' floating badge",
-      "Highly responsive typographic scaling with micro-condensed tracking",
-      "Elegant Georgia-style serif italic subtitle layout",
-      "Spring-responsive action button elements with hover-sliding vector arrows",
-      "Flawless light and dark visual themes isolated for nested rendering"
+      "Architectural blueprint drafting layout with coordinate guideline graphics",
+      "Floating trust/social proof badge with dynamic responsive alignments",
+      "Interactive buttons featuring sliding arrows on mouse hover",
+      "Elegant serif typography styling with editorial spacing",
+      "Highly refined coordinate grids perfectly themed for dark and light modes",
+    ],
+    notes: [
+      "Floating trust badge aligns dynamically across mobile and desktop viewpoints.",
+      "Arrow indicator in the secondary link triggers a smooth horizontal slide animation on hover.",
     ],
   },
 
   "creativeintelligencecta": {
     title: "Creative Intelligence CTA",
     category: "CTA SECTIONS",
-    description: "High-fidelity brand call-to-action displaying a copper network node icon, bold section title, elegant italicised serif subtitle, pill-shaped action button with spaced-out tracking, and an organic flowing waves visual card.",
+    description: "An abstract branding section featuring network node indicators, metallic accents, and a flowing waves visual card.",
     component: CreativeIntelligenceCTA,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { CreativeIntelligenceCTA } from "../components/CTAComponents/CreativeIntelligenceCTA";
+
+// Default usage
+<CreativeIntelligenceCTA />
+
+// Custom console dashboard example
+import { Sparkles } from "lucide-react";
+
+<CreativeIntelligenceCTA
+  headline="Design the Future"
+  subtitle="Unleash an infinitely scalable UI playground powered by component intelligence."
+  ctaText="Launch Console"
+  imageUrl="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200"
+  icon={<Sparkles className="w-8 h-8 text-amber-500" />}
+  onCtaClick={() => console.log("Console launched")}
+/>`,
+    props: [
+      { name: "headline", type: "string", default: '"Create with Intelligence"', description: "Main title text of the section." },
+      { name: "subtitle", type: "string", default: "Original SaaS mind description", description: "Supporting serif paragraph text below the headline." },
+      { name: "ctaText", type: "string", default: '"Begin Creation"', description: "The label of the pill-shaped action button." },
+      { name: "onCtaClick", type: "function", default: "undefined", description: "Callback function triggered when the CTA button is clicked." },
+      { name: "imageUrl", type: "string", default: "Unsplash abstract waves copper graphic", description: "Fallback high-quality abstract image or customizable image URL." },
+      { name: "imageAlt", type: "string", default: '"Flowing bronze waves representing automated creativity"', description: "Alt description for the wave visual card." },
+      { name: "icon", type: "element", default: "Lucide Network in copper", description: "SVG element or component rendering in the metallic copper accent color above the headline." },
+      { name: "className", type: "string", default: '""', description: "Additional classes appended to the outer container." },
+    ],
     features: [
-      "Centered copper network node brand mark symbol",
-      "Massive bold headline typography matching editorial aesthetics",
-      "Flowing Georgia-style serif italic subtitle",
-      "Pill-shaped BEGIN CREATION action button with spaced-out font tracking",
-      "Stunning rounded cards displaying abstract satin copper and bronze silk waves",
-      "Seamless Tailwind-powered dark and light theme switching out-of-the-box"
+      "Staggered entrance animations powered by spring dynamics",
+      "Signature metallic copper heading accent colors (#c58c67)",
+      "Rounded graphics card showing high-contrast flowing bronze waves",
+      "Organic hover scaling effects on background visuals",
+      "Sleek wide-tracking pill-button layouts matching premium design grids",
+    ],
+    notes: [
+      "Provides beautiful staggered entry micro-animations powered by motion/react.",
+      "Highlights the main title text in a premium metallic copper accent color (#c58c67).",
+      "Image element comes with smooth hover scaling animations.",
     ],
   },
 
   "protierpricingcta": {
     title: "Pro Tier Pricing CTA",
     category: "CTA SECTIONS",
-    description: "Premium high-contrast split CTA combining a bold 'Unlock the Pro Tier' left-column message with a gold status badge, serif italicised description, checkmark feature list, and a clean professional-tier pricing card.",
+    description: "A premium pricing CTA grid with list checklists, gold highlight badges, and a professional pricing card.",
     component: ProTierPricingCTA,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { ProTierPricingCTA } from "../components/CTAComponents/ProTierPricingCTA";
+
+// Default usage
+<ProTierPricingCTA />
+
+// Custom Free Hobby Tier example
+<ProTierPricingCTA
+  badgeText="Developer License"
+  headline="Build with ComponentLabs"
+  features={[
+    "Access to 50+ beautiful blocks",
+    "Tailwind v4 fully optimized",
+    "Community discord channel access"
+  ]}
+  cardBadgeText="Free Forever"
+  cardTitle="Hobby Tier"
+  cardPrice="$0"
+  cardPeriod=""
+  cardDescription="Perfect for hobbyists and developers experimenting on side-projects."
+  ctaText="Get Started"
+  onCtaClick={() => alert("Starter registered!")}
+/>`,
+    props: [
+      { name: "badgeText", type: "string", default: '"New Pro Features Available"', description: "Flashing Pro features notification badge label." },
+      { name: "headline", type: "element / string", default: '"Unlock the Pro Tier"', description: "Headline text on the left column with highlighted Warm-Error span." },
+      { name: "subtitle", type: "string", default: "Original productivity description", description: "Paragraph description text beneath the headline." },
+      { name: "features", type: "array", default: "Built-in 3 premium features", description: "Array of checklist text strings." },
+      { name: "cardBadgeText", type: "string", default: '"Most Popular"', description: "Highlighted uppercase badge on the pricing card." },
+      { name: "cardTitle", type: "string", default: '"Professional"', description: "Small upper-case monospace title of the tier." },
+      { name: "cardPrice", type: "string", default: '"$10"', description: "The tier's large price tag." },
+      { name: "cardPeriod", type: "string", default: '"/mo"', description: "Period label." },
+      { name: "cardDescription", type: "string", default: "Built-in craft description", description: "Support copy explaining the tier." },
+      { name: "ctaText", type: "string", default: '"Upgrade Now"', description: "Action button label inside the card." },
+      { name: "onCtaClick", type: "function", default: "undefined", description: "Click event handler for the card upgrade button." },
+      { name: "guaranteeText", type: "string", default: '"14-day free trial • No credit card required"', description: "Monospace trial support disclaimer text." },
+      { name: "className", type: "string", default: '""', description: "Outer wrapper style classes." },
+    ],
     features: [
-      "Gold pulsating border capsule 'New Pro Features Available'",
-      "Bold typographic 'Unlock the Pro Tier' heading styled in warm hues",
-      "Serif Georgia-style italic description layout",
-      "Circular green checkmark list representing premium feature options",
-      "Professional tier card with '$10/mo' layout and dark highlight button",
-      "Standard design system Tailwind styles for flawless dark/light transition switching"
+      "Split column grid architecture (promotional details left, transaction card right)",
+      "Gold flashing notification badge highlighting pricing updates",
+      "Custom checkmark checklists for feature outlines",
+      "Hover lifting pricing card with dark highlighted actions",
+      "Standard spacing grids isolated for dark and light layout systems",
+    ],
+    notes: [
+      "Combines a split grid layout structure (headline checklist on left, pricing card on right).",
+      "Features dynamic card lift animations on mouse hover.",
+      "Preserves all layout tokens, color tags (bg-surface-container, text-amber-600), and spacing offsets.",
     ],
   },
 
