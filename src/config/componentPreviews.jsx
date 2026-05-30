@@ -62,6 +62,7 @@ import EditorialBrandFooter from '../components/FooterComponents/EditorialBrandF
 import EngineeringStatusFooter from '../components/FooterComponents/EngineeringStatusFooter';
 import MorphCardButton from '../components/CreativeComponents/MorphCardButton';
 import GreetingPreloader from '../components/LoaderComponents/GreetingPreloader';
+import StaircasePreloader from '../components/LoaderComponents/StaircasePreloader';
 
 // CTA Sections
 import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
@@ -341,5 +342,10 @@ export const componentPreviews = {
     hasRewatch: true,
     previewContainerClass: noBoxClass,
     renderPreview: (key) => <GreetingPreloader key={key} isGlobal={false} />
+  },
+  staircasepreloader: {
+    hasRewatch: true,
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <StaircasePreloader key={key} isGlobal={false} />
   },
 };

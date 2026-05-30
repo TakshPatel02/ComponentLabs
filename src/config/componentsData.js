@@ -95,6 +95,7 @@ import MorphCardButton from "../components/CreativeComponents/MorphCardButton";
 
 // loader animations
 import GreetingPreloader from "../components/LoaderComponents/GreetingPreloader";
+import StaircasePreloader from "../components/LoaderComponents/StaircasePreloader";
 
 // Components Data
 export const componentsData = {
@@ -1732,6 +1733,53 @@ const customSlides = [
     notes: [
       "When using isGlobal={true}, the overlay blocks scroll interaction initially and automatically restores it once the exit slide animation is fully complete.",
       "The vertical loading line uses a dynamic scale transition synced precisely with the duration and word-count of your greetings list.",
+    ],
+  },
+
+  "staircasepreloader": {
+    title: "Staircase Preloader",
+    category: "LOADER ANIMATIONS",
+    description: "A cinematic page preloader that cycles through multi-lingual greetings with a fade effect, then reveals content with a staggered staircase animation — 5 vertical strips slide up one-by-one with cascading delays.",
+    component: StaircasePreloader,
+    published: true,
+    usage: `import { StaircasePreloader } from "component-labs";
+
+// Default usage
+<StaircasePreloader />
+
+// Custom wrapper page example
+<StaircasePreloader
+  greetings={["Welcome", "Bienvenue", "Willkommen", "Benvenuto"]}
+  durationPerWord={400}
+  panelCount={5}
+  accentColor="#d24200"
+  bgColor="#f2f1ed"
+  textColor="#11100a"
+>
+  <MyLandingPage />
+</StaircasePreloader>`,
+    props: [
+      { name: "greetings", type: "array", default: "['Hello', 'Bonjour', 'नमस्ते', ...]", description: "List of greeting strings to cycle through during loading." },
+      { name: "durationPerWord", type: "number", default: "300", description: "Time in milliseconds each greeting is displayed before cycling to the next." },
+      { name: "panelCount", type: "number", default: "5", description: "Number of vertical strips that form the staircase curtain." },
+      { name: "panelStaggerMs", type: "number", default: "100", description: "Stagger delay in milliseconds between each strip's exit animation." },
+      { name: "accentColor", type: "string", default: '"#d24200"', description: "Color of the accent dot displayed next to the greeting text." },
+      { name: "bgColor", type: "string", default: '"#f2f1ed"', description: "Background color of the vertical strip panels." },
+      { name: "textColor", type: "string", default: '"#11100a"', description: "Color of the greeting text." },
+      { name: "isGlobal", type: "boolean", default: "true", description: "If true, renders as a fixed fullscreen page loader. If false, renders within its parent container." },
+      { name: "onComplete", type: "function", default: "undefined", description: "Callback fired when the staircase exit animation has fully completed." },
+      { name: "children", type: "element", default: "undefined", description: "Page content to reveal after the preloader finishes." },
+    ],
+    features: [
+      "Staggered staircase exit animation with 5 vertical strips sliding up in sequence",
+      "Smooth text cycling with fade-in/fade-out transitions matching the reference pattern",
+      "Accent dot indicator next to the greeting text for editorial polish",
+      "Customizable panel count, stagger delay, colors and greeting list",
+      "Dual scope: fixed fullscreen global loader or contained local overlay",
+    ],
+    notes: [
+      "The staircase animation uses a cubic-bezier(0.77, 0, 0.175, 1) easing for a premium, editorial feel.",
+      "Each panel exits with a configurable stagger delay (default 100ms between panels), creating the cascading 'staircase' reveal effect.",
     ],
   },
 };
