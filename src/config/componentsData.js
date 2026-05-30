@@ -93,6 +93,9 @@ import CinematicCards from "../components/CreativeComponents/CinematicCards";
 import ElasticStretchText from "../components/CreativeComponents/ElasticStretchText";
 import MorphCardButton from "../components/CreativeComponents/MorphCardButton";
 
+// loader animations
+import GreetingPreloader from "../components/LoaderComponents/GreetingPreloader";
+
 // Components Data
 export const componentsData = {
 
@@ -1629,8 +1632,8 @@ const customSlides = [
 <FluidCursorTrail isGlobal={true} />
 
 // Local container mode usage
-<div className="relative w-full h-125">
-  <FluidCursorTrail isGlobal={false} />
+<div className="relative w-full h-[500px] overflow-hidden rounded-xl">
+  <FluidCursorTrail isGlobal={false} color="rgba(197, 140, 103, 0.85)" pointsNumber={60} widthFactor={0.4} />
 </div>`,
     props: [
       { name: "isGlobal", type: "boolean", default: "true", description: "If true, the canvas trail is fixed fullscreen, functioning as a global backdrop. If false, it stays locally in its parent container as a card widget." },
@@ -1687,6 +1690,48 @@ const customSlides = [
       "Spring physics for natural, elastic motion",
       "Zero useEffect — pure render-driven",
       "Geometric grid placeholder when no image provided",
+    ],
+  },
+
+  "greetingpreloader": {
+    title: "Greeting Preloader",
+    category: "LOADER ANIMATIONS",
+    description: "An elegant, multi-lingual typewriter-style page loader that cycles through greetings and reveals page content with a sleek layout transition.",
+    component: GreetingPreloader,
+    published: true,
+    usage: `import { GreetingPreloader } from "component-labs";
+
+// Default usage
+<GreetingPreloader />
+
+// Custom wrapper page example
+<GreetingPreloader
+  greetings={["Welcome", "Bienvenue", "Willkommen", "Benvenuto"]}
+  durationPerWord={600}
+  subTitle="Launching Dashboard..."
+  theme="dark"
+>
+  <MyDashboard />
+</GreetingPreloader>`,
+    props: [
+      { name: "greetings", type: "array", default: "['Hello', 'Bonjour', 'Hola', ...]", description: "List of greeting strings to cycle through on startup." },
+      { name: "durationPerWord", type: "number", default: "500", description: "Time duration in milliseconds that each word is shown." },
+      { name: "subTitle", type: "string", default: '"Initializing Experience"', description: "Small status metadata subtitle text shown at the bottom of the loader." },
+      { name: "isGlobal", type: "boolean", default: "true", description: "If true, renders fixed fullscreen as a global page loader. If false, renders absolute inset locally within its parent container." },
+      { name: "theme", type: "string", default: '"light"', description: "Preloader color theme: 'light' (neutral-cream backdrop) or 'dark' (charcoal-gothic backdrop)." },
+      { name: "onComplete", type: "function", default: "undefined", description: "Fired when the greetings list has fully cycled and the loading panel has finished sliding out." },
+      { name: "children", type: "element", default: "undefined", description: "Optional component or page elements to render and reveal after the preloader finishes." },
+    ],
+    features: [
+      "Typographic greeting sequence with clean exit transitions powered by AnimatePresence",
+      "Seamless wrapper mode hiding content initially and fading it in upon transition completion",
+      "Dual canvas scopes: fixed fullscreen global page loader or absolute local widget overlay",
+      "Dynamic coordinate linear progress bar reflecting total load completion",
+      "Strict premium light and dark editorial theme options pre-designed",
+    ],
+    notes: [
+      "When using isGlobal={true}, the overlay blocks scroll interaction initially and automatically restores it once the exit slide animation is fully complete.",
+      "The vertical loading line uses a dynamic scale transition synced precisely with the duration and word-count of your greetings list.",
     ],
   },
 };

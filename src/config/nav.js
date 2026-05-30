@@ -49,6 +49,12 @@ export const navConfig = [
     ]
   },
   {
+    section: "LOADER ANIMATIONS",
+    items: [
+      { label: "Greeting Preloader", href: "/components/loader-animations/greetingpreloader" },
+    ]
+  },
+  {
     section: "LINKS & NAVIGATION",
     items: [
       { label: "Clip Path Icon Link", href: "/components/links/clippathiconlink" },

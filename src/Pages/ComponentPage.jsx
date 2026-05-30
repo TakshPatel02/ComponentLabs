@@ -334,7 +334,7 @@ const ComponentPage = () => {
                 )}
               </div>
               {usage ? (
-                renderCode(usage)
+                renderCode(codeSnippet)
               ) : (
                 <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
                   This component is not yet published. Usage documentation will be available once it's added to the npm package.

@@ -32,10 +32,16 @@ export const DocumentationPanel = ({
   const isDarkTheme = theme === "dark";
   const codeTheme = isDarkTheme ? themes.vsDark : themes.vsLight;
 
-  const codeSnippet = `import { ${componentName} } from "${importPath}";
+  const activeUsageSnippet = typeof defaultUsage === "object" && defaultUsage !== null
+    ? defaultUsage.default
+    : defaultUsage;
+
+  const codeSnippet = activeUsageSnippet?.includes("import")
+    ? activeUsageSnippet
+    : `import { ${componentName} } from "${importPath}";
 
 // Default usage
-${defaultUsage}`;
+${activeUsageSnippet || ""}`;
 
   const propsContent =
     props && props.length > 0 ? (

@@ -61,6 +61,7 @@ import MinimalFooter from '../components/FooterComponents/MinimalFooter';
 import EditorialBrandFooter from '../components/FooterComponents/EditorialBrandFooter';
 import EngineeringStatusFooter from '../components/FooterComponents/EngineeringStatusFooter';
 import MorphCardButton from '../components/CreativeComponents/MorphCardButton';
+import GreetingPreloader from '../components/LoaderComponents/GreetingPreloader';
 
 // CTA Sections
 import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
@@ -333,5 +334,12 @@ export const componentPreviews = {
   codeshowcasesegment: {
     previewContainerClass: fullWidthNoBoxClass,
     renderPreview: (key) => <CodeShowcaseFeature key={key} />
+  },
+
+  // LOADER ANIMATIONS
+  greetingpreloader: {
+    hasRewatch: true,
+    previewContainerClass: noBoxClass,
+    renderPreview: (key) => <GreetingPreloader key={key} isGlobal={false} />
   },
 };
