@@ -118,7 +118,7 @@ const HomePage = () => {
                 : "bg-black/3 border-black/15 text-black/80"
             }`}
           >
-            ✦ 61 Production-Ready React Primitives
+            ✦ 65 Production-Ready React Primitives
           </motion.div>
 
           {/* Heading */}
@@ -193,7 +193,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center gap-3 mt-10 flex-wrap"
           >
-            {["61 COMPONENTS", "15 CATEGORIES", "OPEN SOURCE"].map((stat) => (
+            {["65 COMPONENTS", "17 CATEGORIES", "OPEN SOURCE"].map((stat) => (
               <span
                 key={stat}
                 className="font-mono-code text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/60 border border-border-fallback-10 rounded-full px-4 py-1.5 select-none bg-transparent"
@@ -287,7 +287,7 @@ const HomePage = () => {
                 </p>
               </div>
               <Link to="/components" className="group flex items-center gap-2 text-sm font-mono-code uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
-                View all 61 <span className="group-hover:translate-x-1 transition-transform">→</span>
+                View all 65 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -451,8 +451,8 @@ const HomePage = () => {
         <section className="relative w-full border-y border-border-fallback-10 overflow-hidden select-none bg-transparent">
           <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10">
             {[
-              { num: "61", label: "Components" },
-              { num: "15", label: "Categories" },
+              { num: "65", label: "Components" },
+              { num: "17", label: "Categories" },
               { num: "1000+", label: "Animated Icons" },
               { num: "2", label: "npm Packages" },
               { num: "MIT", label: "Licensed" },
@@ -522,7 +522,7 @@ const HomePage = () => {
                 {[
                   "MIT Licensed",
                   "Open Source",
-                  "61 Components",
+                  "65 Components",
                   "2 npm packages",
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3">
