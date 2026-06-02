@@ -260,14 +260,14 @@ export default function Example() {
   return (
     <div className="w-full min-h-90 flex items-center justify-center bg-zinc-950 text-white rounded-xl">
       <IdentityDecoder 
-        identity="takshpatel022@componentlabs.com" 
+        identity="takshpatel02@component-labs.com" 
         accentColor="#d24200"
       />
     </div>
   );
 }`,
     props: [
-      { name: "identity", type: "string", default: '"takshpatel022@componentlabs.com"', description: "The core identity/email string to segment and decode." },
+      { name: "identity", type: "string", default: '"takshpatel02@component-labs.com"', description: "The core identity/email string to segment and decode." },
       { name: "accentColor", type: "string", default: '"#d24200"', description: "Hex code for bracket lines, active hover glows, and highlights." },
       { name: "className", type: "string", default: '""', description: "Custom classes for the wrapper container." },
     ],

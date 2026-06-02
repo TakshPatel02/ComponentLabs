@@ -6,7 +6,16 @@ const defaultSegments = [
     key: "name",
     label: "Name",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
         <circle cx="12" cy="7" r="4" />
       </svg>
@@ -27,38 +36,56 @@ const defaultSegments = [
     key: "email",
     label: "Email",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect width="20" height="16" x="2" y="4" rx="2" />
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
       </svg>
     ),
-    range: [0, 31], // takshpatel022@componentlabs.com
+    range: [0, 31], // takshpatel02@component-labs.com
   },
   {
     key: "website",
     label: "Website",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <circle cx="12" cy="12" r="10" />
         <path d="M2 12h20" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     ),
-    range: [14, 31], // componentlabs.com
+    range: [13, 31], // component-labs.com
   },
 ];
 
 const springConfig = { type: "spring", stiffness: 200, damping: 24 };
 
 export const IdentityDecoder = ({
-  identity = "takshpatel02@componentlabs.com",
+  identity = "takshpatel02@component-labs.com",
   segments = defaultSegments,
   accentColor = "#d24200",
   className = "",
 }) => {
   const [activeKey, setActiveKey] = useState(null);
   const containerRef = useRef(null);
-  
+
   // Keep the last active coordinates in state so they can animate out/in beautifully
   const [coords, setCoords] = useState({
     charLeft: 0,
@@ -68,7 +95,7 @@ export const IdentityDecoder = ({
     iconCenterX: 0,
     iconTopY: 0,
   });
-  
+
   const [isAnyActive, setIsAnyActive] = useState(false);
   const activeSegment = segments.find((s) => s.key === activeKey);
 
@@ -166,7 +193,7 @@ export const IdentityDecoder = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           style={{
-            filter: `drop-shadow(0 2px 6px ${accentColor}40)`
+            filter: `drop-shadow(0 2px 6px ${accentColor}40)`,
           }}
         />
 
@@ -184,7 +211,7 @@ export const IdentityDecoder = ({
           strokeLinecap="round"
           strokeDasharray="4 4"
           style={{
-            filter: `drop-shadow(0 2px 4px ${accentColor}30)`
+            filter: `drop-shadow(0 2px 4px ${accentColor}30)`,
           }}
         />
       </svg>
@@ -209,14 +236,17 @@ export const IdentityDecoder = ({
                       ? "var(--color-on-surface-variant, rgba(158, 157, 151, 0.35))"
                       : "var(--color-primary, #11100a)",
                   opacity: isAnyActive && !isHighlighted ? 0.4 : 1,
-                  filter: isAnyActive && !isHighlighted ? "blur(1.5px)" : "blur(0px)",
+                  filter:
+                    isAnyActive && !isHighlighted ? "blur(1.5px)" : "blur(0px)",
                   scale: isHighlighted ? 1.05 : 1,
                   fontWeight: isHighlighted ? 700 : 400,
                 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 className="inline-block"
                 style={{
-                  textShadow: isHighlighted ? `0 0 12px ${accentColor}30` : "none"
+                  textShadow: isHighlighted
+                    ? `0 0 12px ${accentColor}30`
+                    : "none",
                 }}
               >
                 {char}
@@ -247,10 +277,16 @@ export const IdentityDecoder = ({
               {/* Animated Icon Circle */}
               <motion.div
                 animate={{
-                  backgroundColor: isActive ? accentColor : "var(--color-surface-container-low, rgba(255,255,255,0.03))",
-                  color: isActive ? "#ffffff" : "var(--color-on-surface-variant, #48473f)",
+                  backgroundColor: isActive
+                    ? accentColor
+                    : "var(--color-surface-container-low, rgba(255,255,255,0.03))",
+                  color: isActive
+                    ? "#ffffff"
+                    : "var(--color-on-surface-variant, #48473f)",
                   scale: isActive ? 1.2 : 1,
-                  borderColor: isActive ? accentColor : "var(--color-outline-variant, rgba(202, 198, 188, 0.3))",
+                  borderColor: isActive
+                    ? accentColor
+                    : "var(--color-outline-variant, rgba(202, 198, 188, 0.3))",
                   boxShadow: isActive
                     ? `0 0 25px ${accentColor}50, 0 4px 15px ${accentColor}30`
                     : "0 4px 12px rgba(0,0,0,0.03)",
