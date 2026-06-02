@@ -6,6 +6,7 @@ import { CreativeHighlightText } from '../components/TextComponents/CreativeHigh
 import KineticSplitReveal from '../components/TextComponents/KineticSplitReveal';
 import GeometricReconstitution from '../components/TextComponents/GeometricReconstitution';
 import AtmosphericDistortion from '../components/TextComponents/AtmosphericDistortion';
+import IdentityDecoder from '../components/TextComponents/IdentityDecoder';
 
 import FillButton from '../components/ButtonComponents/FillButton';
 import UploadButton from '../components/ButtonComponents/UploadButton';
@@ -137,6 +138,14 @@ export const componentPreviews = {
     renderPreview: (key) => (
       <div className="w-full h-full flex items-center justify-center">
         <AtmosphericDistortion key={key} />
+      </div>
+    )
+  },
+  identitydecoder: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="w-full h-full flex items-center justify-center">
+        <IdentityDecoder key={key} />
       </div>
     )
   },

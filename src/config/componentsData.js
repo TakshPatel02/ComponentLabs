@@ -7,6 +7,7 @@ import { CreativeHighlightText } from "../components/TextComponents/CreativeHigh
 import KineticSplitReveal from "../components/TextComponents/KineticSplitReveal";
 import GeometricReconstitution from "../components/TextComponents/GeometricReconstitution";
 import AtmosphericDistortion from "../components/TextComponents/AtmosphericDistortion";
+import IdentityDecoder from "../components/TextComponents/IdentityDecoder";
 
 // Buttons
 import FillButton from "../components/ButtonComponents/FillButton";
@@ -244,6 +245,38 @@ export const componentsData = {
       "Ambient living float keyframes with unique character offsets",
       "Native CSS Flexbox + Framer Motion layout displacement waves",
       "Zero JS event listener loop overhead",
+    ],
+  },
+
+  "identitydecoder": {
+    title: "Identity Decoder",
+    category: "TEXT & TYPOGRAPHY",
+    description: "An elegant cryptographic-themed identity segment decoder that displays target segments using sliding brackets, angled pointer lines, and depth-of-field blurs.",
+    component: IdentityDecoder,
+    published: true,
+    usage: `import IdentityDecoder from "./components/TextComponents/IdentityDecoder";
+
+export default function Example() {
+  return (
+    <div className="w-full min-h-[360px] flex items-center justify-center bg-zinc-950 text-white rounded-xl">
+      <IdentityDecoder 
+        identity="takshpatel022@componentlabs.com" 
+        accentColor="#d24200"
+      />
+    </div>
+  );
+}`,
+    props: [
+      { name: "identity", type: "string", default: '"takshpatel022@componentlabs.com"', description: "The core identity/email string to segment and decode." },
+      { name: "accentColor", type: "string", default: '"#d24200"', description: "Hex code for bracket lines, active hover glows, and highlights." },
+      { name: "className", type: "string", default: '""', description: "Custom classes for the wrapper container." },
+    ],
+    features: [
+      "Dynamic SVG coordinate tracing for zero layout shifts and absolute alignments",
+      "Interactive sliding |___| bracket with angled pointer line to active elements",
+      "Depth-of-field blur on surrounding text characters and non-active icons",
+      "Full touch/mobile gesture support with automatic window resize listeners",
+      "Smooth Framer Motion spring-driven SVG path interpolation",
     ],
   },
 

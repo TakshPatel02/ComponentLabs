@@ -16,6 +16,7 @@ export const navConfig = [
       { label: "Kinetic Split Reveal", href: "/components/text/kineticsplitreveal" },
       { label: "Geometric Reconstitution", href: "/components/text/geometricreconstitution" },
       { label: "Atmospheric Distortion", href: "/components/text/atmosphericdistortion" },
+      { label: "Identity Decoder", href: "/components/text/identitydecoder" },
     ]
   },
   {
