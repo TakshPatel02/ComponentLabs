@@ -254,11 +254,11 @@ export const componentsData = {
     description: "An elegant cryptographic-themed identity segment decoder that displays target segments using sliding brackets, angled pointer lines, and depth-of-field blurs.",
     component: IdentityDecoder,
     published: true,
-    usage: `import IdentityDecoder from "./components/TextComponents/IdentityDecoder";
+    usage: `import IdentityDecoder from "component-labs";
 
 export default function Example() {
   return (
-    <div className="w-full min-h-[360px] flex items-center justify-center bg-zinc-950 text-white rounded-xl">
+    <div className="w-full min-h-90 flex items-center justify-center bg-zinc-950 text-white rounded-xl">
       <IdentityDecoder 
         identity="takshpatel022@componentlabs.com" 
         accentColor="#d24200"
