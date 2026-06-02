@@ -254,7 +254,8 @@ export const componentsData = {
     description: "An elegant cryptographic-themed identity segment decoder that displays target segments using sliding brackets, angled pointer lines, and depth-of-field blurs.",
     component: IdentityDecoder,
     published: true,
-    usage: `import IdentityDecoder from "component-labs";
+    usage: `// Default usage
+import { IdentityDecoder } from "component-labs";
 
 export default function Example() {
   return (
@@ -265,18 +266,50 @@ export default function Example() {
       />
     </div>
   );
+}
+
+// Customizing segments and ranges
+import { User, Shield, Terminal } from "lucide-react";
+
+export function CustomExample() {
+  const customSegments = [
+    {
+      key: "user",
+      label: "User",
+      icon: <User className="w-[18px] h-[18px]" />,
+      range: [0, 4] // "root"
+    },
+    {
+      key: "host",
+      label: "Host",
+      icon: <Shield className="w-[18px] h-[18px]" />,
+      range: [5, 14] // "localhost"
+    }
+  ];
+
+  return (
+    <div className="w-full min-h-90 flex items-center justify-center bg-zinc-950 text-white rounded-xl">
+      <IdentityDecoder
+        identity="root@localhost"
+        segments={customSegments}
+        accentColor="#10B981"
+        onSegmentChange={(key) => console.log("Active segment:", key)}
+      />
+    </div>
+  );
 }`,
     props: [
-      { name: "identity", type: "string", default: '"takshpatel02@component-labs.com"', description: "The core identity/email string to segment and decode." },
-      { name: "accentColor", type: "string", default: '"#d24200"', description: "Hex code for bracket lines, active hover glows, and highlights." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for the wrapper container." },
+      { name: "identity", type: "string", default: '"takshpatel02@component-labs.com"', description: "The main target string to be decoded/split." },
+      { name: "segments", type: "Array", default: "Built-in list", description: "Array of segment objects mapping specific interactive items to indices in the main identity string. Each segment has the structure: { key: string, label: string, icon: ReactNode, range: [number, number] }." },
+      { name: "accentColor", type: "string", default: '"#d24200"', description: "Hover highlight and connector line hex/color value." },
+      { name: "springConfig", type: "object", default: '{ type: "spring", stiffness: 200, damping: 24 }', description: "Custom spring configuration object for the bracket and connector lines' motion." },
+      { name: "onSegmentChange", type: "function", default: "undefined", description: "Callback event handler triggered when active segment changes on hover or touch." },
+      { name: "className", type: "string", default: '""', description: "CSS wrapper class overrides." },
     ],
     features: [
-      "Dynamic SVG coordinate tracing for zero layout shifts and absolute alignments",
-      "Interactive sliding |___| bracket with angled pointer line to active elements",
-      "Depth-of-field blur on surrounding text characters and non-active icons",
-      "Full touch/mobile gesture support with automatic window resize listeners",
-      "Smooth Framer Motion spring-driven SVG path interpolation",
+      "Combines modern typography with dynamic mathematical SVGs that draw smooth path alignments between cursor states and raw characters.",
+      "Uses responsive client rect measurements defensively clamped to avoid character indexing overflows during hot resizing.",
+      "Built-in automatic resizing and font-load observers to ensure absolute pixel-perfect alignment.",
     ],
   },
 
