@@ -29,11 +29,14 @@ const NavBar = () => {
   return (
     <nav className="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-xl oklab-border-b transition-colors duration-300">
       {/* Desktop Navbar */}
-      <div className="hidden md:flex justify-between items-center w-full px-8 h-16 max-w-container-max mx-auto">
-        <div className="text-xl font-bold tracking-tighter text-primary font-['Space_Grotesk']">
-          ComponentLab
+      <div className="hidden md:flex items-center w-full px-8 h-16 max-w-container-max mx-auto">
+        <div className="grow flex-1 flex justify-start">
+          <div className="text-xl font-bold tracking-tighter text-primary font-['Space_Grotesk']">
+            ComponentLab
+          </div>
         </div>
-        <div className="flex items-center gap-8 font-['Space_Grotesk'] tracking-tight font-medium">
+        
+        <div className="flex items-center gap-8 font-['Space_Grotesk'] tracking-tight font-medium shrink-0">
           <Link
             className="text-primary/50 transition-colors duration-200 hover:text-error-warm"
             to="/"
@@ -65,7 +68,8 @@ const NavBar = () => {
             IconFlow <span className="text-xs">✦</span>
           </Link>
         </div>
-        <div className="flex items-center gap-4">
+
+        <div className="grow flex-1 flex items-center justify-end gap-4">
           <ThemeToggle />
           <button className="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] hover:bg-error-warm transition-all active:scale-[0.98] flex items-center gap-2">
             <a href="https://github.com/TakshPatel02/ComponentLabs" target="_blank" rel="noopener noreferrer">Star on Github</a>
