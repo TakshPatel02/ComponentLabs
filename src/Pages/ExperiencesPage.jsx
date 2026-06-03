@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { flushSync } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
@@ -37,6 +38,23 @@ import {
   TABS,
   TRANSITIONS,
 } from "../config/transitionsData";
+
+const getIcon = (iconName) => {
+  switch (iconName) {
+    case "ArrowUp": return ArrowUp;
+    case "ArrowDown": return ArrowDown;
+    case "ArrowLeft": return ArrowLeft;
+    case "ArrowRight": return ArrowRight;
+    case "ArrowUpLeft": return ArrowUpLeft;
+    case "ArrowDownRight": return ArrowDownRight;
+    case "ArrowUpRight": return ArrowUpRight;
+    case "ArrowDownLeft": return ArrowDownLeft;
+    case "Circle": return Circle;
+    case "Grid": return Grid;
+    case "Sparkles": return Sparkles;
+    default: return Sparkles;
+  }
+};
 
 /* ═══════════════════════════════════════════════════
    SMALL COMPONENTS
@@ -126,23 +144,6 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
   const [direction, setDirection] = useState(transition.directions[0].key);
   const [activeTab, setActiveTab] = useState("context");
   const [showCode, setShowCode] = useState(false);
-
-  const getIcon = (iconName) => {
-    switch (iconName) {
-      case "ArrowUp": return ArrowUp;
-      case "ArrowDown": return ArrowDown;
-      case "ArrowLeft": return ArrowLeft;
-      case "ArrowRight": return ArrowRight;
-      case "ArrowUpLeft": return ArrowUpLeft;
-      case "ArrowDownRight": return ArrowDownRight;
-      case "ArrowUpRight": return ArrowUpRight;
-      case "ArrowDownLeft": return ArrowDownLeft;
-      case "Circle": return Circle;
-      case "Grid": return Grid;
-      case "Sparkles": return Sparkles;
-      default: return Sparkles;
-    }
-  };
 
   const getTabCode = () => {
     if (activeTab === "context") {
@@ -428,6 +429,8 @@ const ExperiencesPage = () => {
   const [sandboxEffect, setSandboxEffect] = useState("curtain-wipe");
   const [sandboxDirection, setSandboxDirection] = useState("bottom-to-top");
 
+  const activeTransition = TRANSITIONS.find((t) => t.id === sandboxEffect);
+
   /* ── Enter / Exit fullscreen sandbox ── */
   const enterFullscreen = (effect, direction) => {
     setSandboxEffect(effect);
@@ -439,6 +442,8 @@ const ExperiencesPage = () => {
   const exitFullscreen = () => {
     setIsFullscreen(false);
     document.body.style.overflow = "";
+    const el = document.getElementById("experience-transition-override");
+    if (el) el.remove();
   };
 
   /* ── Exit fullscreen on Escape key ── */
@@ -462,7 +467,9 @@ const ExperiencesPage = () => {
   }, []);
 
   /* ── Dynamic head injection of CSS view transitions ── */
-  useEffect(() => {
+  /* ── Dynamic head injection of CSS view transitions ── */
+  /* ── Handle theme toggle with dynamic direction override ── */
+  const handleToggleTheme = () => {
     const STYLE_ID = "experience-transition-override";
     let styleEl = document.getElementById(STYLE_ID);
 
@@ -473,19 +480,14 @@ const ExperiencesPage = () => {
     }
     styleEl.textContent = getCssOverride(sandboxEffect, sandboxDirection, theme);
 
-    return () => {
+    // Trigger the global theme toggle transition
+    toggleTheme();
+
+    // Clean up temporary override after the transition completes (1.2s timeout)
+    setTimeout(() => {
       const el = document.getElementById(STYLE_ID);
       if (el) el.remove();
-    };
-  }, [sandboxEffect, sandboxDirection, theme]);
-
-  /* ── Handle theme toggle with dynamic direction override ── */
-  const handleToggleTheme = () => {
-    const styleEl = document.getElementById("experience-transition-override");
-    if (styleEl) {
-      styleEl.textContent = getCssOverride(sandboxEffect, sandboxDirection, theme);
-    }
-    toggleTheme();
+    }, 1200);
   };
 
   return (
@@ -697,6 +699,47 @@ const ExperiencesPage = () => {
                   <span className="px-3 py-1 rounded bg-error-warm/10 border border-error-warm/15 text-error-warm text-[10px] font-mono-code uppercase font-semibold">
                     {sandboxEffect.replace(/-/g, " ")} · {sandboxDirection.replace(/-/g, " ")}
                   </span>
+                </div>
+              </div>
+
+              {/* Dynamic Direction Selector inside Sandbox */}
+              <div className="p-5 rounded-2xl bg-surface-container/60 border border-border-fallback-10 backdrop-blur-sm flex flex-col gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border-fallback-10/40">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-error-warm animate-pulse" />
+                    <h3 className="font-section-heading text-[12px] font-bold tracking-wider uppercase text-on-surface-variant">
+                      Sandbox Controller
+                    </h3>
+                  </div>
+                  <span className="text-[10px] font-mono-code text-on-surface-variant/50">
+                    Switch transition directions on the fly
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeTransition?.directions.map((dir) => {
+                    const IconComponent = getIcon(dir.iconName);
+                    const isActive = sandboxDirection === dir.key;
+                    return (
+                      <button
+                        key={dir.key}
+                        onClick={() => setSandboxDirection(dir.key)}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono-code text-[11px] tracking-wide transition-all duration-200 cursor-pointer border ${
+                          isActive
+                            ? "bg-error-warm/15 text-error-warm border-error-warm/30 font-semibold shadow-sm"
+                            : "bg-surface hover:bg-surface-container-highest border-border-fallback-10 text-on-surface-variant hover:text-on-surface"
+                        }`}
+                      >
+                        {IconComponent && (
+                          <IconComponent
+                            size={13}
+                            className={`transition-colors ${isActive ? "text-error-warm" : "text-on-surface-variant/60"}`}
+                          />
+                        )}
+                        <span>{dir.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
