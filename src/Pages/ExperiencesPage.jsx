@@ -611,12 +611,69 @@ const ExperiencesPage = () => {
       {/* ═══ DIVIDER ═══ */}
       <div className="w-full border-t border-border-fallback-10" />
 
+      {/* ═══ QUICK USAGE GUIDE ═══ */}
+      <section className="py-16 md:py-20 px-4 bg-surface-container/25 transition-colors duration-300">
+        <div className="max-w-300 mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="font-mono-code text-[11px] uppercase tracking-widest text-on-surface-variant/60 mb-2.5 block">
+              GETTING STARTED
+            </span>
+            <h2 className="font-section-heading text-[28px] md:text-[32px] text-primary tracking-tight mb-3">
+              How to Use These Transitions
+            </h2>
+            <p className="font-editorial-standard text-[14px] text-on-surface-variant/80">
+              Integrate zero-dependency CSS view transitions into your React codebase in three quick steps.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                step: "01",
+                title: "Choose & Test",
+                desc: "Explore the curtain wipes, radial waves, or pixel dissolves above. Click 'Launch Fullscreen Sandbox' to test wipe directions on our mock dashboard.",
+              },
+              {
+                step: "02",
+                title: "Grab the Code",
+                desc: "Click 'Show Setup Code' on the card of your chosen transition. You'll find ready-to-use snippets for the React Context Provider, the CSS keyframes, and the Toggle button.",
+              },
+              {
+                step: "03",
+                title: "Install in Your App",
+                desc: "Paste the snippets into your project. Wrap your root element in the ThemeProvider, add the CSS to your index.css, and import the button wherever you need it.",
+              },
+            ].map(({ step, title, desc }) => (
+              <div
+                key={step}
+                className="relative rounded-2xl border oklab-border bg-surface p-6 md:p-8 flex flex-col gap-4 shadow-sm hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between border-b border-border-fallback-10/40 pb-4">
+                  <span className="font-section-heading text-[16px] text-primary font-bold">
+                    {title}
+                  </span>
+                  <span className="font-mono-code text-[12px] text-error-warm font-bold px-2 py-0.5 rounded bg-error-warm/10">
+                    Step {step}
+                  </span>
+                </div>
+                <p className="font-editorial-standard text-[13px] text-on-surface-variant/75 leading-relaxed">
+                  {desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ DIVIDER ═══ */}
+      <div className="w-full border-t border-border-fallback-10" />
+
       {/* ═══ BOTTOM ═══ */}
       <section className="py-16 md:py-20 px-4">
-        <div className="max-w-300 mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="max-w-300  mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <Link
             to="/"
-            className="font-mono-code text-[12px] text-on-surface-variant/60 hover:text-error-warm transition-colors flex items-center gap-1 group"
+            className="font-mono-code text-[16px] text-on-surface-variant/60 hover:text-error-warm transition-colors flex items-center gap-1 group"
           >
             <ChevronRight
               size={12}
@@ -624,7 +681,7 @@ const ExperiencesPage = () => {
             />
             Back to ComponentLab
           </Link>
-          <p className="font-mono-code text-[12px] text-on-surface-variant/40 italic">
+          <p className="font-mono-code text-[16px] text-on-surface-variant/40 italic">
             More transitions coming soon
           </p>
         </div>
