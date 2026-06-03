@@ -284,6 +284,40 @@ html.transition-tl-to-br::view-transition-new(root) {
 }`;
   }
 
+  // Effect: pixel-dissolve
+  if (effect === "pixel-dissolve") {
+    return `/* Pixelated Dissolve */
+::view-transition-old(root) {
+  animation: pixelate-out 0.5s steps(5) forwards;
+  z-index: 2;
+}
+
+::view-transition-new(root) {
+  animation: pixelate-in 0.5s steps(5) 0.5s both;
+  z-index: 2;
+}
+
+@keyframes pixelate-out {
+  0% { filter: none; opacity: 1; }
+  19% { filter: url(#px-10); opacity: 1; }
+  39% { filter: url(#px-30); opacity: 1; }
+  59% { filter: url(#px-80); opacity: 1; }
+  79% { filter: url(#px-150); opacity: 1; }
+  99% { filter: url(#px-250); opacity: 1; }
+  100% { filter: url(#px-250); opacity: 0; }
+}
+
+@keyframes pixelate-in {
+  0% { filter: url(#px-250); opacity: 0; }
+  1% { filter: url(#px-250); opacity: 1; }
+  20% { filter: url(#px-150); opacity: 1; }
+  40% { filter: url(#px-80); opacity: 1; }
+  60% { filter: url(#px-30); opacity: 1; }
+  80% { filter: url(#px-10); opacity: 1; }
+  100% { filter: none; opacity: 1; }
+}`;
+  }
+
   return "";
 };
 
@@ -339,6 +373,36 @@ const ThemeToggle = () => {
 export default ThemeToggle;`;
 
 export const getCssOverride = (effect, direction, currentTheme = "light") => {
+  if (effect === "pixel-dissolve") {
+    return `
+::view-transition-old(root) {
+  animation: exp-pixelate-out 0.5s steps(5) forwards;
+  z-index: 2;
+}
+::view-transition-new(root) {
+  animation: exp-pixelate-in 0.5s steps(5) 0.5s both;
+  z-index: 2;
+}
+@keyframes exp-pixelate-out {
+  0% { filter: none; opacity: 1; }
+  19% { filter: url(#px-10); opacity: 1; }
+  39% { filter: url(#px-30); opacity: 1; }
+  59% { filter: url(#px-80); opacity: 1; }
+  79% { filter: url(#px-150); opacity: 1; }
+  99% { filter: url(#px-250); opacity: 1; }
+  100% { filter: url(#px-250); opacity: 0; }
+}
+@keyframes exp-pixelate-in {
+  0% { filter: url(#px-250); opacity: 0; }
+  1% { filter: url(#px-250); opacity: 1; }
+  20% { filter: url(#px-150); opacity: 1; }
+  40% { filter: url(#px-80); opacity: 1; }
+  60% { filter: url(#px-30); opacity: 1; }
+  80% { filter: url(#px-10); opacity: 1; }
+  100% { filter: none; opacity: 1; }
+}`;
+  }
+
   if (effect === "circle-wipe") {
     let coords = "50% 50%";
     if (direction === "top-left") coords = "0% 0%";
@@ -478,6 +542,22 @@ export const previewAnimationStyles = `
   32%, 68%  { clip-path: circle(150% at 100% 100%); }
   88%, 100% { clip-path: circle(0% at 100% 100%); }
 }
+
+/* Pixelated Dissolve */
+@keyframes preview-pixel-dissolve {
+  0%, 10%   { filter: url(#px-250); opacity: 0; }
+  12%       { filter: url(#px-250); opacity: 1; }
+  22%       { filter: url(#px-150); opacity: 1; }
+  32%       { filter: url(#px-80); opacity: 1; }
+  42%       { filter: url(#px-30); opacity: 1; }
+  52%       { filter: url(#px-10); opacity: 1; }
+  62%, 80%  { filter: none; opacity: 1; }
+  85%       { filter: url(#px-10); opacity: 1; }
+  90%       { filter: url(#px-30); opacity: 1; }
+  93%       { filter: url(#px-80); opacity: 1; }
+  96%       { filter: url(#px-150); opacity: 1; }
+  99%, 100% { filter: url(#px-250); opacity: 0; }
+}
 `;
 
 export const TABS = [
@@ -518,6 +598,14 @@ export const TRANSITIONS = [
       { key: "top-right", label: "Top Right", iconName: "ArrowUpRight" },
       { key: "bottom-left", label: "Bottom Left", iconName: "ArrowDownLeft" },
       { key: "bottom-right", label: "Bottom Right", iconName: "ArrowDownRight" },
+    ],
+  },
+  {
+    id: "pixel-dissolve",
+    name: "Pixelated Dissolve",
+    description: "A retro 8-bit style pixelated transition that blockifies the viewport into massive square blocks before resolving into the new theme.",
+    directions: [
+      { key: "dissolve", label: "Retro Dissolve", iconName: "Grid" },
     ],
   }
 ];

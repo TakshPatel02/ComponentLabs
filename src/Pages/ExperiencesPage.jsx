@@ -18,6 +18,9 @@ import {
   ArrowDownLeft,
   Circle,
   ChevronRight,
+  ChevronDown,
+  Code,
+  Grid,
   Sparkles,
   Globe,
   Monitor,
@@ -122,6 +125,7 @@ const itemVariants = {
 const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
   const [direction, setDirection] = useState(transition.directions[0].key);
   const [activeTab, setActiveTab] = useState("context");
+  const [showCode, setShowCode] = useState(false);
 
   const getIcon = (iconName) => {
     switch (iconName) {
@@ -134,6 +138,7 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
       case "ArrowUpRight": return ArrowUpRight;
       case "ArrowDownLeft": return ArrowDownLeft;
       case "Circle": return Circle;
+      case "Grid": return Grid;
       case "Sparkles": return Sparkles;
       default: return Sparkles;
     }
@@ -163,13 +168,15 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
       if (direction === "bottom-right-to-top-left") return "preview-br-tl";
       if (direction === "top-left-to-bottom-right") return "preview-tl-br";
       return "preview-dyn";
-    } else {
-      // circle-wipe
+    } else if (transition.id === "circle-wipe") {
       if (direction === "center") return "preview-circle-center";
       if (direction === "top-left") return "preview-circle-top-left";
       if (direction === "top-right") return "preview-circle-top-right";
       if (direction === "bottom-left") return "preview-circle-bottom-left";
       return "preview-circle-bottom-right";
+    } else {
+      // pixel-dissolve
+      return "preview-pixel-dissolve";
     }
   };
 
@@ -261,7 +268,7 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
         {/* Right — Mini Preview Animation + Demo Button */}
         <div className="rounded-2xl overflow-hidden border oklab-border flex flex-col items-center justify-center bg-cursor-light p-6 md:p-8 gap-8">
           {/* Mini preview animation */}
-          <div className="w-full max-w-xs aspect-[16/10] rounded-xl overflow-hidden border oklab-border relative shadow-lg">
+          <div className="w-full max-w-xs aspect-16/10 rounded-xl overflow-hidden border oklab-border relative shadow-lg">
             {/* Mock light page */}
             <div className="absolute inset-0 bg-[#fdf8f7] flex flex-col p-4 gap-3">
               <div className="h-2 w-16 bg-[#11100a]/10 rounded-full" />
@@ -326,54 +333,87 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
         </div>
       </div>
 
-      {/* Tabbed Code Blocks */}
-      <div className="rounded-2xl overflow-hidden border oklab-border bg-cursor-light">
-        {/* Tab Buttons */}
-        <div className="flex items-center border-b border-border-fallback-10 bg-surface-container/40 px-2 overflow-x-auto">
-          {TABS.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`relative flex items-center gap-2 px-4 py-3 font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap border-b-2 ${
-                activeTab === tab.key
-                  ? "text-error-warm border-error-warm font-semibold"
-                  : "text-on-surface-variant/50 border-transparent hover:text-on-surface-variant/80"
-              }`}
-            >
-              <Monitor size={12} />
-              {tab.label}
-              {tab.key === "css" && (
-                <span className="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-error-warm/10 text-error-warm font-bold uppercase font-mono-code">
-                  {direction === "dynamic" ? "Dynamic" : direction.split("-").map(w => w[0].toUpperCase()).join("")}
-                </span>
-              )}
-            </button>
-          ))}
-
-          {/* Copy All */}
-          <div className="ml-auto pr-3 shrink-0">
-            <CopyButton text={getTabCode()} />
-          </div>
-        </div>
-
-        {/* Active Tab Code */}
-        <div className="p-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab + direction}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.15 }}
-            >
-              <CodeBlock
-                code={getTabCode()}
-                language={getTabLanguage()}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* Collapsible Source Code section */}
+      <div className="flex flex-col items-center mt-2 mb-4">
+        <button
+          onClick={() => setShowCode(!showCode)}
+          className={`flex items-center gap-2.5 px-6 py-3 rounded-xl font-mono-code text-[12px] tracking-wide cursor-pointer transition-all duration-300 border ${
+            showCode
+              ? "bg-primary text-on-primary border-primary shadow-lg shadow-primary/10"
+              : "border-border-fallback-10 text-on-surface-variant/75 bg-surface-container/30 hover:border-error-warm/40 hover:text-error-warm hover:bg-surface-container/60"
+          }`}
+        >
+          <Code size={14} className="opacity-80" />
+          <span>{showCode ? "Hide Setup Code" : "Show Setup Code"}</span>
+          <ChevronDown
+            size={14}
+            className={`transition-transform duration-300 opacity-60 ${
+              showCode ? "rotate-180" : ""
+            }`}
+          />
+        </button>
       </div>
+
+      <AnimatePresence initial={false}>
+        {showCode && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            {/* Tabbed Code Blocks */}
+            <div className="rounded-2xl overflow-hidden border oklab-border bg-cursor-light mt-4">
+              {/* Tab Buttons */}
+              <div className="flex items-center border-b border-border-fallback-10 bg-surface-container/40 px-2 overflow-x-auto">
+                {TABS.map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`relative flex items-center gap-2 px-4 py-3 font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap border-b-2 ${
+                      activeTab === tab.key
+                        ? "text-error-warm border-error-warm font-semibold"
+                        : "text-on-surface-variant/50 border-transparent hover:text-on-surface-variant/80"
+                    }`}
+                  >
+                    <Monitor size={12} />
+                    {tab.label}
+                    {tab.key === "css" && (
+                      <span className="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-error-warm/10 text-error-warm font-bold uppercase font-mono-code">
+                        {direction === "dynamic" ? "Dynamic" : direction.split("-").map(w => w[0].toUpperCase()).join("")}
+                      </span>
+                    )}
+                  </button>
+                ))}
+
+                {/* Copy All */}
+                <div className="ml-auto pr-3 shrink-0">
+                  <CopyButton text={getTabCode()} />
+                </div>
+              </div>
+
+              {/* Active Tab Code */}
+              <div className="p-0">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab + direction}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <CodeBlock
+                      code={getTabCode()}
+                      language={getTabLanguage()}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -703,6 +743,56 @@ const ExperiencesPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* SVG Pixel Dissolve Filters */}
+      <svg style={{ position: "absolute", width: 0, height: 0 }} width="0" height="0">
+        <defs>
+          {/* px-10: 10px pixels */}
+          <filter id="px-10" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+            <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+            <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="10" height="10" result="cell" />
+            <feTile in="cell" result="grid" />
+            <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+            <feMorphology in="sampled" operator="dilate" radius="5" result="pixelated" />
+          </filter>
+
+          {/* px-30: 30px pixels */}
+          <filter id="px-30" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+            <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+            <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="30" height="30" result="cell" />
+            <feTile in="cell" result="grid" />
+            <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+            <feMorphology in="sampled" operator="dilate" radius="15" result="pixelated" />
+          </filter>
+
+          {/* px-80: 80px pixels */}
+          <filter id="px-80" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+            <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+            <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="80" height="80" result="cell" />
+            <feTile in="cell" result="grid" />
+            <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+            <feMorphology in="sampled" operator="dilate" radius="40" result="pixelated" />
+          </filter>
+
+          {/* px-150: 150px pixels */}
+          <filter id="px-150" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+            <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+            <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="150" height="150" result="cell" />
+            <feTile in="cell" result="grid" />
+            <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+            <feMorphology in="sampled" operator="dilate" radius="75" result="pixelated" />
+          </filter>
+
+          {/* px-250: 250px pixels */}
+          <filter id="px-250" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+            <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+            <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="250" height="250" result="cell" />
+            <feTile in="cell" result="grid" />
+            <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+            <feMorphology in="sampled" operator="dilate" radius="125" result="pixelated" />
+          </filter>
+        </defs>
+      </svg>
     </div>
   );
 };
