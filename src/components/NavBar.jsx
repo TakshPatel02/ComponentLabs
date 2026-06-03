@@ -53,6 +53,12 @@ const NavBar = () => {
             Templates
           </Link>
           <Link
+            className="text-primary/50 transition-colors duration-200 hover:text-error-warm"
+            to="/experiences"
+          >
+            Experiences
+          </Link>
+          <Link
             className="text-[#E8567A] hover:opacity-80 transition-opacity flex items-center gap-1"
             to="/iconflow"
           >
@@ -113,6 +119,13 @@ const NavBar = () => {
               to="/templates"
             >
               Templates
+            </Link>
+            <Link
+              onClick={() => setIsOpen(false)}
+              className="text-primary/70 font-medium text-lg hover:text-error-warm transition-colors w-full text-center"
+              to="/experiences"
+            >
+              Experiences
             </Link>
             <Link
               onClick={() => setIsOpen(false)}
