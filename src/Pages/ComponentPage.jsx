@@ -601,14 +601,14 @@ const ComponentPage = () => {
 
           {/* ── Prev / Next Navigation ── */}
           <section className="mt-8 mb-4">
-            <div className="flex items-stretch gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4">
               {/* Previous */}
               {prevComponent ? (
                 <Link
                   to={prevComponent.href}
-                  className="flex-1 group flex items-center gap-4 p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline"
+                  className="flex-1 group flex items-center gap-3 sm:gap-4 p-3 sm:p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
                     <ArrowLeft size={18} />
                   </div>
                   <div className="flex flex-col min-w-0">
@@ -624,13 +624,13 @@ const ComponentPage = () => {
               {nextComponent ? (
                 <Link
                   to={nextComponent.href}
-                  className="flex-1 group flex items-center justify-end gap-4 p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline text-right"
+                  className="flex-1 group flex items-center justify-end gap-3 sm:gap-4 p-3 sm:p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline text-right"
                 >
                   <div className="flex flex-col min-w-0 items-end">
                     <span className="text-[10.5px] font-semibold uppercase tracking-widest text-on-surface-variant/50 font-system-micro mb-0.5">Next</span>
                     <span className="text-sm sm:text-base font-medium text-primary font-ui-body truncate">{nextComponent.label}</span>
                   </div>
-                  <div className="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
                     <ArrowRight size={18} />
                   </div>
                 </Link>

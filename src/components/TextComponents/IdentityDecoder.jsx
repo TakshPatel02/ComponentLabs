@@ -172,8 +172,8 @@ export const IdentityDecoder = ({
   return (
     <div
       ref={containerRef}
-      className={`relative flex flex-col items-center select-none w-full max-w-2xl mx-auto py-16 px-4 ${className}`}
-      style={{ minHeight: "280px" }}
+      className={`relative flex flex-col items-center select-none w-full max-w-2xl mx-auto py-8 sm:py-16 px-2 sm:px-4 ${className}`}
+      style={{ minHeight: "220px" }}
     >
       {/* ── SVG Overlay for Diagram Connector Lines & Brackets ── */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
@@ -217,8 +217,8 @@ export const IdentityDecoder = ({
       </svg>
 
       {/* ── Identity Characters Text ── */}
-      <div className="relative mb-24 z-20">
-        <div className="flex items-center justify-center font-mono text-xl sm:text-2xl md:text-3xl tracking-wider whitespace-nowrap">
+      <div className="relative mb-12 sm:mb-24 z-20">
+        <div className="flex items-center justify-center font-mono text-[11px] xs:text-sm sm:text-xl md:text-2xl lg:text-3xl tracking-wider whitespace-nowrap overflow-x-auto max-w-full">
           {identity.split("").map((char, i) => {
             const isHighlighted =
               activeSegment &&
@@ -257,7 +257,7 @@ export const IdentityDecoder = ({
       </div>
 
       {/* ── Navigation Icons Row ── */}
-      <div className="mt-auto flex items-center justify-center gap-6 sm:gap-10 z-20 w-full">
+      <div className="mt-auto flex items-center justify-center gap-3 sm:gap-6 md:gap-10 z-20 w-full flex-wrap">
         {segments.map((seg) => {
           const isActive = activeKey === seg.key;
 
@@ -292,7 +292,7 @@ export const IdentityDecoder = ({
                     : "0 4px 12px rgba(0,0,0,0.03)",
                 }}
                 transition={springConfig}
-                className="w-14 h-14 rounded-full border-2 flex items-center justify-center transition-shadow duration-300"
+                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 flex items-center justify-center transition-shadow duration-300"
               >
                 {seg.icon}
               </motion.div>

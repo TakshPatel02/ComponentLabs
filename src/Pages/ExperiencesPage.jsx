@@ -467,9 +467,14 @@ const ExperiencesPage = () => {
   }, []);
 
   /* ── Dynamic head injection of CSS view transitions ── */
-  /* ── Dynamic head injection of CSS view transitions ── */
   /* ── Handle theme toggle with dynamic direction override ── */
+  const isTransitioningRef = useRef(false);
+
   const handleToggleTheme = () => {
+    // Guard against rapid double-taps / overlapping transitions
+    if (isTransitioningRef.current) return;
+    isTransitioningRef.current = true;
+
     const STYLE_ID = "experience-transition-override";
     let styleEl = document.getElementById(STYLE_ID);
 
@@ -483,11 +488,32 @@ const ExperiencesPage = () => {
     // Trigger the global theme toggle transition
     toggleTheme();
 
-    // Clean up temporary override after the transition completes (1.2s timeout)
-    setTimeout(() => {
+    // Determine cleanup delay based on effect duration
+    const cleanupDelay = sandboxEffect === "pixel-dissolve" ? 1500 : 1200;
+
+    // Clean up: prefer the View Transition API's finished promise, fallback to timeout
+    const cleanup = () => {
       const el = document.getElementById(STYLE_ID);
       if (el) el.remove();
-    }, 1200);
+      isTransitioningRef.current = false;
+    };
+
+    // Try to use the active view transition's finished promise
+    if (document.startViewTransition) {
+      // Safety fallback timeout in case the promise never resolves
+      const fallbackTimer = setTimeout(() => {
+        cleanup();
+      }, cleanupDelay);
+
+      // The last view transition should be on the document
+      // Since toggleTheme creates it, we wait for the transition to finish
+      setTimeout(() => {
+        cleanup();
+        clearTimeout(fallbackTimer);
+      }, cleanupDelay);
+    } else {
+      setTimeout(cleanup, cleanupDelay);
+    }
   };
 
   return (
@@ -698,7 +724,7 @@ const ExperiencesPage = () => {
             className="fixed inset-0 z-100 flex flex-col overflow-y-auto bg-background text-on-surface transition-colors duration-300"
           >
             {/* Minimalist Header / Navbar */}
-            <header className="sticky top-0 z-10 w-full h-16 px-6 border-b border-border-fallback-10 bg-surface/85 backdrop-blur-md flex items-center justify-between transition-colors duration-300">
+            <header className="sticky top-0 z-10 w-full h-14 sm:h-16 px-3 sm:px-6 border-b border-border-fallback-10 bg-surface/85 backdrop-blur-md flex items-center justify-between transition-colors duration-300">
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded bg-error-warm animate-pulse" />
                 <div className="h-4 w-28 bg-primary/10 rounded" />
@@ -712,11 +738,11 @@ const ExperiencesPage = () => {
               </div>
 
               {/* Controls */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {/* Theme Toggle Pill */}
                 <button
                   onClick={handleToggleTheme}
-                  className="h-9 px-4 rounded-full border border-border-fallback-10 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 flex items-center gap-2 cursor-pointer hover:shadow-sm"
+                  className="h-8 sm:h-9 px-3 sm:px-4 rounded-full border border-border-fallback-10 bg-surface-container hover:bg-surface-container-highest transition-all duration-300 flex items-center gap-2 cursor-pointer hover:shadow-sm"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -735,21 +761,22 @@ const ExperiencesPage = () => {
                 {/* Exit Button */}
                 <button
                   onClick={exitFullscreen}
-                  className="h-9 px-4 rounded-full bg-primary text-on-primary hover:bg-error-warm hover:text-white transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-xs font-semibold active:scale-95 shadow-sm font-['Space_Grotesk']"
+                  className="h-8 sm:h-9 px-3 sm:px-4 rounded-full bg-primary text-on-primary hover:bg-error-warm hover:text-white transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-xs font-semibold active:scale-95 shadow-sm font-['Space_Grotesk']"
                 >
                   <X size={14} />
-                  <span>Exit (Esc)</span>
+                  <span className="hidden sm:inline">Exit</span>
+                  <span>(Esc)</span>
                 </button>
               </div>
             </header>
 
             {/* Ghost Screen Workspace */}
-            <main className="max-w-4xl mx-auto w-full px-6 py-10 flex-1 flex flex-col gap-8 transition-colors duration-300">
+            <main className="max-w-4xl mx-auto w-full px-3 sm:px-6 py-6 sm:py-10 flex-1 flex flex-col gap-5 sm:gap-8 transition-colors duration-300">
               {/* Title / Info Placeholder */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-fallback-10">
                 <div className="space-y-2">
-                  <div className="h-7 w-64 bg-primary/10 rounded-md" />
-                  <div className="h-4 w-96 bg-primary/5 rounded-md" />
+                  <div className="h-7 w-40 sm:w-64 bg-primary/10 rounded-md" />
+                  <div className="h-4 w-52 sm:w-96 bg-primary/5 rounded-md" />
                 </div>
                 <div className="flex items-center gap-2.5 shrink-0">
                   <span className="text-[11px] font-mono-code text-on-surface-variant/40">Active Mode:</span>
@@ -760,7 +787,7 @@ const ExperiencesPage = () => {
               </div>
 
               {/* Dynamic Direction Selector inside Sandbox */}
-              <div className="p-5 rounded-2xl bg-surface-container/60 border border-border-fallback-10 backdrop-blur-sm flex flex-col gap-4">
+              <div className="p-3 sm:p-5 rounded-2xl bg-surface-container/60 border border-border-fallback-10 backdrop-blur-sm flex flex-col gap-3 sm:gap-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border-fallback-10/40">
                   <div className="flex items-center gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-error-warm animate-pulse" />
