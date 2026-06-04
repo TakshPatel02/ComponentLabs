@@ -286,7 +286,10 @@ html.transition-tl-to-br::view-transition-new(root) {
 
   // Effect: pixel-dissolve
   if (effect === "pixel-dissolve") {
-    return `/* Pixelated Dissolve */
+    return `/* Pixelated Dissolve
+   IMPORTANT: This transition requires SVG filter definitions in your DOM.
+   Add the <PixelFilters /> component (see PixelFilters.jsx tab) to your
+   App root or layout — it renders a hidden SVG with the required filters. */
 ::view-transition-old(root) {
   animation: pixelate-out 0.5s steps(5) forwards;
   z-index: 2;
@@ -560,11 +563,87 @@ export const previewAnimationStyles = `
 }
 `;
 
+export const PIXEL_FILTERS_CODE = `// PixelFilters.jsx — Render this component ONCE in your App root or layout.
+// These hidden SVG filters are required for the Pixelated Dissolve transition.
+// Without them, the CSS filter: url(#px-10) etc. will silently do nothing.
+
+const PixelFilters = () => (
+  <svg
+    style={{ position: "absolute", width: 0, height: 0 }}
+    width="0"
+    height="0"
+    aria-hidden="true"
+  >
+    <defs>
+      {/* 10px pixels */}
+      <filter id="px-10" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+        <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+        <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="10" height="10" result="cell" />
+        <feTile in="cell" result="grid" />
+        <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+        <feMorphology in="sampled" operator="dilate" radius="5" result="pixelated" />
+      </filter>
+
+      {/* 30px pixels */}
+      <filter id="px-30" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+        <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+        <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="30" height="30" result="cell" />
+        <feTile in="cell" result="grid" />
+        <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+        <feMorphology in="sampled" operator="dilate" radius="15" result="pixelated" />
+      </filter>
+
+      {/* 80px pixels */}
+      <filter id="px-80" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+        <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+        <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="80" height="80" result="cell" />
+        <feTile in="cell" result="grid" />
+        <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+        <feMorphology in="sampled" operator="dilate" radius="40" result="pixelated" />
+      </filter>
+
+      {/* 150px pixels */}
+      <filter id="px-150" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+        <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+        <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="150" height="150" result="cell" />
+        <feTile in="cell" result="grid" />
+        <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+        <feMorphology in="sampled" operator="dilate" radius="75" result="pixelated" />
+      </filter>
+
+      {/* 250px pixels */}
+      <filter id="px-250" x="0%" y="0%" width="100%" height="100%" primitiveUnits="userSpaceOnUse">
+        <feFlood floodColor="white" x="0" y="0" width="1" height="1" result="dot" />
+        <feComposite in="dot" in2="dot" operator="over" x="0" y="0" width="250" height="250" result="cell" />
+        <feTile in="cell" result="grid" />
+        <feComposite in="SourceGraphic" in2="grid" operator="in" result="sampled" />
+        <feMorphology in="sampled" operator="dilate" radius="125" result="pixelated" />
+      </filter>
+    </defs>
+  </svg>
+);
+
+export default PixelFilters;
+
+// Usage in your App.jsx or layout:
+// import PixelFilters from "./PixelFilters";
+//
+// function App() {
+//   return (
+//     <>
+//       <PixelFilters />
+//       {/* ...rest of your app */}
+//     </>
+//   );
+// }`;
+
 export const TABS = [
   { key: "context", label: "ThemeContext.jsx", language: "jsx" },
   { key: "css", label: "transitions.css", language: "css" },
   { key: "toggle", label: "ThemeToggle.jsx", language: "jsx" },
 ];
+
+export const PIXEL_FILTERS_TAB = { key: "filters", label: "PixelFilters.jsx", language: "jsx" };
 
 export const TRANSITIONS = [
   {

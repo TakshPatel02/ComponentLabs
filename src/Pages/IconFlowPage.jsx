@@ -90,7 +90,7 @@ const PROPS_DATA = [
 ];
 
 /* ─── Generic Copy Button (used by CodeBlock) ─── */
-const CopyButton = ({ text }) => {
+const CopyButton = ({ text, className = "" }) => {
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef(null);
   const handleCopy = () => {
@@ -100,8 +100,18 @@ const CopyButton = ({ text }) => {
     timeoutRef.current = setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <button onClick={handleCopy} className="cursor-pointer transition-all duration-200" aria-label="Copy to clipboard">
-      {copied ? <Check size={14} className="text-[#E8567A]" /> : <Copy size={14} className="opacity-40 hover:opacity-80 text-on-surface-variant" />}
+    <button
+      onClick={handleCopy}
+      className={`cursor-pointer transition-all duration-200 flex items-center justify-center ${
+        className || "opacity-40 hover:opacity-85 text-on-surface-variant"
+      }`}
+      aria-label="Copy to clipboard"
+    >
+      {copied ? (
+        <Check size={14} className="text-[#E8567A]" />
+      ) : (
+        <Copy size={14} />
+      )}
     </button>
   );
 };
@@ -151,14 +161,35 @@ const CodeBlock = ({ code, language = "jsx", showCopy = true }) => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   return (
-    <div className={`relative rounded-xl overflow-hidden border ${isDark ? "bg-[#0d0d0d] border-white/10" : "bg-[#1a1a1a] border-black/10"}`}>
-      {showCopy && <div className="absolute top-3 right-3 z-10"><CopyButton text={code} /></div>}
+    <div
+      className={`relative overflow-hidden transition-all duration-300 rounded-xl border ${
+        isDark ? "bg-[#0b0b0d] border-zinc-800/40" : "bg-[#0c0c0e] border-zinc-200/50"
+      }`}
+    >
+      {showCopy && (
+        <div className="absolute top-3.5 right-3.5 z-10">
+          <CopyButton
+            text={code}
+            className="p-1.5 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-100 border border-zinc-800/80 backdrop-blur-sm shadow-md"
+          />
+        </div>
+      )}
       <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
         {({ style, tokens, getLineProps, getTokenProps }) => (
-          <pre className="p-5 overflow-x-auto text-[13px] leading-relaxed font-mono" style={{ ...style, background: "transparent" }}>
+          <pre
+            className="p-6 overflow-x-auto text-[13.5px] leading-relaxed font-mono antialiased table w-full"
+            style={{ ...style, background: "transparent" }}
+          >
             {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                {line.map((token, key) => <span key={key} {...getTokenProps({ token })} />)}
+              <div key={i} {...getLineProps({ line })} className="table-row">
+                <span className="table-cell select-none text-zinc-600/40 text-right pr-4 font-mono text-[12px] w-8 shrink-0">
+                  {i + 1}
+                </span>
+                <span className="table-cell font-mono">
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </span>
               </div>
             ))}
           </pre>

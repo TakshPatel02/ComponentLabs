@@ -36,6 +36,8 @@ import {
   getCssOverride,
   previewAnimationStyles,
   TABS,
+  PIXEL_FILTERS_TAB,
+  PIXEL_FILTERS_CODE,
   TRANSITIONS,
 } from "../config/transitionsData";
 
@@ -60,7 +62,7 @@ const getIcon = (iconName) => {
    SMALL COMPONENTS
    ═══════════════════════════════════════════════════ */
 
-const CopyButton = ({ text }) => {
+const CopyButton = ({ text, className = "" }) => {
   const [copied, setCopied] = useState(false);
   const timeout = useRef(null);
   const handleCopy = () => {
@@ -72,44 +74,62 @@ const CopyButton = ({ text }) => {
   return (
     <button
       onClick={handleCopy}
-      className="cursor-pointer transition-all duration-200"
+      className={`cursor-pointer transition-all duration-200 flex items-center justify-center ${
+        className || "opacity-40 hover:opacity-85 text-on-surface-variant"
+      }`}
       aria-label="Copy to clipboard"
     >
       {copied ? (
         <Check size={14} className="text-error-warm" />
       ) : (
-        <Copy
-          size={14}
-          className="opacity-40 hover:opacity-80 text-on-surface-variant"
-        />
+        <Copy size={14} />
       )}
     </button>
   );
 };
 
-const CodeBlock = ({ code, language = "jsx" }) => {
+const CodeBlock = ({ code, language = "jsx", borderless = false }) => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const codeTheme = isDark ? themes.vsDark : themes.vsLight;
+
   return (
     <div
-      className={`relative rounded-xl overflow-hidden border ${
-        isDark ? "bg-[#0d0d0d] border-white/10" : "bg-[#1a1a1a] border-black/10"
+      className={`relative overflow-hidden transition-all duration-300 ${
+        borderless
+          ? "bg-transparent"
+          : "rounded-xl border oklab-border bg-surface-container-highest shadow-[0_10px_40px_-24px_rgba(17,16,10,0.35)]"
       }`}
     >
-      <div className="absolute top-3 right-3 z-10">
-        <CopyButton text={code} />
-      </div>
-      <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
-        {({ style, tokens, getLineProps, getTokenProps }) => (
+      {!borderless && (
+        <div className="absolute top-3.5 right-3.5 z-10">
+          <CopyButton
+            text={code}
+            className="flex items-center gap-2 text-xs md:text-sm font-medium text-on-surface-variant/60 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-surface-container/50 border border-border-fallback-10/40 bg-surface-container shadow-sm"
+          />
+        </div>
+      )}
+      <Highlight theme={codeTheme} code={code.trim()} language={language}>
+        {({ className: prismClass, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="p-5 overflow-x-auto text-[13px] leading-relaxed font-mono"
-            style={{ ...style, background: "transparent" }}
+            className={`${prismClass} p-6 overflow-x-auto text-[13.5px] leading-relaxed font-mono antialiased table w-full`}
+            style={{
+              ...style,
+              backgroundColor: "transparent",
+              color: "var(--on-surface)",
+              fontFamily: "var(--font-mono-code), ui-monospace, SFMono-Regular, Menlo, monospace",
+            }}
           >
             {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                {line.map((token, j) => (
-                  <span key={j} {...getTokenProps({ token })} />
-                ))}
+              <div key={i} {...getLineProps({ line })} className="table-row">
+                <span className="table-cell select-none text-on-surface-variant/40 text-right pr-4 font-mono text-[12px] w-8 shrink-0">
+                  {i + 1}
+                </span>
+                <span className="table-cell font-mono" style={{ color: "var(--on-surface)" }}>
+                  {line.map((token, j) => (
+                    <span key={j} {...getTokenProps({ token })} />
+                  ))}
+                </span>
               </div>
             ))}
           </pre>
@@ -145,6 +165,11 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
   const [activeTab, setActiveTab] = useState("context");
   const [showCode, setShowCode] = useState(false);
 
+  // Show an extra "PixelFilters.jsx" tab for pixel-dissolve
+  const activeTabs = transition.id === "pixel-dissolve"
+    ? [...TABS, PIXEL_FILTERS_TAB]
+    : TABS;
+
   const getTabCode = () => {
     if (activeTab === "context") {
       return direction === "dynamic" ? CONTEXT_CODE_DYNAMIC : CONTEXT_CODE_DEFAULT;
@@ -152,11 +177,14 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
     if (activeTab === "css") {
       return getCssCode(transition.id, direction);
     }
+    if (activeTab === "filters") {
+      return PIXEL_FILTERS_CODE;
+    }
     return TOGGLE_CODE;
   };
 
   const getTabLanguage = () => {
-    return TABS.find((t) => t.key === activeTab)?.language || "jsx";
+    return activeTabs.find((t) => t.key === activeTab)?.language || "jsx";
   };
 
   const getPreviewAnimationName = () => {
@@ -365,23 +393,22 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
             className="overflow-hidden"
           >
             {/* Tabbed Code Blocks */}
-            <div className="rounded-2xl overflow-hidden border oklab-border bg-cursor-light mt-4">
+            <div className="rounded-2xl overflow-hidden border oklab-border bg-surface-container-highest mt-4 shadow-[0_10px_40px_-24px_rgba(17,16,10,0.15)]">
               {/* Tab Buttons */}
-              <div className="flex items-center border-b border-border-fallback-10 bg-surface-container/40 px-2 overflow-x-auto">
-                {TABS.map((tab) => (
+              <div className="flex items-center border-b border-border-fallback-10 bg-surface-container/60 px-2.5 overflow-x-auto">
+                {activeTabs.map((tab) => (
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key)}
-                    className={`relative flex items-center gap-2 px-4 py-3 font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap border-b-2 ${
+                    className={`relative flex items-center gap-1.5 px-4 py-3 font-mono text-[12px] tracking-tight transition-all duration-200 cursor-pointer whitespace-nowrap border-b-2 ${
                       activeTab === tab.key
-                        ? "text-error-warm border-error-warm font-semibold"
-                        : "text-on-surface-variant/50 border-transparent hover:text-on-surface-variant/80"
+                        ? "text-primary border-primary font-medium"
+                        : "text-on-surface-variant/60 border-transparent hover:text-on-surface-variant/85"
                     }`}
                   >
-                    <Monitor size={12} />
                     {tab.label}
                     {tab.key === "css" && (
-                      <span className="ml-1 px-1.5 py-0.5 rounded text-[9px] bg-error-warm/10 text-error-warm font-bold uppercase font-mono-code">
+                      <span className="ml-1.5 px-1.5 py-0.5 rounded text-[9px] bg-surface-container border border-border-fallback-10/40 text-on-surface-variant/80 font-semibold font-mono">
                         {direction === "dynamic" ? "Dynamic" : direction.split("-").map(w => w[0].toUpperCase()).join("")}
                       </span>
                     )}
@@ -389,8 +416,11 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
                 ))}
 
                 {/* Copy All */}
-                <div className="ml-auto pr-3 shrink-0">
-                  <CopyButton text={getTabCode()} />
+                <div className="ml-auto pr-2 shrink-0">
+                  <CopyButton
+                    text={getTabCode()}
+                    className="p-1.5 rounded-lg text-on-surface-variant/60 hover:text-primary hover:bg-surface-container/60 transition-colors"
+                  />
                 </div>
               </div>
 
@@ -407,6 +437,7 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
                     <CodeBlock
                       code={getTabCode()}
                       language={getTabLanguage()}
+                      borderless={true}
                     />
                   </motion.div>
                 </AnimatePresence>
