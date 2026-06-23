@@ -91,11 +91,11 @@ const OnThisPageNav = ({ activeSection, sections }) => {
                   document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
                 className={`
-                  block py-1.5 text-[13px] no-underline transition-colors duration-150
+                  block py-2 pl-4 border-l-2 text-[13.5px] no-underline transition-all duration-300
                   font-ui-body
                   ${isActive
-                    ? "text-error-warm font-medium"
-                    : "text-on-surface-variant hover:text-primary"
+                    ? "border-error-warm text-error-warm font-semibold shadow-[inset_15px_0_20px_-15px_rgba(207,45,86,0.25)]"
+                    : "border-border-fallback-10/40 text-on-surface-variant hover:text-primary hover:border-border-fallback-10/80"
                   }
                 `}
               >
@@ -139,43 +139,31 @@ const FullscreenPreview = ({ slug, onClose, onNext, onPrev, hasNext, hasPrev, ne
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-200 bg-surface flex flex-col"
+      className="fixed inset-0 z-[200] bg-surface/95 backdrop-blur-md flex items-center justify-center"
     >
-      {/* Top bar */}
-      <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 border-b oklab-border bg-surface-container/50 backdrop-blur-sm shrink-0">
-        <div className="flex items-center gap-3 z-10">
-          <button
-            onClick={onClose}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-highest text-primary transition-all duration-200 font-ui-body text-sm font-medium"
-          >
-            <Minimize2 size={16} />
-            <span className="hidden sm:inline">Exit Fullscreen</span>
-          </button>
-          <span className="hidden sm:inline text-[10.5px] font-semibold uppercase tracking-widest text-on-surface-variant/50 font-system-micro">
-            {data?.category}
-          </span>
-        </div>
+      {/* Floating Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 p-3.5 rounded-full bg-surface-container/50 hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all duration-300 z-10 shadow-sm border border-border-fallback-10/50 hover:scale-[1.03]"
+        aria-label="Close Fullscreen"
+      >
+        <Minimize2 size={20} strokeWidth={1.5} />
+      </button>
 
-        <h3 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-section-heading text-base sm:text-lg text-primary tracking-tight truncate max-w-50 sm:max-w-100 pointer-events-none">
-          {data?.title}
-        </h3>
-
-        <div className="flex items-center gap-2 z-10">
-          {hasRewatch && (
-            <button
-              onClick={onReplay}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-primary text-cursor-cream hover:bg-error-warm text-sm font-medium font-ui-body transition-all duration-200"
-            >
-              <span className="material-symbols-outlined text-[16px]">replay</span>
-              <span className="hidden sm:inline">Rewatch</span>
-            </button>
-          )}
-        </div>
-      </div>
+      {/* Floating Rewatch Button */}
+      {hasRewatch && (
+        <button
+          onClick={onReplay}
+          className="absolute top-6 left-6 flex items-center gap-2.5 px-5 py-3 rounded-full bg-surface-container/50 hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all duration-300 z-10 font-ui-body text-sm font-medium shadow-sm border border-border-fallback-10/50 hover:scale-[1.03]"
+        >
+          <span className="material-symbols-outlined text-[18px]">replay</span>
+          <span className="hidden sm:inline">Rewatch</span>
+        </button>
+      )}
 
       {/* Preview area */}
-      <div className="flex-1 overflow-auto relative flex items-center justify-center p-4 sm:p-8">
-        <div className="w-full max-h-full">
+      <div className="w-full h-full max-h-[85vh] overflow-auto flex items-center justify-center p-4 sm:p-12 relative z-0">
+        <div className="w-full max-h-full flex items-center justify-center">
           <PreviewErrorBoundary slug={slug}>
             {renderPreview ? renderPreview(replayKey) : (
               <div className="w-full flex items-center justify-center">
@@ -186,38 +174,43 @@ const FullscreenPreview = ({ slug, onClose, onNext, onPrev, hasNext, hasPrev, ne
         </div>
       </div>
 
-      {/* Bottom nav bar */}
-      <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-t oklab-border bg-surface-container/50 backdrop-blur-sm shrink-0">
+      {/* Floating Bottom Nav Pill */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 p-1.5 rounded-full bg-surface-container/80 backdrop-blur-md border border-border-fallback-10 shadow-lg z-10 transition-transform duration-300 hover:scale-[1.02]">
         <button
           onClick={onPrev}
           disabled={!hasPrev}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium font-ui-body transition-all duration-200 ${
+          className={`p-3 rounded-full flex items-center justify-center transition-all duration-300 ${
             hasPrev
-              ? "bg-surface-container hover:bg-surface-container-highest text-primary"
-              : "bg-surface-container/40 text-on-surface-variant/30 cursor-not-allowed"
+              ? "hover:bg-surface-container-highest text-primary"
+              : "text-on-surface-variant/30 cursor-not-allowed"
           }`}
+          aria-label={hasPrev ? prevLabel : "No Previous"}
+          title={hasPrev ? prevLabel : ""}
         >
-          <ChevronLeft size={16} />
-          <span className="hidden sm:inline truncate max-w-35">{hasPrev ? prevLabel : "No Previous"}</span>
-          <span className="sm:hidden">Prev</span>
+          <ChevronLeft size={20} strokeWidth={1.5} />
         </button>
 
-        <span className="text-[10.5px] font-semibold uppercase tracking-widest text-on-surface-variant/40 font-system-micro hidden md:block">
-          ← → Navigate · Esc Close
-        </span>
+        <div className="flex flex-col items-center justify-center px-4 sm:px-6 min-w-[140px] sm:min-w-[200px] pointer-events-none border-x border-border-fallback-10/40">
+          <span className="text-[9.5px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/50 font-system-micro leading-none mb-1.5 truncate max-w-full">
+            {data?.category}
+          </span>
+          <span className="text-sm font-semibold text-primary font-ui-body leading-none truncate max-w-full">
+            {data?.title}
+          </span>
+        </div>
 
         <button
           onClick={onNext}
           disabled={!hasNext}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium font-ui-body transition-all duration-200 ${
+          className={`p-3 rounded-full flex items-center justify-center transition-all duration-300 ${
             hasNext
-              ? "bg-surface-container hover:bg-surface-container-highest text-primary"
-              : "bg-surface-container/40 text-on-surface-variant/30 cursor-not-allowed"
+              ? "hover:bg-surface-container-highest text-primary"
+              : "text-on-surface-variant/30 cursor-not-allowed"
           }`}
+          aria-label={hasNext ? nextLabel : "No Next"}
+          title={hasNext ? nextLabel : ""}
         >
-          <span className="hidden sm:inline truncate max-w-35">{hasNext ? nextLabel : "No Next"}</span>
-          <span className="sm:hidden">Next</span>
-          <ChevronRight size={16} />
+          <ChevronRight size={20} strokeWidth={1.5} />
         </button>
       </div>
     </motion.div>
@@ -382,66 +375,48 @@ const ComponentPage = () => {
         <div className="max-w-7xl min-w-0 mx-auto px-4 sm:px-8 py-16 md:py-24">
 
           {/* ── Header ── */}
-          <div className="mb-10" id="preview">
-            <span className="font-system-micro text-system-micro text-on-surface-variant/60 tracking-widest uppercase mb-2 block">
-              {category}
-            </span>
-            <h1 className="font-section-heading text-[32px] md:text-[40px] leading-tight text-primary tracking-tight transition-colors">
+          <div className="mb-12 md:mb-16" id="preview">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container/50 border border-border-fallback-10/50 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+              <span className="font-system-micro text-[11px] font-bold text-on-surface-variant/70 tracking-widest uppercase">
+                {category}
+              </span>
+            </div>
+            <h1 className="font-display-hero text-[40px] md:text-[56px] leading-[1.1] text-primary tracking-tight transition-colors max-w-5xl">
               {title}
             </h1>
-            <p className="font-editorial-standard text-editorial-standard text-on-surface-variant italic mt-3 max-w-6xl">
+            <p className="font-editorial-standard text-[18px] md:text-[20px] text-on-surface-variant/80 mt-5 max-w-3xl leading-relaxed">
               {description}
             </p>
           </div>
 
           {/* ── Preview / Code Tab Section ── */}
-          <section className="mb-12 scroll-mt-20">
-            {/* Tab Toggle — matches DocumentationPanel style */}
+          <section className="mb-16 scroll-mt-24">
+            {/* Tab Toggle */}
             {!data.hideCode && (
-              <div className="flex items-center gap-2 sm:gap-3 oklab-border-b pb-4">
-                <button
-                  onClick={() => setActiveTab("component")}
-                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm ${activeTab === "component"
-                      ? "bg-primary text-surface"
-                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                    }`}
-                >
-                  <Eye size={16} />
-                  <span className="hidden sm:inline">Component View</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab("code")}
-                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm ${activeTab === "code"
-                      ? "bg-primary text-surface"
-                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container/80"
-                    }`}
-                >
-                  <Code size={16} />
-                  <span className="hidden sm:inline">Code</span>
-                </button>
-
-                {activeTab === "component" && previewData.hasRewatch && (
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex p-1 bg-surface-container/60 rounded-xl border border-border-fallback-10/50 backdrop-blur-sm">
                   <button
-                    onClick={() => setReplayKey((v) => v + 1)}
-                    className="ml-auto flex items-center justify-center gap-1.5 sm:gap-2 bg-primary text-cursor-cream hover:bg-error-warm px-3 sm:px-5 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98] shadow-sm hover:shadow-md"
+                    onClick={() => setActiveTab("component")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm font-ui-body ${activeTab === "component"
+                        ? "bg-surface shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] text-primary"
+                        : "text-on-surface-variant hover:text-primary hover:bg-surface-container/50"
+                      }`}
                   >
-                    <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
-                      replay
-                    </span>
-                    <span className="hidden sm:inline">Rewatch</span>
+                    <Eye size={16} strokeWidth={1.5} />
+                    <span className="hidden sm:inline">Preview</span>
                   </button>
-                )}
-
-                {/* Fullscreen button */}
-                {activeTab === "component" && (
                   <button
-                    onClick={() => { setFullscreenSlug(slug); setIsFullscreen(true); }}
-                    className={`${previewData.hasRewatch ? '' : 'ml-auto'} flex items-center justify-center gap-1.5 sm:gap-2 bg-surface-container hover:bg-surface-container-highest text-primary px-3 sm:px-4 py-2 rounded-lg text-sm font-medium font-['Space_Grotesk'] transition-all active:scale-[0.98]`}
+                    onClick={() => setActiveTab("code")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm font-ui-body ${activeTab === "code"
+                        ? "bg-surface shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] text-primary"
+                        : "text-on-surface-variant hover:text-primary hover:bg-surface-container/50"
+                      }`}
                   >
-                    <Maximize2 size={16} />
-                    <span className="hidden sm:inline">Fullscreen</span>
+                    <Code size={16} strokeWidth={1.5} />
+                    <span className="hidden sm:inline">Code</span>
                   </button>
-                )}
+                </div>
               </div>
             )}
 
@@ -454,8 +429,30 @@ const ComponentPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className={previewContainerClass}
+                  className={`relative group ${previewContainerClass} border-border-fallback-10/50 bg-surface-container/30`}
                 >
+                  {/* Floating Action Buttons inside preview */}
+                  {!data.hideCode && (
+                    <div className="absolute top-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      {previewData.hasRewatch && (
+                        <button
+                          onClick={() => setReplayKey((v) => v + 1)}
+                          className="flex items-center justify-center p-2.5 bg-surface/90 hover:bg-surface text-on-surface-variant hover:text-primary rounded-xl backdrop-blur-md shadow-sm border border-border-fallback-10/50 transition-all duration-200"
+                          title="Rewatch"
+                        >
+                          <span className="material-symbols-outlined text-[18px]">replay</span>
+                        </button>
+                      )}
+                      <button
+                        onClick={() => { setFullscreenSlug(slug); setIsFullscreen(true); }}
+                        className="flex items-center justify-center p-2.5 bg-surface/90 hover:bg-surface text-on-surface-variant hover:text-primary rounded-xl backdrop-blur-md shadow-sm border border-border-fallback-10/50 transition-all duration-200"
+                        title="Fullscreen"
+                      >
+                        <Maximize2 size={18} strokeWidth={1.5} />
+                      </button>
+                    </div>
+                  )}
+
                   <PreviewErrorBoundary slug={slug}>
                     {renderPreview ? renderPreview(replayKey) : (
                       <div className="flex items-center justify-center w-full">
@@ -471,7 +468,7 @@ const ComponentPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="w-full mt-6"
+                  className="w-full"
                 >
                   {renderCode(codeSnippet)}
                 </motion.div>
@@ -481,20 +478,22 @@ const ComponentPage = () => {
 
           {/* ── Usage Section ── */}
           {!data.hideCode && (
-            <section id="usage" className="mb-12 scroll-mt-20">
-              <div className="flex items-center justify-between mb-4">
+            <section id="usage" className="mb-16 scroll-mt-24">
+              <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <Code size={20} className="text-on-surface-variant/60" />
-                  <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
+                  <div className="p-2 rounded-lg bg-surface-container/50 border border-border-fallback-10/50">
+                    <Code size={18} className="text-on-surface-variant/80" strokeWidth={1.5} />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-primary font-section-heading tracking-tight">
                     Usage
                   </h2>
                 </div>
                 {usage && (
                   <button
                     onClick={handleCopyCode}
-                    className="flex items-center gap-2 text-xs md:text-sm font-medium text-on-surface-variant/60 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-surface-container/50"
+                    className="flex items-center gap-2 text-sm font-medium text-on-surface-variant/70 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-surface-container/50 border border-transparent hover:border-border-fallback-10/50"
                   >
-                    <Copy size={16} />
+                    <Copy size={16} strokeWidth={1.5} />
                     {copyFeedback ? "Copied!" : "Copy Snippet"}
                   </button>
                 )}
@@ -502,7 +501,7 @@ const ComponentPage = () => {
               {usage ? (
                 renderCode(codeSnippet)
               ) : (
-                <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
+                <div className="rounded-xl border border-border-fallback-10/50 bg-surface-container/30 p-6 text-[15px] text-on-surface-variant italic text-center">
                   This component is not yet published. Usage documentation will be available once it's added to the npm package.
                 </div>
               )}
@@ -511,18 +510,20 @@ const ComponentPage = () => {
 
           {/* ── Props Section ── */}
           {!data.hideCode && (
-            <section id="props" className="mb-12 scroll-mt-20">
-              <div className="flex items-center gap-3 mb-4">
-                <Settings size={20} className="text-on-surface-variant/60" />
-                <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
+            <section id="props" className="mb-16 scroll-mt-24">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-surface-container/50 border border-border-fallback-10/50">
+                  <Settings size={18} className="text-on-surface-variant/80" strokeWidth={1.5} />
+                </div>
+                <h2 className="text-2xl font-semibold text-primary font-section-heading tracking-tight">
                   Available Props
                 </h2>
               </div>
 
               {componentProps && componentProps.length > 0 ? (
-                <div className="border border-border-fallback-10 rounded-2xl bg-surface-container/20 overflow-hidden shadow-sm">
-                  {/* Table Header (hidden on mobile, grid on desktop) */}
-                  <div className="hidden md:grid md:grid-cols-[180px_120px_130px_1fr] md:gap-4 md:px-6 md:py-3.5 border-b border-border-fallback-10 bg-surface-container/45 text-[11px] font-bold text-on-surface-variant/50 uppercase tracking-[0.15em] font-section-heading">
+                <div className="border-t border-border-fallback-10/50">
+                  {/* Table Header */}
+                  <div className="hidden md:grid md:grid-cols-[180px_140px_140px_1fr] md:gap-4 md:py-4 border-b border-border-fallback-10/50 text-[11px] font-bold text-on-surface-variant/50 uppercase tracking-[0.15em] font-system-micro">
                     <div>Prop</div>
                     <div>Type</div>
                     <div>Default</div>
@@ -530,21 +531,21 @@ const ComponentPage = () => {
                   </div>
 
                   {/* Table Rows */}
-                  <div className="divide-y divide-border-fallback-10">
+                  <div className="divide-y divide-border-fallback-10/30">
                     {componentProps.map((prop, idx) => (
                       <div
                         key={idx}
-                        className="grid grid-cols-1 md:grid-cols-[180px_120px_130px_1fr] md:gap-4 gap-2 px-6 py-4.5 hover:bg-surface-container/30 transition-colors items-start md:items-center text-left"
+                        className="grid grid-cols-1 md:grid-cols-[180px_140px_140px_1fr] md:gap-4 gap-3 py-5 hover:bg-surface-container/10 transition-colors items-start md:items-center"
                       >
                         {/* Column 1: Prop Name */}
-                        <div className="font-mono text-[14px] md:text-[15px] text-primary font-semibold break-all leading-tight">
+                        <div className="font-mono text-[14px] text-primary font-semibold break-all">
                           {prop.name}
                         </div>
 
                         {/* Column 2: Type */}
                         <div className="flex md:block items-center gap-2">
                           <span className="md:hidden text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-wider">Type:</span>
-                          <code className="text-[11px] font-semibold text-secondary uppercase tracking-widest px-2 py-0.5 rounded bg-surface-container-highest border border-border-fallback-10 font-mono w-fit block leading-none">
+                          <code className="text-[12px] text-secondary font-mono">
                             {prop.type}
                           </code>
                         </div>
@@ -553,7 +554,7 @@ const ComponentPage = () => {
                         <div className="flex md:block items-center gap-2">
                           <span className="md:hidden text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-wider">Default:</span>
                           {prop.default ? (
-                            <code className="text-[12px] font-mono text-on-surface-variant/80 bg-surface-container/50 border border-border-fallback-10/50 px-1.5 py-0.5 rounded leading-none w-fit block">
+                            <code className="text-[12px] font-mono text-on-surface-variant/70">
                               {prop.default}
                             </code>
                           ) : (
@@ -562,7 +563,7 @@ const ComponentPage = () => {
                         </div>
 
                         {/* Column 4: Description */}
-                        <div className="text-[14px] sm:text-[15px] text-on-surface-variant leading-relaxed md:col-span-1 col-span-full pt-1 md:pt-0">
+                        <div className="text-[14px] text-on-surface-variant/90 leading-relaxed md:col-span-1 col-span-full pt-1 md:pt-0">
                           {prop.description}
                         </div>
                       </div>
@@ -570,7 +571,7 @@ const ComponentPage = () => {
                   </div>
                 </div>
               ) : (
-                <div className="rounded-xl border oklab-border bg-surface-container/60 p-6 text-[15px] text-on-surface-variant italic text-center">
+                <div className="rounded-xl border border-border-fallback-10/50 bg-surface-container/30 p-6 text-[15px] text-on-surface-variant italic text-center">
                   No public props documented for this component yet.
                 </div>
               )}
@@ -579,18 +580,20 @@ const ComponentPage = () => {
 
           {/* ── Features Section (if available) ── */}
           {features && features.length > 0 && (
-            <section className="mb-12">
-              <div className="flex items-center gap-3 mb-4">
-                <AlertCircle size={20} className="text-error-warm" />
-                <h2 className="text-xl md:text-2xl font-bold text-primary font-section-heading tracking-tight">
+            <section className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-surface-container/50 border border-border-fallback-10/50">
+                  <AlertCircle size={18} className="text-error-warm" strokeWidth={1.5} />
+                </div>
+                <h2 className="text-2xl font-semibold text-primary font-section-heading tracking-tight">
                   Notes
                 </h2>
               </div>
-              <div className="rounded-xl border oklab-border bg-surface-container/60 p-5">
-                <ul className="space-y-3 text-[15px] md:text-[16px] text-on-surface-variant leading-relaxed">
+              <div className="rounded-xl border border-border-fallback-10/50 bg-surface-container/30 p-6">
+                <ul className="space-y-4 text-[15px] md:text-[16px] text-on-surface-variant/90 leading-relaxed">
                   {features.map((feature, idx) => (
-                    <li key={idx} className="flex gap-3">
-                      <span className="text-error-warm/60 mt-1 shrink-0">•</span>
+                    <li key={idx} className="flex gap-4 items-start">
+                      <span className="mt-2 shrink-0 block w-1.5 h-1.5 rounded-full bg-error-warm"></span>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -600,21 +603,21 @@ const ComponentPage = () => {
           )}
 
           {/* ── Prev / Next Navigation ── */}
-          <section className="mt-8 mb-4">
-            <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4">
+          <section className="mt-16 mb-8 pt-10 border-t border-border-fallback-10/40">
+            <div className="flex flex-col sm:flex-row items-stretch justify-between gap-8">
               {/* Previous */}
               {prevComponent ? (
                 <Link
                   to={prevComponent.href}
-                  className="flex-1 group flex items-center gap-3 sm:gap-4 p-3 sm:p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline"
+                  className="group flex flex-col gap-2.5 no-underline items-start"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
-                    <ArrowLeft size={18} />
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-[10.5px] font-semibold uppercase tracking-widest text-on-surface-variant/50 font-system-micro mb-0.5">Previous</span>
-                    <span className="text-sm sm:text-base font-medium text-primary font-ui-body truncate">{prevComponent.label}</span>
-                  </div>
+                  <span className="flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/50 font-system-micro transition-colors group-hover:text-primary">
+                    <ArrowLeft size={14} strokeWidth={2} />
+                    Previous
+                  </span>
+                  <span className="text-xl sm:text-2xl font-medium text-primary font-section-heading group-hover:underline underline-offset-[6px] decoration-border-fallback-10 transition-all">
+                    {prevComponent.label}
+                  </span>
                 </Link>
               ) : (
                 <div className="flex-1" />
@@ -624,15 +627,15 @@ const ComponentPage = () => {
               {nextComponent ? (
                 <Link
                   to={nextComponent.href}
-                  className="flex-1 group flex items-center justify-end gap-3 sm:gap-4 p-3 sm:p-5 rounded-2xl border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-300 no-underline text-right"
+                  className="group flex flex-col gap-2.5 no-underline items-end text-right"
                 >
-                  <div className="flex flex-col min-w-0 items-end">
-                    <span className="text-[10.5px] font-semibold uppercase tracking-widest text-on-surface-variant/50 font-system-micro mb-0.5">Next</span>
-                    <span className="text-sm sm:text-base font-medium text-primary font-ui-body truncate">{nextComponent.label}</span>
-                  </div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-surface transition-all duration-300">
-                    <ArrowRight size={18} />
-                  </div>
+                  <span className="flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/50 font-system-micro transition-colors group-hover:text-primary">
+                    Next
+                    <ArrowRight size={14} strokeWidth={2} />
+                  </span>
+                  <span className="text-xl sm:text-2xl font-medium text-primary font-section-heading group-hover:underline underline-offset-[6px] decoration-border-fallback-10 transition-all">
+                    {nextComponent.label}
+                  </span>
                 </Link>
               ) : (
                 <div className="flex-1" />

@@ -85,6 +85,10 @@ const HomePage = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [hoveredCard, setHoveredCard] = useState(null);
 
+  // Spotlight state
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHoveringHero, setIsHoveringHero] = useState(false);
+
   useEffect(() => {
     // Start animation loop after entrance (1500ms entrance + 2500ms delay)
     const timeout = setTimeout(() => {
@@ -102,7 +106,24 @@ const HomePage = () => {
     <div className="min-h-screen bg-surface font-ui-body">
       
       {/* ── Full Viewport Hero Section ── */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+      <section 
+        className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        }}
+        onMouseEnter={() => setIsHoveringHero(true)}
+        onMouseLeave={() => setIsHoveringHero(false)}
+      >
+        {/* Interactive Spotlight Background */}
+        <motion.div
+          animate={{
+            opacity: isHoveringHero ? 1 : 0,
+            background: `radial-gradient(circle 600px at ${mousePosition.x}px ${mousePosition.y}px, ${isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.03)'}, transparent 80%)`,
+          }}
+          transition={{ opacity: { duration: 0.4 } }}
+          className="pointer-events-none absolute inset-0 z-0"
+        />
 
         {/* Foreground Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl mx-auto px-4 sm:px-8">
@@ -298,7 +319,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
                 
                 {/* Left (65%): Kinetic 3D Card */}
-                <div className="md:col-span-8 group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-95">
+                <div className="md:col-span-8 group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] min-h-95 backdrop-blur-md">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Spatial Depth
@@ -307,7 +328,7 @@ const HomePage = () => {
                       Kinetic 3D Card
                     </h3>
                   </div>
-                  <div className="grow flex items-center justify-center rounded-lg transition-colors duration-500">
+                  <div className="grow flex items-center justify-center rounded-lg transition-colors duration-500 relative z-10">
                     <TiltHoverCard />
                   </div>
                   <p className="font-editorial-standard text-[13px] md:text-[14px] text-on-surface-variant italic mt-6 relative z-10">
@@ -319,7 +340,7 @@ const HomePage = () => {
                 <div className="md:col-span-4 flex flex-col gap-5 md:gap-6">
                   
                   {/* Top: Flip Links */}
-                  <div className="grow group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-55">
+                  <div className="grow group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] min-h-55 backdrop-blur-md">
                     <div className="mb-6 relative z-10">
                       <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                         Navigation
@@ -338,7 +359,7 @@ const HomePage = () => {
 
                   {/* Bottom: Encrypted Text */}
                   <div 
-                    className="grow group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 min-h-55"
+                    className="grow group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] min-h-55 backdrop-blur-md"
                     onMouseEnter={() => setHoveredCard('encrypted')}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
@@ -350,7 +371,7 @@ const HomePage = () => {
                         Encrypted Text
                       </h3>
                     </div>
-                    <div className="grow flex items-center justify-center rounded-lg transition-colors duration-500">
+                    <div className="grow flex items-center justify-center rounded-lg transition-colors duration-500 relative z-10">
                       <EncryptedText
                         text="Access Granted"
                         interval={30}
@@ -372,7 +393,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                 
                 {/* Neural Trace */}
-                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
+                <div className="group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] h-auto md:h-90 backdrop-blur-md">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       AI Timeline
@@ -390,7 +411,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Mac Style Layout */}
-                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
+                <div className="group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] h-auto md:h-90 backdrop-blur-md">
                   <div className="mb-6 relative z-20">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Keyboards
@@ -410,7 +431,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Ghost Forms */}
-                <div className="group relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-200 ease-in-out hover:-translate-y-0.5 bg-cursor-light border border-transparent oklab-border hover:border-primary/20 h-auto md:h-90">
+                <div className="group relative rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col transition-all duration-500 ease-out hover:-translate-y-1 bg-surface-container/30 border border-border-fallback-10/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)] h-auto md:h-90 backdrop-blur-md">
                   <div className="mb-6 relative z-10">
                     <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-2 block">
                       Forms &amp; Inputs
@@ -436,20 +457,8 @@ const HomePage = () => {
         </main>
 
         {/* ── Horizontal Strip Stats Section ── */}
-        <style dangerouslySetInnerHTML={{__html: `
-          @keyframes hp-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px) rotate(-2deg); } 75% { transform: translateX(2px) rotate(2deg); } }
-          @keyframes hp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-          @keyframes hp-swing { 0%, 100% { transform: rotate(0deg); } 20% { transform: rotate(12deg); } 40% { transform: rotate(-8deg); } 60% { transform: rotate(4deg); } 80% { transform: rotate(-4deg); } }
-          @keyframes hp-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.92); } }
-          @keyframes hp-heartbeat { 0% { transform: scale(1); } 14% { transform: scale(1.3); } 28% { transform: scale(1); } 42% { transform: scale(1.3); } 70% { transform: scale(1); } }
-          .hp-shake { animation: hp-shake 1.5s ease-in-out infinite; }
-          .hp-spin { animation: hp-spin 2s linear infinite; }
-          .hp-swing { animation: hp-swing 2s ease-in-out infinite; transform-origin: top center; }
-          .hp-pulse { animation: hp-pulse 2s ease-in-out infinite; }
-          .hp-heartbeat { animation: hp-heartbeat 1.5s ease-in-out infinite; }
-        `}} />
-        <section className="relative w-full border-y border-border-fallback-10 overflow-hidden select-none bg-transparent">
-          <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10">
+        <section className="relative w-full border-y border-border-fallback-10/40 overflow-hidden select-none bg-surface-container/10 mt-12 md:mt-24">
+          <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10/40 max-w-7xl mx-auto">
             {[
               { num: "65", label: "Components" },
               { num: "17", label: "Categories" },
@@ -457,11 +466,11 @@ const HomePage = () => {
               { num: "2", label: "npm Packages" },
               { num: "MIT", label: "Licensed" },
             ].map((stat, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center justify-center py-8 md:py-10 w-full">
-                <span className="font-section-heading font-bold text-[48px] text-primary mb-2 leading-none">
+              <div key={i} className="flex-1 flex flex-col items-center justify-center py-10 md:py-12 w-full transition-colors hover:bg-surface-container/30">
+                <span className="font-display-hero font-medium text-[40px] md:text-[56px] text-primary mb-1 leading-none tracking-tight">
                   {stat.num}
                 </span>
-                <span className="font-mono-code text-[11px] uppercase tracking-[0.15em] text-on-surface-variant/50">
+                <span className="font-system-micro text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60 font-semibold">
                   {stat.label}
                 </span>
               </div>
@@ -471,86 +480,43 @@ const HomePage = () => {
 
         <main className="max-w-300 mx-auto sm:px-8">
         {/* Text CTA Section (Desktop & Mobile) */}
-        <section className="py-16 md:py-32 px-4 md:px-0 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
-          
-          {/* Left Side (55%) */}
-          <div className="w-full md:w-[55%] flex flex-col">
-            <span className="font-mono-code text-[11px] uppercase tracking-widest text-on-surface-variant/60 mb-4 block">
-              GET STARTED
-            </span>
-            <h2 className="font-section-heading text-[36px] md:text-[48px] text-primary mb-6 leading-tight">
-              Built for the era of AI.
-            </h2>
-            <p className="font-editorial-body text-lg md:text-[20px] text-on-surface-variant leading-relaxed mb-6">
-              Components shouldn't just be pretty. They should be aware. Our
-              library is built with semantic structures that AI agents can
-              navigate, understand, and manipulate with ease.
-            </p>
-            <p className="font-editorial-standard text-[14px] italic text-on-surface-variant/60">
-              Free forever. No account required.
-            </p>
+        <section className="py-24 md:py-40 px-4 md:px-0 flex flex-col items-center text-center max-w-4xl mx-auto">
+          <span className="inline-block px-5 py-2 rounded-full border border-border-fallback-10/50 bg-surface-container/30 font-system-micro text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/70 mb-8 shadow-sm">
+            GET STARTED
+          </span>
+          <h2 className="font-display-hero text-[48px] md:text-[72px] text-primary mb-8 leading-[1.05] tracking-tight">
+            Built for the <br className="hidden md:block"/> era of AI.
+          </h2>
+          <p className="font-editorial-standard text-[18px] md:text-[22px] text-on-surface-variant/80 leading-relaxed mb-12 max-w-2xl mx-auto">
+            Components shouldn't just be pretty. They should be aware. Our
+            library is built with semantic structures that AI agents can
+            navigate, understand, and manipulate with ease.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            <Link to="/components" className="w-full sm:w-auto">
+              <button className={`w-full px-8 py-4 rounded-xl font-button-label text-sm uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center gap-3 border shadow-[0_0_20px_-5px_rgba(207,45,86,0.2)] hover:shadow-[0_0_30px_-5px_rgba(207,45,86,0.4)] ${isDark ? 'bg-white text-black border-white hover:bg-white/90' : 'bg-primary text-on-primary border-primary hover:bg-primary/90'}`}>
+                BROWSE LIBRARY <ArrowRight size={16} strokeWidth={2} />
+              </button>
+            </Link>
+            <a href="https://github.com/TakshPatel02/ComponentLabs" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+              <button className={`w-full px-8 py-4 rounded-xl font-button-label text-sm uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center gap-3 border hover:bg-surface-container/50 ${isDark ? 'border-white/20 text-white hover:border-white/40' : 'border-border-fallback-10 text-primary hover:border-border-fallback-10/80'}`}>
+                VIEW ON GITHUB
+              </button>
+            </a>
           </div>
-
-          {/* Right Side (45%) */}
-          <div className="w-full md:w-[45%]">
-            <div className={`p-6 rounded-xl border transition-all duration-300 ${isDark ? 'bg-[#1a1a1a] border-white/8' : 'bg-[#e8e6e1] border-black/8'} flex flex-col`}>
-              
-              {/* Top: Install */}
-              <div className="mb-6">
-                <span className="font-mono-code text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-3 block">
-                  INSTALL COMPONENT-LABS
-                </span>
-                <InlineCopyBlock />
-              </div>
-
-              {/* Buttons */}
-              <div className="flex flex-col gap-3 mb-6">
-                <Link to="/components" className="w-full">
-                  <button className="w-full bg-[#1a1a1a] dark:bg-white text-white dark:text-black py-3.5 rounded-lg font-button-label text-sm uppercase tracking-widest transition-all hover:opacity-90 flex items-center justify-center gap-2 border border-transparent cursor-pointer">
-                    BROWSE LIBRARY <span>→</span>
-                  </button>
-                </Link>
-                <a href="https://github.com/TakshPatel02/ComponentLabs" target="_blank" rel="noreferrer" className="w-full">
-                  <button className={`w-full bg-transparent py-3.5 rounded-lg font-button-label text-sm uppercase tracking-widest transition-all hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center gap-2 border cursor-pointer ${isDark ? 'border-white/20 text-white' : 'border-black/20 text-black'}`}>
-                    VIEW ON GITHUB <span>→</span>
-                  </button>
-                </a>
-              </div>
-
-              {/* Checks */}
-              <div className="flex flex-col gap-2.5 mb-6">
-                {[
-                  "MIT Licensed",
-                  "Open Source",
-                  "65 Components",
-                  "2 npm packages",
-                ].map((text) => (
-                  <div key={text} className="flex items-center gap-3">
-                    <Check size={14} className="text-[#E8567A]" />
-                    <span className="font-mono-code text-[11px] uppercase tracking-wider text-on-surface-variant/70">{text}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Divider */}
-              <div className={`w-full h-px mb-5 ${isDark ? 'bg-white/6' : 'bg-black/6'}`} />
-
-              {/* IconFlow integration in the same box */}
-              <Link to="/iconflow" className="group block">
-                <div className={`p-4 rounded-lg border transition-all duration-300 flex items-center justify-between ${isDark ? 'bg-white/2 border-white/5 group-hover:bg-white/4' : 'bg-black/2 border-black/5 group-hover:bg-black/npm4'}`}>
-                  <div className="flex flex-col">
-                    <span className="font-section-heading text-[15px] text-primary font-medium mb-1 flex items-center gap-2">
-                      <Heart size={13} className="text-[#E8567A]" />
-                      IconFlow
-                    </span>
-                    <span className="font-editorial-standard text-[12px] text-on-surface-variant/70 italic">
-                      Animated Lucide icons for React
-                    </span>
-                  </div>
-                  <ArrowRight size={16} className="text-on-surface-variant/40 group-hover:text-[#E8567A] group-hover:translate-x-1 transition-all" />
-                </div>
-              </Link>
-            </div>
+          
+          <div className="mt-12 flex items-center justify-center gap-6 flex-wrap">
+             {[
+               "MIT Licensed",
+               "Open Source",
+               "Free Forever"
+             ].map((text) => (
+               <div key={text} className="flex items-center gap-2">
+                 <Check size={16} className="text-error-warm" strokeWidth={2} />
+                 <span className="font-mono-code text-[12px] uppercase tracking-wider text-on-surface-variant/70">{text}</span>
+               </div>
+             ))}
           </div>
         </section>
       </main>

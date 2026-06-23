@@ -59,7 +59,6 @@ const CategoryCard = ({ group, index, isDark }) => {
   }, [index]);
 
   const componentCount = group.items.length;
-  const previewItems = group.items.slice(0, 3);
   const firstHref = group.items[0]?.href || "/components";
   const Icon = categoryIcons[group.section] || categoryIcons["OTHER PRIMITIVES"];
 
@@ -68,127 +67,58 @@ const CategoryCard = ({ group, index, isDark }) => {
       ref={cardRef}
       to={firstHref}
       id={`category-card-${group.section.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-      className="no-underline block group"
+      className="no-underline block group mb-4 md:mb-5 break-inside-avoid"
       style={{ opacity: 0 }}
     >
       <div
         className={`
-          relative rounded-xl p-6 h-full
-          border transition-all duration-300 ease-out
-          ${isDark
-            ? "bg-[#1a1a1a] border-white/8 hover:border-white/18 hover:bg-[#1e1e1e]"
-            : "bg-white border-black/6 hover:border-black/14 hover:bg-[#FDFBF9]"
-          }
+          relative rounded-2xl p-6 sm:p-7
+          transition-all duration-500 ease-out
+          bg-surface-container/30 backdrop-blur-md
+          border border-border-fallback-10/50
+          hover:bg-surface-container/50 hover:border-error-warm/30
+          hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)]
         `}
-        style={{
-          boxShadow: isDark
-            ? "0 1px 3px rgba(0,0,0,0.3)"
-            : "0 1px 3px rgba(0,0,0,0.04)",
-        }}
       >
         {/* Top row — Icon + Count badge */}
         <div className="flex items-start justify-between mb-5">
           <div
             className={`
-              w-10 h-10 rounded-lg flex items-center justify-center
-              transition-colors duration-300
-              ${isDark
-                ? "bg-white/6 text-[#a8a49c] group-hover:text-[#E8567A] group-hover:bg-[#E8567A]/10"
-                : "bg-black/4 text-[#8a8780] group-hover:text-[#E8567A] group-hover:bg-[#E8567A]/8"
-              }
+              w-10 h-10 rounded-xl flex items-center justify-center
+              transition-all duration-500 bg-surface-container/50 border border-border-fallback-10/50
+              text-on-surface-variant/70 group-hover:text-error-warm group-hover:border-error-warm/30
+              group-hover:shadow-[0_0_15px_-3px_rgba(207,45,86,0.2)]
             `}
           >
-            <Icon size={22} strokeWidth={1.6} />
+            <Icon size={20} strokeWidth={1.5} />
           </div>
           <span
-            className={`
-              font-['Space_Grotesk'] text-[11px] font-semibold tracking-wide
-              px-2.5 py-1 rounded-full
-              ${isDark
-                ? "bg-white/6 text-[#6b6960]"
-                : "bg-black/4 text-[#8a8780]"
-              }
-            `}
+            className="font-system-micro text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full bg-surface-container/40 border border-border-fallback-10/50 text-on-surface-variant/60"
           >
-            {componentCount} {componentCount === 1 ? "component" : "components"}
+            {componentCount} {componentCount === 1 ? "Item" : "Items"}
           </span>
         </div>
 
         {/* Category name */}
         <h3
-          className={`
-            font-['Space_Grotesk'] text-[15px] font-semibold tracking-tight
-            mb-3 capitalize
-            ${isDark ? "text-[#e6e2e0]" : "text-[#1c1b1b]"}
-          `}
-          style={{ textTransform: "none" }}
+          className="font-section-heading text-[18px] md:text-[20px] font-bold tracking-tight mb-4 capitalize text-primary transition-colors group-hover:text-error-warm/90"
         >
           {group.section.charAt(0) + group.section.slice(1).toLowerCase()}
         </h3>
 
-        {/* Component previews */}
-        <div className="flex flex-col gap-1.5 mb-5">
-          {previewItems.map((item, i) => (
-            <div key={item.href} className="flex items-center gap-2">
-              <div
-                className={`
-                  w-1.25 h-1.25 rounded-full shrink-0
-                  ${isDark ? "bg-[#48473f]" : "bg-[#C0BCB5]"}
-                `}
-              />
-              <span
-                className={`
-                  font-['Inter'] text-[13px] leading-snug
-                  ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}
-                `}
-              >
-                {item.label}
-              </span>
-            </div>
-          ))}
-          {group.items.length > 3 && (
-            <span
-              className={`
-                font-['Inter'] text-[12px] ml-3.25
-                ${isDark ? "text-[#5a574f]" : "text-[#b0ada6]"}
-              `}
-            >
-              +{group.items.length - 3} more
-            </span>
-          )}
-        </div>
+        {/* Component previews (Minimal Inline Style) */}
+        <p className="font-editorial-standard text-[14.5px] leading-relaxed text-on-surface-variant/60 mb-6 group-hover:text-on-surface-variant/90 transition-colors duration-300">
+          {group.items.slice(0, 3).map(item => item.label).join(", ")}
+          {group.items.length > 3 ? <span className="opacity-50">, and {group.items.length - 3} more</span> : ""}
+        </p>
 
         {/* Bottom arrow row */}
-        <div
-          className={`
-            flex items-center justify-between pt-4
-            border-t
-            ${isDark ? "border-white/6" : "border-black/5"}
-          `}
-        >
-          <span
-            className={`
-              font-['Inter'] text-[12.5px] font-medium
-              ${isDark
-                ? "text-[#6b6960] group-hover:text-[#E8567A]"
-                : "text-[#8a8780] group-hover:text-[#E8567A]"
-              }
-              transition-colors duration-300
-            `}
-          >
-            Browse category
+        <div className="flex items-center justify-between pt-5 border-t border-border-fallback-10/40">
+          <span className="font-system-micro text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50 group-hover:text-error-warm transition-colors duration-300">
+            Browse collection
           </span>
-          <div
-            className={`
-              w-7 h-7 rounded-full flex items-center justify-center
-              transition-all duration-300
-              ${isDark
-                ? "bg-white/5 text-[#6b6960] group-hover:bg-[#E8567A] group-hover:text-white"
-                : "bg-black/4 text-[#8a8780] group-hover:bg-[#E8567A] group-hover:text-white"
-              }
-            `}
-          >
-            <ArrowRight size={14} strokeWidth={2.5} />
+          <div className="text-on-surface-variant/40 group-hover:text-error-warm group-hover:translate-x-1 transition-all duration-300">
+            <ArrowRight size={16} strokeWidth={2} />
           </div>
         </div>
       </div>
@@ -206,42 +136,33 @@ const ComponentsIndex = () => {
   const totalComponents = categories.reduce((sum, g) => sum + g.items.length, 0);
 
   return (
-    <div className={`flex min-h-screen ${isDark ? "bg-[#111]" : "bg-[#F5F3EE]"}`}>
+    <div className="flex min-h-screen bg-surface font-ui-body">
       {/* Left sidebar */}
       <DocsSidebar />
 
       {/* Main content area */}
-      <main className="ml-0 md:ml-60 flex-1 min-h-screen px-6 md:px-10 lg:px-14 py-12 md:py-16">
+      <main className="ml-0 md:ml-60 flex-1 min-h-screen px-6 md:px-10 lg:px-14 py-16 md:py-24">
         <div className="max-w-270 mx-auto">
 
           {/* ── Header ── */}
-          <div className="mb-12 md:mb-14">
-            {/* Category tag */}
-            <span className={`
-              inline-block font-['Space_Grotesk'] text-[10.5px] font-semibold
-              uppercase tracking-[0.15em] mb-3 select-none
-              ${isDark ? "text-[#6b6960]" : "text-[#8a8780]"}
-            `}>
-              Component Library
-            </span>
-
-            {/* Heading */}
-            <h1 className="font-['Space_Grotesk'] text-3xl md:text-[42px] font-bold text-primary tracking-tight leading-tight mb-3">
+          <div className="mb-16 md:mb-20" id="header">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container/50 border border-border-fallback-10/50 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+              <span className="font-system-micro text-[11px] font-bold text-on-surface-variant/70 tracking-widest uppercase">
+                Component Library
+              </span>
+            </div>
+            <h1 className="font-display-hero text-[40px] md:text-[56px] leading-[1.1] text-primary tracking-tight transition-colors mb-5">
               Browse Components
             </h1>
-
-            {/* Description */}
-            <p className={`
-              font-['Inter'] text-base md:text-[17px] leading-relaxed max-w-135
-              ${isDark ? "text-[#a8a49c]" : "text-on-surface-variant"}
-            `}>
+            <p className="font-editorial-standard text-[18px] md:text-[20px] text-on-surface-variant/80 max-w-3xl leading-relaxed">
               Explore {totalComponents} handcrafted components across {categories.length} categories.
               Select a category to dive into live previews, usage examples, and documentation.
             </p>
           </div>
 
-          {/* ── Category Grid ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {/* ── Category Grid (Masonry) ── */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 space-y-4 md:space-y-5">
             {categories.map((group, idx) => (
               <CategoryCard
                 key={group.section}

@@ -21,17 +21,22 @@ const CodeBlock = ({ code, language = "bash" }) => {
   };
 
   return (
-    <div className="relative group">
+    <div className="relative group rounded-2xl overflow-hidden bg-surface-container-highest border border-border-fallback-10/50 shadow-[0_10px_40px_-24px_rgba(17,16,10,0.35)] transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(207,45,86,0.15)] hover:border-error-warm/30 mb-4">
+      {/* Mac window controls */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-surface-container/50 border-b border-border-fallback-10/30">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+      </div>
       <Highlight theme={codeTheme} code={code} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={`${className} rounded-xl border oklab-border overflow-x-auto bg-surface-container-highest px-4 py-4 text-sm md:text-base font-mono shadow-[0_10px_40px_-24px_rgba(17,16,10,0.35)]`}
+            className={`${className} overflow-x-auto px-5 py-4 text-[13.5px] md:text-[14.5px] leading-relaxed`}
             style={{
               ...style,
-              backgroundColor: "var(--surface-container-highest)",
+              backgroundColor: "transparent",
               color: "var(--on-surface)",
-              fontFamily:
-                "var(--font-mono-code), ui-monospace, SFMono-Regular, Menlo, monospace",
+              fontFamily: "var(--font-mono-code), ui-monospace, SFMono-Regular, Menlo, monospace",
             }}
           >
             {tokens.map((line, i) => {
@@ -51,13 +56,13 @@ const CodeBlock = ({ code, language = "bash" }) => {
 
       <button
         onClick={handleCopy}
-        className="absolute top-4 right-4 p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-2.5 right-3 p-2 rounded-lg bg-surface-container/80 hover:bg-surface-container border border-border-fallback-10/50 transition-colors opacity-0 group-hover:opacity-100 backdrop-blur-md"
         title="Copy to clipboard"
       >
         {copied ? (
-          <Check size={16} className="text-green-500" />
+          <Check size={16} className="text-[#27C93F]" />
         ) : (
-          <CopyIcon size={16} className="text-primary/60" />
+          <CopyIcon size={16} className="text-primary/60 hover:text-primary" />
         )}
       </button>
     </div>
@@ -89,11 +94,11 @@ const OnThisPageNav = ({ activeSection }) => (
                 document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
               className={`
-                block py-1.5 text-[13px] no-underline transition-colors duration-150
+                block py-2 pl-4 border-l-2 text-[13.5px] no-underline transition-all duration-300
                 font-ui-body
                 ${isActive
-                  ? "text-error-warm font-medium"
-                  : "text-on-surface-variant hover:text-primary"
+                  ? "border-error-warm text-error-warm font-semibold shadow-[inset_15px_0_20px_-15px_rgba(207,45,86,0.25)]"
+                  : "border-border-fallback-10/40 text-on-surface-variant hover:text-primary hover:border-border-fallback-10/80"
                 }
               `}
             >
@@ -153,18 +158,19 @@ const InstallationPage = () => {
         <div className="max-w-3xl min-w-0 mx-auto px-6 md:px-8 py-16 md:py-24">
 
           {/* ── Page Header ── */}
-          <header className="mb-14">
-            <span className="font-system-micro text-system-micro text-on-surface-variant/60 tracking-widest uppercase mb-2 block">
-              Docs
+          <header className="mb-20 relative">
+            <div className="absolute -top-20 -left-20 w-60 h-60 bg-error-warm/10 blur-[100px] rounded-full pointer-events-none" />
+            <span className="font-system-micro text-[11px] font-bold text-on-surface-variant/60 tracking-widest uppercase mb-4 block">
+              Documentation
             </span>
-            <h1 className="font-section-heading text-[32px] md:text-[44px] leading-tight text-primary tracking-tight">
+            <h1 className="font-display-hero text-[48px] md:text-[64px] leading-[1.05] text-primary tracking-tight relative z-10">
               Installation
             </h1>
           </header>
 
           {/* ── Section 1: Install ── */}
           <section id="install" className="mb-14 scroll-mt-20">
-            <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2 font-['Space_Grotesk'] text-primary mb-5">
+            <h2 className="font-display-hero text-[32px] md:text-[40px] tracking-tight pb-4 mb-6 text-primary border-b border-border-fallback-10/40">
               Install the package
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-4">
@@ -175,7 +181,7 @@ const InstallationPage = () => {
 
           {/* ── Section 2: Import Styles ── */}
           <section id="import-styles" className="mb-14 scroll-mt-20">
-            <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2 font-['Space_Grotesk'] text-primary mb-5">
+            <h2 className="font-display-hero text-[32px] md:text-[40px] tracking-tight pb-4 mb-6 text-primary border-b border-border-fallback-10/40">
               Import Styles
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-5">
@@ -194,17 +200,14 @@ const InstallationPage = () => {
 
           {/* ── Section 3: Peer Dependencies ── */}
           <section id="peer-deps" className="mb-14 scroll-mt-20">
-            <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2 font-['Space_Grotesk'] text-primary mb-5">
+            <h2 className="font-display-hero text-[32px] md:text-[40px] tracking-tight pb-4 mb-6 text-primary border-b border-border-fallback-10/40">
               Peer dependencies
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-4">
               Make sure these are installed in your project:
             </p>
             <div
-              className={`
-                rounded-xl border overflow-hidden
-                ${isDark ? "border-white/6" : "border-black/5"}
-              `}
+              className="rounded-2xl border bg-surface-container/20 backdrop-blur-md border-border-fallback-10/50 overflow-hidden shadow-sm"
             >
               <div className="divide-y divide-border-fallback-10">
                 {[
@@ -217,8 +220,8 @@ const InstallationPage = () => {
                   <div
                     key={name}
                     className={`
-                      flex items-center justify-between py-3 px-4
-                      ${isDark ? "bg-white/3" : "bg-black/2"}
+                      flex items-center justify-between py-4 px-5 transition-colors duration-300
+                      hover:bg-surface-container/40
                     `}
                   >
                     <code className="font-mono text-[14px] text-primary font-semibold">{name}</code>
@@ -231,7 +234,7 @@ const InstallationPage = () => {
 
           {/* ── Section 4: Basic Usage ── */}
           <section id="usage" className="mb-14 scroll-mt-20">
-            <h2 className="text-2xl font-bold tracking-tight oklab-border-b pb-2 font-['Space_Grotesk'] text-primary mb-5">
+            <h2 className="font-display-hero text-[32px] md:text-[40px] tracking-tight pb-4 mb-6 text-primary border-b border-border-fallback-10/40">
               Basic usage
             </h2>
             <p className="leading-relaxed text-primary/80 font-['Inter'] text-[16px] mb-4">
@@ -256,8 +259,9 @@ function App() {
           {/* ── Bottom CTA ── */}
           <div
             className={`
-              rounded-xl border p-6 md:p-8 text-center
-              ${isDark ? "bg-white/3 border-white/6" : "bg-black/15 border-black/5"}
+              rounded-2xl border p-8 md:p-12 text-center transition-all duration-500
+              bg-surface-container/30 backdrop-blur-md border-border-fallback-10/50
+              hover:bg-surface-container/50 hover:border-error-warm/30 hover:shadow-[0_0_40px_-10px_rgba(207,45,86,0.15)]
             `}
           >
             <p className={`font-['Inter'] text-[14px] mb-4 ${isDark ? "text-[#7a776e]" : "text-[#8a8780]"}`}>
