@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTheme } from "../context/ThemeContext";
-import { Lock, Eye, Smartphone, ArrowRight, Github, Twitter } from "lucide-react";
+import { Lock, Eye, Smartphone, ArrowRight } from "lucide-react";
 import { templatesData } from "../config/templatesData";
 
 const TemplatesPage = () => {
