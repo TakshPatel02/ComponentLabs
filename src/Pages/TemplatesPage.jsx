@@ -44,7 +44,7 @@ const TemplatesPage = () => {
             <div className={`absolute -top-40 -right-40 w-80 h-80 rounded-full blur-[100px] opacity-30 pointer-events-none ${isDark ? 'bg-[#E8567A]' : 'bg-[#E8567A]'}`} />
 
             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-              <div className="max-w-sm">
+              <div className="max-w-4xl">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E8567A] opacity-75"></span>
