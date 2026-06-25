@@ -65,13 +65,13 @@ const TemplatesPage = () => {
               <div className="flex flex-col gap-3 w-full md:w-auto min-w-[200px]">
                 <a href="https://github.com/TakshPatel02/ComponentLabs" target="_blank" rel="noreferrer" className="w-full no-underline">
                   <button className={`w-full group relative overflow-hidden py-3 px-5 rounded-lg font-mono-code text-[11px] uppercase tracking-widest transition-all duration-300 flex items-center justify-between gap-4 border cursor-pointer ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20' : 'bg-black/5 border-black/10 text-black hover:bg-black/10 hover:border-black/20'}`}>
-                    <span className="flex items-center gap-2"><Github size={14} /> Star on GitHub</span>
+                    <span className="flex items-center gap-2"> Star on GitHub</span>
                     <ArrowRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </button>
                 </a>
                 <a href="https://x.com/TakshPatel02" target="_blank" rel="noreferrer" className="w-full no-underline">
                   <button className={`w-full group relative overflow-hidden py-3 px-5 rounded-lg font-mono-code text-[11px] uppercase tracking-widest transition-all duration-300 flex items-center justify-between gap-4 border cursor-pointer ${isDark ? 'bg-transparent border-white/10 text-white hover:bg-white/5 hover:border-white/20' : 'bg-transparent border-black/10 text-black hover:bg-black/5 hover:border-black/20'}`}>
-                    <span className="flex items-center gap-2"><Twitter size={14} /> Follow on X</span>
+                    <span className="flex items-center gap-2"> Follow on X</span>
                     <ArrowRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </button>
                 </a>
