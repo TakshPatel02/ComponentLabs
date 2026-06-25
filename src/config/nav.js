@@ -157,4 +157,11 @@ export const navConfig = [
       { label: "Morph Card Button", href: "/components/creative/morphcardbutton" },
     ]
   },
+  {
+    section: "SVG ANIMATIONS",
+    items: [
+      { label: "Play Pause Button", href: "/components/svganimations/playpausebutton" },
+      { label: "Hamburger Cross", href: "/components/svganimations/hamburgercross" },
+    ]
+  },
 ]

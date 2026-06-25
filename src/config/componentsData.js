@@ -98,6 +98,10 @@ import MorphCardButton from "../components/CreativeComponents/MorphCardButton";
 import GreetingPreloader from "../components/LoaderComponents/GreetingPreloader";
 import StaircasePreloader from "../components/LoaderComponents/StaircasePreloader";
 
+// SVG Animations
+import PlayPauseButton from "../components/SVGAnimationComponents/PlayPauseButton";
+import HamburgerCross from "../components/SVGAnimationComponents/HamburgerCross";
+
 // Components Data
 export const componentsData = {
 
@@ -1846,6 +1850,107 @@ const customSlides = [
     notes: [
       "The staircase animation uses a cubic-bezier(0.77, 0, 0.175, 1) easing for a premium, editorial feel.",
       "Each panel exits with a configurable stagger delay (default 100ms between panels), creating the cascading 'staircase' reveal effect.",
+    ],
+  },
+
+  // ─── SVG ANIMATIONS ───────────────────────────────────────────────
+
+  "playpausebutton": {
+    title: "Play Pause Button",
+    category: "SVG ANIMATIONS",
+    description: "A premium play/pause toggle button with smooth SVG morph animation on click. Inspired by YouTube, Spotify and modern media player controls — features ripple feedback, micro-rotation transitions, and a cinematic spring feel.",
+    component: PlayPauseButton,
+    published: true,
+    usage: `import { PlayPauseButton } from "component-labs";
+
+// Default usage
+<PlayPauseButton />
+
+// Custom size and colors
+<PlayPauseButton
+  size={80}
+  bgColor="#282828"
+  iconColor="#ffffff"
+  onToggle={(isPlaying) => console.log(isPlaying)}
+/>
+
+// Without label and ripple
+<PlayPauseButton showLabel={false} showRipple={false} size={56} />`,
+    props: [
+      { name: "size", type: "number", default: "64", description: "Diameter of the button in pixels." },
+      { name: "bgColor", type: "string", default: '"#1a1a1a"', description: "Background color of the circular button." },
+      { name: "iconColor", type: "string", default: '"#ffffff"', description: "Fill color of the play/pause SVG icon." },
+      { name: "hoverScale", type: "number", default: "1.08", description: "Scale factor on hover." },
+      { name: "activeScale", type: "number", default: "0.92", description: "Scale factor when pressed." },
+      { name: "initialPlaying", type: "boolean", default: "false", description: "Initial state — true starts as paused icon, false starts as play icon." },
+      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new playing state (boolean) on each click." },
+      { name: "showRipple", type: "boolean", default: "true", description: "Whether to show the expanding ring ripple effect on click." },
+      { name: "showLabel", type: "boolean", default: "true", description: "Whether to show the PLAYING/PAUSED status label below the button." },
+      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the wrapper." },
+    ],
+    features: [
+      "Smooth SVG morph animation between play (▶) and pause (‖) icons",
+      "Spring-physics hover and tap scale feedback",
+      "Expanding ripple ring effect on each click",
+      "Radial gradient overlay for premium depth/gloss",
+      "Fully customizable size, colors, and behavior",
+      "Accessible button element with no external dependencies beyond motion",
+    ],
+    notes: [
+      "The morph transition uses a rotation + scale animation for a cinematic icon swap feel.",
+      "The ripple effect auto-cleans after 600ms to prevent memory buildup.",
+      "Uses spring physics (stiffness: 500, damping: 30) for snappy, premium interactions.",
+    ],
+  },
+
+  "hamburgercross": {
+    title: "Hamburger Cross",
+    category: "SVG ANIMATIONS",
+    description: "A premium hamburger menu toggle that morphs into an X close icon via smooth SVG line-endpoint animation. Three persistent lines transform in-place — top and bottom become cross diagonals, middle collapses and fades.",
+    component: HamburgerCross,
+    published: true,
+    usage: `import { HamburgerCross } from "component-labs";
+
+// Default usage
+<HamburgerCross />
+
+// Custom size and colors
+<HamburgerCross
+  size={56}
+  bgColor="#282828"
+  strokeColor="#ffffff"
+  strokeWidth={2.5}
+  onToggle={(isOpen) => console.log(isOpen)}
+/>
+
+// Square button, no label
+<HamburgerCross rounded={false} showLabel={false} size={48} />`,
+    props: [
+      { name: "size", type: "number", default: "48", description: "Overall button diameter/size in pixels." },
+      { name: "strokeWidth", type: "number", default: "2", description: "Thickness of the SVG line strokes." },
+      { name: "bgColor", type: "string", default: '"#1a1a1a"', description: "Background color of the button." },
+      { name: "strokeColor", type: "string", default: '"#ffffff"', description: "Color of the hamburger/cross line strokes." },
+      { name: "hoverScale", type: "number", default: "1.06", description: "Scale factor on hover." },
+      { name: "activeScale", type: "number", default: "0.92", description: "Scale factor when pressed." },
+      { name: "initialOpen", type: "boolean", default: "false", description: "Initial state — true starts as X (close), false starts as hamburger (menu)." },
+      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new open state (boolean) on each click." },
+      { name: "rounded", type: "boolean", default: "true", description: "If true, button is circular. If false, uses rounded-rectangle shape." },
+      { name: "showLabel", type: "boolean", default: "true", description: "Whether to show the MENU/CLOSE status label below the button." },
+      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the wrapper." },
+    ],
+    features: [
+      "Smooth SVG line-endpoint morph between hamburger (☰) and cross (✕) icons",
+      "Middle line collapses to center point and fades simultaneously",
+      "Spring-physics hover and tap scale feedback",
+      "Supports both circular and rounded-rectangle button shapes",
+      "Radial gradient overlay for premium depth/gloss",
+      "Fully customizable size, stroke, colors, and behavior",
+    ],
+    notes: [
+      "The morph uses cubic-bezier(0.4, 0, 0.2, 1) easing for a smooth, natural feel.",
+      "Top line endpoints morph from (4,6)-(20,6) to (5,5)-(19,19) forming a \\ diagonal.",
+      "Bottom line endpoints morph from (4,18)-(20,18) to (5,19)-(19,5) forming a / diagonal.",
+      "Middle line collapses to a center point (12,12) and fades to opacity 0 simultaneously.",
     ],
   },
 };

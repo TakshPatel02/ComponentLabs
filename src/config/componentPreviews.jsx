@@ -65,6 +65,10 @@ import MorphCardButton from '../components/CreativeComponents/MorphCardButton';
 import GreetingPreloader from '../components/LoaderComponents/GreetingPreloader';
 import StaircasePreloader from '../components/LoaderComponents/StaircasePreloader';
 
+// SVG Animations
+import PlayPauseButton from '../components/SVGAnimationComponents/PlayPauseButton';
+import HamburgerCross from '../components/SVGAnimationComponents/HamburgerCross';
+
 // CTA Sections
 import SmartInterfaceCTA from '../components/CTAComponents/SmartInterfaceCTA';
 import CreativeIntelligenceCTA from '../components/CTAComponents/CreativeIntelligenceCTA';
@@ -356,5 +360,28 @@ export const componentPreviews = {
     hasRewatch: true,
     previewContainerClass: noBoxClass,
     renderPreview: (key) => <StaircasePreloader key={key} isGlobal={false} />
+  },
+
+  // SVG ANIMATIONS
+  playpausebutton: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="flex flex-col gap-8 md:flex-row md:gap-12 items-center justify-center">
+        <PlayPauseButton key={`${key}-1`} size={64} />
+        <PlayPauseButton key={`${key}-2`} size={80} bgColor="#282828" />
+        <PlayPauseButton key={`${key}-3`} size={48} bare />
+      </div>
+    )
+  },
+
+  hamburgercross: {
+    previewContainerClass: standardBoxClass,
+    renderPreview: (key) => (
+      <div className="flex flex-col gap-8 md:flex-row md:gap-12 items-center justify-center">
+        <HamburgerCross key={`${key}-1`} size={48} />
+        <HamburgerCross key={`${key}-2`} size={56} bgColor="#282828" strokeWidth={2.5} />
+        <HamburgerCross key={`${key}-3`} size={32} bare />
+      </div>
+    )
   },
 };
