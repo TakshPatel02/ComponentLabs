@@ -331,18 +331,20 @@ import AnimatedIcon from "iconflow";
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6">
             {/* Left: Controls + Preview */}
-            <div className="rounded-xl overflow-hidden p-6 md:p-8 flex flex-col bg-cursor-light border border-transparent oklab-border">
+            <div className={`rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col border atmospheric-shadow ${isDark ? 'bg-[#151515] border-white/5' : 'bg-white border-black/5'}`}>
               {/* Animation selector */}
-              <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-4 block">Animation</span>
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase">Animation Style</span>
+              </div>
+              <div className={`flex flex-wrap gap-1 p-1 rounded-lg border mb-8 ${isDark ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}>
                 {ANIMATIONS.map(({ name, label }) => (
                   <button
                     key={name}
                     onClick={() => setSelectedAnimation(name)}
-                    className={`px-3.5 py-1.5 rounded-lg font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer border ${
+                    className={`flex-1 min-w-[80px] px-3 py-2 rounded-md font-mono-code text-[11px] tracking-widest uppercase transition-all duration-300 cursor-pointer ${
                       selectedAnimation === name
-                        ? "bg-[#E8567A] text-white border-[#E8567A]"
-                        : "border-border-fallback-10 text-on-surface-variant/60 hover:border-primary/25 hover:text-on-surface-variant"
+                        ? "bg-surface text-primary shadow-xs border border-border-fallback-10"
+                        : "text-on-surface-variant/60 hover:text-primary border border-transparent bg-transparent"
                     }`}
                   >
                     {label}
@@ -351,16 +353,18 @@ import AnimatedIcon from "iconflow";
               </div>
 
               {/* Trigger selector */}
-              <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-4 block">Trigger</span>
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase">Interaction Trigger</span>
+              </div>
+              <div className={`flex flex-wrap gap-1 p-1 rounded-lg border mb-8 ${isDark ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}>
                 {TRIGGERS.map(({ name, label }) => (
                   <button
                     key={name}
                     onClick={() => setSelectedTrigger(name)}
-                    className={`px-3.5 py-1.5 rounded-lg font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer border ${
+                    className={`flex-1 min-w-[70px] px-3 py-2 rounded-md font-mono-code text-[11px] tracking-widest uppercase transition-all duration-300 cursor-pointer ${
                       selectedTrigger === name
-                        ? "bg-[#E8567A] text-white border-[#E8567A]"
-                        : "border-border-fallback-10 text-on-surface-variant/60 hover:border-primary/25 hover:text-on-surface-variant"
+                        ? "bg-surface text-primary shadow-xs border border-border-fallback-10"
+                        : "text-on-surface-variant/60 hover:text-primary border border-transparent bg-transparent"
                     }`}
                   >
                     {label}
@@ -369,13 +373,16 @@ import AnimatedIcon from "iconflow";
               </div>
 
               {/* Speed slider */}
-              <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-3 block">
-                Speed — {speed}x
-              </span>
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase">
+                  Animation Speed
+                </span>
+                <span className="font-mono-code text-[11px] text-[#E8567A] font-semibold">{speed}x</span>
+              </div>
               <input
                 type="range" min="0.25" max="3" step="0.25" value={speed}
                 onChange={(e) => setSpeed(parseFloat(e.target.value))}
-                className="w-full accent-[#E8567A] mb-10 cursor-pointer"
+                className="w-full mb-12 cursor-pointer h-1.5 bg-border-fallback-10 rounded-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-[#E8567A] [&::-webkit-slider-thumb]:rounded-full hover:[&::-webkit-slider-thumb]:scale-110 transition-all"
               />
 
               {/* Icon Preview */}
@@ -432,13 +439,15 @@ import AnimatedIcon from "iconflow";
               { step: "2", title: "Import Styles", code: `import "iconflow/styles";`, lang: "javascript", note: "Add once in your app entry file" },
               { step: "3", title: "Use It", code: `import { Camera } from "lucide-react";\nimport AnimatedIcon from "iconflow";\n\n<AnimatedIcon\n  icon={Camera}\n  animation="spin"\n  trigger="hover"\n/>`, lang: "jsx", note: null },
             ].map(({ step, title, code, lang, note }) => (
-              <div key={step} className="rounded-xl overflow-hidden p-6 bg-cursor-light border border-transparent oklab-border flex flex-col">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="w-7 h-7 rounded-full bg-[#E8567A]/10 text-[#E8567A] font-mono-code text-[12px] font-bold flex items-center justify-center">{step}</span>
-                  <span className="font-section-heading text-[16px] text-primary font-medium">{title}</span>
+              <div key={step} className={`rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col border atmospheric-shadow transition-all hover:translate-y-[-2px] ${isDark ? 'bg-[#151515] border-white/5' : 'bg-white border-black/5'}`}>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-7 h-7 rounded-full bg-[#E8567A]/10 text-[#E8567A] font-mono-code text-[11px] font-bold flex items-center justify-center">{step}</span>
+                  <span className="font-section-heading text-[20px] text-primary tracking-tight">{title}</span>
                 </div>
-                <CodeBlock code={code} language={lang} showCopy={true} />
-                {note && <p className="font-mono-code text-[12px] text-on-surface-variant/60 mt-4">{note}</p>}
+                <div className="flex-1">
+                  <CodeBlock code={code} language={lang} showCopy={true} />
+                </div>
+                {note && <p className="font-mono-code text-[10px] uppercase tracking-widest text-on-surface-variant/50 mt-5 pt-5 border-t border-border-fallback-10">{note}</p>}
               </div>
             ))}
           </div>

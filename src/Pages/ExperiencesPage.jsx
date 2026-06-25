@@ -227,12 +227,12 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
       {/* Two Column: Info + Preview */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8">
         {/* Left — Controls */}
-        <div className="rounded-2xl overflow-hidden p-6 md:p-8 bg-cursor-light border oklab-border flex flex-col justify-between">
+        <div className={`rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col justify-between border atmospheric-shadow transition-all ${theme === 'dark' ? 'bg-[#151515] border-white/5' : 'bg-white border-black/5'}`}>
           <div>
-            <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-4 block">
+            <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase mb-3 block">
               Direction
             </span>
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className={`flex flex-wrap gap-1 p-1 rounded-lg border mb-8 ${theme === 'dark' ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}>
               {transition.directions.map((dir) => {
                 const Icon = getIcon(dir.iconName);
                 const isActive = direction === dir.key;
@@ -240,10 +240,10 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
                   <button
                     key={dir.key}
                     onClick={() => setDirection(dir.key)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono-code text-[12px] tracking-wide transition-all duration-200 cursor-pointer border ${
+                    className={`flex-1 min-w-[120px] flex items-center justify-center gap-2 px-3 py-2 rounded-md font-mono-code text-[11px] tracking-widest uppercase transition-all duration-300 cursor-pointer border ${
                       isActive
-                        ? "bg-error-warm text-white border-error-warm shadow-lg shadow-error-warm/20"
-                        : "border-border-fallback-10 text-on-surface-variant/60 hover:border-primary/25 hover:text-on-surface-variant"
+                        ? "bg-surface text-primary shadow-xs border-border-fallback-10"
+                        : "text-on-surface-variant/60 hover:text-primary border-transparent bg-transparent"
                     }`}
                   >
                     <Icon size={14} />
@@ -253,7 +253,7 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
               })}
             </div>
 
-            <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-4 block">
+            <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase mb-4 block">
               Setup
             </span>
             <div className="space-y-3 mb-8">
@@ -276,7 +276,7 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
           </div>
 
           <div>
-            <span className="font-system-micro text-[10px] text-on-surface-variant/50 tracking-widest uppercase mb-3 block">
+            <span className="font-mono-code text-[10px] text-on-surface-variant/60 tracking-[0.15em] uppercase mb-3 block">
               Browser Support
             </span>
             <div className="flex flex-wrap gap-2">
@@ -295,9 +295,9 @@ const TransitionCard = ({ transition, theme, onLaunchFullscreen }) => {
         </div>
 
         {/* Right — Mini Preview Animation + Demo Button */}
-        <div className="rounded-2xl overflow-hidden border oklab-border flex flex-col items-center justify-center bg-cursor-light p-6 md:p-8 gap-8">
+        <div className={`rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col items-center justify-center gap-8 border atmospheric-shadow transition-all ${theme === 'dark' ? 'bg-[#151515] border-white/5' : 'bg-white border-black/5'}`}>
           {/* Mini preview animation */}
-          <div className="w-full max-w-xs aspect-16/10 rounded-xl overflow-hidden border oklab-border relative shadow-lg">
+          <div className="w-full max-w-xs aspect-16/10 rounded-xl overflow-hidden border border-border-fallback-10 relative shadow-lg">
             {/* Mock light page */}
             <div className="absolute inset-0 bg-[#fdf8f7] flex flex-col p-4 gap-3">
               <div className="h-2 w-16 bg-[#11100a]/10 rounded-full" />
