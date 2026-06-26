@@ -13,6 +13,7 @@ import TemplatesPage from "./Pages/TemplatesPage";
 import IconFlowPage from "./Pages/IconFlowPage";
 import TemplatePreviewPage from "./Pages/TemplatePreviewPage";
 import ExperiencesPage from "./Pages/ExperiencesPage";
+import ThemeTransitionsPage from "./Pages/ThemeTransitionsPage";
 
 // ── Old component page imports (commented out — kept for rollback) ──
 // import ButtonComponentPage from "./Pages/Components/ButtonComponentPage";
@@ -75,10 +76,11 @@ const App = () => {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/iconflow" element={<IconFlowPage />} />
         <Route path="/experiences" element={<ExperiencesPage />} />
+        <Route path="/experiences/theme-transitions" element={<ThemeTransitionsPage />} />
         {/* Preview routes — no NavBar / Footer */}
         <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
       </Routes>
-      {!isPreview && !location.pathname.startsWith("/components") && !location.pathname.startsWith("/docs") && !location.pathname.startsWith("/experiences") && <Footer />}
+      {!isPreview && !location.pathname.startsWith("/components") && !location.pathname.startsWith("/docs") && <Footer />}
     </>
   );
 };
