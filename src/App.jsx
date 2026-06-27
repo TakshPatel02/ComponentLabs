@@ -14,6 +14,7 @@ import IconFlowPage from "./Pages/IconFlowPage";
 import TemplatePreviewPage from "./Pages/TemplatePreviewPage";
 import ExperiencesPage from "./Pages/ExperiencesPage";
 import ThemeTransitionsPage from "./Pages/ThemeTransitionsPage";
+import PageTransitionsPage from "./Pages/PageTransitionsPage";
 
 // ── Old component page imports (commented out — kept for rollback) ──
 // import ButtonComponentPage from "./Pages/Components/ButtonComponentPage";
@@ -77,6 +78,7 @@ const App = () => {
         <Route path="/iconflow" element={<IconFlowPage />} />
         <Route path="/experiences" element={<ExperiencesPage />} />
         <Route path="/experiences/theme-transitions" element={<ThemeTransitionsPage />} />
+        <Route path="/experiences/page-transitions" element={<PageTransitionsPage />} />
         {/* Preview routes — no NavBar / Footer */}
         <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
       </Routes>

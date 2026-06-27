@@ -153,32 +153,29 @@ const ExperiencesPage = () => {
             </Link>
 
             {/* Page Transitions Card */}
-            <div className="group relative rounded-4xl p-8 md:p-10 border oklab-border bg-surface-container/20 transition-all duration-500 flex flex-col gap-6 overflow-hidden opacity-80">
-              <div className="absolute inset-0 bg-surface/30 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center transition-all duration-300">
-                <div className="px-5 py-2.5 rounded-full bg-surface border border-border-fallback-10 text-on-surface-variant font-mono-code text-[13px] font-medium tracking-wide uppercase shadow-xl mb-3">
-                  Coming Soon
-                </div>
-                <p className="text-[14px] text-on-surface-variant/70 font-editorial-standard italic">
-                  Currently in the lab
-                </p>
-              </div>
-              
-              <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-2">
-                <Layout size={28} className="text-primary/60" />
+            <Link
+              to="/experiences/page-transitions"
+              className="group relative rounded-4xl p-8 md:p-10 border oklab-border bg-surface-container/30 hover:bg-surface-container/60 transition-all duration-500 flex flex-col gap-6 overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-500">
+                <Layout size={28} className="text-primary" />
               </div>
               <div>
-                <h3 className="font-section-heading text-[28px] text-primary/60 font-bold tracking-tight mb-3">
+                <h3 className="font-section-heading text-[28px] text-primary font-bold tracking-tight mb-3">
                   Page Transitions
                 </h3>
-                <p className="font-editorial-standard text-[16px] text-on-surface-variant/60 leading-relaxed">
-                  Fluid, native-feeling route transitions powered by Framer Motion. Slide, fade, and scale between your application's pages seamlessly.
+                <p className="font-editorial-standard text-[16px] text-on-surface-variant/80 leading-relaxed">
+                  Fluid, native-feeling route transitions powered by Framer Motion. Slide & Scale, Strip Wipe, and SVG Wave Draw effects with copy-paste code.
                 </p>
               </div>
               
-              <div className="mt-auto pt-6 flex items-center gap-2 text-on-surface-variant/40 font-mono-code text-[13px] font-bold tracking-wide uppercase">
-                Explore <ChevronRight size={16} />
+              <div className="mt-auto pt-6 flex items-center gap-2 text-primary font-mono-code text-[13px] font-bold tracking-wide uppercase group-hover:translate-x-3 transition-transform duration-300">
+                View Transitions <ChevronRight size={16} />
               </div>
-            </div>
+              
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 p-40 bg-primary/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 group-hover:bg-primary/10 transition-colors duration-500 pointer-events-none" />
+            </Link>
           </div>
         </div>
       </section>
