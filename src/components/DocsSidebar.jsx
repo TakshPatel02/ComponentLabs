@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight } from "lucide-react";
@@ -50,7 +51,7 @@ const DocsSidebar = () => {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  return (
+  return createPortal(
     <>
       {/* ── Mobile hamburger toggle (FAB on mobile) ── */}
       <button
@@ -88,7 +89,7 @@ const DocsSidebar = () => {
       {/* ── Sidebar ── */}
       <aside
         className={`
-          fixed top-0 left-0 w-60 h-screen z-40
+          fixed top-16 left-0 w-60 h-[calc(100vh-4rem)] z-40
           flex flex-col
           border-r border-border-fallback-10
           transition-transform duration-300 ease-in-out
@@ -97,20 +98,6 @@ const DocsSidebar = () => {
           md:translate-x-0
         `}
       >
-        {/* Logo */}
-        <Link
-          to="/"
-          className="
-            flex items-center h-16 px-5 shrink-0
-            border-b border-border-fallback-10
-            no-underline
-            group
-          "
-        >
-          <span className="font-['Space_Grotesk'] text-lg font-bold tracking-tighter text-primary group-hover:text-[#E8567A] transition-colors duration-150">
-            ComponentLab
-          </span>
-        </Link>
 
         {/* Scrollable nav */}
         <nav className="flex-1 overflow-y-auto overflow-x-hidden py-4 pb-12 custom-scrollbar">
@@ -183,7 +170,8 @@ const DocsSidebar = () => {
           })}
         </nav>
       </aside>
-    </>
+    </>,
+    document.body
   );
 };
 

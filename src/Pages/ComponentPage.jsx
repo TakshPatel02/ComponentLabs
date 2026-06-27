@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Highlight, themes } from "prism-react-renderer";
 import { AnimatePresence, motion } from "motion/react";
@@ -74,8 +75,8 @@ const SECTIONS = [
 
 // ── Right sidebar: "On This Page" anchor nav
 const OnThisPageNav = ({ activeSection, sections }) => {
-  return (
-    <nav className="hidden xl:block fixed right-0 top-0 w-50 h-screen pt-24 pr-6 pl-4 bg-surface">
+  return createPortal(
+    <nav className="hidden xl:block fixed right-0 top-16 w-50 h-[calc(100vh-4rem)] pt-8 pr-6 pl-4 bg-surface z-40">
       <div className="font-system-micro text-[10.5px] font-semibold uppercase tracking-widest mb-4 select-none text-on-surface-variant/60">
         On This Page
       </div>
@@ -105,7 +106,8 @@ const OnThisPageNav = ({ activeSection, sections }) => {
           );
         })}
       </ul>
-    </nav>
+    </nav>,
+    document.body
   );
 };
 
