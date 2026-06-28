@@ -1142,12 +1142,12 @@ const PageTransitionsPage = () => {
               {
                 step: "02",
                 title: "Grab the Code",
-                desc: "Click 'Show Setup Code' on the card of your chosen transition. You'll find all necessary files — context providers, transition components, app setup, and navbar integration.",
+                desc: "Click 'Show Setup Code' on the card of your chosen transition. Each effect is a single App.jsx file — just copy and paste it directly into your project.",
               },
               {
                 step: "03",
                 title: "Install in Your App",
-                desc: "Install framer-motion and react-router-dom, then paste the snippets into your project. For Strip Wipe and SVG Wave, use navigateWithTransition() instead of <Link>.",
+                desc: "Install framer-motion and react-router-dom, then replace your App.jsx. For Strip Wipe and SVG Wave, the code uses navigateWithTransition() instead of <Link>.",
               },
             ].map(({ step, title, desc }) => (
               <div
