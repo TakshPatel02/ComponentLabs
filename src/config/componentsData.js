@@ -115,12 +115,34 @@ export const componentsData = {
     published: true,
     usage: `import { EncryptedText } from "component-labs";
 
-<EncryptedText text="Access granted" />`,
+export default function Example() {
+  return <EncryptedText text="Access granted" className="text-xl font-bold" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '""', description: "Text to scramble and reveal. Required." },
-      { name: "interval", type: "number", default: "50", description: "Update interval in ms for each scramble tick." },
-      { name: "duration", type: "number", default: "3000", description: "Total reveal duration in ms." },
-      { name: "className", type: "string", default: '""', description: "Optional classes appended to the text wrapper." },
+          {
+                "name": "text",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom text property."
+          },
+          {
+                "name": "interval",
+                "type": "number",
+                "default": "50",
+                "description": "Custom interval property."
+          },
+          {
+                "name": "duration",
+                "type": "number",
+                "default": "3000",
+                "description": "Custom duration property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Randomized glyph scramble effect",
@@ -138,14 +160,46 @@ export const componentsData = {
     published: true,
     usage: `import { StripeWriter } from "component-labs";
 
-<StripeWriter text="Hello world" speed={0.02} delay={0.2} />`,
+export default function Example() {
+  return <StripeWriter text="Hello world" speed={0.02} delay={0.2} />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"Sample sentence"', description: "Text content to animate." },
-      { name: "delay", type: "number", default: "0", description: "Initial delay before animation starts (seconds)." },
-      { name: "speed", type: "number", default: "0.03", description: "Stagger speed per character (smaller = faster)." },
-      { name: "className", type: "string", default: '""', description: "Wrapper classes." },
-      { name: "cursorClassName", type: "string", default: '""', description: "Classes for the animated cursor block." },
-      { name: "triggerOnce", type: "boolean", default: "true", description: "Whether to animate only once when in view." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"Building the internet's infrastructure.\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "delay",
+                "type": "number",
+                "default": "0",
+                "description": "Custom delay property."
+          },
+          {
+                "name": "speed",
+                "type": "number",
+                "default": "0.03",
+                "description": "Custom speed property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "cursorClassName",
+                "type": "string",
+                "default": "\"bg-[#11100a]\"",
+                "description": "Custom cursorClassName property."
+          },
+          {
+                "name": "triggerOnce",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom triggerOnce property."
+          }
     ],
     features: [
       "Per-character staggered animation",
@@ -163,10 +217,22 @@ export const componentsData = {
     published: true,
     usage: `import { VelocityText } from "component-labs";
 
-<VelocityText text="Scroll to distort and slide this message" />`,
+export default function Example() {
+  return <VelocityText text="Scroll to distort" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"Built-in quote"', description: "Content rendered in the animated line." },
-      { name: "heightClass", type: "string", default: '"h-[400px]"', description: "Tailwind height utility for viewport and sticky area." },
+          {
+                "name": "text",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom text property."
+          },
+          {
+                "name": "heightClass",
+                "type": "string",
+                "default": "\"h-[400px]\"",
+                "description": "Custom heightClass property."
+          }
     ],
     features: [
       "Scroll-progress drives horizontal translation",
@@ -184,11 +250,34 @@ export const componentsData = {
     published: true,
     usage: `import { CreativeHighlightText } from "component-labs";
 
-<CreativeHighlightText text="Main heading" decorText="accent" para="Supporting paragraph." />`,
+export default function Example() {
+  return <CreativeHighlightText text="Main heading" decorText="accent" para="Supporting paragraph." />;
+}`,
     props: [
-      { name: "text", type: "string", default: '""', description: "Main headline text." },
-      { name: "decorText", type: "string", default: '""', description: "Highlighted/decoration word." },
-      { name: "para", type: "string", default: '""', description: "Supporting paragraph text." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"Design is meant to\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "decorText",
+                "type": "string",
+                "default": "\"communicate\"",
+                "description": "Custom decorText property."
+          },
+          {
+                "name": "subText",
+                "type": "string",
+                "default": "\"not just to decorate.\"",
+                "description": "Custom subText property."
+          },
+          {
+                "name": "para",
+                "type": "string",
+                "default": "\"A thoughtful design system ensures that everything has a purpose and a place",
+                "description": "Custom para property."
+          }
     ],
     features: [
       "Inline SVG accent decorations",
@@ -202,11 +291,73 @@ export const componentsData = {
     category: "TEXT & TYPOGRAPHY",
     description: "A premium typographic reveal where a headline splits vertically to uncover editorial insights on hover.",
     component: KineticSplitReveal,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { KineticSplitReveal } from "component-labs";
+
+export default function Example() {
+  return <KineticSplitReveal text="ENGINEERED" quote="The tension between the calculated and the felt." />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"ENGINEERED SOUL"', description: "Primary Gothic/sans-serif text to split." },
-      { name: "quote", type: "string", default: '"The tension between the calculated and the felt. A digital heart in a biological cage."', description: "Inner Serif quote/message revealed in the split." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"ENGINEERED SOUL\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "quote",
+                "type": "string",
+                "default": "\"The tension between the calculated and the felt. A digital heart in a biological cage.\"",
+                "description": "Custom quote property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "textColorClass",
+                "type": "string",
+                "default": "\"text-primary\"",
+                "description": "Custom textColorClass property."
+          },
+          {
+                "name": "quoteColorClass",
+                "type": "string",
+                "default": "\"text-[#cf2d56]\"",
+                "description": "Custom quoteColorClass property."
+          },
+          {
+                "name": "fontFamilyClass",
+                "type": "string",
+                "default": "\"font-sans\"",
+                "description": "Custom fontFamilyClass property."
+          },
+          {
+                "name": "quoteFontFamilyClass",
+                "type": "string",
+                "default": "\"font-serif\"",
+                "description": "Custom quoteFontFamilyClass property."
+          },
+          {
+                "name": "fontSizeClass",
+                "type": "string",
+                "default": "\"text-4xl sm:text-6xl md:text-8xl lg:text-[110px]\"",
+                "description": "Custom fontSizeClass property."
+          },
+          {
+                "name": "quoteFontSizeClass",
+                "type": "string",
+                "default": "\"text-base sm:text-lg md:text-xl lg:text-[24px]\"",
+                "description": "Custom quoteFontSizeClass property."
+          },
+          {
+                "name": "duration",
+                "type": "number",
+                "default": "800",
+                "description": "Custom duration property."
+          },
     ],
     features: [
       "Vertical split-and-reveal dynamic masking using clip-path",
@@ -221,10 +372,67 @@ export const componentsData = {
     category: "TEXT & TYPOGRAPHY",
     description: "A typographic reconstitution engine that elasticates and fragments letters on hover using physics springs.",
     component: GeometricReconstitution,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { GeometricReconstitution } from "component-labs";
+
+export default function Example() {
+  return <GeometricReconstitution text="DYNAMIC" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"ENGINEERED SOUL"', description: "Text content to fragment and reconstitute." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"ENGINEERED SOUL\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "textColorClass",
+                "type": "string",
+                "default": "\"text-primary\"",
+                "description": "Custom textColorClass property."
+          },
+          {
+                "name": "fontFamilyClass",
+                "type": "string",
+                "default": "\"font-sans\"",
+                "description": "Custom fontFamilyClass property."
+          },
+          {
+                "name": "fontSizeClass",
+                "type": "string",
+                "default": "\"text-4xl sm:text-6xl md:text-8xl lg:text-[110px]\"",
+                "description": "Custom fontSizeClass property."
+          },
+          {
+                "name": "stiffness",
+                "type": "number",
+                "default": "200",
+                "description": "Custom stiffness property."
+          },
+          {
+                "name": "damping",
+                "type": "number",
+                "default": "14",
+                "description": "Custom damping property."
+          },
+          {
+                "name": "mass",
+                "type": "number",
+                "default": "0.9",
+                "description": "Custom mass property."
+          },
+          {
+                "name": "scatterRangeX",
+                "type": "number",
+                "default": "60",
+                "description": "Custom scatterRangeX property."
+          }
     ],
     features: [
       "High-performance spring physics for fluid letter scatter and snap",
@@ -239,10 +447,91 @@ export const componentsData = {
     category: "TEXT & TYPOGRAPHY",
     description: "A physics-based typographic engine that simulates the weight and friction of digital atmosphere using spring layouts.",
     component: AtmosphericDistortion,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { AtmosphericDistortion } from "component-labs";
+
+export default function Example() {
+  return <AtmosphericDistortion text="ATMOSPHERE" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"ATMOSPHERIC"', description: "Text content to distort." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"ATMOSPHERIC\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "textColorClass",
+                "type": "string",
+                "default": "\"text-primary\"",
+                "description": "Custom textColorClass property."
+          },
+          {
+                "name": "hoverColor",
+                "type": "string",
+                "default": "\"#cf2d56\"",
+                "description": "Custom hoverColor property."
+          },
+          {
+                "name": "fontFamilyClass",
+                "type": "string",
+                "default": "\"font-sans\"",
+                "description": "Custom fontFamilyClass property."
+          },
+          {
+                "name": "fontSizeClass",
+                "type": "string",
+                "default": "\"text-[60px] sm:text-[100px] md:text-[125px] lg:text-[150px]\"",
+                "description": "Custom fontSizeClass property."
+          },
+          {
+                "name": "stiffness",
+                "type": "number",
+                "default": "160",
+                "description": "Custom stiffness property."
+          },
+          {
+                "name": "damping",
+                "type": "number",
+                "default": "10",
+                "description": "Custom damping property."
+          },
+          {
+                "name": "mass",
+                "type": "number",
+                "default": "0.8",
+                "description": "Custom mass property."
+          },
+          {
+                "name": "driftX",
+                "type": "number",
+                "default": "12",
+                "description": "Custom driftX property."
+          },
+          {
+                "name": "driftY",
+                "type": "number",
+                "default": "-25",
+                "description": "Custom driftY property."
+          },
+          {
+                "name": "rotateAngle",
+                "type": "number",
+                "default": "10",
+                "description": "Custom rotateAngle property."
+          },
+          {
+                "name": "blurAmount",
+                "type": "number",
+                "default": "4",
+                "description": "Custom blurAmount property."
+          }
     ],
     features: [
       "Physical spring-based text leaning, translation, and skewing",
@@ -258,57 +547,48 @@ export const componentsData = {
     description: "An elegant cryptographic-themed identity segment decoder that displays target segments using sliding brackets, angled pointer lines, and depth-of-field blurs.",
     component: IdentityDecoder,
     published: true,
-    usage: `// Default usage
-import { IdentityDecoder } from "component-labs";
+    usage: `import { IdentityDecoder } from "component-labs";
 
 export default function Example() {
-  return (
-    <div className="w-full min-h-90 flex items-center justify-center bg-zinc-950 text-white rounded-xl">
-      <IdentityDecoder 
-        identity="takshpatel02@component-labs.com" 
-        accentColor="#d24200"
-      />
-    </div>
-  );
-}
-
-// Customizing segments and ranges
-import { User, Shield, Terminal } from "lucide-react";
-
-export function CustomExample() {
-  const customSegments = [
-    {
-      key: "user",
-      label: "User",
-      icon: <User className="w-[18px] h-[18px]" />,
-      range: [0, 4] // "root"
-    },
-    {
-      key: "host",
-      label: "Host",
-      icon: <Shield className="w-[18px] h-[18px]" />,
-      range: [5, 14] // "localhost"
-    }
-  ];
-
-  return (
-    <div className="w-full min-h-90 flex items-center justify-center bg-zinc-950 text-white rounded-xl">
-      <IdentityDecoder
-        identity="root@localhost"
-        segments={customSegments}
-        accentColor="#10B981"
-        onSegmentChange={(key) => console.log("Active segment:", key)}
-      />
-    </div>
-  );
+  return <IdentityDecoder identity="user@domain.com" accentColor="#10B981" />;
 }`,
     props: [
-      { name: "identity", type: "string", default: '"takshpatel02@component-labs.com"', description: "The main target string to be decoded/split." },
-      { name: "segments", type: "Array", default: "Built-in list", description: "Array of segment objects mapping specific interactive items to indices in the main identity string. Each segment has the structure: { key: string, label: string, icon: ReactNode, range: [number, number] }." },
-      { name: "accentColor", type: "string", default: '"#d24200"', description: "Hover highlight and connector line hex/color value." },
-      { name: "springConfig", type: "object", default: '{ type: "spring", stiffness: 200, damping: 24 }', description: "Custom spring configuration object for the bracket and connector lines' motion." },
-      { name: "onSegmentChange", type: "function", default: "undefined", description: "Callback event handler triggered when active segment changes on hover or touch." },
-      { name: "className", type: "string", default: '""', description: "CSS wrapper class overrides." },
+          {
+                "name": "identity",
+                "type": "string",
+                "default": "\"takshpatel02@component-labs.com\"",
+                "description": "Custom identity property."
+          },
+          {
+                "name": "segments",
+                "type": "any",
+                "default": "defaultSegments",
+                "description": "Custom segments property."
+          },
+          {
+                "name": "accentColor",
+                "type": "string",
+                "default": "\"#d24200\"",
+                "description": "Custom accentColor property."
+          },
+          {
+                "name": "springConfig",
+                "type": "any",
+                "default": "defaultSpringConfig",
+                "description": "Custom springConfig property."
+          },
+          {
+                "name": "onSegmentChange",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSegmentChange property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Combines modern typography with dynamic mathematical SVGs that draw smooth path alignments between cursor states and raw characters.",
@@ -324,13 +604,37 @@ export function CustomExample() {
     category: "BUTTONS",
     description: "Button with an animated bottom-to-top fill effect on hover.",
     component: FillButton,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { FillButton } from "component-labs";
+
+export default function Example() {
+  return <FillButton>Hover me</FillButton>;
+}`,
     props: [
-      { name: "children", type: "string", default: '""', description: "Button label content." },
-      { name: "onClick", type: "function", default: "undefined", description: "Click handler callback." },
-      { name: "className", type: "string", default: '""', description: "Additional CSS classes." },
-      { name: "fillColorClass", type: "string", default: '"bg-primary"', description: "Tailwind background class for the fill effect." },
+          {
+                "name": "children",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom children property."
+          },
+          {
+                "name": "onClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onClick property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "fillColorClass",
+                "type": "string",
+                "default": "\"bg-[#11100a] dark:bg-[#fdf8f7]\"",
+                "description": "Custom fillColorClass property."
+          }
     ],
     features: [
       "Two-phase CSS fill animation",
@@ -347,23 +651,64 @@ export function CustomExample() {
     published: true,
     usage: `import { UploadButton } from "component-labs";
 
-<UploadButton
-  onUpload={async (files) => {
-    const formData = new FormData();
-    formData.append("file", files[0]);
-    await fetch("/api/upload", { method: "POST", body: formData });
-  }}
-/>`,
+export default function Example() {
+  return <UploadButton onUpload={async (files) => {}} />;
+}`,
     props: [
-      { name: "onUpload", type: "function", default: "undefined", description: "Async upload handler that receives the selected FileList and should return a promise. Required." },
-      { name: "accept", type: "string", default: "undefined", description: "Accepted file types, e.g. 'image/*' or '.pdf'." },
-      { name: "multiple", type: "boolean", default: "false", description: "Allows selecting multiple files." },
-      { name: "idleText", type: "string", default: '"Upload File"', description: "Label shown before upload starts." },
-      { name: "uploadingText", type: "string", default: '"Uploading..."', description: "Label shown while the upload promise is pending." },
-      { name: "successText", type: "string", default: '"Complete"', description: "Label shown after the upload resolves." },
-      { name: "className", type: "string", default: '""', description: "Additional classes for the button wrapper." },
-      { name: "onSuccess", type: "function", default: "undefined", description: "Optional callback fired after a successful upload." },
-      { name: "onError", type: "function", default: "undefined", description: "Optional callback fired if the upload promise rejects." },
+          {
+                "name": "onUpload",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onUpload property."
+          },
+          {
+                "name": "accept",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom accept property."
+          },
+          {
+                "name": "multiple",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom multiple property."
+          },
+          {
+                "name": "idleText",
+                "type": "string",
+                "default": "\"Upload File\"",
+                "description": "Custom idleText property."
+          },
+          {
+                "name": "uploadingText",
+                "type": "string",
+                "default": "\"Uploading...\"",
+                "description": "Custom uploadingText property."
+          },
+          {
+                "name": "successText",
+                "type": "string",
+                "default": "\"Complete\"",
+                "description": "Custom successText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "onSuccess",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSuccess property."
+          },
+          {
+                "name": "onError",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onError property."
+          }
     ],
     features: [
       "Three states: idle, uploading, success",
@@ -383,10 +728,22 @@ export function CustomExample() {
     published: true,
     usage: `import { MagnetButton } from "component-labs";
 
-<MagnetButton text="Try this" onClick={() => alert("clicked")} />`,
+export default function Example() {
+  return <MagnetButton text="Try this" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"Hover Me"', description: "Label shown inside the button." },
-      { name: "onClick", type: "function", default: "undefined", description: "Optional click handler." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"Hover Me\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "onClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onClick property."
+          }
     ],
     features: [
       "Magnetic cursor-follow effect",
@@ -403,10 +760,22 @@ export function CustomExample() {
     published: true,
     usage: `import { EncryptButton } from "component-labs";
 
-<EncryptButton targetText="Secure Now" className="my-4" />`,
+export default function Example() {
+  return <EncryptButton targetText="Secure Now" />;
+}`,
     props: [
-      { name: "targetText", type: "string", default: '"Encrypt data"', description: "Text shown on the button, used for scramble animation." },
-      { name: "className", type: "string", default: '""', description: "Appended to the button class list." },
+          {
+                "name": "targetText",
+                "type": "string",
+                "default": "\"Encrypt data\"",
+                "description": "Custom targetText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Hover-triggered scramble animation",
@@ -420,10 +789,19 @@ export function CustomExample() {
     category: "BUTTONS",
     description: "GitHub stars button with cinematic counter animation and glint sweep.",
     component: GithubStarsButton,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { GithubStarsButton } from "component-labs";
+
+export default function Example() {
+  return <GithubStarsButton targetStars={12500} />;
+}`,
     props: [
-      { name: "targetStars", type: "number", default: "8492", description: "Target star count for the counter animation." },
+          {
+                "name": "targetStars",
+                "type": "number",
+                "default": "8492",
+                "description": "Custom targetStars property."
+          }
     ],
     features: [
       "Cinematic deceleration counter animation",
@@ -441,9 +819,16 @@ export function CustomExample() {
     published: true,
     usage: `import { NeumorphismButton } from "component-labs";
 
-<NeumorphismButton text="Start" />`,
+export default function Example() {
+  return <NeumorphismButton text="Start" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"Initialize AI"', description: "Label shown inside the button." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"Initialize AI\"",
+                "description": "Custom text property."
+          }
     ],
     features: [
       "Neumorphic soft shadow styling",
@@ -457,15 +842,55 @@ export function CustomExample() {
     category: "BUTTONS",
     description: "A digital ink trace following the vector boundary of the button container with modern kinetic particle tracking.",
     component: GeometricPathButton,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { GeometricPathButton } from "component-labs";
+
+export default function Example() {
+  return <GeometricPathButton text="Trace Path" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"Trace Path"', description: "Label shown inside the button." },
-      { name: "onClick", type: "function", default: "undefined", description: "Optional click handler callback." },
-      { name: "strokeColor", type: "string", default: '"#cf2d56"', description: "Color of the stroke vector outline path." },
-      { name: "particleColor", type: "string", default: '"#cf2d56"', description: "Color of the kinetic follow particle." },
-      { name: "className", type: "string", default: '""', description: "Additional classes for the inner button element." },
-      { name: "wrapperClassName", type: "string", default: '""', description: "Additional classes for the outer wrapper div container." },
+          {
+                "name": "children",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom children property."
+          },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"Trace Path\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "onClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onClick property."
+          },
+          {
+                "name": "strokeColor",
+                "type": "string",
+                "default": "\"#cf2d56\"",
+                "description": "Custom strokeColor property."
+          },
+          {
+                "name": "particleColor",
+                "type": "string",
+                "default": "\"#cf2d56\"",
+                "description": "Custom particleColor property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "wrapperClassName",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom wrapperClassName property."
+          }
     ],
     features: [
       "Dynamic ink trace outline vector animation on hover",
@@ -480,15 +905,49 @@ export function CustomExample() {
     category: "BUTTONS",
     description: "A physics-driven theme toggle with elastic spring motion and cinematic icon rotation.",
     component: CinematicToggle,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CinematicToggle } from "component-labs";
+
+export default function Example() {
+  return <CinematicToggle onToggle={(state) => console.log(state)} />;
+}`,
     props: [
-      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new boolean state on each toggle." },
-      { name: "defaultActive", type: "boolean", default: "false", description: "Initial toggle state." },
-      { name: "activeLabel", type: "string", default: '"LUNAR_ACTIVE"', description: "Status text shown when toggled on." },
-      { name: "inactiveLabel", type: "string", default: '"SOLAR_ACTIVE"', description: "Status text shown when toggled off." },
-      { name: "showLabel", type: "boolean", default: "true", description: "Whether to render the status label below the toggle." },
-      { name: "className", type: "string", default: '""', description: "Additional classes for the outer wrapper." },
+          {
+                "name": "onToggle",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onToggle property."
+          },
+          {
+                "name": "defaultActive",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom defaultActive property."
+          },
+          {
+                "name": "activeLabel",
+                "type": "string",
+                "default": "\"LUNAR_ACTIVE\"",
+                "description": "Custom activeLabel property."
+          },
+          {
+                "name": "inactiveLabel",
+                "type": "string",
+                "default": "\"SOLAR_ACTIVE\"",
+                "description": "Custom inactiveLabel property."
+          },
+          {
+                "name": "showLabel",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom showLabel property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "GPU-accelerated x transform for thumb slide",
@@ -505,11 +964,25 @@ export function CustomExample() {
     category: "NUMBERS & COUNTERS",
     description: "An interactive number input with smooth spring-physics digit scrolling animation. Digits roll from bottom to top as you type.",
     component: NumberFlowInput,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { NumberFlowInput } from "component-labs";
+
+export default function Example() {
+  return <NumberFlowInput maxDigits={4} />;
+}`,
     props: [
-      { name: "maxDigits", type: "number", default: "3", description: "Maximum number of digit columns to display." },
-      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the outer container." },
+          {
+                "name": "maxDigits",
+                "type": "number",
+                "default": "10",
+                "description": "Custom maxDigits property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Spring-physics digit scroll animation",
@@ -526,10 +999,25 @@ export function CustomExample() {
     category: "NUMBERS & COUNTERS",
     description: "A premium, high-performance kinetic countdown timer with interactive play, pause, and reset controls.",
     component: KineticNumberShowcase,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { KineticNumberShowcase } from "component-labs";
+
+export default function Example() {
+  return <KineticNumberShowcase />;
+}`,
     props: [
-      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the outer container." },
+          {
+                "name": "initialTime",
+                "type": "number",
+                "default": "60",
+                "description": "Custom initialTime property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Interactive play, pause, and manual rotate-reset controls",
@@ -548,33 +1036,54 @@ export function CustomExample() {
     description: "A multi-step, interactive terminal-themed contact form with macOS window styling and custom typewriter prompts.",
     component: TerminalContactForm,
     published: true,
-    usage: `import { TerminalContactForm } from "../components/FormComponents/TerminalContactForm";
+    usage: `import { TerminalContactForm } from "component-labs";
 
-// Default usage
-<TerminalContactForm />
-
-// Custom feedback terminal example
-const customSteps = [
-  { key: "username", prompt: "Hello! What's your ", hl: "GitHub username?", type: "text", ph: "octocat" },
-  { key: "rating", prompt: "Awesome! How would you rate ", hl: "our library (1-10)?", type: "number", ph: "10" },
-  { key: "notes", prompt: "Perfect, any ", hl: "final thoughts?", type: "text", ph: "It's awesome!" }
-];
-
-<TerminalContactForm
-  fields={customSteps}
-  greetingText="Welcome to the feedback terminal!"
-  terminalTitle="feedback@componentlabs.in"
-  successMessage="Thanks for the feedback! 🚀"
-  onSubmit={(data) => console.log("Received data:", data)}
-/>`,
+export default function Example() {
+  return <TerminalContactForm successMessage="Sent!" />;
+}`,
     props: [
-      { name: "fields", type: "array", default: "Name/Email/Description array", description: "Custom list of input step objects, shaped like { key, prompt, hl, type, ph }." },
-      { name: "greetingText", type: "string", default: '"Hey there! We\'re excited to link 🔗"', description: "The typewriter greeting shown when the component mounts." },
-      { name: "terminalTitle", type: "string", default: '"contact@componentlabs.in"', description: "The label in the center of the terminal title bar." },
-      { name: "onSubmit", type: "function", default: "undefined", description: "Callback function triggered on successful form submission: (data) => void, where data is an object of entered answers." },
-      { name: "successMessage", type: "string", default: '"Sent! We\'ll get back to you ASAP 😎"', description: "Custom message shown after the form has been successfully sent." },
-      { name: "typerSpeed", type: "number", default: "30", description: "Typing animation speed in milliseconds per character." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for outer container overrides." },
+          {
+                "name": "fields",
+                "type": "any",
+                "default": "defaultFields",
+                "description": "Custom fields property."
+          },
+          {
+                "name": "greetingText",
+                "type": "string",
+                "default": "\"Hey there! We're excited to link \ud83d\udd17\"",
+                "description": "Custom greetingText property."
+          },
+          {
+                "name": "terminalTitle",
+                "type": "string",
+                "default": "\"contact@componentlabs.in\"",
+                "description": "Custom terminalTitle property."
+          },
+          {
+                "name": "onSubmit",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSubmit property."
+          },
+          {
+                "name": "successMessage",
+                "type": "string",
+                "default": "\"Sent! We'll get back to you ASAP \ud83d\ude0e\"",
+                "description": "Custom successMessage property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "typerSpeed",
+                "type": "number",
+                "default": "30",
+                "description": "Custom typerSpeed property."
+          }
     ],
     features: [
       "Interactive multi-step form flow with typewriter prompt animations",
@@ -594,10 +1103,43 @@ const customSteps = [
     category: "FORMS & IDENTITY",
     description: "AI-style prompt input with chat bubble response display.",
     component: PromptBar,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { PromptBar } from "component-labs";
+
+export default function Example() {
+  return <PromptBar placeholder="Ask AI..." />;
+}`,
     props: [
-      { name: "placeholder", type: "string", default: '"Explain the architecture..."', description: "Placeholder text for the input field." },
+          {
+                "name": "onSubmit",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSubmit property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"The Prompt Bar\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "\"Intelligent Input\"",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "placeholder",
+                "type": "string",
+                "default": "\"Explain the architecture of these forms...\"",
+                "description": "Custom placeholder property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Chat bubble response display",
@@ -612,10 +1154,43 @@ const customSteps = [
     category: "FORMS & IDENTITY",
     description: "Command palette search input with CMD+K shortcut and simulated search.",
     component: CommandSearch,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CommandSearch } from "component-labs";
+
+export default function Example() {
+  return <CommandSearch placeholder="Search components..." />;
+}`,
     props: [
-      { name: "placeholder", type: "string", default: '"Find component..."', description: "Placeholder text for the search input." },
+          {
+                "name": "onSearch",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSearch property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Command Search\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "\"Command Palette\"",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "footerQuote",
+                "type": "string",
+                "default": "\"Efficiency through spatial memory and rapid keyboard interaction.\"",
+                "description": "Custom footerQuote property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "CMD+K keyboard shortcut toggle",
@@ -630,10 +1205,37 @@ const customSteps = [
     category: "FORMS & IDENTITY",
     description: "Clean authentication form with loading and success states.",
     component: MinimalAuth,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { MinimalAuth } from "component-labs";
+
+export default function Example() {
+  return <MinimalAuth onSubmit={(email, pass) => {}} />;
+}`,
     props: [
-      { name: "onSubmit", type: "function", default: "undefined", description: "Callback fired on form submission with email and password." },
+          {
+                "name": "onSignIn",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSignIn property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Minimal Auth\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "\"Entry Point\"",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Three states: idle, loading, success",
@@ -648,10 +1250,37 @@ const customSteps = [
     category: "FORMS & IDENTITY",
     description: "ContentEditable rich text editor with toolbar and AI-thinking indicator.",
     component: RichComposer,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { RichComposer } from "component-labs";
+
+export default function Example() {
+  return <RichComposer placeholder="Write story..." />;
+}`,
     props: [
-      { name: "placeholder", type: "string", default: '"Begin crafting your narrative..."', description: "Placeholder text shown when editor is empty." },
+          {
+                "name": "onPublish",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onPublish property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Rich Composer\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "placeholder",
+                "type": "string",
+                "default": "\"Begin crafting your narrative...\"",
+                "description": "Custom placeholder property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Bold, italic, list, link formatting",
@@ -672,10 +1301,22 @@ const customSteps = [
     published: true,
     usage: `import { ClipPathLinks } from "component-labs";
 
-<ClipPathLinks />`,
+export default function Example() {
+  return <ClipPathLinks />;
+}`,
     props: [
-      { name: "groups", type: "array", default: "Built-in icon groups", description: "Array of rows, each row is an array of { Icon, href, label } objects." },
-      { name: "className", type: "string", default: '""', description: "Optional classes appended to the outer wrapper." },
+          {
+                "name": "groups",
+                "type": "any",
+                "default": "DEFAULT_LINK_GROUPS",
+                "description": "Custom groups property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Clip-path hover animation per link box",
@@ -691,12 +1332,24 @@ const customSteps = [
     description: "Full-section color takeover navigation with split-text animation.",
     component: TakeoverLinks,
     published: true,
-    usage: `import TakeoverLinks from "component-labs";
+    usage: `import { TakeoverLinks } from "component-labs";
 
-<TakeoverLinks links={[{ label: "WORK", href: "/work", color: "#2f4858" }]} />`,
+export default function Example() {
+  return <TakeoverLinks />;
+}`,
     props: [
-      { name: "links", type: "array", default: "Built-in ART/DESIGN/PHOTOS/CONTACT set", description: "Array of { label, href, color } objects." },
-      { name: "className", type: "string", default: '""', description: "Optional classes appended to the outer section." },
+          {
+                "name": "links",
+                "type": "any",
+                "default": "DEFAULT_LINKS",
+                "description": "Custom links property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Full-section color takeover on hover",
@@ -712,11 +1365,24 @@ const customSteps = [
     description: "Parallax link rows with mouse-driven scramble and image effects.",
     component: NeuralHoverLinks,
     published: true,
-    usage: `import NeuralHoverLinks from "component-labs";
+    usage: `import { NeuralHoverLinks } from "component-labs";
 
-<NeuralHoverLinks />`,
+export default function Example() {
+  return <NeuralHoverLinks />;
+}`,
     props: [
-      { name: "links", type: "array", default: "Internal LINKS_DATA", description: "Array of { heading, subheading, imgSrc, href } objects (requires refactor to accept)." },
+          {
+                "name": "links",
+                "type": "any",
+                "default": "LINKS_DATA",
+                "description": "Custom links property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Mouse-position parallax effect",
@@ -733,10 +1399,43 @@ const customSteps = [
     category: "CARDS & LAYOUTS",
     description: "Interactive card cycling through idle, processing, and success states.",
     component: StateSynthesisCard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { StateSynthesisCard } from "component-labs";
+
+export default function Example() {
+  return <StateSynthesisCard />;
+}`,
     props: [
-      { name: "states", type: "array", default: "Built-in STATES array", description: "Array of state objects with key, title, sub, icon, and counter properties." },
+          {
+                "name": "states",
+                "type": "any",
+                "default": "STATES",
+                "description": "Custom states property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"State Synthesis\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "\"Seamlessly transitioning between user input and background processing.\"",
+                "description": "Custom description property."
+          },
+          {
+                "name": "badgeText",
+                "type": "string",
+                "default": "\"Interactive Morph\"",
+                "description": "Custom badgeText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Three morphing states with AnimatePresence",
@@ -752,11 +1451,31 @@ const customSteps = [
     category: "CARDS & LAYOUTS",
     description: "Step-by-step agentic workflow card with accept/reject review.",
     component: AgenticFlowCard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { AgenticFlowCard } from "component-labs";
+
+export default function Example() {
+  return <AgenticFlowCard delay={1000} />;
+}`,
     props: [
-      { name: "steps", type: "array", default: "Built-in STEPS array", description: "Array of step objects with label, desc, dot, and color." },
-      { name: "delay", type: "number", default: "1200", description: "Delay in ms between each step reveal." },
+          {
+                "name": "steps",
+                "type": "any",
+                "default": "STEPS",
+                "description": "Custom steps property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Agentic Flow\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Sequential step reveal animation",
@@ -772,10 +1491,37 @@ const customSteps = [
     category: "CARDS & LAYOUTS",
     description: "Layered card stack with atmospheric shadows and fan-out animation.",
     component: DepthPerceptionCard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { DepthPerceptionCard } from "component-labs";
+
+export default function Example() {
+  return <DepthPerceptionCard initialLayers={3} />;
+}`,
     props: [
-      { name: "initialLayers", type: "number", default: "2", description: "Initial number of stacked layers." },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Depth Perception\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "\"Layered elements using atmospheric shadows and Z-index offsets.\"",
+                "description": "Custom description property."
+          },
+          {
+                "name": "buttonText",
+                "type": "string",
+                "default": "\"Execute Function\"",
+                "description": "Custom buttonText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Dynamic layer addition (up to 5)",
@@ -791,10 +1537,37 @@ const customSteps = [
     category: "CARDS & LAYOUTS",
     description: "Three-tier pricing card layout with popular badge and hover lift.",
     component: PricingCard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { PricingCard } from "component-labs";
+
+export default function Example() {
+  return <PricingCard />;
+}`,
     props: [
-      { name: "plans", type: "array", default: "Built-in PLANS array", description: "Array of plan objects with name, price, period, features, cta, and popular flag." },
+          {
+                "name": "plans",
+                "type": "any",
+                "default": "PLANS",
+                "description": "Custom plans property."
+          },
+          {
+                "name": "title",
+                "type": "any",
+                "default": "Engineered for Craft.",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "any",
+                "default": "Transparent pricing for developers who prioritize micro-alignment",
+                "description": "Custom description property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Three-tier pricing layout",
@@ -811,32 +1584,54 @@ const customSteps = [
     description: "An elegant, physics-driven 3D tilt card with a dynamic radial glare effect tracking the cursor.",
     component: PremiumTiltCard,
     published: true,
-    usage: `import { PremiumTiltCard } from "../components/CardComponents/PremiumTiltCard";
+    usage: `import { PremiumTiltCard } from "component-labs";
 
-// Default usage
-<PremiumTiltCard />
-
-// Custom cards with React Router Link
-import { Link } from "react-router-dom";
-import { Folder } from "lucide-react";
-
-<PremiumTiltCard
-  title="Project Folder"
-  description="Manage all your visual and asset files cleanly in a premium physics-driven card layout."
-  href="/projects"
-  as={Link}
-  icon={<Folder className="w-5 h-5 text-neutral-400" />}
-  actionText="Open Projects"
-/>`,
+export default function Example() {
+  return <PremiumTiltCard title="Dashboard" />;
+}`,
     props: [
-      { name: "title", type: "string", default: '"Premium Interface"', description: "Primary heading text on the card." },
-      { name: "description", type: "string", default: "Original depth description", description: "Supporting copy description below the title." },
-      { name: "href", type: "string", default: '"#"', description: "Destination path/URL." },
-      { name: "as", type: "element / string", default: '"a"', description: "Polymorphic wrapper for the action link. Defaults to standard HTML anchor to avoid SSR router failures." },
-      { name: "icon", type: "element / string", default: '"⌘"', description: "Minimal circular header badge content. Can be text or full custom SVG element." },
-      { name: "actionText", type: "string", default: '"Explore Component"', description: "Label for the bottom action link." },
-      { name: "rotationRange", type: "number", default: "18", description: "Rotation threshold sensitivity on hover mouse movements." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for outer card overrides." },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Premium Interface\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "A minimal",
+                "description": "Custom description property."
+          },
+          {
+                "name": "href",
+                "type": "string",
+                "default": "#",
+                "description": "Custom href property."
+          },
+          {
+                "name": "icon",
+                "type": "string",
+                "default": "\u2318",
+                "description": "Custom icon property."
+          },
+          {
+                "name": "actionText",
+                "type": "string",
+                "default": "\"Explore Component\"",
+                "description": "Custom actionText property."
+          },
+          {
+                "name": "rotationRange",
+                "type": "number",
+                "default": "18",
+                "description": "Custom rotationRange property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Interactive 3D tilt physics using mouse coordinates tracking",
@@ -862,9 +1657,22 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { MacKeyboard } from "component-labs";
 
-<MacKeyboard />`,
+export default function Example() {
+  return <MacKeyboard soundSrc="/assets/click.mp3" />;
+}`,
     props: [
-      { name: "soundSrc", type: "string", default: '"/sound.ogg"', description: "Path to the keyboard sound sprite file. Host apps must serve this asset from the public root." },
+          {
+                "name": "soundSrc",
+                "type": "string",
+                "default": "\"/sound.ogg\"",
+                "description": "Click sound URL."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom classes."
+          }
     ],
     features: [
       "Full QWERTY layout with function keys",
@@ -885,9 +1693,22 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { MacKeyboardDark } from "component-labs";
 
-<MacKeyboardDark />`,
+export default function Example() {
+  return <MacKeyboardDark soundSrc="/assets/click.mp3" />;
+}`,
     props: [
-      { name: "soundSrc", type: "string", default: '"/sound.ogg"', description: "Path to the keyboard sound sprite file. Host apps must serve this asset from the public root." },
+          {
+                "name": "soundSrc",
+                "type": "string",
+                "default": "\"/sound.ogg\"",
+                "description": "Click sound URL."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom classes."
+          }
     ],
     features: [
       "Dark color scheme keyboard",
@@ -905,10 +1726,31 @@ import { Folder } from "lucide-react";
     category: "KEYBOARDS",
     description: "Vintage typewriter-style keyboard with round keycaps and glass dome effect.",
     component: TypewriterKeyboard,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { TypewriterKeyboard } from "component-labs";
+
+export default function Example() {
+  return <TypewriterKeyboard soundSrc="/assets/type.mp3" />;
+}`,
     props: [
-      { name: "soundSrc", type: "string", default: '"/sound.ogg"', description: "Path to the keyboard sound sprite file." },
+          {
+                "name": "soundUrl",
+                "type": "string",
+                "default": "\"/sound.ogg\"",
+                "description": "Custom soundUrl property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "keyTextClass",
+                "type": "string",
+                "default": "\"text-[#1a1a1a]\"",
+                "description": "Custom keyTextClass property."
+          }
     ],
     features: [
       "Vintage round keycap design",
@@ -926,10 +1768,25 @@ import { Folder } from "lucide-react";
     category: "GRIDS",
     description: "Bento-style stats grid with animated counters and sparkline graphs.",
     component: BentoStatsGrid,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { BentoStatsGrid } from "component-labs";
+
+export default function Example() {
+  return <BentoStatsGrid />;
+}`,
     props: [
-      { name: "stats", type: "array", default: "Built-in stat cards", description: "Array of stat card configs with title, value, tag, accentColor, suffix, and showGraph." },
+          {
+                "name": "stats",
+                "type": "any",
+                "default": "defaultStats",
+                "description": "Custom stats property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Animated number counters",
@@ -945,10 +1802,25 @@ import { Folder } from "lucide-react";
     category: "GRIDS",
     description: "CSS columns masonry grid with showcase cards and preview areas.",
     component: MasonryShowcaseGrid,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { MasonryShowcaseGrid } from "component-labs";
+
+export default function Example() {
+  return <MasonryShowcaseGrid />;
+}`,
     props: [
-      { name: "items", type: "array", default: "Built-in showcase cards", description: "Array of items with category, title, previewHeight, and caption." },
+          {
+                "name": "items",
+                "type": "any",
+                "default": "defaultItems",
+                "description": "Custom items property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "CSS columns masonry layout",
@@ -964,10 +1836,25 @@ import { Folder } from "lucide-react";
     category: "GRIDS",
     description: "3x2 feature grid with crosshair markers and full-cell color inversion on hover.",
     component: CrosshairFeatureGrid,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CrosshairFeatureGrid } from "component-labs";
+
+export default function Example() {
+  return <CrosshairFeatureGrid />;
+}`,
     props: [
-      { name: "features", type: "array", default: "Built-in 6 features", description: "Array of feature objects with title, description, and icon." },
+          {
+                "name": "features",
+                "type": "any",
+                "default": "defaultFeatures",
+                "description": "Custom features property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "3x2 responsive grid",
@@ -988,9 +1875,64 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { StaggeredEntranceHero } from "component-labs";
 
-<StaggeredEntranceHero />`,
+export default function Example() {
+  return <StaggeredEntranceHero title="Welcome to Labs" />;
+}`,
     props: [
-      { name: "title", type: "string", default: '"Design systems with literary soul."', description: "Main hero headline (hardcoded, customize via source)." },
+          {
+                "name": "titlePre",
+                "type": "string",
+                "default": "\"Design systems with\"",
+                "description": "Custom titlePre property."
+          },
+          {
+                "name": "highlightWord",
+                "type": "string",
+                "default": "\"literary\"",
+                "description": "Custom highlightWord property."
+          },
+          {
+                "name": "titlePost",
+                "type": "string",
+                "default": "\"soul.\"",
+                "description": "Custom titlePost property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "We combine the aggressive engineered precision of compressed gothic typography with the warm calligraphic soul of classic serifs. A delicate balance of logic and emotion.",
+                "description": "Custom description property."
+          },
+          {
+                "name": "primaryButtonText",
+                "type": "string",
+                "default": "\"Explore Typography\"",
+                "description": "Custom primaryButtonText property."
+          },
+          {
+                "name": "secondaryButtonText",
+                "type": "string",
+                "default": "\"View Guidelines\"",
+                "description": "Custom secondaryButtonText property."
+          },
+          {
+                "name": "onPrimaryClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onPrimaryClick property."
+          },
+          {
+                "name": "onSecondaryClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSecondaryClick property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Spring-physics stagger animation",
@@ -1006,10 +1948,19 @@ import { Folder } from "lucide-react";
     category: "HERO SECTIONS",
     description: "Interactive hero showcase with morphing button, parameter dial, accordion, and data table.",
     component: DynamicHero,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { DynamicHero } from "component-labs";
+
+export default function Example() {
+  return <DynamicHero />;
+}`,
     props: [
-      { name: "sections", type: "array", default: "Built-in 4 sub-components", description: "Array of interactive section components (hardcoded)." },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Morphing action button with progress",
@@ -1028,28 +1979,59 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { AuroraHero } from "component-labs";
 
-// Default usage
-<AuroraHero />
-
-// Custom configuration example
-<AuroraHero
-  badgeText="New Update"
-  title="Create beautifully interactive React dashboards in seconds"
-  description="Bring your interfaces to life with fully customizable components built with Tailwind CSS and Framer Motion."
-  ctaText="Explore Docs"
-  starCount={150}
-  colors={["#FF0055", "#00FF55", "#0055FF"]}
-  onCtaClick={() => console.log("cta clicked!")}
-/>`,
+export default function Example() {
+  return <AuroraHero badgeText="v2.0 Live" title="Next Gen UI" />;
+}`,
     props: [
-      { name: "badgeText", type: "string", default: '"Beta Now Live!"', description: "Supporting status tag above heading. Set to null or \"\" to hide it." },
-      { name: "title", type: "string", default: '"Decrease your SaaS churn by over 90%"', description: "Main title text." },
-      { name: "description", type: "string", default: "Built-in retention text", description: "Paragraph description copy." },
-      { name: "ctaText", type: "string", default: '"Start free trial"', description: "Call to action button label." },
-      { name: "onCtaClick", type: "function", default: "undefined", description: "Click event callback handler for CTA button." },
-      { name: "starCount", type: "number", default: "250", description: "Density of the canvas-based starfield." },
-      { name: "colors", type: "array", default: "Signature mint/blue/lavender/pink sequence", description: "Custom hex color strings for the animated aurora gradient background." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
+          {
+                "name": "badgeText",
+                "type": "string",
+                "default": "\"Beta Now Live!\"",
+                "description": "Custom badgeText property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Decrease your SaaS churn by over 90%\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "Predict at-risk users before they leave. Our AI-powered retention engine identifies churn signals in real-time so you can act fast and keep your customers engaged.",
+                "description": "Custom description property."
+          },
+          
+          {
+                "name": "ctaText",
+                "type": "string",
+                "default": "\"Start free trial\"",
+                "description": "Custom ctaText property."
+          },
+          {
+                "name": "onCtaClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onCtaClick property."
+          },
+          {
+                "name": "starCount",
+                "type": "number",
+                "default": "250",
+                "description": "Custom starCount property."
+          },
+          {
+                "name": "colors",
+                "type": "any",
+                "default": "DEFAULT_AURORA_COLORS",
+                "description": "Custom colors property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Twinkling starfield background using HTML5 Canvas",
@@ -1071,10 +2053,37 @@ import { Folder } from "lucide-react";
     category: "FEATURES",
     description: "Dark code showcase section with React/HTML tab switching and syntax highlighting.",
     component: CodeShowcaseFeature,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CodeShowcaseFeature } from "component-labs";
+
+export default function Example() {
+  return <CodeShowcaseFeature />;
+}`,
     props: [
-      { name: "codeExamples", type: "object", default: "Built-in React/HTML examples", description: "Object of code examples keyed by tab name." },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Engineered for modern frameworks\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "ComponentLabs provides first-class support for React, Next.js, and vanilla JavaScript. Seamlessly integrate our primitives into your existing stack",
+                "description": "Custom description property."
+          },
+          {
+                "name": "codeExamples",
+                "type": "any",
+                "default": "CODE_EXAMPLES",
+                "description": "Custom codeExamples property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "React and HTML tab switching",
@@ -1091,9 +2100,38 @@ import { Folder } from "lucide-react";
     category: "FEATURES",
     description: "Premium SaaS-oriented feature cards leveraging local mouse tracking to drive glowing spotlights, accompanied by high-fidelity SVG technical grids.",
     component: InteractiveSpotlightFeatures,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { InteractiveSpotlightFeatures } from "component-labs";
+
+export default function Example() {
+  return <InteractiveSpotlightFeatures />;
+}`,
+    props: [
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Built to cover your needs\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "A suite of modular high-performance primitives engineered to give you absolute control over your digital product's design and intelligence.",
+                "description": "Custom description property."
+          },
+          {
+                "name": "features",
+                "type": "any",
+                "default": "defaultFeatures",
+                "description": "Custom features property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
+    ],
     features: [
       "Real-time cursor coordinate spotlight tracking",
       "SVG-drawn blueprint grid backdrops with crosshairs",
@@ -1109,8 +2147,31 @@ import { Folder } from "lucide-react";
     description: "A highly polished, responsive bento-grid feature section displaying fast integration, powerful core library, enterprise-grade security, and an interactive, animated circuit board tracing pattern for intelligent layouts.",
     component: CreativeTeamsFeature,
     published: true,
-    usage: null,
-    props: [],
+    usage: `import { CreativeTeamsFeature } from "component-labs";
+
+export default function Example() {
+  return <CreativeTeamsFeature />;
+}`,
+    props: [
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"The foundation for creative teams management\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "\"Lyra is evolving to be more than just the models. It supports an entire ecosystem of APIs and platforms helping developers and businesses innovate with soulful precision.\"",
+                "description": "Custom description property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
+    ],
     features: [
       "Dynamic 12-column responsive bento grid",
       "Looping glowing pulse animations along trace paths",
@@ -1127,11 +2188,43 @@ import { Folder } from "lucide-react";
     category: "FAQS",
     description: "FAQ component with category pill tabs and animated accordion answers.",
     component: CategorizedFAQ,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CategorizedFAQ } from "component-labs";
+
+export default function Example() {
+  return <CategorizedFAQ />;
+}`,
     props: [
-      { name: "categories", type: "array", default: '["Web dev", "Mobile dev", "UI/UX", "Copywriting"]', description: "Array of category label strings." },
-      { name: "faqData", type: "object", default: "Built-in FAQ_DATA", description: "Object keyed by category with arrays of { question, answer }." },
+          {
+                "name": "categories",
+                "type": "any",
+                "default": "CATEGORIES",
+                "description": "Custom categories property."
+          },
+          {
+                "name": "faqData",
+                "type": "any",
+                "default": "FAQ_DATA",
+                "description": "Custom faqData property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"FAQs\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "\"Let's answer some questions\"",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Category pill tab selection",
@@ -1150,11 +2243,52 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { AnimatedFAQ } from "component-labs";
 
-<AnimatedFAQ />`,
+export default function Example() {
+  return <AnimatedFAQ />;
+}`,
     props: [
-      { name: "faqs", type: "array", default: "Built-in DEFAULT_FAQS", description: "Array of { question, answer } objects." },
-      { name: "question", type: "string", default: "undefined", description: "If provided with answer, renders a single FAQ." },
-      { name: "answer", type: "string", default: "undefined", description: "Answer text for single FAQ mode." },
+          {
+                "name": "faqs",
+                "type": "any",
+                "default": "DEFAULT_FAQS",
+                "description": "Custom faqs property."
+          },
+          {
+                "name": "titlePre",
+                "type": "string",
+                "default": "\"Frequently Assumed \"",
+                "description": "Custom titlePre property."
+          },
+          {
+                "name": "titleHighlight",
+                "type": "string",
+                "default": "\"Queries\"",
+                "description": "Custom titleHighlight property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "\"Everything you need to know about our principles and architecture.\"",
+                "description": "Custom description property."
+          },
+          {
+                "name": "question",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom question property."
+          },
+          {
+                "name": "answer",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom answer property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Accordion expand/collapse animation",
@@ -1169,9 +2303,32 @@ import { Folder } from "lucide-react";
     category: "FAQS",
     description: "High-fidelity responsive grid callout mapping key FAQs with circular help decorators, Space Grotesk section titles, and micro-hover interactions.",
     component: MinimalGridFAQ,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { MinimalGridFAQ } from "component-labs";
+
+export default function Example() {
+  return <MinimalGridFAQ />;
+}`,
+    props: [
+          {
+                "name": "faqs",
+                "type": "any",
+                "default": "faqData",
+                "description": "Custom faqs property."
+          },
+          {
+                "name": "title",
+                "type": "string",
+                "default": "\"Frequently Asked Questions\"",
+                "description": "Custom title property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
+    ],
     features: [
       "Clean responsive 3-column desktop layout grid",
       "Geometric Space Grotesk section title",
@@ -1188,12 +2345,31 @@ import { Folder } from "lucide-react";
     category: "LOGO CLOUDS",
     description: "Two-row logo cloud with grayscale-to-color hover effect.",
     component: LogoCloud,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { LogoCloud } from "component-labs";
+
+export default function Example() {
+  return <LogoCloud />;
+}`,
     props: [
-      { name: "headline", type: "string", default: '"Your favorite companies are our partners."', description: "Headline text above the logo grid." },
-      { name: "companies", type: "array", default: "Built-in 10 companies", description: "Array of { name, icon } objects." },
-      { name: "className", type: "string", default: '""', description: "Additional wrapper classes." },
+          {
+                "name": "headline",
+                "type": "string",
+                "default": "\"Your favorite companies are our partners.\"",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "companies",
+                "type": "any",
+                "default": "defaultCompanies",
+                "description": "Custom companies property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Two-row responsive logo layout",
@@ -1208,13 +2384,37 @@ import { Folder } from "lucide-react";
     category: "LOGO CLOUDS",
     description: "Centered logo cloud with headline, description, and flexible icon/text display.",
     component: CenteredLogoCloud,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CenteredLogoCloud } from "component-labs";
+
+export default function Example() {
+  return <CenteredLogoCloud />;
+}`,
     props: [
-      { name: "headline", type: "string", default: '"You\'re in good company"', description: "Headline text." },
-      { name: "description", type: "string", default: '"ComponentLabs is trusted by..."', description: "Description paragraph below headline." },
-      { name: "companies", type: "array", default: "Built-in 5 companies", description: "Array of { name, icon, showText } objects." },
-      { name: "className", type: "string", default: '""', description: "Additional wrapper classes." },
+          {
+                "name": "headline",
+                "type": "string",
+                "default": "\"You're in good company\"",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "ComponentLabs is trusted by leading teams from Generative AI Companies, Hosting Providers, Payments Providers, Streaming Providers",
+                "description": "Custom description property."
+          },
+          {
+                "name": "companies",
+                "type": "any",
+                "default": "defaultCompanies",
+                "description": "Custom companies property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Centered layout with description",
@@ -1232,24 +2432,34 @@ import { Folder } from "lucide-react";
     published: true,
     usage: `import { MarqueeLogoCloud } from "component-labs";
 
-// Default usage
-<MarqueeLogoCloud />
-
-// Custom companies example
-import { SiGithub, SiGithubactions, SiSlack } from "react-icons/si";
-
-const myPartners = [
-  { name: "GitHub", icon: <SiGithub /> },
-  { name: "Actions", icon: <SiGithubactions /> },
-  { name: "Slack", icon: <SiSlack /> },
-];
-
-<MarqueeLogoCloud headline="Our Ecosystem" companies={myPartners} speed={25} />`,
+export default function Example() {
+  return <MarqueeLogoCloud />;
+}`,
     props: [
-      { name: "headline", type: "string", default: '"Your favorite companies are our partners."', description: "Optional heading text above the marquee. Set to null or \"\" to hide it." },
-      { name: "companies", type: "array", default: "Built-in list of 9 platforms", description: "List of company logo objects formatted as { name, icon }." },
-      { name: "speed", type: "number", default: "40", description: "Animation cycle duration in seconds (smaller = faster scroll speed)." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
+          {
+                "name": "headline",
+                "type": "string",
+                "default": "\"Your favorite companies are our partners.\"",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "companies",
+                "type": "any",
+                "default": "defaultCompanies",
+                "description": "Custom companies property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "speed",
+                "type": "number",
+                "default": "40",
+                "description": "Custom speed property."
+          }
     ],
     features: [
       "Infinite horizontal marquee auto-scrolling logo trail",
@@ -1269,12 +2479,31 @@ const myPartners = [
     category: "LOGO CLOUDS",
     description: "5-column logo grid with crosshair corner markers and mouse spotlight glow.",
     component: CrosshairLogoCloud,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { CrosshairLogoCloud } from "component-labs";
+
+export default function Example() {
+  return <CrosshairLogoCloud />;
+}`,
     props: [
-      { name: "headline", type: "string", default: '"ComponentLabs is trusted by..."', description: "Headline paragraph text." },
-      { name: "companies", type: "array", default: "Built-in 10 companies", description: "Array of { name, icon, showText } objects." },
-      { name: "className", type: "string", default: '""', description: "Additional wrapper classes." },
+          {
+                "name": "headline",
+                "type": "string",
+                "default": "ComponentLabs is trusted by leading teams from Generative AI Companies, Hosting Providers, Payments Providers, Streaming Providers",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "companies",
+                "type": "any",
+                "default": "defaultCompanies",
+                "description": "Custom companies property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "5-column responsive grid",
@@ -1292,11 +2521,79 @@ const myPartners = [
     category: "FOOTERS",
     description: "SaaS-style footer with conversion CTA card, link columns, and status badge.",
     component: SaaSFooter,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { SaaSFooter } from "component-labs";
+
+export default function Example() {
+  return <SaaSFooter />;
+}`,
     props: [
-      { name: "ctaHeadline", type: "string", default: '"Create, Sell and Grow"', description: "CTA card headline text (hardcoded)." },
-      { name: "links", type: "object", default: "Built-in Product/Company/Community", description: "Footer link columns (hardcoded)." },
+          {
+                "name": "ctaTitle",
+                "type": "string",
+                "default": "\"Create",
+                "description": "Custom ctaTitle property."
+          },
+          {
+                "name": "Sell and Grow\"",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom Sell and Grow\" property."
+          },
+          {
+                "name": "ctaDescription",
+                "type": "string",
+                "default": "\"Join a community of over 1000+ companies and developers who have already discovered the power of ComponentLabs.\"",
+                "description": "Custom ctaDescription property."
+          },
+          {
+                "name": "ctaButtonText",
+                "type": "string",
+                "default": "\"Contact Sales\"",
+                "description": "Custom ctaButtonText property."
+          },
+          {
+                "name": "brandName",
+                "type": "string",
+                "default": "\"ComponentLabs\"",
+                "description": "Custom brandName property."
+          },
+          {
+                "name": "brandDescription",
+                "type": "string",
+                "default": "\"ComponentLabs is a platform for building AI-powered applications.\"",
+                "description": "Custom brandDescription property."
+          },
+          {
+                "name": "productLinks",
+                "type": "array",
+                "default": "['Features', 'solution', 'Partnerships', 'Mobile apps']",
+                "description": "Custom productLinks property."
+          },
+          {
+                "name": "companyLinks",
+                "type": "array",
+                "default": "['About', 'Licence', 'Privacy']",
+                "description": "Custom companyLinks property."
+          },
+          {
+                "name": "copyright",
+                "type": "string",
+                "default": "\"\u00a9 2026 ComponentLabs. ALl rights reserved",
+                "description": "Custom copyright property."
+          },
+          {
+                "name": "statusText",
+                "type": "string",
+                "default": "\"All Systems Normal\"",
+                "description": "Custom statusText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Conversion-oriented CTA card",
@@ -1313,11 +2610,43 @@ const myPartners = [
     category: "FOOTERS",
     description: "Clean minimal footer with brand, social links, nav links, and copyright.",
     component: MinimalFooter,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { MinimalFooter } from "component-labs";
+
+export default function Example() {
+  return <MinimalFooter />;
+}`,
     props: [
-      { name: "brandName", type: "string", default: '"ComponentLabs"', description: "Brand name displayed in footer (hardcoded)." },
-      { name: "links", type: "array", default: '["Home", "Features", "Pricing", "About", "Blog", "Contact"]', description: "Navigation link labels (hardcoded)." },
+          {
+                "name": "brandName",
+                "type": "string",
+                "default": "\"ComponentLabs\"",
+                "description": "Custom brandName property."
+          },
+          {
+                "name": "description",
+                "type": "string",
+                "default": "\"The modern integration platform for teams who ship fast and build beautiful interfaces.\"",
+                "description": "Custom description property."
+          },
+          {
+                "name": "footerLinks",
+                "type": "array",
+                "default": "['Home', 'Pricing', 'Docs', 'About', 'Contact']",
+                "description": "Custom footerLinks property."
+          },
+          {
+                "name": "copyright",
+                "type": "string",
+                "default": "\"\u00a9 2026 ComponentLabs. All rights reserved.",
+                "description": "Custom copyright property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Spring-physics staggered entrance",
@@ -1333,9 +2662,50 @@ const myPartners = [
     category: "FOOTERS",
     description: "Premium large-brand editorial footer with massive condensed heading, serif design tag, 4-column links, and social copyright bar.",
     component: EditorialBrandFooter,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { EditorialBrandFooter } from "component-labs";
+
+export default function Example() {
+  return <EditorialBrandFooter />;
+}`,
+    props: [
+          {
+                "name": "columns",
+                "type": "any",
+                "default": "DEFAULT_COLUMNS",
+                "description": "Custom columns property."
+          },
+          {
+                "name": "wordmarkText",
+                "type": "string",
+                "default": "\"COMPONENTLAB\"",
+                "description": "Custom wordmarkText property."
+          },
+          {
+                "name": "designLabel",
+                "type": "string",
+                "default": "\"design\"",
+                "description": "Custom designLabel property."
+          },
+          {
+                "name": "copyright",
+                "type": "string",
+                "default": "\"\u00a9 2026 COMPONENTLAB. ALL RIGHTS RESERVED.\"",
+                "description": "Custom copyright property."
+          },
+          {
+                "name": "socialLinks",
+                "type": "array",
+                "default": "['TWITTER', 'GITHUB', 'DRIBBBLE', 'LINKEDIN']",
+                "description": "Custom socialLinks property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
+    ],
     features: [
       "Massive high-impact editorial brand logo",
       "Serif lowercase design wordmark accent",
@@ -1351,9 +2721,62 @@ const myPartners = [
     category: "FOOTERS",
     description: "Ultra-premium brand footer with technical operational status bar, centered dot-separated navigation, dynamic backdrop spotlight, and individual letter spring reactions.",
     component: EngineeringStatusFooter,
-    published: false,
-    usage: null,
-    props: [],
+    published: true,
+    usage: `import { EngineeringStatusFooter } from "component-labs";
+
+export default function Example() {
+  return <EngineeringStatusFooter />;
+}`,
+    props: [
+          {
+                "name": "navLinks",
+                "type": "any",
+                "default": "DEFAULT_NAV_LINKS",
+                "description": "Custom navLinks property."
+          },
+          {
+                "name": "wordmarkText",
+                "type": "string",
+                "default": "\"COMPONENTLAB\"",
+                "description": "Custom wordmarkText property."
+          },
+          {
+                "name": "copyright",
+                "type": "string",
+                "default": "\"\u00a9 2026 ComponentLab. Engineered with precision. Built for humans.\"",
+                "description": "Custom copyright property."
+          },
+          {
+                "name": "legalLinks",
+                "type": "array",
+                "default": "['PRIVACY', 'TERMS', 'CONTACT']",
+                "description": "Custom legalLinks property."
+          },
+          {
+                "name": "systemRegistryVersion",
+                "type": "string",
+                "default": "\"v2.0.4\"",
+                "description": "Custom systemRegistryVersion property."
+          },
+          {
+                "name": "systemRegistryStatus",
+                "type": "string",
+                "default": "\"STABLE_BUILD\"",
+                "description": "Custom systemRegistryStatus property."
+          },
+          {
+                "name": "globalPresence",
+                "type": "string",
+                "default": "\"SF + LON + TYO\"",
+                "description": "Custom globalPresence property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
+    ],
     features: [
       "Technical operational status bar with boxed registry identifier",
       "Pulsating green status beacon with Systems Nominal underline",
@@ -1373,35 +2796,84 @@ const myPartners = [
     description: "A drafting-board themed section with background blueprints, a coordinate grid framework, and trust badges.",
     component: SmartInterfaceCTA,
     published: true,
-    usage: `import { SmartInterfaceCTA } from "../components/CTAComponents/SmartInterfaceCTA";
+    usage: `import { SmartInterfaceCTA } from "component-labs";
 
-// Default usage
-<SmartInterfaceCTA />
-
-// Custom consulting promotion example
-import { MessageSquare } from "lucide-react";
-
-<SmartInterfaceCTA
-  badgeText="100% Client Satisfaction"
-  headline="Ready to scale your product design?"
-  subtitle="Schedule an elite 1-on-1 strategy call with our core design engineering team."
-  primaryCtaText="Schedule Call"
-  secondaryCtaText="View Portfolio"
-  secondaryCtaHref="https://componentlabs.in/portfolio"
-  icon={<MessageSquare className="w-7 h-7" />}
-  onPrimaryCtaClick={() => window.open("https://calendly.com", "_blank")}
-/>`,
+export default function Example() {
+  return <SmartInterfaceCTA />;
+}`,
     props: [
-      { name: "badgeText", type: "string", default: '"Trusted by 2,000+ Engineers"', description: "Centered floating trust/social badge text." },
-      { name: "headline", type: "element / string", default: '"The smartest interface decision you’ve ever made."', description: "Core bold headline text." },
-      { name: "subtitle", type: "element / string", default: "Original design system text", description: "Serif subtitle with responsive breakpoints." },
-      { name: "primaryCtaText", type: "string", default: '"Start Building"', description: "Label for the prominent primary solid button." },
-      { name: "onPrimaryCtaClick", type: "function", default: "undefined", description: "Callback function triggered when primary CTA is clicked." },
-      { name: "secondaryCtaText", type: "string", default: '"Book a Demo"', description: "Label for the inline link action." },
-      { name: "secondaryCtaHref", type: "string", default: '"#"', description: "Anchor destination for the secondary link." },
-      { name: "onSecondaryCtaClick", type: "function", default: "undefined", description: "Click event handler for the secondary link action." },
-      { name: "icon", type: "element", default: "Lucide DraftingCompass in circle", description: "Centered rounded badge icon." },
-      { name: "className", type: "string", default: '""', description: "Container wrapper style overrides." },
+          {
+                "name": "badgeText",
+                "type": "string",
+                "default": "\"Trusted by 2",
+                "description": "Custom badgeText property."
+          },
+          {
+                "name": "000+ Engineers\"",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom 000+ Engineers\" property."
+          },
+          {
+                "name": "headline",
+                "type": "any",
+                "default": "The smartest interface decision you\u2019ve ever made.",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "subtitle",
+                "type": "any",
+                "default": "Experience the precision of an engineered design system combined with the soul of premium typography. Build faster",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "feelbetter",
+                "type": "string",
+                "default": "undefined",
+                "description": "Custom feel better.</> property."
+          },
+          {
+                "name": "primaryCtaText",
+                "type": "string",
+                "default": "\"Start Building\"",
+                "description": "Custom primaryCtaText property."
+          },
+          {
+                "name": "onPrimaryCtaClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onPrimaryCtaClick property."
+          },
+          {
+                "name": "secondaryCtaText",
+                "type": "string",
+                "default": "\"Book a Demo\"",
+                "description": "Custom secondaryCtaText property."
+          },
+          {
+                "name": "secondaryCtaHref",
+                "type": "string",
+                "default": "\"#\"",
+                "description": "Custom secondaryCtaHref property."
+          },
+          {
+                "name": "onSecondaryCtaClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onSecondaryCtaClick property."
+          },
+          {
+                "name": "icon",
+                "type": "any",
+                "default": "<DraftingCompass className=\"w-6.5 h-6.5 sm:w-7 sm:h-7\" strokeWidth={1.5} />",
+                "description": "Custom icon property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Architectural blueprint drafting layout with coordinate guideline graphics",
@@ -1422,31 +2894,60 @@ import { MessageSquare } from "lucide-react";
     description: "An abstract branding section featuring network node indicators, metallic accents, and a flowing waves visual card.",
     component: CreativeIntelligenceCTA,
     published: true,
-    usage: `import { CreativeIntelligenceCTA } from "../components/CTAComponents/CreativeIntelligenceCTA";
+    usage: `import { CreativeIntelligenceCTA } from "component-labs";
 
-// Default usage
-<CreativeIntelligenceCTA />
-
-// Custom console dashboard example
-import { Sparkles } from "lucide-react";
-
-<CreativeIntelligenceCTA
-  headline="Design the Future"
-  subtitle="Unleash an infinitely scalable UI playground powered by component intelligence."
-  ctaText="Launch Console"
-  imageUrl="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200"
-  icon={<Sparkles className="w-8 h-8 text-amber-500" />}
-  onCtaClick={() => console.log("Console launched")}
-/>`,
+export default function Example() {
+  return <CreativeIntelligenceCTA />;
+}`,
     props: [
-      { name: "headline", type: "string", default: '"Create with Intelligence"', description: "Main title text of the section." },
-      { name: "subtitle", type: "string", default: "Original SaaS mind description", description: "Supporting serif paragraph text below the headline." },
-      { name: "ctaText", type: "string", default: '"Begin Creation"', description: "The label of the pill-shaped action button." },
-      { name: "onCtaClick", type: "function", default: "undefined", description: "Callback function triggered when the CTA button is clicked." },
-      { name: "imageUrl", type: "string", default: "Unsplash abstract waves copper graphic", description: "Fallback high-quality abstract image or customizable image URL." },
-      { name: "imageAlt", type: "string", default: '"Flowing bronze waves representing automated creativity"', description: "Alt description for the wave visual card." },
-      { name: "icon", type: "element", default: "Lucide Network in copper", description: "SVG element or component rendering in the metallic copper accent color above the headline." },
-      { name: "className", type: "string", default: '""', description: "Additional classes appended to the outer container." },
+          {
+                "name": "headline",
+                "type": "string",
+                "default": "\"Create with Intelligence\"",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "Scale your digital footprint through an automated mind that learns your tone, logic, and creative rhythm.",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "ctaText",
+                "type": "string",
+                "default": "Begin Creation",
+                "description": "Custom ctaText property."
+          },
+          {
+                "name": "onCtaClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onCtaClick property."
+          },
+          {
+                "name": "imageUrl",
+                "type": "string",
+                "default": "\"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80\"",
+                "description": "Custom imageUrl property."
+          },
+          {
+                "name": "imageAlt",
+                "type": "string",
+                "default": "\"Flowing bronze waves representing automated creativity\"",
+                "description": "Custom imageAlt property."
+          },
+          {
+                "name": "icon",
+                "type": "any",
+                "default": "<Network className=\"w-8 h-8\" strokeWidth={1.5} />",
+                "description": "Custom icon property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Staggered entrance animations powered by spring dynamics",
@@ -1468,42 +2969,90 @@ import { Sparkles } from "lucide-react";
     description: "A premium pricing CTA grid with list checklists, gold highlight badges, and a professional pricing card.",
     component: ProTierPricingCTA,
     published: true,
-    usage: `import { ProTierPricingCTA } from "../components/CTAComponents/ProTierPricingCTA";
+    usage: `import { ProTierPricingCTA } from "component-labs";
 
-// Default usage
-<ProTierPricingCTA />
-
-// Custom Free Hobby Tier example
-<ProTierPricingCTA
-  badgeText="Developer License"
-  headline="Build with ComponentLabs"
-  features={[
-    "Access to 50+ beautiful blocks",
-    "Tailwind v4 fully optimized",
-    "Community discord channel access"
-  ]}
-  cardBadgeText="Free Forever"
-  cardTitle="Hobby Tier"
-  cardPrice="$0"
-  cardPeriod=""
-  cardDescription="Perfect for hobbyists and developers experimenting on side-projects."
-  ctaText="Get Started"
-  onCtaClick={() => alert("Starter registered!")}
-/>`,
+export default function Example() {
+  return <ProTierPricingCTA />;
+}`,
     props: [
-      { name: "badgeText", type: "string", default: '"New Pro Features Available"', description: "Flashing Pro features notification badge label." },
-      { name: "headline", type: "element / string", default: '"Unlock the Pro Tier"', description: "Headline text on the left column with highlighted Warm-Error span." },
-      { name: "subtitle", type: "string", default: "Original productivity description", description: "Paragraph description text beneath the headline." },
-      { name: "features", type: "array", default: "Built-in 3 premium features", description: "Array of checklist text strings." },
-      { name: "cardBadgeText", type: "string", default: '"Most Popular"', description: "Highlighted uppercase badge on the pricing card." },
-      { name: "cardTitle", type: "string", default: '"Professional"', description: "Small upper-case monospace title of the tier." },
-      { name: "cardPrice", type: "string", default: '"$10"', description: "The tier's large price tag." },
-      { name: "cardPeriod", type: "string", default: '"/mo"', description: "Period label." },
-      { name: "cardDescription", type: "string", default: "Built-in craft description", description: "Support copy explaining the tier." },
-      { name: "ctaText", type: "string", default: '"Upgrade Now"', description: "Action button label inside the card." },
-      { name: "onCtaClick", type: "function", default: "undefined", description: "Click event handler for the card upgrade button." },
-      { name: "guaranteeText", type: "string", default: '"14-day free trial • No credit card required"', description: "Monospace trial support disclaimer text." },
-      { name: "className", type: "string", default: '""', description: "Outer wrapper style classes." },
+          {
+                "name": "badgeText",
+                "type": "string",
+                "default": "\"New Pro Features Available\"",
+                "description": "Custom badgeText property."
+          },
+          {
+                "name": "headline",
+                "type": "any",
+                "default": "Unlock the Pro Tier",
+                "description": "Custom headline property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "Experience the power of seamless integrations and watch your productivity soar with our engineering-grade components.",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "features",
+                "type": "any",
+                "default": "defaultFeatures",
+                "description": "Custom features property."
+          },
+          {
+                "name": "cardBadgeText",
+                "type": "string",
+                "default": "\"Most Popular\"",
+                "description": "Custom cardBadgeText property."
+          },
+          {
+                "name": "cardTitle",
+                "type": "string",
+                "default": "\"Professional\"",
+                "description": "Custom cardTitle property."
+          },
+          {
+                "name": "cardPrice",
+                "type": "string",
+                "default": "\"$10\"",
+                "description": "Custom cardPrice property."
+          },
+          {
+                "name": "cardPeriod",
+                "type": "string",
+                "default": "\"/mo\"",
+                "description": "Custom cardPeriod property."
+          },
+          {
+                "name": "cardDescription",
+                "type": "string",
+                "default": "\"Full access for individuals and small teams focused on craft.\"",
+                "description": "Custom cardDescription property."
+          },
+          {
+                "name": "ctaText",
+                "type": "string",
+                "default": "\"Upgrade Now\"",
+                "description": "Custom ctaText property."
+          },
+          {
+                "name": "onCtaClick",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onCtaClick property."
+          },
+          {
+                "name": "guaranteeText",
+                "type": "string",
+                "default": "\"14-day free trial \u2022 No credit card required\"",
+                "description": "Custom guaranteeText property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Split column grid architecture (promotional details left, transaction card right)",
@@ -1529,32 +3078,58 @@ import { Sparkles } from "lucide-react";
     published: true,
     usage: `import { KanbanBoard } from "component-labs";
 
-// Default usage
-<KanbanBoard />
-
-// Custom data
-const columns = [
-  { id: "backlog", title: "BACKLOG", canAdd: true },
-  { id: "doing", title: "DOING" },
-  { id: "done", title: "DONE" },
-  { id: "trash", title: "TRASH", isTrash: true },
-];
-
-const tasks = [
-  { id: "a1", column: "backlog", tag: "API", title: "Draft upload endpoint" },
-  { id: "b2", column: "doing", tag: "UI", title: "Polish board spacing" },
-];
-
-<KanbanBoard initialTasks={tasks} columns={columns} />`,
+export default function Example() {
+  return <KanbanBoard />;
+}`,
     props: [
-      { name: "initialTasks", type: "array", default: "Built-in INITIAL_TASKS", description: "Starting task list. Each task: { id, column, tag, title }." },
-      { name: "columns", type: "array", default: "Built-in COLUMNS", description: "Board columns. Each column: { id, title, canAdd, isTrash }." },
-      { name: "onTasksChange", type: "function", default: "undefined", description: "Called whenever the task list changes." },
-      { name: "onTaskMove", type: "function", default: "undefined", description: "Called when a task is moved to another column." },
-      { name: "onTaskAdd", type: "function", default: "undefined", description: "Called when a new task is created." },
-      { name: "onTaskDelete", type: "function", default: "undefined", description: "Called when a task is dropped into the trash column." },
-      { name: "className", type: "string", default: '""', description: "Additional classes for the board container." },
-      { name: "style", type: "object", default: "undefined", description: "Inline styles for the outer container." },
+          {
+                "name": "initialTasks",
+                "type": "any",
+                "default": "DEMO_TASKS",
+                "description": "Custom initialTasks property."
+          },
+          {
+                "name": "columns",
+                "type": "any",
+                "default": "DEMO_COLUMNS",
+                "description": "Custom columns property."
+          },
+          {
+                "name": "onTasksChange",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onTasksChange property."
+          },
+          {
+                "name": "onTaskMove",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onTaskMove property."
+          },
+          {
+                "name": "onTaskAdd",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onTaskAdd property."
+          },
+          {
+                "name": "onTaskDelete",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onTaskDelete property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "style",
+                "type": "object",
+                "default": "{",
+                "description": "Custom style property."
+          }
     ],
     features: [
       "HTML5 drag-and-drop",
@@ -1576,13 +3151,40 @@ const tasks = [
     published: true,
     usage: `import { VintageFader } from "component-labs";
 
-<VintageFader onChange={(value) => console.log(value)} />`,
+export default function Example() {
+  return <VintageFader />;
+}`,
     props: [
-      { name: "min", type: "number", default: "0", description: "Minimum slider value." },
-      { name: "max", type: "number", default: "100", description: "Maximum slider value." },
-      { name: "defaultValue", type: "number", default: "50", description: "Initial slider position." },
-      { name: "step", type: "number", default: "1", description: "Step increment for value changes." },
-      { name: "onChange", type: "function", default: "undefined", description: "Callback fired on value change: (newValue) => {}." },
+          {
+                "name": "min",
+                "type": "number",
+                "default": "0",
+                "description": "Custom min property."
+          },
+          {
+                "name": "max",
+                "type": "number",
+                "default": "100",
+                "description": "Custom max property."
+          },
+          {
+                "name": "defaultValue",
+                "type": "number",
+                "default": "50",
+                "description": "Custom defaultValue property."
+          },
+          {
+                "name": "step",
+                "type": "number",
+                "default": "1",
+                "description": "Custom step property."
+          },
+          {
+                "name": "onChange",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onChange property."
+          }
     ],
     features: [
       "Vintage audio mixer aesthetic",
@@ -1602,9 +3204,28 @@ const tasks = [
     published: true,
     usage: `import { TerminalTypingCard } from "component-labs";
 
-<TerminalTypingCard />`,
+export default function Example() {
+  return <TerminalTypingCard />;
+}`,
     props: [
-      { name: "lines", type: "array", default: "Built-in npm install transcript", description: "Array of line objects with text, delay, and type (cmd/output/success/info)." },
+          {
+                "name": "lines",
+                "type": "array",
+                "default": "[\r\n    { text: \"npm install @componentlab/ui\"",
+                "description": "Custom lines property."
+          },
+          {
+                "name": "delay: 800",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom delay: 800 property."
+          },
+          {
+                "name": "type: \"cmd\"",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom type: \"cmd\" property."
+          }
     ],
     features: [
       "Typewriter effect for command lines",
@@ -1625,36 +3246,40 @@ const tasks = [
     published: true,
     usage: `import { CinematicCards } from "component-labs";
 
-// Default usage
-<CinematicCards />
-
-// Custom slides example
-const customSlides = [
-  {
-    id: 1,
-    title: "Cyber City",
-    subtitle: "NEON DREAMS",
-    copy: "Explore future streetscapes and high-tech corporate heights.",
-    button: "Enter City",
-    image: "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?w=800"
-  },
-  {
-    id: 2,
-    title: "Deep Sea",
-    subtitle: "ABYSS VOYAGE",
-    copy: "Submerge into pitch-black waters and glowing marine biology.",
-    button: "Submerge",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
-  }
-];
-
-<CinematicCards items={customSlides} hoverToActivate={false} onCardChange={(idx, item) => console.log(item)} />`,
+export default function Example() {
+  return <CinematicCards hoverToActivate={true} />;
+}`,
     props: [
-      { name: "items", type: "array", default: "Built-in list of 4 cards", description: "Custom array of card items containing { id, title, subtitle, copy, button, image }." },
-      { name: "hoverToActivate", type: "boolean", default: "true", description: "If true, hovering over collapsed cards expands them. If false, click interaction is required." },
-      { name: "onCardChange", type: "function", default: "undefined", description: "Callback triggered when active card changes: (index, card) => void." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for outer container." },
-      { name: "containerClassName", type: "string", default: '""', description: "Custom classes for inner flex container." },
+          {
+                "name": "items",
+                "type": "any",
+                "default": "defaultCards",
+                "description": "Custom items property."
+          },
+          {
+                "name": "hoverToActivate",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom hoverToActivate property."
+          },
+          {
+                "name": "onCardChange",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onCardChange property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          },
+          {
+                "name": "containerClassName",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom containerClassName property."
+          }
     ],
     features: [
       "Accordion-style slide layout animations driven by Framer Motion",
@@ -1674,10 +3299,25 @@ const customSlides = [
     category: "CREATIVE",
     description: "Highly interactive typography that stretches vertically and compresses horizontally on hover.",
     component: ElasticStretchText,
-    published: false,
-    usage: null,
+    published: true,
+    usage: `import { ElasticStretchText } from "component-labs";
+
+export default function Example() {
+  return <ElasticStretchText text="DYNAMIC" />;
+}`,
     props: [
-      { name: "text", type: "string", default: '"CREATIVE"', description: "The text string to animate." },
+          {
+                "name": "text",
+                "type": "string",
+                "default": "\"CREATIVE\"",
+                "description": "Custom text property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Individual character hover detection",
@@ -1697,23 +3337,54 @@ const customSlides = [
     description: "Interactive canvas drawing a trailing snake/spring-like effect following the mouse pointer.",
     component: FluidCursorTrail,
     published: true,
-    usage: `import { FluidCursorTrail } from "../components/CreativeComponents/FluidCursorTrail";
+    usage: `import { FluidCursorTrail } from "component-labs";
 
-// Default usage (Global fullscreen mode)
-<FluidCursorTrail isGlobal={true} />
-
-// Local container mode usage
-<div className="relative w-full h-[500px] overflow-hidden rounded-xl">
-  <FluidCursorTrail isGlobal={false} color="rgba(197, 140, 103, 0.85)" pointsNumber={60} widthFactor={0.4} />
-</div>`,
+export default function Example() {
+  return <FluidCursorTrail isGlobal={false} color="#00ff00" />;
+}`,
     props: [
-      { name: "isGlobal", type: "boolean", default: "true", description: "If true, the canvas trail is fixed fullscreen, functioning as a global backdrop. If false, it stays locally in its parent container as a card widget." },
-      { name: "color", type: "string", default: '"rgba(232, 86, 122, 0.85)"', description: "Trail color (hex, rgb, rgba)." },
-      { name: "pointsNumber", type: "number", default: "40", description: "Quantity of points in the fluid physics chain (trail length)." },
-      { name: "widthFactor", type: "number", default: "0.3", description: "Thickness multiplier for the trail." },
-      { name: "spring", type: "number", default: "0.4", description: "Spring stiffness of the trail (larger = faster trail reaction)." },
-      { name: "friction", type: "number", default: "0.5", description: "Movement damping of the trail (larger = more friction / slower slide)." },
-      { name: "className", type: "string", default: '""', description: "Custom classes for styling extensions." },
+          {
+                "name": "isGlobal",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom isGlobal property."
+          },
+          {
+                "name": "color",
+                "type": "string",
+                "default": "\"rgba(232, 86, 122, 0.85)",
+                "description": "Custom color property."
+          },
+          {
+                "name": "pointsNumber",
+                "type": "number",
+                "default": "40",
+                "description": "Custom pointsNumber property."
+          },
+          {
+                "name": "widthFactor",
+                "type": "number",
+                "default": "0.3",
+                "description": "Custom widthFactor property."
+          },
+          {
+                "name": "spring",
+                "type": "number",
+                "default": "0.4",
+                "description": "Custom spring property."
+          },
+          {
+                "name": "friction",
+                "type": "number",
+                "default": "0.5",
+                "description": "Custom friction property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Fluid physics canvas-based cursor trailing effect",
@@ -1736,24 +3407,64 @@ const customSlides = [
     published: true,
     usage: `import { MorphCardButton } from "component-labs";
 
-<MorphCardButton
-  buttonText="Click Me"
-  tag="Lab Report"
-  badge="07"
-  heading="Precision UI: Engineered for the modern stack"
-  subtitle="ComponentLab Studios"
-  imageSrc="/avatar.png"
-/>`,
+export default function Example() {
+  return <MorphCardButton heading="Learn More" />;
+}`,
     props: [
-      { name: "buttonText", type: "string", default: '"Click Me"', description: "Label shown in the collapsed button state." },
-      { name: "tag", type: "string", default: '"Lab Report"', description: "Small category tag in the expanded card." },
-      { name: "badge", type: "string", default: '"07"', description: "Badge text next to the tag." },
-      { name: "heading", type: "string", default: '"Precision UI: Engineered..."', description: "Main heading in the expanded card." },
-      { name: "subtitle", type: "string", default: '"ComponentLab Studios"', description: "Subtitle text below the heading." },
-      { name: "imageSrc", type: "string", default: "undefined", description: "URL for the card image. Shows a geometric placeholder when omitted." },
-      { name: "onExpand", type: "function", default: "undefined", description: "Callback fired when the button expands into a card." },
-      { name: "onCollapse", type: "function", default: "undefined", description: "Callback fired when the card collapses back to a button." },
-      { name: "className", type: "string", default: '""', description: "Additional classes for the outer wrapper." },
+          {
+                "name": "buttonText",
+                "type": "string",
+                "default": "\"Click Me\"",
+                "description": "Custom buttonText property."
+          },
+          {
+                "name": "tag",
+                "type": "string",
+                "default": "\"Lab Report\"",
+                "description": "Custom tag property."
+          },
+          {
+                "name": "badge",
+                "type": "string",
+                "default": "\"07\"",
+                "description": "Custom badge property."
+          },
+          {
+                "name": "heading",
+                "type": "string",
+                "default": "\"Precision UI: Engineered for the modern stack\"",
+                "description": "Custom heading property."
+          },
+          {
+                "name": "subtitle",
+                "type": "string",
+                "default": "\"ComponentLab Studios\"",
+                "description": "Custom subtitle property."
+          },
+          {
+                "name": "imageSrc",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom imageSrc property."
+          },
+          {
+                "name": "onExpand",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onExpand property."
+          },
+          {
+                "name": "onCollapse",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onCollapse property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Framer Motion layout animation for seamless dimension morph",
@@ -1772,26 +3483,46 @@ const customSlides = [
     published: true,
     usage: `import { GreetingPreloader } from "component-labs";
 
-// Default usage
-<GreetingPreloader />
-
-// Custom wrapper page example
-<GreetingPreloader
-  greetings={["Welcome", "Bienvenue", "Willkommen", "Benvenuto"]}
-  durationPerWord={600}
-  subTitle="Launching Dashboard..."
-  theme="dark"
->
-  <MyDashboard />
-</GreetingPreloader>`,
+export default function Example() {
+  return <GreetingPreloader />;
+}`,
     props: [
-      { name: "greetings", type: "array", default: "['Hello', 'Bonjour', 'Hola', ...]", description: "List of greeting strings to cycle through on startup." },
-      { name: "durationPerWord", type: "number", default: "500", description: "Time duration in milliseconds that each word is shown." },
-      { name: "subTitle", type: "string", default: '"Initializing Experience"', description: "Small status metadata subtitle text shown at the bottom of the loader." },
-      { name: "isGlobal", type: "boolean", default: "true", description: "If true, renders fixed fullscreen as a global page loader. If false, renders absolute inset locally within its parent container." },
-      { name: "theme", type: "string", default: '"light"', description: "Preloader color theme: 'light' (neutral-cream backdrop) or 'dark' (charcoal-gothic backdrop)." },
-      { name: "onComplete", type: "function", default: "undefined", description: "Fired when the greetings list has fully cycled and the loading panel has finished sliding out." },
-      { name: "children", type: "element", default: "undefined", description: "Optional component or page elements to render and reveal after the preloader finishes." },
+          {
+                "name": "greetings",
+                "type": "array",
+                "default": "['Hello', 'Bonjour', 'Hola', 'Ciao', 'Namaste', 'Konnichiwa', 'Salam']",
+                "description": "Custom greetings property."
+          },
+          {
+                "name": "durationPerWord",
+                "type": "number",
+                "default": "400",
+                "description": "Custom durationPerWord property."
+          },
+          {
+                "name": "subTitle",
+                "type": "string",
+                "default": "\"Initializing Experience\"",
+                "description": "Custom subTitle property."
+          },
+          {
+                "name": "isGlobal",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom isGlobal property."
+          },
+          {
+                "name": "onComplete",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onComplete property."
+          },
+          {
+                "name": "children",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom children property."
+          }
     ],
     features: [
       "Typographic greeting sequence with clean exit transitions powered by AnimatePresence",
@@ -1814,31 +3545,52 @@ const customSlides = [
     published: true,
     usage: `import { StaircasePreloader } from "component-labs";
 
-// Default usage
-<StaircasePreloader />
-
-// Custom wrapper page example
-<StaircasePreloader
-  greetings={["Welcome", "Bienvenue", "Willkommen", "Benvenuto"]}
-  durationPerWord={400}
-  panelCount={5}
-  accentColor="#d24200"
-  bgColor="#f2f1ed"
-  textColor="#11100a"
->
-  <MyLandingPage />
-</StaircasePreloader>`,
+export default function Example() {
+  return <StaircasePreloader />;
+}`,
     props: [
-      { name: "greetings", type: "array", default: "['Hello', 'Bonjour', 'नमस्ते', ...]", description: "List of greeting strings to cycle through during loading." },
-      { name: "durationPerWord", type: "number", default: "300", description: "Time in milliseconds each greeting is displayed before cycling to the next." },
-      { name: "panelCount", type: "number", default: "5", description: "Number of vertical strips that form the staircase curtain." },
-      { name: "panelStaggerMs", type: "number", default: "100", description: "Stagger delay in milliseconds between each strip's exit animation." },
-      { name: "accentColor", type: "string", default: '"#d24200"', description: "Color of the accent dot displayed next to the greeting text." },
-      { name: "bgColor", type: "string", default: '"#f2f1ed"', description: "Background color of the vertical strip panels." },
-      { name: "textColor", type: "string", default: '"#11100a"', description: "Color of the greeting text." },
-      { name: "isGlobal", type: "boolean", default: "true", description: "If true, renders as a fixed fullscreen page loader. If false, renders within its parent container." },
-      { name: "onComplete", type: "function", default: "undefined", description: "Callback fired when the staircase exit animation has fully completed." },
-      { name: "children", type: "element", default: "undefined", description: "Page content to reveal after the preloader finishes." },
+          {
+                "name": "greetings",
+                "type": "array",
+                "default": "['Hello', 'Bonjour', 'Hola', 'Ciao', 'Namaste', 'Konnichiwa', 'Salam']",
+                "description": "Custom greetings property."
+          },
+          {
+                "name": "durationPerWord",
+                "type": "number",
+                "default": "250",
+                "description": "Custom durationPerWord property."
+          },
+          {
+                "name": "panelCount",
+                "type": "number",
+                "default": "5",
+                "description": "Custom panelCount property."
+          },
+          {
+                "name": "panelStaggerMs",
+                "type": "number",
+                "default": "100",
+                "description": "Custom panelStaggerMs property."
+          },
+          {
+                "name": "isGlobal",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom isGlobal property."
+          },
+          {
+                "name": "onComplete",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onComplete property."
+          },
+          {
+                "name": "children",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom children property."
+          }
     ],
     features: [
       "Staggered staircase exit animation with 5 vertical strips sliding up in sequence",
@@ -1863,30 +3615,76 @@ const customSlides = [
     published: true,
     usage: `import { PlayPauseButton } from "component-labs";
 
-// Default usage
-<PlayPauseButton />
-
-// Custom size and colors
-<PlayPauseButton
-  size={80}
-  bgColor="#282828"
-  iconColor="#ffffff"
-  onToggle={(isPlaying) => console.log(isPlaying)}
-/>
-
-// Without label and ripple
-<PlayPauseButton showLabel={false} showRipple={false} size={56} />`,
+export default function Example() {
+  return <PlayPauseButton color="#ff0000" />;
+}`,
     props: [
-      { name: "size", type: "number", default: "64", description: "Diameter of the button in pixels." },
-      { name: "bgColor", type: "string", default: '"#1a1a1a"', description: "Background color of the circular button." },
-      { name: "iconColor", type: "string", default: '"#ffffff"', description: "Fill color of the play/pause SVG icon." },
-      { name: "hoverScale", type: "number", default: "1.08", description: "Scale factor on hover." },
-      { name: "activeScale", type: "number", default: "0.92", description: "Scale factor when pressed." },
-      { name: "initialPlaying", type: "boolean", default: "false", description: "Initial state — true starts as paused icon, false starts as play icon." },
-      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new playing state (boolean) on each click." },
-      { name: "showRipple", type: "boolean", default: "true", description: "Whether to show the expanding ring ripple effect on click." },
-      { name: "showLabel", type: "boolean", default: "true", description: "Whether to show the PLAYING/PAUSED status label below the button." },
-      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the wrapper." },
+          {
+                "name": "size",
+                "type": "number",
+                "default": "64",
+                "description": "Custom size property."
+          },
+          {
+                "name": "bgColor",
+                "type": "string",
+                "default": "\"#1a1a1a\"",
+                "description": "Custom bgColor property."
+          },
+          {
+                "name": "iconColor",
+                "type": "string",
+                "default": "\"#ffffff\"",
+                "description": "Custom iconColor property."
+          },
+          {
+                "name": "hoverScale",
+                "type": "number",
+                "default": "1.08",
+                "description": "Custom hoverScale property."
+          },
+          {
+                "name": "activeScale",
+                "type": "number",
+                "default": "0.92",
+                "description": "Custom activeScale property."
+          },
+          {
+                "name": "initialPlaying",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom initialPlaying property."
+          },
+          {
+                "name": "onToggle",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onToggle property."
+          },
+          {
+                "name": "showRipple",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom showRipple property."
+          },
+          {
+                "name": "showLabel",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom showLabel property."
+          },
+          {
+                "name": "bare",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom bare property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Smooth SVG morph animation between play (▶) and pause (‖) icons",
@@ -1911,32 +3709,82 @@ const customSlides = [
     published: true,
     usage: `import { HamburgerCross } from "component-labs";
 
-// Default usage
-<HamburgerCross />
-
-// Custom size and colors
-<HamburgerCross
-  size={56}
-  bgColor="#282828"
-  strokeColor="#ffffff"
-  strokeWidth={2.5}
-  onToggle={(isOpen) => console.log(isOpen)}
-/>
-
-// Square button, no label
-<HamburgerCross rounded={false} showLabel={false} size={48} />`,
+export default function Example() {
+  return <HamburgerCross color="#ff0000" />;
+}`,
     props: [
-      { name: "size", type: "number", default: "48", description: "Overall button diameter/size in pixels." },
-      { name: "strokeWidth", type: "number", default: "2", description: "Thickness of the SVG line strokes." },
-      { name: "bgColor", type: "string", default: '"#1a1a1a"', description: "Background color of the button." },
-      { name: "strokeColor", type: "string", default: '"#ffffff"', description: "Color of the hamburger/cross line strokes." },
-      { name: "hoverScale", type: "number", default: "1.06", description: "Scale factor on hover." },
-      { name: "activeScale", type: "number", default: "0.92", description: "Scale factor when pressed." },
-      { name: "initialOpen", type: "boolean", default: "false", description: "Initial state — true starts as X (close), false starts as hamburger (menu)." },
-      { name: "onToggle", type: "function", default: "undefined", description: "Callback fired with the new open state (boolean) on each click." },
-      { name: "rounded", type: "boolean", default: "true", description: "If true, button is circular. If false, uses rounded-rectangle shape." },
-      { name: "showLabel", type: "boolean", default: "true", description: "Whether to show the MENU/CLOSE status label below the button." },
-      { name: "className", type: "string", default: '""', description: "Additional CSS classes for the wrapper." },
+          {
+                "name": "size",
+                "type": "number",
+                "default": "48",
+                "description": "Custom size property."
+          },
+          {
+                "name": "strokeWidth",
+                "type": "number",
+                "default": "2",
+                "description": "Custom strokeWidth property."
+          },
+          {
+                "name": "bgColor",
+                "type": "string",
+                "default": "\"#1a1a1a\"",
+                "description": "Custom bgColor property."
+          },
+          {
+                "name": "strokeColor",
+                "type": "string",
+                "default": "\"#ffffff\"",
+                "description": "Custom strokeColor property."
+          },
+          {
+                "name": "hoverScale",
+                "type": "number",
+                "default": "1.06",
+                "description": "Custom hoverScale property."
+          },
+          {
+                "name": "activeScale",
+                "type": "number",
+                "default": "0.92",
+                "description": "Custom activeScale property."
+          },
+          {
+                "name": "initialOpen",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom initialOpen property."
+          },
+          {
+                "name": "onToggle",
+                "type": "any",
+                "default": "undefined",
+                "description": "Custom onToggle property."
+          },
+          {
+                "name": "rounded",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom rounded property."
+          },
+          {
+                "name": "showLabel",
+                "type": "boolean",
+                "default": "true",
+                "description": "Custom showLabel property."
+          },
+          {
+                "name": "bare",
+                "type": "boolean",
+                "default": "false",
+                "description": "Custom bare property."
+          },
+          {
+                "name": "className",
+                "type": "string",
+                "default": "\"\"",
+                "description": "Custom className property."
+          }
     ],
     features: [
       "Smooth SVG line-endpoint morph between hamburger (☰) and cross (✕) icons",
