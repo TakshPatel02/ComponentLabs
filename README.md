@@ -11,6 +11,29 @@ A curated collection of **production-ready React UI primitives** built with Moti
 - **Accessible** — WCAG-compliant with proper ARIA attributes and keyboard support
 - **Dark/Light Modes** — Seamless theme support with CSS variables
 - **Copy-Paste Ready** — Use components inline or install via npm
+- **IconFlow Integration** — Brings Lucide icons to life with easy-to-use animation triggers (hover, click, mount, loop) via the `iconflow` npm package
+- **Experiences & Transitions** — Fluid theme and page transitions to elevate your app's feel
+- **Premium Templates** — Complete page templates (SaaS Landing pages, etc.) built with ComponentLab primitives
+
+## 📦 Packages
+
+### IconFlow
+A lightweight React wrapper for Lucide icons that adds animation triggers. One prop away from motion.
+- **Install:** `npm install iconflow lucide-react`
+- **Animations:** Shake, Spin, Bounce, Swing, Pulse, Heartbeat
+- **Triggers:** Hover, Click, Mount, Loop
+
+## 🚀 Experiences
+
+Elevate your app's feel with world-class transition animations:
+- **Theme Transitions** — Mesmerizing effects (curtain wipes, radial waves, pixel dissolves) for switching between dark and light modes.
+- **Page Transitions** — Fluid, native-feeling route transitions (slide & scale, strip wipe, etc.) powered by Framer Motion.
+
+## 💎 Premium Templates
+
+Full Pages. Ready to Ship. Complete page templates built with ComponentLab primitives. Copy the code, own the design.
+- **SaaS Landing Page** (Live Preview)
+- *More templates arriving soon!*
 
 ## 📦 Installation
 
@@ -47,6 +70,7 @@ Make sure these are installed in your project:
 - `motion >= 12`
 - `tailwindcss >= 3`
 - `lucide-react >= 0.300.0`
+- `react-icons >= 4.0.0`
 
 ## 🎯 Component Categories
 

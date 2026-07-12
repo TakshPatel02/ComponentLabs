@@ -216,6 +216,7 @@ const InstallationPage = () => {
                   { name: "motion", version: ">= 12" },
                   { name: "tailwindcss", version: ">= 3" },
                   { name: "lucide-react", version: ">= 0.300.0" },
+                  { name: "react-icons", version: ">= 4.0.0" },
                 ].map(({ name, version }) => (
                   <div
                     key={name}
