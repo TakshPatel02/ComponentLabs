@@ -15,6 +15,7 @@ import TemplatePreviewPage from "./Pages/TemplatePreviewPage";
 import ExperiencesPage from "./Pages/ExperiencesPage";
 import ThemeTransitionsPage from "./Pages/ThemeTransitionsPage";
 import PageTransitionsPage from "./Pages/PageTransitionsPage";
+import { Analytics } from '@vercel/analytics/react';
 
 // ── Old component page imports (commented out — kept for rollback) ──
 // import ButtonComponentPage from "./Pages/Components/ButtonComponentPage";
@@ -118,6 +119,7 @@ const App = () => {
             <Route path="/preview/saas-landing" element={<SaaSLandingPage />} />
           </Routes>
           {!isPreview && !location.pathname.startsWith("/components") && !location.pathname.startsWith("/docs") && <Footer />}
+           <Analytics />
         </motion.div>
       </AnimatePresence>
     </>

@@ -139,7 +139,7 @@ const HomePage = () => {
                 : "bg-black/3 border-black/15 text-black/80"
             }`}
           >
-            ✦ 65 Production-Ready React Primitives
+            ✦ 68 Production-Ready React Primitives
           </motion.div>
 
           {/* Heading */}
@@ -214,7 +214,7 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center gap-3 mt-10 flex-wrap"
           >
-            {["65 COMPONENTS", "17 CATEGORIES", "OPEN SOURCE"].map((stat) => (
+            {["68 COMPONENTS", "17 CATEGORIES", "OPEN SOURCE"].map((stat) => (
               <span
                 key={stat}
                 className="font-mono-code text-[10px] uppercase tracking-[0.15em] text-on-surface-variant/60 border border-border-fallback-10 rounded-full px-4 py-1.5 select-none bg-transparent"
@@ -308,7 +308,7 @@ const HomePage = () => {
                 </p>
               </div>
               <Link to="/components" className="group flex items-center gap-2 text-sm font-mono-code uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
-                View all 65 <span className="group-hover:translate-x-1 transition-transform">→</span>
+                View all 68 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -460,7 +460,7 @@ const HomePage = () => {
         <section className="relative w-full border-y border-border-fallback-10/40 overflow-hidden select-none bg-surface-container/10 mt-12 md:mt-24">
           <div className="flex flex-col md:flex-row items-center justify-between divide-y md:divide-y-0 md:divide-x divide-border-fallback-10/40 max-w-7xl mx-auto">
             {[
-              { num: "65", label: "Components" },
+              { num: "68", label: "Components" },
               { num: "17", label: "Categories" },
               { num: "1000+", label: "Animated Icons" },
               { num: "2", label: "npm Packages" },
